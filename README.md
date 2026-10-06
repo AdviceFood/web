@@ -1,2 +1,2 @@
 # web
-WEB-part of project 
+WEB-part of project
