@@ -26,6 +26,7 @@
     --lt-text-alt: #22C55E;
     --lt-burger-bg: #00000008;
     --lt-menu-line: #0000001A;
+    --lt-text-act: #15803D;
 }
 
 a.header--logo b {
@@ -56,4 +57,5 @@ ul.nav--list li.active,
 
 ul.nav--list li a:active {
     transform: scale(0.98);
+    background: var(--lt-text-act);
 }
