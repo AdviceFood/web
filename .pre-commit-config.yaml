@@ -1,0 +1,41 @@
+# .pre-commit-config.yaml
+repos:
+  # Базовые проверки (работают 100%)
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace # убирает лишние пробелы
+      - id: end-of-file-fixer # добавляет пустую строку в конце
+      - id: check-yaml # проверяет yaml файлы
+      - id: check-added-large-files # проверяет размер файлов
+      - id: check-merge-conflict # проверяет конфликты слияния
+      - id: check-case-conflict # проверяет конфликты регистров
+
+  # Проверка JavaScript (ESLint) - работает
+  - repo: https://github.com/pre-commit/mirrors-eslint
+    rev: v9.0.0-alpha.2
+    hooks:
+      - id: eslint
+        files: \.js$
+        additional_dependencies:
+          - eslint@8.57.0
+        args: ["--fix", "--max-warnings=0"]
+
+  # Форматирование prettier (опционально)
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v3.1.0
+    hooks:
+      - id: prettier
+        files: \.(html|css|js|json|yaml)$
+        args: ["--write"]
+
+  # Проверка HTML через другой валидатор (работающий)
+  - repo: local
+    hooks:
+      - id: htmlhint
+        name: HTMLHint
+        entry: npx htmlhint
+        language: node
+        files: \.html$
+        additional_dependencies:
+          - htmlhint
