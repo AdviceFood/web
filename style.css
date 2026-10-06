@@ -1,0 +1,59 @@
+@font-face {
+    font-family: "AA";
+    src: url(fonts/AA_Stetica_Regular.otf);
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "AA";
+    src: url(fonts/AA_Stetica_Medium.otf);
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "AA";
+    src: url(fonts/AA_Stetica_Bold.otf);
+    font-weight: 700;
+    font-display: swap;
+}
+
+:root {
+    --lt-body: #F4F6F9;
+    --lt-menu: #ffffff;
+    --lt-main: #000000;
+    --lt-text-alt: #22C55E;
+    --lt-burger-bg: #00000008;
+    --lt-menu-line: #0000001A;
+}
+
+a.header--logo b {
+    font-family: "AA";
+    font-weight: 700;
+}
+
+ul.nav--list li,
+ul.nav--list li a svg g path,
+ul.nav--list li b {
+    transition: .3s all, .2s transform;
+}
+
+ul.nav--list li.active,
+            ul.nav--list li a:hover {
+                background: var(--lt-text-alt);
+            }
+
+            ul.nav--list li.active a,
+            ul.nav--list li a:hover {
+                color: white;
+            }
+
+            ul.nav--list li.active a svg g path,
+            ul.nav--list li a:hover svg g path {
+                stroke: white;
+            }
+
+ul.nav--list li a:active {
+    transform: scale(0.98);
+}
