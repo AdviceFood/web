@@ -67,3 +67,34 @@ ul.nav--list li.active a {
 ul.nav--list li.active a svg g path {
   stroke: white;
 }
+
+.navigation--menu.open {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.burger--button .burger--line {
+  transition: 0.3s all;
+  transform-origin: center center;
+}
+
+.burger--button.open .burger--line:nth-child(2) {
+  opacity: 0;
+}
+
+.burger--button.open .burger--line:nth-child(1) {
+  transform: translateY(0) translateX(-50%) rotate(45deg);
+}
+
+.burger--button.open .burger--line:nth-child(3) {
+  transform: translateY(0) translateX(-50%) rotate(-45deg);
+}
+
+@media screen and (min-width: 850px) {
+  .navigation--menu.open,
+  .navigation--menu {
+    left: unset;
+    transform: 0;
+    margin-top: 0;
+  }
+}

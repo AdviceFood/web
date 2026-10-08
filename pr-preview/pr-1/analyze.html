@@ -30,6 +30,7 @@
       html {
         margin: 0;
         background: var(--lt-body);
+        overflow-x: hidden;
       }
 
       a.header--logo {
@@ -63,20 +64,24 @@
 
       .burger--button {
         background: var(--lt-burger-bg);
-        height: 40px;
-        width: 40px;
+        height: 44px;
+        width: 44px;
         border-radius: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
+        position: relative;
       }
 
       .burger--line {
-        width: 19px;
+        width: 22px;
         height: 3px;
         border-radius: 5px;
         background: var(--lt-text-alt);
-        position: relative;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translateY(-50%) translateX(-50%);
       }
 
       header nav {
@@ -89,25 +94,90 @@
         left: -100%;
       }
 
-      .burger--line::after {
-        width: 19px;
+      .burger--line:nth-child(1) {
+        width: 22px;
         height: 3px;
         border-radius: 5px;
         background: var(--lt-text-alt);
-        top: -6px;
-        left: 0;
+        transform: translateY(-10px) translateX(-50%);
+        top: 50%;
+        left: 50%;
         position: absolute;
-        content: "";
       }
-      .burger--line::before {
-        width: 19px;
+      .burger--line:nth-child(3) {
+        width: 22px;
         height: 3px;
         border-radius: 5px;
         background: var(--lt-text-alt);
-        top: 6px;
+        transform: translateY(7px) translateX(-50%);
+        top: 50%;
+        left: 50%;
+        position: absolute;
+      }
+
+      .nav--list {
         left: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        padding-bottom: 20px;
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+
+      .nav--list::after {
         position: absolute;
         content: "";
+        bottom: 10px;
+        left: 0;
+        width: 285px;
+        height: 1px;
+        background: var(--lt-menu-line);
+        border-radius: 1px;
+      }
+
+      .nav--list:last-child::after {
+        display: none;
+      }
+
+      ul.nav--list li {
+        width: 83.3vw;
+        max-width: 400px;
+        height: 52px;
+        margin: 0;
+        padding: 0;
+        border-radius: 26px;
+        list-style: none;
+      }
+
+      ul.nav--list li a {
+        padding: 13px 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--lt-main);
+        text-decoration: none;
+        font-family: "AA";
+        font-weight: 500;
+        font-size: 1.25rem;
+        font-style: normal;
+        border-radius: 26px;
+        transition: 0.3s;
+      }
+
+      ul.nav--list li a b {
+        font-weight: 500;
+      }
+
+      .navigation--menu {
+        position: absolute;
+        left: 100%;
+        transition: 0.3s;
+        margin-top: 32px;
       }
 
       @media screen and (min-width: 430px) {
@@ -133,52 +203,25 @@
 
         .burger--line {
           width: 36px;
-          height: 5px;
+          height: 4px;
         }
 
-        .burger--line::before {
+        .burger--line:nth-child(3) {
           width: 36px;
-          height: 5px;
-          top: 12px;
+          height: 4px;
+          transform: translateY(10px) translateX(-50%);
+          top: 50%;
         }
 
-        .burger--line::after {
+        .burger--line:nth-child(1) {
           width: 36px;
-          height: 5px;
-          top: -12px;
+          height: 4px;
+          transform: translateY(-14px) translateX(-50%);
+          top: 50%;
         }
       }
 
       @media screen and (min-width: 850px) {
-        .nav--list {
-          left: 0;
-          display: flex;
-          flex-direction: column;
-          gap: 5px;
-          padding-bottom: 20px;
-          position: relative;
-          margin-left: auto;
-          margin-right: auto;
-          padding-left: 0;
-          margin-top: 0;
-          margin-bottom: 0;
-        }
-
-        .nav--list::after {
-          position: absolute;
-          content: "";
-          bottom: 10px;
-          left: 0;
-          width: 285px;
-          height: 1px;
-          background: var(--lt-menu-line);
-          border-radius: 1px;
-        }
-
-        .nav--list:last-child::after {
-          display: none;
-        }
-
         .burger--button {
           display: none;
         }
@@ -238,6 +281,10 @@
         .header--inner {
           flex-direction: column;
         }
+
+        ul.nav--list li {
+          width: 285px;
+        }
       }
     </style>
   </head>
@@ -264,273 +311,281 @@
           </a>
 
           <nav>
-            <div class="burger--button">
+            <div class="burger--button" id="burgerButton">
+              <span class="burger--line"></span>
+              <span class="burger--line"></span>
               <span class="burger--line"></span>
             </div>
 
-            <ul class="nav--list">
-              <li>
-                <a href="#">
-                  <svg
-                    width="26"
-                    height="26"
-                    viewBox="0 0 26 26"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g opacity="0.9">
-                      <path
-                        d="M5.41667 13H3.25L13 3.25L22.75 13H20.5833"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M5.41675 13V20.5833C5.41675 21.158 5.64502 21.7091 6.05135 22.1154C6.45768 22.5217 7.00878 22.75 7.58341 22.75H18.4167C18.9914 22.75 19.5425 22.5217 19.9488 22.1154C20.3551 21.7091 20.5834 21.158 20.5834 20.5833V13"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M9.75 22.75V16.25C9.75 15.6754 9.97827 15.1243 10.3846 14.7179C10.7909 14.3116 11.342 14.0833 11.9167 14.0833H14.0833C14.658 14.0833 15.2091 14.3116 15.6154 14.7179C16.0217 15.1243 16.25 15.6754 16.25 16.25V22.75"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </g>
-                  </svg>
-                  <b>Home</b>
-                </a>
-              </li>
-            </ul>
+            <div class="navigation--menu" id="navMenu">
+              <div class="container">
+                <ul class="nav--list">
+                  <li>
+                    <a href="#">
+                      <svg
+                        width="26"
+                        height="26"
+                        viewBox="0 0 26 26"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <g opacity="0.9">
+                          <path
+                            d="M5.41667 13H3.25L13 3.25L22.75 13H20.5833"
+                            stroke="black"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M5.41675 13V20.5833C5.41675 21.158 5.64502 21.7091 6.05135 22.1154C6.45768 22.5217 7.00878 22.75 7.58341 22.75H18.4167C18.9914 22.75 19.5425 22.5217 19.9488 22.1154C20.3551 21.7091 20.5834 21.158 20.5834 20.5833V13"
+                            stroke="black"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M9.75 22.75V16.25C9.75 15.6754 9.97827 15.1243 10.3846 14.7179C10.7909 14.3116 11.342 14.0833 11.9167 14.0833H14.0833C14.658 14.0833 15.2091 14.3116 15.6154 14.7179C16.0217 15.1243 16.25 15.6754 16.25 16.25V22.75"
+                            stroke="black"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </g>
+                      </svg>
+                      <b>Home</b>
+                    </a>
+                  </li>
+                </ul>
 
-            <ul class="nav--list">
-              <li class="active">
-                <a href="#">
-                  <svg
-                    width="26"
-                    height="26"
-                    viewBox="0 0 26 26"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g opacity="0.9">
-                      <path
-                        d="M5.41667 13H3.25L13 3.25L22.75 13H20.5833"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M5.41675 13V20.5833C5.41675 21.158 5.64502 21.7091 6.05135 22.1154C6.45768 22.5217 7.00878 22.75 7.58341 22.75H18.4167C18.9914 22.75 19.5425 22.5217 19.9488 22.1154C20.3551 21.7091 20.5834 21.158 20.5834 20.5833V13"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M9.75 22.75V16.25C9.75 15.6754 9.97827 15.1243 10.3846 14.7179C10.7909 14.3116 11.342 14.0833 11.9167 14.0833H14.0833C14.658 14.0833 15.2091 14.3116 15.6154 14.7179C16.0217 15.1243 16.25 15.6754 16.25 16.25V22.75"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </g>
-                  </svg>
-                  <b>Home</b>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <svg
-                    width="26"
-                    height="26"
-                    viewBox="0 0 26 26"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g opacity="0.9">
-                      <path
-                        d="M5.41667 13H3.25L13 3.25L22.75 13H20.5833"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M5.41675 13V20.5833C5.41675 21.158 5.64502 21.7091 6.05135 22.1154C6.45768 22.5217 7.00878 22.75 7.58341 22.75H18.4167C18.9914 22.75 19.5425 22.5217 19.9488 22.1154C20.3551 21.7091 20.5834 21.158 20.5834 20.5833V13"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M9.75 22.75V16.25C9.75 15.6754 9.97827 15.1243 10.3846 14.7179C10.7909 14.3116 11.342 14.0833 11.9167 14.0833H14.0833C14.658 14.0833 15.2091 14.3116 15.6154 14.7179C16.0217 15.1243 16.25 15.6754 16.25 16.25V22.75"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </g>
-                  </svg>
-                  <b>Home</b>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <svg
-                    width="26"
-                    height="26"
-                    viewBox="0 0 26 26"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g opacity="0.9">
-                      <path
-                        d="M5.41667 13H3.25L13 3.25L22.75 13H20.5833"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M5.41675 13V20.5833C5.41675 21.158 5.64502 21.7091 6.05135 22.1154C6.45768 22.5217 7.00878 22.75 7.58341 22.75H18.4167C18.9914 22.75 19.5425 22.5217 19.9488 22.1154C20.3551 21.7091 20.5834 21.158 20.5834 20.5833V13"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M9.75 22.75V16.25C9.75 15.6754 9.97827 15.1243 10.3846 14.7179C10.7909 14.3116 11.342 14.0833 11.9167 14.0833H14.0833C14.658 14.0833 15.2091 14.3116 15.6154 14.7179C16.0217 15.1243 16.25 15.6754 16.25 16.25V22.75"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </g>
-                  </svg>
-                  <b>Home</b>
-                </a>
-              </li>
-            </ul>
+                <ul class="nav--list">
+                  <li class="active">
+                    <a href="#">
+                      <svg
+                        width="26"
+                        height="26"
+                        viewBox="0 0 26 26"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <g opacity="0.9">
+                          <path
+                            d="M5.41667 13H3.25L13 3.25L22.75 13H20.5833"
+                            stroke="black"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M5.41675 13V20.5833C5.41675 21.158 5.64502 21.7091 6.05135 22.1154C6.45768 22.5217 7.00878 22.75 7.58341 22.75H18.4167C18.9914 22.75 19.5425 22.5217 19.9488 22.1154C20.3551 21.7091 20.5834 21.158 20.5834 20.5833V13"
+                            stroke="black"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M9.75 22.75V16.25C9.75 15.6754 9.97827 15.1243 10.3846 14.7179C10.7909 14.3116 11.342 14.0833 11.9167 14.0833H14.0833C14.658 14.0833 15.2091 14.3116 15.6154 14.7179C16.0217 15.1243 16.25 15.6754 16.25 16.25V22.75"
+                            stroke="black"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </g>
+                      </svg>
+                      <b>Home</b>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <svg
+                        width="26"
+                        height="26"
+                        viewBox="0 0 26 26"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <g opacity="0.9">
+                          <path
+                            d="M5.41667 13H3.25L13 3.25L22.75 13H20.5833"
+                            stroke="black"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M5.41675 13V20.5833C5.41675 21.158 5.64502 21.7091 6.05135 22.1154C6.45768 22.5217 7.00878 22.75 7.58341 22.75H18.4167C18.9914 22.75 19.5425 22.5217 19.9488 22.1154C20.3551 21.7091 20.5834 21.158 20.5834 20.5833V13"
+                            stroke="black"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M9.75 22.75V16.25C9.75 15.6754 9.97827 15.1243 10.3846 14.7179C10.7909 14.3116 11.342 14.0833 11.9167 14.0833H14.0833C14.658 14.0833 15.2091 14.3116 15.6154 14.7179C16.0217 15.1243 16.25 15.6754 16.25 16.25V22.75"
+                            stroke="black"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </g>
+                      </svg>
+                      <b>Home</b>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <svg
+                        width="26"
+                        height="26"
+                        viewBox="0 0 26 26"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <g opacity="0.9">
+                          <path
+                            d="M5.41667 13H3.25L13 3.25L22.75 13H20.5833"
+                            stroke="black"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M5.41675 13V20.5833C5.41675 21.158 5.64502 21.7091 6.05135 22.1154C6.45768 22.5217 7.00878 22.75 7.58341 22.75H18.4167C18.9914 22.75 19.5425 22.5217 19.9488 22.1154C20.3551 21.7091 20.5834 21.158 20.5834 20.5833V13"
+                            stroke="black"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M9.75 22.75V16.25C9.75 15.6754 9.97827 15.1243 10.3846 14.7179C10.7909 14.3116 11.342 14.0833 11.9167 14.0833H14.0833C14.658 14.0833 15.2091 14.3116 15.6154 14.7179C16.0217 15.1243 16.25 15.6754 16.25 16.25V22.75"
+                            stroke="black"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </g>
+                      </svg>
+                      <b>Home</b>
+                    </a>
+                  </li>
+                </ul>
 
-            <ul class="nav--list">
-              <li>
-                <a href="#">
-                  <svg
-                    width="26"
-                    height="26"
-                    viewBox="0 0 26 26"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g opacity="0.9">
-                      <path
-                        d="M5.41667 13H3.25L13 3.25L22.75 13H20.5833"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M5.41675 13V20.5833C5.41675 21.158 5.64502 21.7091 6.05135 22.1154C6.45768 22.5217 7.00878 22.75 7.58341 22.75H18.4167C18.9914 22.75 19.5425 22.5217 19.9488 22.1154C20.3551 21.7091 20.5834 21.158 20.5834 20.5833V13"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M9.75 22.75V16.25C9.75 15.6754 9.97827 15.1243 10.3846 14.7179C10.7909 14.3116 11.342 14.0833 11.9167 14.0833H14.0833C14.658 14.0833 15.2091 14.3116 15.6154 14.7179C16.0217 15.1243 16.25 15.6754 16.25 16.25V22.75"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </g>
-                  </svg>
-                  <b>Home</b>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <svg
-                    width="26"
-                    height="26"
-                    viewBox="0 0 26 26"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g opacity="0.9">
-                      <path
-                        d="M5.41667 13H3.25L13 3.25L22.75 13H20.5833"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M5.41675 13V20.5833C5.41675 21.158 5.64502 21.7091 6.05135 22.1154C6.45768 22.5217 7.00878 22.75 7.58341 22.75H18.4167C18.9914 22.75 19.5425 22.5217 19.9488 22.1154C20.3551 21.7091 20.5834 21.158 20.5834 20.5833V13"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M9.75 22.75V16.25C9.75 15.6754 9.97827 15.1243 10.3846 14.7179C10.7909 14.3116 11.342 14.0833 11.9167 14.0833H14.0833C14.658 14.0833 15.2091 14.3116 15.6154 14.7179C16.0217 15.1243 16.25 15.6754 16.25 16.25V22.75"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </g>
-                  </svg>
-                  <b>Home</b>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <svg
-                    width="26"
-                    height="26"
-                    viewBox="0 0 26 26"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g opacity="0.9">
-                      <path
-                        d="M5.41667 13H3.25L13 3.25L22.75 13H20.5833"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M5.41675 13V20.5833C5.41675 21.158 5.64502 21.7091 6.05135 22.1154C6.45768 22.5217 7.00878 22.75 7.58341 22.75H18.4167C18.9914 22.75 19.5425 22.5217 19.9488 22.1154C20.3551 21.7091 20.5834 21.158 20.5834 20.5833V13"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M9.75 22.75V16.25C9.75 15.6754 9.97827 15.1243 10.3846 14.7179C10.7909 14.3116 11.342 14.0833 11.9167 14.0833H14.0833C14.658 14.0833 15.2091 14.3116 15.6154 14.7179C16.0217 15.1243 16.25 15.6754 16.25 16.25V22.75"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </g>
-                  </svg>
-                  <b>Home</b>
-                </a>
-              </li>
-            </ul>
+                <ul class="nav--list">
+                  <li>
+                    <a href="#">
+                      <svg
+                        width="26"
+                        height="26"
+                        viewBox="0 0 26 26"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <g opacity="0.9">
+                          <path
+                            d="M5.41667 13H3.25L13 3.25L22.75 13H20.5833"
+                            stroke="black"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M5.41675 13V20.5833C5.41675 21.158 5.64502 21.7091 6.05135 22.1154C6.45768 22.5217 7.00878 22.75 7.58341 22.75H18.4167C18.9914 22.75 19.5425 22.5217 19.9488 22.1154C20.3551 21.7091 20.5834 21.158 20.5834 20.5833V13"
+                            stroke="black"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M9.75 22.75V16.25C9.75 15.6754 9.97827 15.1243 10.3846 14.7179C10.7909 14.3116 11.342 14.0833 11.9167 14.0833H14.0833C14.658 14.0833 15.2091 14.3116 15.6154 14.7179C16.0217 15.1243 16.25 15.6754 16.25 16.25V22.75"
+                            stroke="black"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </g>
+                      </svg>
+                      <b>Home</b>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <svg
+                        width="26"
+                        height="26"
+                        viewBox="0 0 26 26"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <g opacity="0.9">
+                          <path
+                            d="M5.41667 13H3.25L13 3.25L22.75 13H20.5833"
+                            stroke="black"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M5.41675 13V20.5833C5.41675 21.158 5.64502 21.7091 6.05135 22.1154C6.45768 22.5217 7.00878 22.75 7.58341 22.75H18.4167C18.9914 22.75 19.5425 22.5217 19.9488 22.1154C20.3551 21.7091 20.5834 21.158 20.5834 20.5833V13"
+                            stroke="black"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M9.75 22.75V16.25C9.75 15.6754 9.97827 15.1243 10.3846 14.7179C10.7909 14.3116 11.342 14.0833 11.9167 14.0833H14.0833C14.658 14.0833 15.2091 14.3116 15.6154 14.7179C16.0217 15.1243 16.25 15.6754 16.25 16.25V22.75"
+                            stroke="black"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </g>
+                      </svg>
+                      <b>Home</b>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <svg
+                        width="26"
+                        height="26"
+                        viewBox="0 0 26 26"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <g opacity="0.9">
+                          <path
+                            d="M5.41667 13H3.25L13 3.25L22.75 13H20.5833"
+                            stroke="black"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M5.41675 13V20.5833C5.41675 21.158 5.64502 21.7091 6.05135 22.1154C6.45768 22.5217 7.00878 22.75 7.58341 22.75H18.4167C18.9914 22.75 19.5425 22.5217 19.9488 22.1154C20.3551 21.7091 20.5834 21.158 20.5834 20.5833V13"
+                            stroke="black"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M9.75 22.75V16.25C9.75 15.6754 9.97827 15.1243 10.3846 14.7179C10.7909 14.3116 11.342 14.0833 11.9167 14.0833H14.0833C14.658 14.0833 15.2091 14.3116 15.6154 14.7179C16.0217 15.1243 16.25 15.6754 16.25 16.25V22.75"
+                            stroke="black"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </g>
+                      </svg>
+                      <b>Home</b>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </nav>
         </div>
       </div>
     </header>
+
+    <script src="js/script.js"></script>
   </body>
 </html>
