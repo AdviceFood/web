@@ -42,22 +42,28 @@ ul.nav--list li b {
     0.2s transform;
 }
 
-ul.nav--list li.active,
 ul.nav--list li a:hover {
-  background: var(--lt-text-alt);
-}
-
-ul.nav--list li.active a,
-ul.nav--list li a:hover {
-  color: white;
-}
-
-ul.nav--list li.active a svg g path,
-ul.nav--list li a:hover svg g path {
-  stroke: white;
+  background: var(--lt-burger-bg);
 }
 
 ul.nav--list li a:active {
   transform: scale(0.98);
   background: var(--lt-text-act);
+  color: white;
+}
+
+ul.nav--list li a:active svg g path {
+  stroke: white;
+}
+
+ul.nav--list li.active a {
+  background: var(--lt-text-alt);
+}
+
+ul.nav--list li.active a {
+  color: white;
+}
+
+ul.nav--list li.active a svg g path {
+  stroke: white;
 }
