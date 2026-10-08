@@ -93,8 +93,9 @@ ul.nav--list li.active a svg g path {
 @media screen and (min-width: 850px) {
   .navigation--menu.open,
   .navigation--menu {
-    left: unset;
+    left: 0;
     transform: 0;
     margin-top: 0;
+    position: static;
   }
 }
