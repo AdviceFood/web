@@ -42,10 +42,6 @@ ul.nav--list li b {
     0.2s transform;
 }
 
-ul.nav--list li a:hover {
-  background: var(--lt-burger-bg);
-}
-
 ul.nav--list li a:active {
   transform: scale(0.98);
   background: var(--lt-text-alt);
@@ -55,6 +51,12 @@ ul.nav--list li a:active {
 
 ul.nav--list li a:active b {
   transition: 0.05s;
+}
+
+a,
+li,
+button {
+  -webkit-tap-highlight-color: transparent;
 }
 
 ul.nav--list li a:active svg g path {
@@ -103,5 +105,9 @@ ul.nav--list li.active a svg g path {
     margin-top: 0;
     position: static;
     width: 285px;
+  }
+
+  ul.nav--list li:not(.active) a:hover:not(:active) {
+    background: var(--lt-burger-bg);
   }
 }
