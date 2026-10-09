@@ -24,7 +24,7 @@
   --lt-menu: #ffffff;
   --lt-main: #000000;
   --lt-text-alt: #22c55e;
-  --lt-burger-bg: #00000008;
+  --lt-burger-bg: #0000000f;
   --lt-menu-line: #0000001a;
   --lt-text-act: #15803d;
 }
@@ -48,7 +48,7 @@ ul.nav--list li a:hover {
 
 ul.nav--list li a:active {
   transform: scale(0.98);
-  background: var(--lt-text-act);
+  background: var(--lt-text-alt);
   color: white;
 }
 
@@ -69,8 +69,7 @@ ul.nav--list li.active a svg g path {
 }
 
 .navigation--menu.open {
-  left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(0%);
 }
 
 .burger--button .burger--line {
@@ -94,8 +93,9 @@ ul.nav--list li.active a svg g path {
   .navigation--menu.open,
   .navigation--menu {
     left: 0;
-    transform: 0;
+    transform: none;
     margin-top: 0;
     position: static;
+    width: 285px;
   }
 }
