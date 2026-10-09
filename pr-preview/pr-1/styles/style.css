@@ -56,13 +56,14 @@ ul.nav--list li b {
 
 ul.nav--list li a:active {
   transform: scale(0.98);
+  -webkit-transform: scale(0.98);
   background: var(--lt-text-alt);
   color: white;
-  transition: 0.05s all;
-  -webkit-transition: 0.05s all;
-  -moz-transition: 0.05s all;
-  -o-transition: 0.05s all;
-  -ms-transition: 0.05s all;
+  transition: 0.05s transform;
+  -webkit-transition: 0.05s transform;
+  -moz-transition: 0.05s transform;
+  -o-transition: 0.05s transform;
+  -ms-transition: 0.05s transform;
 }
 
 ul.nav--list li a:active b {
