@@ -56,6 +56,7 @@ ul.nav--list li b {
 
 ul.nav--list li a:active {
   transform: scale(0.98);
+  -webkit-transform: scale(0.98);
   background: var(--lt-text-alt);
   color: white;
   transition: 0.05s transform;
