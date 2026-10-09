@@ -81,13 +81,17 @@ button {
   -webkit-tap-highlight-color: transparent;
 }
 
+ul.nav--list li.active a svg g path {
+  stroke: white;
+}
+
 ul.nav--list li a:active svg g path {
   stroke: white;
-  transition: 0.05s all;
-  -webkit-transition: 0.05s all;
-  -moz-transition: 0.05s all;
-  -o-transition: 0.05s all;
-  -ms-transition: 0.05s all;
+  transition: 0.05s stroke;
+  -webkit-transition: 0.05s stroke;
+  -moz-transition: 0.05s stroke;
+  -o-transition: 0.05s stroke;
+  -ms-transition: 0.05s stroke;
 }
 
 ul.nav--list li.active a {
@@ -96,10 +100,6 @@ ul.nav--list li.active a {
 
 ul.nav--list li.active a {
   color: white;
-}
-
-ul.nav--list li.active a svg g path {
-  stroke: white;
 }
 
 .navigation--menu.open {
