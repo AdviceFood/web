@@ -24,7 +24,7 @@
   --lt-menu: #ffffff;
   --lt-main: #000000;
   --lt-text-alt: #22c55e;
-  --lt-burger-bg: #0000000f;
+  --lt-burger-bg: #0000000a;
   --lt-menu-line: #0000001a;
   --lt-text-act: #15803d;
 }
@@ -40,6 +40,18 @@ ul.nav--list li b {
   transition:
     0.3s all,
     0.2s transform;
+  -webkit-transition:
+    0.3s all,
+    0.2s transform;
+  -moz-transition:
+    0.3s all,
+    0.2s transform;
+  -o-transition:
+    0.3s all,
+    0.2s transform;
+  -ms-transition:
+    0.3s all,
+    0.2s transform;
 }
 
 ul.nav--list li a:active {
@@ -47,10 +59,18 @@ ul.nav--list li a:active {
   background: var(--lt-text-alt);
   color: white;
   transition: 0.05s all;
+  -webkit-transition: 0.05s all;
+  -moz-transition: 0.05s all;
+  -o-transition: 0.05s all;
+  -ms-transition: 0.05s all;
 }
 
 ul.nav--list li a:active b {
   transition: 0.05s;
+  -webkit-transition: 0.05s all;
+  -moz-transition: 0.05s all;
+  -o-transition: 0.05s all;
+  -ms-transition: 0.05s all;
 }
 
 a,
@@ -62,6 +82,10 @@ button {
 ul.nav--list li a:active svg g path {
   stroke: white;
   transition: 0.05s all;
+  -webkit-transition: 0.05s all;
+  -moz-transition: 0.05s all;
+  -o-transition: 0.05s all;
+  -ms-transition: 0.05s all;
 }
 
 ul.nav--list li.active a {
@@ -90,11 +114,11 @@ ul.nav--list li.active a svg g path {
 }
 
 .burger--button.open .burger--line:nth-child(1) {
-  transform: translateY(0) translateX(-50%) rotate(45deg);
+  transform: translateY(-1px) translateX(-50%) rotate(45deg);
 }
 
 .burger--button.open .burger--line:nth-child(3) {
-  transform: translateY(0) translateX(-50%) rotate(-45deg);
+  transform: translateY(-1px) translateX(-50%) rotate(-45deg);
 }
 
 @media screen and (min-width: 850px) {
