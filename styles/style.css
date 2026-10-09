@@ -67,11 +67,12 @@ ul.nav--list li a:active {
 }
 
 ul.nav--list li a:active b {
-  transition: 0.05s;
-  -webkit-transition: 0.05s all;
-  -moz-transition: 0.05s all;
-  -o-transition: 0.05s all;
-  -ms-transition: 0.05s all;
+  transition: 0.05s color;
+  -webkit-transition: 0.05s color;
+  -moz-transition: 0.05s color;
+  -o-transition: 0.05s color;
+  -ms-transition: 0.05s color;
+  color: white;
 }
 
 a,
