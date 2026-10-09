@@ -50,10 +50,16 @@ ul.nav--list li a:active {
   transform: scale(0.98);
   background: var(--lt-text-alt);
   color: white;
+  transition: 0.05s all;
+}
+
+ul.nav--list li a:active b {
+  transition: 0.05s;
 }
 
 ul.nav--list li a:active svg g path {
   stroke: white;
+  transition: 0.05s all;
 }
 
 ul.nav--list li.active a {
