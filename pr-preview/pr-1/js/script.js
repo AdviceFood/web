@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("touchstart", function () {}, false);
   const burgerBtn = document.getElementById("burgerButton");
   const navMenu = document.getElementById("navMenu");
 
