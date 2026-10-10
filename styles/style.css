@@ -181,7 +181,7 @@ header .secondary {
   -webkit-transition: 0.3s all;
 }
 
-.utility--title:has(.svg--wrapper:hover) .utility--hint {
+.utility--title:has(.svg--wrapper.hovered) .utility--hint {
   pointer-events: auto;
   opacity: 1;
   z-index: 50;
