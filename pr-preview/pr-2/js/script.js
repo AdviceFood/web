@@ -27,4 +27,16 @@ document.addEventListener("DOMContentLoaded", () => {
       hint.parentNode.parentNode.classList.toggle("closed");
     });
   });
+
+  const analyzeInfo = document.querySelector(".svg--wrapper");
+
+  analyzeInfo.addEventListener("click", () => {
+    analyzeInfo.classList.toggle("hovered");
+  });
+
+  document.addEventListener("click", (e) => {
+    if (e.target != analyzeInfo && e.target.parentNode != analyzeInfo) {
+      analyzeInfo.classList.remove("hovered");
+    }
+  });
 });
