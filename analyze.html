@@ -693,7 +693,7 @@
         }
       }
 
-      @media screen and (min-width: 1080px) {
+      @media screen and (min-width: 1128px) {
         @supports (display: grid) {
           .analyze__photo--hint {
             display: none;
@@ -749,6 +749,16 @@
               "C C C";
             align-items: center;
           }
+        }
+        .utility--hint {
+          right: auto;
+          left: 100%;
+          transform: translateX(-122.5px) translateY(calc(-100% - 0px));
+        }
+
+        .utility--title:has(.svg--wrapper.hovered) .utility--hint,
+        .utility--title:has(.svg--wrapper.desktop:hover) .utility--hint {
+          transform: translateX(-122.5px) translateY(calc(-100% - 10px));
         }
       }
 
@@ -1309,7 +1319,8 @@
               <div class="utility--info">
                 <div class="utility--title">
                   <span class="utility--hint">
-                    A score showing how nutritionally beneficial a food is.
+                    A score showing how <br />
+                    nutritionally beneficial a food is.
                   </span>
                   <h2>The utility index</h2>
                   <div class="svg--wrapper">
