@@ -19,4 +19,24 @@ document.addEventListener("DOMContentLoaded", () => {
       link.parentNode.classList.add("active");
     });
   });
+
+  const analyzePhotoHints = document.querySelectorAll(".analyze__photo--hint");
+
+  analyzePhotoHints.forEach((hint) => {
+    hint.addEventListener("click", () => {
+      hint.parentNode.parentNode.classList.toggle("closed");
+    });
+  });
+
+  const analyzeInfo = document.querySelector(".svg--wrapper");
+
+  analyzeInfo.addEventListener("click", () => {
+    analyzeInfo.classList.toggle("hovered");
+  });
+
+  document.addEventListener("click", (e) => {
+    if (e.target != analyzeInfo && e.target.parentNode != analyzeInfo) {
+      analyzeInfo.classList.remove("hovered");
+    }
+  });
 });
