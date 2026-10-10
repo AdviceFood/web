@@ -27,6 +27,10 @@
   --lt-burger-bg: #0000000a;
   --lt-menu-line: #0000001a;
   --lt-text-act: #15803d;
+  --lt-back: #000000b2;
+  --lt-border: #00000080;
+  --lt-comment: #0000000d;
+  --lt-progress-bg: #0000001a;
 }
 
 a.header--logo b {

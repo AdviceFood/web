@@ -183,10 +183,14 @@
         position: fixed;
         right: 0;
         left: auto;
+        top: 0;
         transition: 0.3s;
-        margin-top: 32px;
+        padding-top: 102px;
         transform: translateX(100%);
         width: 100vw;
+        height: 100vh;
+
+        background: var(--lt-menu);
 
         transition:
           transform 0.35s ease-in-out,
@@ -194,14 +198,319 @@
       }
 
       header {
-        position: absolute;
+        position: fixed;
         left: 0;
         top: 0;
         width: 100vw;
+        z-index: 100;
+      }
+
+      .navigation--menu {
+        z-index: -1;
       }
 
       .navigation--menu .nav--list {
         align-items: center;
+      }
+
+      main {
+        padding-top: 108px;
+      }
+
+      a.back--block {
+        display: inline-flex;
+        gap: 5px;
+        text-decoration: none;
+        color: var(--lt-back);
+        align-items: center;
+        margin-bottom: 25px;
+        order: 1;
+      }
+
+      a.back--block span {
+        font-size: 1rem;
+        font-family: "AA";
+        font-weight: 400;
+      }
+
+      section.section--meta {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .analyze__photo--wrapper {
+        order: 2;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        transition: 0.35s padding-bottom ease-in-out;
+        -webkit-transition: 0.35s padding-bottom ease-in-out;
+      }
+
+      .analyze--dish {
+        order: 5;
+      }
+
+      .analyze__utility--container {
+        order: 4;
+      }
+
+      .analyze__photo--comment {
+        order: 3;
+        background: var(--lt-comment);
+      }
+
+      .analyze--calories {
+        order: 6;
+      }
+
+      .analyze__photo--file {
+        width: 100%;
+        aspect-ratio: 300 / 186;
+        object-fit: cover;
+        border-radius: 15px;
+      }
+
+      .analyze__photo--block {
+        position: relative;
+        display: flex;
+        height: calc(83.3vw * 0.62);
+        transition: 0.35s height ease-in-out;
+        -webkit-transition: 0.35s height ease-in-out;
+      }
+
+      .analyze__photo--hint {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        opacity: 0;
+        pointer-events: none;
+        font-size: 1rem;
+        font-weight: 500;
+        font-family: "AA";
+        white-space: nowrap;
+        color: var(--lt-menu);
+        z-index: 2;
+        transition:
+          0.35s top ease-in-out,
+          0.35s opacity ease-in-out;
+        -webkit-transition:
+          0.35s top ease-in-out,
+          0.35s opacity ease-in-out;
+      }
+
+      .analyze__photo--hint:last-child {
+        color: var(--lt-main);
+        top: calc(100% + 15px);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .analyze__photo--wrapper .analyze__photo--block::after {
+        opacity: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        left: 0;
+        top: 0;
+        content: "";
+        border-radius: 15px;
+        transition: 0.35s opacity ease-in-out;
+        -webkit-transition: 0.35s opacity ease-in-out;
+      }
+
+      .analyze__photo--wrapper.closed {
+        padding-bottom: 0;
+      }
+
+      .analyze__photo--wrapper.closed .analyze__photo--block {
+        height: 42px;
+      }
+
+      .analyze__photo--wrapper.closed .analyze__photo--block::after {
+        opacity: 0.5;
+      }
+
+      .analyze__photo--wrapper .analyze__photo--hint:nth-child(2) {
+        top: calc(50% + 20px);
+      }
+
+      .analyze__photo--wrapper.closed .analyze__photo--hint:nth-child(2) {
+        opacity: 1;
+        pointer-events: auto;
+        top: 50%;
+      }
+
+      .analyze__photo--wrapper.closed .analyze__photo--hint:last-child {
+        opacity: 0;
+        top: calc(100%);
+        pointer-events: none;
+      }
+
+      .analyze__photo--comment {
+        width: 100%;
+        height: auto;
+        padding: 15px 20px;
+        border-radius: 10px;
+        border: 2px dashed #00000080;
+      }
+
+      .analyze__photo--comment h3 {
+        font-weight: 500;
+        font-family: "AA";
+        font-size: 1rem;
+        color: var(--lt-back);
+        margin-bottom: 3px;
+      }
+
+      .analyze__photo--comment p {
+        font-size: 0.875rem;
+        font-family: "AA";
+        font-weight: 400;
+        padding: 0;
+        margin: 0;
+        color: var(--lt-back);
+      }
+
+      .analyze__utility--container {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-top: 30px;
+      }
+
+      .analyze__utility--container .utility--diag {
+        width: 73px;
+        height: 73px;
+      }
+
+      .utility--diag {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-family: "AA";
+        font-size: 1.75rem;
+        color: var(--lt-main);
+        font-weight: 500;
+      }
+
+      .utility--diag svg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        transform: rotate(-90deg);
+      }
+
+      .progress-bg {
+        fill: none;
+        stroke: var(--lt-progress-bg);
+        stroke-width: 16px;
+      }
+
+      .progress-bar {
+        fill: none;
+        stroke: #22c55e;
+        stroke-width: 16px;
+        stroke-dasharray: calc(2 * 3.14159 * 64);
+        stroke-dashoffset: calc((2 * 3.14159 * 64) * (1 - 0.84));
+        stroke-linecap: round;
+        transition: stroke-dashoffset 0.5s ease-in-out;
+      }
+
+      .utility--title {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 3px;
+      }
+
+      .utility--title h2 {
+        margin: 0;
+        color: var(--lt-main);
+        font-size: 1.25rem;
+        font-weight: 500;
+        font-family: "AA";
+        white-space: nowrap;
+        line-height: 0.4;
+      }
+
+      .utility--info p {
+        margin: 0;
+        color: var(--lt-back);
+        font-size: 1rem;
+        font-family: "AA";
+      }
+
+      .analyze--dish {
+        margin-top: 22px;
+        margin-bottom: 22px;
+      }
+
+      .analyze--dish h1 {
+        font-weight: 700;
+        font-family: "AA";
+        font-size: 1.25rem;
+        margin-bottom: 7px;
+      }
+
+      .analyze--dish p {
+        font-family: "AA";
+        font-weight: 400;
+        font-size: 1rem;
+        color: var(--lt-back);
+        line-height: 1.26;
+      }
+
+      .analyze--calories {
+        padding: 15px;
+        border-radius: 15px;
+        box-shadow: 0 4px 20px 0 #0000001a;
+        margin-bottom: 31px;
+        font-family: "AA";
+      }
+
+      .cal--total strong {
+        font-size: 1.25rem;
+        font-weight: 500;
+        line-height: 0;
+      }
+
+      .analyze--calories strong span {
+        font-weight: 400;
+        font-size: 1rem;
+        color: var(--lt-back);
+      }
+
+      .cal--flex strong {
+        font-size: 1.125rem;
+        line-height: 0;
+        white-space: nowrap;
+      }
+
+      .cal--flex {
+        display: flex;
+        margin-top: 7px;
+      }
+
+      .cal--block {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .cal--block:first-child {
+        padding-left: 0;
+        border-right: 1px solid #0000001a;
+      }
+
+      .cal--block:last-child {
+        padding-right: 0;
+        border-left: 1px solid #0000001a;
       }
 
       @media screen and (min-width: 430px) {
@@ -257,6 +566,7 @@
           margin-top: 0;
           transform: translateX(0%);
           width: 285px;
+          padding-top: 0;
         }
 
         .nav--list::after {
@@ -624,6 +934,138 @@
         </div>
       </div>
     </header>
+
+    <main>
+      <div class="container">
+        <section class="section--meta">
+          <a class="back--block" href="#">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+            >
+              <g
+                stroke="#000"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                clip-path="url(#a)"
+                opacity=".7"
+              >
+                <path d="M5 12h14M5 12l6 6M5 12l6-6" />
+              </g>
+              <defs>
+                <clipPath id="a">
+                  <path fill="#fff" d="M0 0h24v24H0z" />
+                </clipPath>
+              </defs>
+            </svg>
+            <span>Back to my analysis</span>
+          </a>
+
+          <div class="analyze--dish">
+            <h1>Very tasty pasta with sausages</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit
+              amet consectetur adipiscing elit quisque faucibus.
+            </p>
+          </div>
+
+          <div class="analyze__photo--wrapper closed">
+            <div class="analyze__photo--block">
+              <img
+                class="analyze__photo--file"
+                src="/img/Rectangle 4.png"
+                alt=""
+              />
+              <b class="analyze__photo--hint">Tap to open a photo</b>
+              <b class="analyze__photo--hint hide">Tap to close a photo</b>
+            </div>
+          </div>
+
+          <div class="analyze__utility--container">
+            <div class="utility--diag">
+              <svg viewBox="0 0 150 150">
+                <circle class="progress-bg" cx="75" cy="75" r="66"></circle>
+                <circle class="progress-bar" cx="75" cy="75" r="66"></circle>
+              </svg>
+              84
+            </div>
+
+            <div class="utility--info">
+              <div class="utility--title">
+                <h2>The utility index</h2>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="22"
+                  height="22"
+                  fill="none"
+                >
+                  <g
+                    stroke="#000"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-opacity=".4"
+                    stroke-width="2"
+                    clip-path="url(#a)"
+                  >
+                    <path
+                      d="M2.75 11a8.25 8.25 0 1 0 16.5 0 8.25 8.25 0 0 0-16.5 0M11 8.25h.009"
+                    />
+                    <path d="M10.084 11H11v3.667h.917" />
+                  </g>
+                  <defs>
+                    <clipPath id="b">
+                      <path fill="#fff" d="M0 0h22v22H0z" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </div>
+
+              <p>Good choice</p>
+            </div>
+          </div>
+
+          <div class="analyze__photo--comment">
+            <h3>Commentary on the analysis</h3>
+            <p>
+              Ex sapien vitae pellentesque sem placerat in id. Placerat in id
+              cursus mi pretium tellus duis.
+            </p>
+          </div>
+
+          <div class="analyze--calories">
+            <div class="cal--total">
+              <strong
+                >435 kcal <br />
+                <span>per serving</span></strong
+              >
+            </div>
+            <div class="cal--flex">
+              <div class="cal--block">
+                <strong
+                  >45g <br />
+                  <span>protein</span></strong
+                >
+              </div>
+              <div class="cal--block">
+                <strong
+                  >14g <br />
+                  <span>fats</span></strong
+                >
+              </div>
+              <div class="cal--block">
+                <strong
+                  >38g <br />
+                  <span>carbohydrates</span></strong
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
 
     <script src="js/script.js"></script>
   </body>

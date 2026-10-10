@@ -19,4 +19,12 @@ document.addEventListener("DOMContentLoaded", () => {
       link.parentNode.classList.add("active");
     });
   });
+
+  const analyzePhotoHints = document.querySelectorAll(".analyze__photo--hint");
+
+  analyzePhotoHints.forEach((hint) => {
+    hint.addEventListener("click", () => {
+      hint.parentNode.parentNode.classList.toggle("closed");
+    });
+  });
 });
