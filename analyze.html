@@ -548,6 +548,10 @@
         transform: translateX(-50%) translateY(-50%);
       }
 
+      .main--right {
+        display: none;
+      }
+
       @media screen and (min-width: 430px) {
         a.header--logo svg {
           width: 40px;
@@ -594,23 +598,33 @@
           display: none;
         }
 
+        body {
+          display: flex;
+        }
+
+        header .header--inner {
+          background: unset;
+          padding-bottom: 36px;
+        }
+
         .navigation--menu {
           position: static;
           left: unset;
           transition: 0.3s;
           margin-top: 0;
           transform: translateX(0%);
-          width: 285px;
+          width: 230px;
           padding-top: 0;
+          height: calc(100dvh - 142px);
         }
 
         .nav--list::after {
-          width: 285px;
+          width: 230px;
           max-width: unset;
         }
 
         header {
-          width: 345px;
+          width: 250px;
           height: 100vh;
           background: var(--lt-menu);
           position: static;
@@ -620,22 +634,21 @@
           margin-left: auto;
           margin-right: auto;
           gap: 13px;
-          margin-bottom: 72px;
+          margin-bottom: 48px;
         }
 
         a.header--logo svg {
-          width: 40px;
-          height: 44px;
+          width: 30px;
+          height: 33px;
         }
 
         a.header--logo b {
-          font-size: 2rem;
+          font-size: 1.5rem;
           font-weight: 700;
           font-style: normal;
         }
 
         ul.nav--list li {
-          width: 285px;
           height: 52px;
           margin: 0;
           padding: 0;
@@ -644,7 +657,7 @@
         }
 
         ul.nav--list li a {
-          padding: 13px 15px;
+          padding: 10px 20px;
           display: flex;
           align-items: center;
           gap: 10px;
@@ -652,7 +665,7 @@
           text-decoration: none;
           font-family: "AA";
           font-weight: 500;
-          font-size: 1.25rem;
+          font-size: 1.125rem;
           font-style: normal;
           border-radius: 26px;
           transition: 0.3s;
@@ -667,7 +680,270 @@
         }
 
         ul.nav--list li {
+          width: 230px;
+        }
+
+        main {
+          padding-top: 45px;
+          width: 100%;
+        }
+
+        main .container {
+          max-width: 93%;
+        }
+      }
+
+      @media screen and (min-width: 1080px) {
+        @supports (display: grid) {
+          .analyze__photo--hint {
+            display: none;
+          }
+
+          .analyze__photo--wrapper.closed .analyze__photo--block {
+            height: auto;
+          }
+
+          .analyze__photo--wrapper {
+            width: 230px;
+            grid-area: P;
+            margin-bottom: 0;
+            margin-left: 20px;
+          }
+
+          .analyze__photo--wrapper.closed .analyze__photo--block::after {
+            display: none;
+          }
+
+          .analyze--calories {
+            grid-area: K;
+            margin-bottom: 0;
+            background: transparent;
+            box-shadow: none;
+          }
+
+          .analyze--dish {
+            grid-area: T;
+            margin: 0;
+          }
+
+          .analyze__utility--container {
+            grid-area: U;
+            margin-top: 0;
+          }
+
+          .analyze__photo--comment {
+            grid-area: C;
+            margin-top: 20px;
+          }
+
+          .back--block {
+            grid-area: L;
+          }
+
+          section.section--meta {
+            display: grid;
+            grid-template-areas:
+              "L L L"
+              "T T P"
+              "U K P"
+              "C C C";
+            align-items: center;
+          }
+        }
+      }
+
+      @media screen and (min-width: 1190px) {
+        .analyze__photo--wrapper {
+          width: 330px;
+        }
+      }
+
+      @media screen and (min-width: 1440px) {
+        a.header--logo b {
+          font-size: 2rem;
+        }
+
+        main .container {
+          max-width: 90%;
+        }
+
+        a.header--logo {
+          margin-bottom: 72px;
+        }
+
+        ul.nav--list li {
           width: 285px;
+          height: 52px;
+        }
+
+        ul.nav--list li a {
+          font-size: 1.25rem;
+          padding: 13px 15px;
+        }
+
+        header {
+          width: 345px;
+        }
+
+        a.header--logo svg {
+          width: 40px;
+          height: 44px;
+        }
+
+        .nav--list::after {
+          width: 285px;
+        }
+
+        .navigation--menu {
+          width: 285px;
+        }
+
+        .analyze__utility--container .utility--diag {
+          width: 100px;
+          height: 100px;
+        }
+
+        .analyze--dish h1 {
+          font-size: 2rem;
+        }
+
+        .analyze--dish p {
+          font-size: 1.125rem;
+        }
+
+        .analyze--dish {
+          margin-bottom: 15px;
+        }
+
+        .analyze--calories {
+          padding: 0;
+          margin-left: 20px;
+        }
+
+        .utility--diag {
+          font-size: 2.25rem;
+        }
+
+        a.back--block span {
+          font-size: 1.25rem;
+        }
+
+        .analyze__photo--comment h3 {
+          font-size: 1.125rem;
+        }
+
+        .analyze__photo--comment p {
+          font-size: 1rem;
+        }
+      }
+
+      @media screen and (min-width: 1700px) {
+        .main--right {
+          display: flex;
+          flex-direction: column;
+          max-width: 300px;
+        }
+
+        main .container {
+          display: flex;
+          gap: 30px;
+        }
+
+        .main--inner .analyze__photo--comment {
+          display: none;
+        }
+
+        .analyze__photo--comment {
+          margin-top: 49px;
+        }
+
+        section.section--meta {
+          padding-bottom: 37px;
+          border-bottom: 2px solid #0000001a;
+        }
+      }
+
+      @media screen and (min-width: 1800px) {
+        .analyze__photo--wrapper {
+          margin-left: 60px;
+        }
+
+        main .container {
+          gap: 60px;
+          justify-content: space-between;
+        }
+      }
+
+      .svg--wrapper.desktop {
+        cursor: pointer;
+      }
+
+      @media screen and (min-width: 2250px) {
+        .analyze__photo--wrapper {
+          width: 450px;
+        }
+
+        .analyze--dish h1 {
+          font-size: 3rem;
+        }
+
+        .analyze--dish p {
+          font-size: 1.375rem;
+        }
+
+        .analyze__utility--container .utility--diag {
+          width: 150px;
+          height: 150px;
+          font-size: 3rem;
+        }
+
+        .utility--title h2 {
+          font-size: 2rem;
+        }
+
+        .utility--info p {
+          font-size: 1.5rem;
+          margin-top: 5px;
+        }
+
+        .cal--total strong {
+          font-size: 1.75rem;
+        }
+
+        .analyze--calories strong span {
+          font-size: 1.25rem;
+        }
+
+        .cal--flex strong {
+          font-size: 1.5rem;
+        }
+
+        .cal--flex {
+          margin-top: 20px;
+        }
+
+        .analyze--dish {
+          margin-bottom: 30px;
+        }
+
+        .analyze__photo--comment h3 {
+          font-size: 1.5rem;
+        }
+
+        .analyze__photo--comment p {
+          font-size: 1.25rem;
+        }
+
+        .main--right {
+          max-width: 300px;
+          width: 100%;
+        }
+      }
+
+      @media screen and (min-width: 2500px) {
+        .main--right {
+          max-width: 500px;
+          width: 100%;
         }
       }
     </style>
@@ -973,101 +1249,142 @@
 
     <main>
       <div class="container">
-        <section class="section--meta">
-          <a class="back--block" href="#">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              fill="none"
-            >
-              <g
-                stroke="#000"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                clip-path="url(#a)"
-                opacity=".7"
+        <div class="main--inner">
+          <section class="section--meta">
+            <a class="back--block" href="#">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
               >
-                <path d="M5 12h14M5 12l6 6M5 12l6-6" />
-              </g>
-              <defs>
-                <clipPath id="a">
-                  <path fill="#fff" d="M0 0h24v24H0z" />
-                </clipPath>
-              </defs>
-            </svg>
-            <span>Back to my analysis</span>
-          </a>
-
-          <div class="analyze--dish">
-            <h1>Very tasty pasta with sausages</h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit
-              amet consectetur adipiscing elit quisque faucibus.
-            </p>
-          </div>
-
-          <div class="analyze__photo--wrapper closed">
-            <div class="analyze__photo--block">
-              <img
-                class="analyze__photo--file"
-                src="img/Rectangle_4.png"
-                alt=""
-              />
-              <b class="analyze__photo--hint">Tap to open a photo</b>
-              <b class="analyze__photo--hint hide">Tap to close a photo</b>
-            </div>
-          </div>
-
-          <div class="analyze__utility--container">
-            <div class="utility--diag">
-              <svg viewBox="0 0 150 150">
-                <circle class="progress-bg" cx="75" cy="75" r="66"></circle>
-                <circle class="progress-bar" cx="75" cy="75" r="66"></circle>
+                <g
+                  stroke="#000"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  clip-path="url(#a)"
+                  opacity=".7"
+                >
+                  <path d="M5 12h14M5 12l6 6M5 12l6-6" />
+                </g>
+                <defs>
+                  <clipPath id="a">
+                    <path fill="#fff" d="M0 0h24v24H0z" />
+                  </clipPath>
+                </defs>
               </svg>
-              84
+              <span>Back to my analysis</span>
+            </a>
+
+            <div class="analyze--dish">
+              <h1>Very tasty pasta with sausages</h1>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor
+                sit amet consectetur adipiscing elit quisque faucibus.
+              </p>
             </div>
 
-            <div class="utility--info">
-              <div class="utility--title">
-                <span class="utility--hint">
-                  A score showing how nutritionally beneficial a food is.
-                </span>
-                <h2>The utility index</h2>
-                <div class="svg--wrapper">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="22"
-                    height="22"
-                    fill="none"
-                  >
-                    <g
-                      stroke="#000"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-opacity=".4"
-                      stroke-width="2"
-                      clip-path="url(#a)"
-                    >
-                      <path
-                        d="M2.75 11a8.25 8.25 0 1 0 16.5 0 8.25 8.25 0 0 0-16.5 0M11 8.25h.009"
-                      />
-                      <path d="M10.084 11H11v3.667h.917" />
-                    </g>
-                    <defs>
-                      <clipPath id="b">
-                        <path fill="#fff" d="M0 0h22v22H0z" />
-                      </clipPath>
-                    </defs>
-                  </svg>
-                </div>
+            <div class="analyze__photo--wrapper closed">
+              <div class="analyze__photo--block">
+                <img
+                  class="analyze__photo--file"
+                  src="img/Rectangle_4.png"
+                  alt=""
+                />
+                <b class="analyze__photo--hint">Tap to open a photo</b>
+                <b class="analyze__photo--hint hide">Tap to close a photo</b>
+              </div>
+            </div>
+
+            <div class="analyze__utility--container">
+              <div class="utility--diag">
+                <svg viewBox="0 0 150 150">
+                  <circle class="progress-bg" cx="75" cy="75" r="66"></circle>
+                  <circle class="progress-bar" cx="75" cy="75" r="66"></circle>
+                </svg>
+                84
               </div>
 
-              <p>Good choice</p>
-            </div>
-          </div>
+              <div class="utility--info">
+                <div class="utility--title">
+                  <span class="utility--hint">
+                    A score showing how nutritionally beneficial a food is.
+                  </span>
+                  <h2>The utility index</h2>
+                  <div class="svg--wrapper">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="22"
+                      height="22"
+                      fill="none"
+                    >
+                      <g
+                        stroke="#000"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-opacity=".4"
+                        stroke-width="2"
+                        clip-path="url(#a)"
+                      >
+                        <path
+                          d="M2.75 11a8.25 8.25 0 1 0 16.5 0 8.25 8.25 0 0 0-16.5 0M11 8.25h.009"
+                        />
+                        <path d="M10.084 11H11v3.667h.917" />
+                      </g>
+                      <defs>
+                        <clipPath id="b">
+                          <path fill="#fff" d="M0 0h22v22H0z" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+                </div>
 
+                <p>Good choice</p>
+              </div>
+            </div>
+
+            <div class="analyze__photo--comment">
+              <h3>Commentary on the analysis</h3>
+              <p>
+                Ex sapien vitae pellentesque sem placerat in id. Placerat in id
+                cursus mi pretium tellus duis.
+              </p>
+            </div>
+
+            <div class="analyze--calories">
+              <div class="cal--total">
+                <strong
+                  >435 kcal <br />
+                  <span>per serving</span></strong
+                >
+              </div>
+              <div class="cal--flex">
+                <div class="cal--block">
+                  <strong
+                    >45g <br />
+                    <span>protein</span></strong
+                  >
+                </div>
+                <div class="cal--block">
+                  <strong
+                    >14g <br />
+                    <span>fats</span></strong
+                  >
+                </div>
+                <div class="cal--block">
+                  <strong
+                    >38g <br />
+                    <span>carbohydrates</span></strong
+                  >
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="main--right">
           <div class="analyze__photo--comment">
             <h3>Commentary on the analysis</h3>
             <p>
@@ -1075,36 +1392,7 @@
               cursus mi pretium tellus duis.
             </p>
           </div>
-
-          <div class="analyze--calories">
-            <div class="cal--total">
-              <strong
-                >435 kcal <br />
-                <span>per serving</span></strong
-              >
-            </div>
-            <div class="cal--flex">
-              <div class="cal--block">
-                <strong
-                  >45g <br />
-                  <span>protein</span></strong
-                >
-              </div>
-              <div class="cal--block">
-                <strong
-                  >14g <br />
-                  <span>fats</span></strong
-                >
-              </div>
-              <div class="cal--block">
-                <strong
-                  >38g <br />
-                  <span>carbohydrates</span></strong
-                >
-              </div>
-            </div>
-          </div>
-        </section>
+        </div>
       </div>
     </main>
 
