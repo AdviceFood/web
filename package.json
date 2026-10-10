@@ -1,0 +1,20 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "description": "This repository is used for web part of project and deploy AI-model and project to web",
+  "homepage": "https://github.com/DATEIS/web#readme",
+  "bugs": {
+    "url": "https://github.com/DATEIS/web/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DATEIS/web.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
