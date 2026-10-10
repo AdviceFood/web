@@ -58,13 +58,14 @@
 
       .header--inner {
         padding-top: 26px;
+        padding-bottom: 36px;
         display: flex;
         align-items: center;
         justify-content: space-between;
       }
 
       .burger--button {
-        background: var(--lt-burger-bg);
+        background: var(--lt-burger);
         height: 44px;
         width: 44px;
         border-radius: 10px;
@@ -181,8 +182,8 @@
 
       .navigation--menu {
         position: fixed;
-        right: 0;
-        left: auto;
+        left: 0;
+        right: auto;
         top: 0;
         transition: 0.3s;
         padding-top: 102px;
@@ -207,14 +208,19 @@
 
       .navigation--menu {
         z-index: -1;
+        left: -8.35vw;
       }
 
       .navigation--menu .nav--list {
         align-items: center;
       }
 
+      .utility--hint {
+        display: none;
+      }
+
       main {
-        padding-top: 108px;
+        padding-top: 128px;
       }
 
       a.back--block {
@@ -304,6 +310,9 @@
         top: calc(100% + 15px);
         opacity: 1;
         pointer-events: auto;
+        width: 100%;
+        display: flex;
+        justify-content: center;
       }
 
       .analyze__photo--wrapper .analyze__photo--block::after {
@@ -322,10 +331,15 @@
 
       .analyze__photo--wrapper.closed {
         padding-bottom: 0;
+        overflow: hidden;
       }
 
       .analyze__photo--wrapper.closed .analyze__photo--block {
         height: 42px;
+      }
+
+      .analyze__photo--wrapper.closed .analyze__photo--hint:nth-child(2) {
+        padding: 20px 50%;
       }
 
       .analyze__photo--wrapper.closed .analyze__photo--block::after {
@@ -933,6 +947,7 @@
           </nav>
         </div>
       </div>
+      <div class="secondary"></div>
     </header>
 
     <main>
@@ -995,6 +1010,9 @@
 
             <div class="utility--info">
               <div class="utility--title">
+                <span class="utility--hint">
+                  A score showing how nutritionally beneficial a food is.
+                </span>
                 <h2>The utility index</h2>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
