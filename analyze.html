@@ -216,7 +216,8 @@
       }
 
       .utility--hint {
-        display: none;
+        opacity: 0;
+        pointer-events: none;
       }
 
       main {
@@ -525,6 +526,26 @@
       .cal--block:last-child {
         padding-right: 0;
         border-left: 1px solid #0000001a;
+      }
+
+      .utility--title svg {
+        position: relative;
+      }
+
+      .svg--wrapper {
+        display: flex;
+        position: relative;
+      }
+
+      .svg--wrapper:after {
+        position: absolute;
+        content: "";
+        width: 1cm;
+        height: 1cm;
+        background: transparent;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
       }
 
       @media screen and (min-width: 430px) {
@@ -1014,31 +1035,33 @@
                   A score showing how nutritionally beneficial a food is.
                 </span>
                 <h2>The utility index</h2>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="22"
-                  height="22"
-                  fill="none"
-                >
-                  <g
-                    stroke="#000"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-opacity=".4"
-                    stroke-width="2"
-                    clip-path="url(#a)"
+                <div class="svg--wrapper">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="22"
+                    height="22"
+                    fill="none"
                   >
-                    <path
-                      d="M2.75 11a8.25 8.25 0 1 0 16.5 0 8.25 8.25 0 0 0-16.5 0M11 8.25h.009"
-                    />
-                    <path d="M10.084 11H11v3.667h.917" />
-                  </g>
-                  <defs>
-                    <clipPath id="b">
-                      <path fill="#fff" d="M0 0h22v22H0z" />
-                    </clipPath>
-                  </defs>
-                </svg>
+                    <g
+                      stroke="#000"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-opacity=".4"
+                      stroke-width="2"
+                      clip-path="url(#a)"
+                    >
+                      <path
+                        d="M2.75 11a8.25 8.25 0 1 0 16.5 0 8.25 8.25 0 0 0-16.5 0M11 8.25h.009"
+                      />
+                      <path d="M10.084 11H11v3.667h.917" />
+                    </g>
+                    <defs>
+                      <clipPath id="b">
+                        <path fill="#fff" d="M0 0h22v22H0z" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </div>
               </div>
 
               <p>Good choice</p>
