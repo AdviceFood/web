@@ -28,11 +28,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  const analyzeInfo = document.querySelector(".svg--wrapper");
+  const isDesktop = window.matchMedia(
+    "(hover: hover) and (pointer: fine)",
+  ).matches;
 
-  analyzeInfo.addEventListener("click", () => {
-    analyzeInfo.classList.toggle("hovered");
-  });
+  const analyzeInfo = document.querySelector(".svg--wrapper");
+  if (isDesktop) {
+    analyzeInfo.classList.add("desktop");
+  } else {
+    analyzeInfo.addEventListener("click", () => {
+      analyzeInfo.classList.toggle("hovered");
+    });
+  }
 
   document.addEventListener("click", (e) => {
     if (e.target != analyzeInfo && e.target.parentNode != analyzeInfo) {
