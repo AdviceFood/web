@@ -918,6 +918,7 @@
             font-family: "AA";
             padding-top: 20px;
             z-index: 15;
+            backdrop-filter: blur(0.5px);
           }
 
           .analyze--navigation:after {
@@ -934,23 +935,24 @@
               #f4f6f9 50%,
               #f4f6f900 100%
             );
+            backdrop-filter: blur(0.25px);
           }
 
           a.analyze--link {
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 46px;
+            height: 52px;
             font-size: 1.125rem;
             font-weight: 500;
             color: #000000e5;
             text-decoration: none;
             padding-left: 10px;
             padding-right: 10px;
-            width: 120px;
+            width: 100%;
             background: var(--lt-menu);
             border: 1px solid #0000001a;
-            border-radius: 23px;
+            border-radius: 26px;
             -webkit-user-drag: none;
             user-select: none;
 
