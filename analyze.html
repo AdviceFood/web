@@ -753,6 +753,10 @@
         margin: 0;
       }
 
+      .analyze--navigation {
+        display: none;
+      }
+
       @media screen and (min-width: 430px) {
         a.header--logo svg {
           width: 40px;
@@ -900,6 +904,83 @@
             display: none;
           }
 
+          .section--nutrition {
+            border: 0;
+          }
+
+          .analyze--navigation {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-bottom: 60px;
+            position: sticky;
+            top: 0px;
+            font-family: "AA";
+            padding-top: 20px;
+            z-index: 15;
+            backdrop-filter: blur(0.5px);
+          }
+
+          .analyze--navigation:after {
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 146px;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: linear-gradient(
+              180deg,
+              #f4f6f9 0%,
+              #f4f6f9 50%,
+              #f4f6f900 100%
+            );
+            backdrop-filter: blur(0.25px);
+          }
+
+          a.analyze--link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 52px;
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: #000000e5;
+            text-decoration: none;
+            padding-left: 10px;
+            padding-right: 10px;
+            width: 100%;
+            background: var(--lt-menu);
+            border: 1px solid #0000001a;
+            border-radius: 26px;
+            -webkit-user-drag: none;
+            user-select: none;
+
+            transition: 0.2s all ease-in-out;
+            -webkit-transition: 0.2s all ease-in-out;
+          }
+
+          a.analyze--link:hover {
+            background-color: #00000008;
+            border: 1px solid #00000008;
+          }
+
+          a.analyze--link:active {
+            transition: 0.05s all ease-in-out;
+            -webkit-transition: 0.05s all ease-in-out;
+            background: #22c55e;
+            border: 1px solid #22c55e;
+            color: #ffffffe5;
+            transform: scale(0.98);
+            -webkit-transform: scale(0.98);
+          }
+
+          a.analyze--link.active {
+            background: #22c55e;
+            border: 1px solid #22c55e;
+            color: #ffffffe5;
+          }
+
           .analyze__photo--wrapper.closed .analyze__photo--block {
             height: auto;
           }
@@ -960,6 +1041,10 @@
         .utility--title:has(.svg--wrapper.hovered) .utility--hint,
         .utility--title:has(.svg--wrapper.desktop:hover) .utility--hint {
           transform: translateX(-122.5px) translateY(calc(-100% - 10px));
+        }
+
+        .section--nutrition {
+          padding-top: 0;
         }
       }
 
@@ -1046,6 +1131,65 @@
         .analyze__photo--comment p {
           font-size: 1rem;
         }
+
+        .nutrition--subtitle {
+          font-size: 1.125rem;
+        }
+
+        .nutrition--content {
+          display: flex;
+          align-items: start;
+          gap: 50px;
+        }
+
+        ul.nutrition--items {
+          margin-top: 0;
+          margin-bottom: 0;
+          width: 100%;
+        }
+
+        ul.nutrition--items {
+          gap: 30px;
+        }
+
+        li.nutrition--item {
+          width: calc(50% - 15px);
+          margin-right: auto;
+          padding: 20px;
+          padding-left: 14px;
+          height: 80px;
+        }
+
+        .nutrition--circle {
+          min-width: 190px;
+        }
+
+        .nutrition--icon {
+          transform: scale(1.05);
+          -webkit-transform: scale(1.05);
+        }
+
+        .nutrition--text h3,
+        .nutrition--text span,
+        .nutrition--text b {
+          font-size: 1.125rem;
+        }
+
+        .nutrition--notice {
+          margin-top: 30px;
+          padding: 14px 22px;
+        }
+
+        .nut--notice__icon {
+          transform: scale(1.2);
+          -webkit-transform: scale(1.2);
+          display: flex;
+        }
+
+        .nutrition--notice p {
+          font-size: 1rem;
+          width: 45%;
+        }
       }
 
       @media screen and (min-width: 1700px) {
@@ -1082,6 +1226,22 @@
         main .container {
           gap: 60px;
           justify-content: space-between;
+        }
+
+        a.analyze--link {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 52px;
+          font-size: 1.125rem;
+          font-weight: 500;
+          color: #000000e5;
+          text-decoration: none;
+          padding-left: 10px;
+          padding-right: 10px;
+          background: var(--lt-menu);
+          border: 1px solid #0000001a;
+          border-radius: 26px;
         }
       }
 
@@ -1594,6 +1754,14 @@
               </div>
             </div>
           </section>
+
+          <nav class="analyze--navigation">
+            <a href="#" class="analyze--link">Nutrition</a>
+            <a href="#" class="analyze--link active">Ingredients</a>
+            <a href="#" class="analyze--link">Health</a>
+            <a href="#" class="analyze--link">Alternative</a>
+            <a href="#" class="analyze--link">Tips</a>
+          </nav>
 
           <section class="section--nutrition">
             <h2 class="nutrition--title">Nutrition</h2>

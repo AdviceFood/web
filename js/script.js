@@ -46,4 +46,16 @@ document.addEventListener("DOMContentLoaded", () => {
       analyzeInfo.classList.remove("hovered");
     }
   });
+
+  const analyzeLinks = document.querySelectorAll("a.analyze--link");
+
+  analyzeLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      for (let i = 0; i < analyzeLinks.length; i++)
+        if (analyzeLinks[i] != link) analyzeLinks[i].classList.remove("active");
+
+      link.classList.add("active");
+    });
+  });
 });
