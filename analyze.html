@@ -65,7 +65,7 @@
       }
 
       .burger--button {
-        background: var(--lt-burger);
+        background: var(--lt-burger-bg);
         height: 44px;
         width: 44px;
         border-radius: 10px;
@@ -724,7 +724,7 @@
       .nutrition--item:nth-child(3)
         .nutrition--line
         progress::-webkit-progress-value {
-        background-color: #d9a441;
+        background-color: #d8894a;
       }
 
       .nutrition--line progress::-moz-progress-bar {
@@ -990,13 +990,13 @@
       }
 
       .ing--block#allergens:hover {
-        border: inset 1px solid #0000001a;
+        border: 1px solid #0000001a;
         background-color: #0000000d;
       }
 
       .ing--block#allergens:active {
-        border: 1px solid #DCDEE1;
-        background-color: #DCDEE1;
+        border: 1px solid #dcdee1;
+        background-color: #dcdee1;
         transition: 0.05s all;
         -webkit-transition: 0.05s all;
         transform: scale(0.98);
@@ -1084,11 +1084,12 @@
       }
 
       button.popup--close:hover {
-        background: #0000001a;
+        background: #f7f7f7;
+        border: 1px solid #f7f7f7;
       }
 
       button.popup--close:active {
-        background: #0000001a;
+        background: #e6e6e6;
         transform: scale(0.98);
         transition: 0.05s all;
         -webkit-transition: 0.05s all;
@@ -1102,6 +1103,62 @@
 
       .ing--sub b.bt {
         font-weight: 700;
+      }
+
+      .header--inner {
+        position: relative;
+      }
+
+      .header--inner:after {
+        position: absolute;
+        content: "";
+        height: 100%;
+        width: 20px;
+        left: -20px;
+        right: auto;
+        top: 0;
+        background: linear-gradient(
+          180deg,
+          #f4f6f9 0%,
+          #f4f6f9 65%,
+          #f4f6f988 100%
+        );
+        backdrop-filter: blur(0.7px);
+        transition: 0.3s all;
+        -webkit-transition: 0.3s all;
+        opacity: 1;
+        z-index: -2;
+      }
+
+      .header--inner:before {
+        position: absolute;
+        content: "";
+        height: 100%;
+        width: 20px;
+        left: auto;
+        right: -20px;
+        top: 0;
+        background: linear-gradient(
+          180deg,
+          #f4f6f9 0%,
+          #f4f6f9 65%,
+          #f4f6f988 100%
+        );
+        backdrop-filter: blur(0.7px);
+        transition: 0.5s all ease-in-out;
+        -webkit-transition: 0.5s all ease-in-out;
+        opacity: 1;
+        z-index: -1;
+      }
+
+      /* .header--inner:has(.navigation--menu.open):after,
+      .header--inner:has(.navigation--menu.open):before {
+        opacity: 0;
+        transition: .3s all ease-in-out;
+        -webkit-transition: .3s all ease-in-out;
+      } */
+
+      .navigation--menu.open {
       }
 
       @media screen and (min-width: 430px) {
@@ -1476,6 +1533,10 @@
         .ing--block:nth-child(2) {
           flex: 1 1 calc((100% - 420px) / 3);
         }
+
+        .ing--container--list ul.ing--list {
+          margin-bottom: 0;
+        }
       }
 
       @media screen and (min-width: 1190px) {
@@ -1653,11 +1714,19 @@
           padding-bottom: 37px;
           border-bottom: 2px solid #0000001a;
         }
+
+        .ing--block:nth-child(2) {
+          flex: 1 1 calc((100% - 420px) / 3);
+        }
       }
 
       @media screen and (min-width: 1800px) {
         .analyze__photo--wrapper {
           margin-left: 60px;
+        }
+
+        .ing--block:nth-child(2) {
+          flex: 1 1 calc((100% - 40px) / 3);
         }
 
         main .container {
@@ -2543,7 +2612,7 @@
     </main>
 
     <div class="popup--ing hide" id="popupIng">
-      <strong>Possible allergen content in your dish:</strong>
+      <strong>Possible allergen content in&nbsp;your&nbsp;dish:</strong>
       <ul class="aller--list">
         <li class="aller--item">
           <svg
