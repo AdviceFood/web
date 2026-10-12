@@ -65,7 +65,7 @@
       }
 
       .burger--button {
-        background: var(--lt-burger);
+        background: var(--lt-burger-bg);
         height: 44px;
         width: 44px;
         border-radius: 10px;
@@ -724,7 +724,7 @@
       .nutrition--item:nth-child(3)
         .nutrition--line
         progress::-webkit-progress-value {
-        background-color: #d9a441;
+        background-color: #d8894a;
       }
 
       .nutrition--line progress::-moz-progress-bar {
@@ -755,6 +755,410 @@
 
       .analyze--navigation {
         display: none;
+      }
+
+      .section--ing {
+        font-family: "AA";
+      }
+
+      .ing--title {
+        font-size: 1.5rem;
+        font-weight: 500;
+      }
+
+      .ing--subtitle {
+        color: var(--lt-back);
+        margin-bottom: 20px;
+      }
+
+      .ing--block {
+        background: var(--lt-menu);
+        padding: 25px;
+        box-shadow: 0 4px 20px 0 #0000001a;
+        border-radius: 15px;
+      }
+
+      .ing--col h3 {
+        font-size: 1.125rem;
+        font-weight: 500;
+      }
+
+      ul.ing--list {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        margin: 15px 0 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        max-height: 168px;
+        height: auto;
+        overflow-y: hidden;
+      }
+
+      li.ing--item {
+        display: flex;
+        align-items: center;
+      }
+
+      span.ing--color {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background-color: #ff8f0040;
+        display: block;
+        position: relative;
+      }
+
+      span.ing--color::after {
+        position: absolute;
+        content: "";
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        width: 16px;
+        height: 16px;
+        background-color: #ff8f00;
+        border-radius: 50%;
+      }
+
+      li.ing--item p {
+        color: var(--lt-main);
+        font-size: 1rem;
+        margin-left: 10px;
+        margin-right: auto;
+      }
+
+      li.ing--item b {
+        font-weight: 500;
+        font-size: 1rem;
+        color: var(--lt-back);
+      }
+
+      .ing--container--list .ing--exp--block {
+        display: none;
+      }
+
+      .ing--container--list.exp {
+        position: relative;
+      }
+
+      .ing--container--list.exp .ing--exp--block {
+        position: absolute;
+        display: block;
+        bottom: 0;
+        height: 60px;
+        background: linear-gradient(0deg, white 0%, white 90%, #ffffff00 100%);
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .ing--exp--block button {
+        width: 100%;
+        height: 40px;
+        border-radius: 20px;
+        border: 0;
+        font-family: "AA";
+        background: #00000008;
+        font-size: 1rem;
+        color: var(--lt-main);
+        transition: 0.3s ease-in-out;
+        -webkit-transition: 0.3s ease-in-out;
+      }
+
+      .ing--expander {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        transition: 0.3s ease-in-out;
+        -webkit-transition: 0.3s ease-in-out;
+      }
+
+      .ing--container--list.opened ul.ing--list {
+        max-height: unset;
+      }
+
+      ul.ing--list {
+        transition: 0.35s height ease-in-out;
+        -webkit-transition: 0.35s height ease-in-out;
+      }
+
+      .ing--container--list button svg {
+        transition: 0.35s transform ease-in-out;
+        -webkit-transition: 0.35s transform ease-in-out;
+      }
+
+      .ing--container--list.opened button svg {
+        transform: rotate(180deg);
+      }
+
+      .ing--exp--block button:active {
+        transition: 0.05s all ease-in-out;
+        -webkit-transition: 0.05s all ease-in-out;
+        background: #00000026;
+        transform: scale(0.98);
+      }
+
+      li.risk--item {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+      }
+
+      span.risk--icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #ff8f001a;
+      }
+
+      .risk--item strong {
+        color: #ff8f00;
+        font-weight: 500;
+      }
+
+      .risk--item p {
+        color: var(--lt-back);
+      }
+
+      .risk--item b {
+        color: var(--lt-main);
+        font-weight: 500;
+      }
+
+      ul.risks--list {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .risk--item.great span.risk--icon {
+        background: #22c55e1a;
+      }
+
+      .risk--item.great strong {
+        color: #22c55e;
+      }
+
+      .ing--block {
+        padding: 16px 18px;
+      }
+
+      .ing--block:first-child {
+        padding: 25px;
+        margin-bottom: 5px;
+      }
+
+      p.ing--sub {
+        color: var(--lt-back);
+        font-size: 0.875rem;
+      }
+
+      p.ing--sub b {
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--lt-main);
+      }
+
+      .ing--wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 70px;
+      }
+
+      .ing--block#allergens,
+      .ing--block#allergens + .ing--block,
+      .ing--block#allergens + .ing--block + .ing--block {
+        border: 1px solid white;
+      }
+
+      .ing--block#allergens {
+        transition: 0.3s all;
+        -webkit-transition: 0.3s all;
+        cursor: pointer;
+      }
+
+      .ing--block#allergens:hover {
+        border: 1px solid #0000001a;
+        background-color: #0000000d;
+      }
+
+      .ing--block#allergens:active {
+        border: 1px solid #dcdee1;
+        background-color: #dcdee1;
+        transition: 0.05s all;
+        -webkit-transition: 0.05s all;
+        transform: scale(0.98);
+      }
+
+      .popup--ing {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        z-index: 500;
+        background: white;
+        padding: 30px 30px;
+        width: 90vw;
+        max-width: 444px;
+        border-radius: 15px;
+        box-shadow: 0 4px 20px 0 #0000001a;
+        font-family: "AA";
+        transition: 0.35s all;
+        -webkit-transition: 0.35s all;
+      }
+
+      .popup--ing strong {
+        font-size: 1.25rem;
+        font-weight: 500;
+      }
+
+      .popup--ing ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        margin-top: 17px;
+        margin-bottom: 20px;
+      }
+
+      .popup--ing ul li {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 15px;
+        color: var(--lt-main);
+        font-size: 1.125rem;
+      }
+
+      .popup--ing ul li svg {
+        transform: scale(1.1);
+      }
+
+      .popup--ing ul li:last-child {
+        margin-bottom: 0;
+      }
+
+      .mask {
+        position: fixed;
+        z-index: 400;
+        pointer-events: auto;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #000;
+        opacity: 0.7;
+        transition: 0.35s all;
+        -webkit-transition: 0.35s all;
+      }
+
+      .mask.hide {
+        pointer-events: none;
+        opacity: 0;
+      }
+
+      button.popup--close {
+        width: 100%;
+        height: 42px;
+        border: 1px solid #0000001a;
+        border-radius: 21px;
+        background: white;
+        font-family: "AA";
+        font-size: 1.125rem;
+        color: var(--lt-main);
+        font-weight: 500;
+        transition: 0.35s all;
+        -webkit-transition: 0.35s all;
+        cursor: pointer;
+      }
+
+      button.popup--close:hover {
+        background: #f7f7f7;
+        border: 1px solid #f7f7f7;
+      }
+
+      button.popup--close:active {
+        background: #e6e6e6;
+        transform: scale(0.98);
+        transition: 0.05s all;
+        -webkit-transition: 0.05s all;
+      }
+
+      .popup--ing.hide {
+        opacity: 0;
+        pointer-events: none;
+        /* z-index: -1; */
+      }
+
+      .ing--sub b.bt {
+        font-weight: 700;
+      }
+
+      .header--inner {
+        position: relative;
+      }
+
+      .header--inner:after {
+        position: absolute;
+        content: "";
+        height: 100%;
+        width: 20px;
+        left: -20px;
+        right: auto;
+        top: 0;
+        background: linear-gradient(
+          180deg,
+          #f4f6f9 0%,
+          #f4f6f9 65%,
+          #f4f6f988 100%
+        );
+        backdrop-filter: blur(0.7px);
+        transition: 0.3s all;
+        -webkit-transition: 0.3s all;
+        opacity: 1;
+        z-index: -2;
+      }
+
+      .header--inner:before {
+        position: absolute;
+        content: "";
+        height: 100%;
+        width: 20px;
+        left: auto;
+        right: -20px;
+        top: 0;
+        background: linear-gradient(
+          180deg,
+          #f4f6f9 0%,
+          #f4f6f9 65%,
+          #f4f6f988 100%
+        );
+        backdrop-filter: blur(0.7px);
+        transition: 0.5s all ease-in-out;
+        -webkit-transition: 0.5s all ease-in-out;
+        opacity: 1;
+        z-index: -1;
+      }
+
+      /* .header--inner:has(.navigation--menu.open):after,
+      .header--inner:has(.navigation--menu.open):before {
+        opacity: 0;
+        transition: .3s all ease-in-out;
+        -webkit-transition: .3s all ease-in-out;
+      } */
+
+      .navigation--menu.open {
       }
 
       @media screen and (min-width: 430px) {
@@ -805,6 +1209,7 @@
 
         body {
           display: flex;
+          overflow-x: unset;
         }
 
         header .header--inner {
@@ -830,6 +1235,7 @@
 
         header {
           width: 250px;
+          min-width: 250px;
           height: 100vh;
           background: var(--lt-menu);
           position: static;
@@ -1046,11 +1452,102 @@
         .section--nutrition {
           padding-top: 0;
         }
+
+        .ing--container--list.exp .ing--exp--block {
+          display: none;
+        }
+
+        .ing--container--list ul.ing--list {
+          max-height: unset;
+        }
+
+        ul.ing--list {
+          max-height: unset;
+          height: auto;
+        }
+
+        .ing--subtitle {
+          font-size: 1.125rem;
+        }
+
+        .ing--block:first-child {
+          padding: 28px 30px;
+        }
+
+        .ing--col h3 {
+          font-size: 1.25rem;
+        }
+
+        span.ing--color {
+          width: 30px;
+          height: 30px;
+        }
+
+        span.ing--color:after {
+          width: 20px;
+          height: 20px;
+        }
+
+        .ing--block:first-child {
+          display: flex;
+          justify-content: space-between;
+          gap: 150px;
+        }
+
+        .ing--col {
+          width: 100%;
+        }
+
+        .ing--block:first-child {
+          margin-bottom: 0;
+          flex: 0 0 100%;
+        }
+
+        .ing--wrapper {
+          gap: 20px;
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+
+        p.ing--sub {
+          font-size: 1rem;
+        }
+
+        p.ing--sub b {
+          font-size: 1.125rem;
+        }
+
+        header.secondary {
+          display: none;
+        }
+
+        .ing--sub span {
+          font-size: 1.125rem;
+        }
+
+        .ing--block:not(:first-child) {
+          padding: 16px 25px;
+          flex: 1 1 calc((100% - 40px) / 3);
+        }
+
+        .ing--block:nth-child(2) {
+          flex: 1 1 calc((100% - 420px) / 3);
+        }
+
+        .ing--container--list ul.ing--list {
+          margin-bottom: 0;
+        }
       }
 
       @media screen and (min-width: 1190px) {
         .analyze__photo--wrapper {
           width: 330px;
+        }
+      }
+
+      @media screen and (min-width: 1260px) {
+        .ing--block:nth-child(2) {
+          flex: 1 1 calc((100% - 40px) / 3);
         }
       }
 
@@ -1079,6 +1576,7 @@
 
         header {
           width: 345px;
+          min-width: 345px;
         }
 
         a.header--logo svg {
@@ -1216,11 +1714,19 @@
           padding-bottom: 37px;
           border-bottom: 2px solid #0000001a;
         }
+
+        .ing--block:nth-child(2) {
+          flex: 1 1 calc((100% - 420px) / 3);
+        }
       }
 
       @media screen and (min-width: 1800px) {
         .analyze__photo--wrapper {
           margin-left: 60px;
+        }
+
+        .ing--block:nth-child(2) {
+          flex: 1 1 calc((100% - 40px) / 3);
         }
 
         main .container {
@@ -1944,6 +2450,153 @@
               </p>
             </div>
           </section>
+
+          <section class="section--ing">
+            <h2 class="ing--title">Ingredients</h2>
+            <p class="ing--subtitle">What’s inside your meal</p>
+
+            <div class="ing--wrapper">
+              <div class="ing--block">
+                <div class="ing--col">
+                  <h3>Main ingredients</h3>
+                  <div class="ing--container--list">
+                    <ul class="ing--list" id="ingList">
+                      <li class="ing--item">
+                        <span class="ing--color"></span>
+
+                        <p>sugar</p>
+
+                        <b>~50%</b>
+                      </li>
+                      <li class="ing--item">
+                        <span class="ing--color"></span>
+
+                        <p>sugar</p>
+
+                        <b>~50%</b>
+                      </li>
+                      <li class="ing--item">
+                        <span class="ing--color"></span>
+
+                        <p>sugar</p>
+
+                        <b>~50%</b>
+                      </li>
+                      <li class="ing--item">
+                        <span class="ing--color"></span>
+
+                        <p>sugar</p>
+
+                        <b>~50%</b>
+                      </li>
+                      <li class="ing--item">
+                        <span class="ing--color"></span>
+
+                        <p>sugar</p>
+
+                        <b>~50%</b>
+                      </li>
+                      <li class="ing--item">
+                        <span class="ing--color"></span>
+
+                        <p>sugar</p>
+
+                        <b>~50%</b>
+                      </li>
+                      <li class="ing--item">
+                        <span class="ing--color"></span>
+
+                        <p>sugar</p>
+
+                        <b>~50%</b>
+                      </li>
+                    </ul>
+
+                    <div class="ing--exp--block">
+                      <button class="ing--expander" id="ingBtn">
+                        <span>More ingredients</span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          fill="none"
+                        >
+                          <g clip-path="url(#g)">
+                            <path
+                              fill="#000"
+                              d="m17.707 9.707-6 6a1 1 0 0 1-1.414 0l-6-6a1 1 0 1 1 1.414-1.414L11 13.586l5.293-5.293a1 1 0 0 1 1.414 1.414"
+                            />
+                          </g>
+                          <defs>
+                            <clipPath id="g">
+                              <path fill="#fff" d="M24 0v24H0V0z" />
+                            </clipPath>
+                          </defs>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="ing--col">
+                  <h3>Additives and undesirable components</h3>
+                  <ul class="risks--list">
+                    <li class="risk--item">
+                      <span class="risk--icon">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="20"
+                          height="20"
+                          fill="none"
+                        >
+                          <path
+                            fill="#ff8f00"
+                            d="m9.999 0 .642.005.616.017.299.013.579.034.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29.046.553.041.727.006.15.017.617.005.642-.005.642-.017.616-.013.299-.034.579-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03-.553.046-.727.041-.15.006-.617.017-.642.005-.642-.005-.616-.017-.299-.013-.579-.034-.553-.046C2.623 19.43.66 17.552.144 12.979l-.03-.29-.046-.553-.041-.727-.006-.15-.017-.617L0 10.324v-.648l.004-.318.017-.616.013-.299.034-.579.046-.553C.569 2.624 2.447.661 7.02.145l.29-.03.553-.046.727-.041.15-.006.617-.017Q9.672 0 9.999 0m.01 13-.127.007a1 1 0 0 0 0 1.986l.117.007.127-.007a1 1 0 0 0 0-1.986zm-.01-8a1 1 0 0 0-.993.883L8.999 6v4l.007.117a1 1 0 0 0 1.986 0l.007-.117V6l-.007-.117A1 1 0 0 0 9.999 5"
+                          />
+                        </svg>
+                      </span>
+
+                      <p><strong>Salt</strong> - <b>0.5g</b> (high)</p>
+                    </li>
+                    <li class="risk--item great">
+                      <span class="risk--icon">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="20"
+                          height="20"
+                          fill="none"
+                        >
+                          <path
+                            fill="#22c55e"
+                            d="M15 1.34A10 10 0 1 1 .005 10.324L0 10l.005-.324A10 10 0 0 1 15 1.34m-1.293 5.953a1 1 0 0 0-1.32-.083l-.094.083L9 10.585 7.707 9.293l-.094-.083a1 1 0 0 0-1.403 1.403l.083.094 2 2 .094.083a1 1 0 0 0 1.226 0l.094-.083 4-4 .083-.094a1 1 0 0 0-.083-1.32"
+                          />
+                        </svg>
+                      </span>
+
+                      <p><strong>Salt</strong> - <b>0.5g</b> (high)</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="ing--block" id="allergens">
+                <p class="ing--sub">
+                  <b>Allergens</b> <span>(2)</span> <br />
+                  Click to open
+                </p>
+              </div>
+              <div class="ing--block">
+                <p class="ing--sub">
+                  <b>Degree of processing (NOVA)</b><br />
+                  <b class="bt">2</b> - minimal processing
+                </p>
+              </div>
+              <div class="ing--block">
+                <p class="ing--sub">
+                  <b>Glycemic index</b><br />
+                  <b class="bt">48</b> - low
+                </p>
+              </div>
+            </div>
+          </section>
         </div>
 
         <div class="main--right">
@@ -1957,6 +2610,86 @@
         </div>
       </div>
     </main>
+
+    <div class="popup--ing hide" id="popupIng">
+      <strong>Possible allergen content in&nbsp;your&nbsp;dish:</strong>
+      <ul class="aller--list">
+        <li class="aller--item">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="none"
+          >
+            <path
+              fill="#ff8f00"
+              d="m9.999 0 .642.005.616.017.299.013.579.034.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29.046.553.041.727.006.15.017.617.005.642-.005.642-.017.616-.013.299-.034.579-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03-.553.046-.727.041-.15.006-.617.017-.642.005-.642-.005-.616-.017-.299-.013-.579-.034-.553-.046C2.623 19.43.66 17.552.144 12.979l-.03-.29-.046-.553-.041-.727-.006-.15-.017-.617L0 10.324v-.648l.004-.318.017-.616.013-.299.034-.579.046-.553C.569 2.624 2.447.661 7.02.145l.29-.03.553-.046.727-.041.15-.006.617-.017Q9.672 0 9.999 0m.01 13-.127.007a1 1 0 0 0 0 1.986l.117.007.127-.007a1 1 0 0 0 0-1.986zm-.01-8a1 1 0 0 0-.993.883L8.999 6v4l.007.117a1 1 0 0 0 1.986 0l.007-.117V6l-.007-.117A1 1 0 0 0 9.999 5"
+            />
+          </svg>
+          <p>Possible soy content</p>
+        </li>
+        <li class="aller--item">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="none"
+          >
+            <path
+              fill="#ff8f00"
+              d="m9.999 0 .642.005.616.017.299.013.579.034.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29.046.553.041.727.006.15.017.617.005.642-.005.642-.017.616-.013.299-.034.579-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03-.553.046-.727.041-.15.006-.617.017-.642.005-.642-.005-.616-.017-.299-.013-.579-.034-.553-.046C2.623 19.43.66 17.552.144 12.979l-.03-.29-.046-.553-.041-.727-.006-.15-.017-.617L0 10.324v-.648l.004-.318.017-.616.013-.299.034-.579.046-.553C.569 2.624 2.447.661 7.02.145l.29-.03.553-.046.727-.041.15-.006.617-.017Q9.672 0 9.999 0m.01 13-.127.007a1 1 0 0 0 0 1.986l.117.007.127-.007a1 1 0 0 0 0-1.986zm-.01-8a1 1 0 0 0-.993.883L8.999 6v4l.007.117a1 1 0 0 0 1.986 0l.007-.117V6l-.007-.117A1 1 0 0 0 9.999 5"
+            />
+          </svg>
+          <p>Possible soy content</p>
+        </li>
+        <li class="aller--item">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="none"
+          >
+            <path
+              fill="#ff8f00"
+              d="m9.999 0 .642.005.616.017.299.013.579.034.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29.046.553.041.727.006.15.017.617.005.642-.005.642-.017.616-.013.299-.034.579-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03-.553.046-.727.041-.15.006-.617.017-.642.005-.642-.005-.616-.017-.299-.013-.579-.034-.553-.046C2.623 19.43.66 17.552.144 12.979l-.03-.29-.046-.553-.041-.727-.006-.15-.017-.617L0 10.324v-.648l.004-.318.017-.616.013-.299.034-.579.046-.553C.569 2.624 2.447.661 7.02.145l.29-.03.553-.046.727-.041.15-.006.617-.017Q9.672 0 9.999 0m.01 13-.127.007a1 1 0 0 0 0 1.986l.117.007.127-.007a1 1 0 0 0 0-1.986zm-.01-8a1 1 0 0 0-.993.883L8.999 6v4l.007.117a1 1 0 0 0 1.986 0l.007-.117V6l-.007-.117A1 1 0 0 0 9.999 5"
+            />
+          </svg>
+          <p>Possible soy content</p>
+        </li>
+        <li class="aller--item">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="none"
+          >
+            <path
+              fill="#ff8f00"
+              d="m9.999 0 .642.005.616.017.299.013.579.034.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29.046.553.041.727.006.15.017.617.005.642-.005.642-.017.616-.013.299-.034.579-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03-.553.046-.727.041-.15.006-.617.017-.642.005-.642-.005-.616-.017-.299-.013-.579-.034-.553-.046C2.623 19.43.66 17.552.144 12.979l-.03-.29-.046-.553-.041-.727-.006-.15-.017-.617L0 10.324v-.648l.004-.318.017-.616.013-.299.034-.579.046-.553C.569 2.624 2.447.661 7.02.145l.29-.03.553-.046.727-.041.15-.006.617-.017Q9.672 0 9.999 0m.01 13-.127.007a1 1 0 0 0 0 1.986l.117.007.127-.007a1 1 0 0 0 0-1.986zm-.01-8a1 1 0 0 0-.993.883L8.999 6v4l.007.117a1 1 0 0 0 1.986 0l.007-.117V6l-.007-.117A1 1 0 0 0 9.999 5"
+            />
+          </svg>
+          <p>Possible soy content</p>
+        </li>
+        <li class="aller--item">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="none"
+          >
+            <path
+              fill="#ff8f00"
+              d="m9.999 0 .642.005.616.017.299.013.579.034.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29.046.553.041.727.006.15.017.617.005.642-.005.642-.017.616-.013.299-.034.579-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03-.553.046-.727.041-.15.006-.617.017-.642.005-.642-.005-.616-.017-.299-.013-.579-.034-.553-.046C2.623 19.43.66 17.552.144 12.979l-.03-.29-.046-.553-.041-.727-.006-.15-.017-.617L0 10.324v-.648l.004-.318.017-.616.013-.299.034-.579.046-.553C.569 2.624 2.447.661 7.02.145l.29-.03.553-.046.727-.041.15-.006.617-.017Q9.672 0 9.999 0m.01 13-.127.007a1 1 0 0 0 0 1.986l.117.007.127-.007a1 1 0 0 0 0-1.986zm-.01-8a1 1 0 0 0-.993.883L8.999 6v4l.007.117a1 1 0 0 0 1.986 0l.007-.117V6l-.007-.117A1 1 0 0 0 9.999 5"
+            />
+          </svg>
+          <p>Possible soy content</p>
+        </li>
+      </ul>
+
+      <button class="popup--close" id="popupClose">Close</button>
+    </div>
+
+    <div class="mask hide" id="mask"></div>
 
     <script src="js/script.js"></script>
   </body>

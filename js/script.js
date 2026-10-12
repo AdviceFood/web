@@ -58,4 +58,46 @@ document.addEventListener("DOMContentLoaded", () => {
       link.classList.add("active");
     });
   });
+
+  const ingList = document.getElementById("ingList");
+  const ingBtn = document.getElementById("ingBtn");
+
+  if (ingList.children.length > 5 && window.innerWidth < 1128) {
+    ingList.parentNode.classList.add("exp");
+
+    ingList.style.height = 168 + "px";
+    ingList.style.maxHeight = "unset";
+
+    ingBtn.addEventListener("click", () => {
+      if (ingList.parentNode.classList.contains("opened")) {
+        ingList.style.height = 168 + "px";
+        ingList.parentNode.classList.remove("opened");
+        ingBtn.querySelector("span").innerHTML = "More ingredients";
+      } else {
+        ingList.style.height = 36 * (ingList.children.length + 2) - 12 + "px";
+        ingList.parentNode.classList.add("opened");
+        ingBtn.querySelector("span").innerHTML = "Hide ingredients";
+      }
+    });
+  }
+
+  const allergens = document.getElementById("allergens");
+  const mask = document.getElementById("mask");
+  const popupAller = document.getElementById("popupIng");
+  const popupClose = document.getElementById("popupClose");
+
+  allergens.addEventListener("click", () => {
+    mask.classList.remove("hide");
+    popupAller.classList.remove("hide");
+  });
+
+  popupClose.addEventListener("click", () => {
+    mask.classList.add("hide");
+    popupAller.classList.add("hide");
+  });
+
+  mask.addEventListener("click", () => {
+    mask.classList.add("hide");
+    popupAller.classList.add("hide");
+  });
 });
