@@ -202,4 +202,8 @@ header .secondary {
   ul.nav--list li:not(.active) a:hover:not(:active) {
     background: var(--lt-burger-bg);
   }
+
+  header .secondary {
+    display: none;
+  }
 }
