@@ -552,7 +552,7 @@ button.alt--recipe:active {
 }
 
 .related--articles {
-  padding: 21px 18px;
+  padding: 21px 9px;
   background: #ffffff;
   box-shadow: 0 4px 20px 0 #0000001a;
   font-family: "AA";
@@ -565,6 +565,7 @@ button.alt--recipe:active {
   display: flex;
   align-items: center;
   gap: 5px;
+  margin-left: 9px;
 }
 
 .ra--header h2 {
@@ -584,9 +585,11 @@ ul.ra--list {
 }
 
 ul.ra--list li {
-  padding: 9px 0;
+  padding: 9px 12px;
   border-radius: 10px;
   width: 100%;
+  transition: 0.3s all;
+  -webkit-transition: 0.3s all;
 }
 
 ul.ra--list a {
@@ -684,6 +687,21 @@ li.al.active a svg path,
 li.al:active a svg path {
   stroke: #fff;
   fill: #fff;
+}
+
+button.alt--recipe {
+  color: #000000;
+}
+
+button.alt--recipe span {
+  color: #000000;
+}
+
+ul.ra--list li:active {
+  background: #00000008;
+  transform: scale(0.98);
+  transition: 0.05s all ease-in-out;
+  -webkit-transition: 0.05s all ease-in-out;
 }
 
 @media screen and (min-width: 850px) {
