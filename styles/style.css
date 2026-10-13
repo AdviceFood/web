@@ -711,7 +711,7 @@ ul.ra--list li:active {
     transform: none;
     margin-top: 0;
     position: static;
-    width: 285px;
+    width: 250px;
   }
 
   ul.nav--list li:not(.active) a:hover:not(:active) {
@@ -720,6 +720,47 @@ ul.ra--list li:active {
 
   header .secondary {
     display: none;
+  }
+
+  .header--inner:after,
+  .header--inner:before {
+    display: none;
+  }
+
+  header {
+    background: var(--lt-menu);
+  }
+
+  button.alt--recipe {
+    cursor: pointer;
+  }
+
+  .alt--block:first-child .alt--recipe:hover {
+    background: #f7f7f7;
+    border: 1px solid #f7f7f7;
+  }
+
+  .alt--block:first-child .alt--recipe:active {
+    background: #e6e6e6;
+    border: 1px solid #e6e6e6;
+  }
+
+  li.ra--item:hover {
+    background: #00000008;
+  }
+
+  li.ra--item {
+    cursor: pointer;
+  }
+
+  a.ra--full:hover {
+    background: #f7f7f7;
+    border-color: #f7f7f7;
+  }
+
+  a.ra--full:active {
+    background: #e6e6e6;
+    border-color: #e6e6e6;
   }
 }
 
@@ -762,5 +803,121 @@ ul.ra--list li:active {
 
   .health--item svg {
     transform: scale(1.1);
+  }
+
+  .alt--wrapper {
+    flex-direction: row;
+  }
+
+  .alt--block {
+    flex: 1;
+  }
+
+  .alt--block:first-child:after {
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    left: calc(100% + 30px);
+  }
+
+  .alt--subtitle {
+    font-size: 1.125rem;
+  }
+
+  .alt--block {
+    padding: 25px 30px;
+    position: relative;
+    margin-bottom: 90px;
+  }
+
+  .alt--tag {
+    padding: 8px 20px;
+    font-size: 1rem;
+  }
+
+  .alt--block h3 {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  .alt--desc {
+    margin-bottom: 27px;
+  }
+
+  .alt--cal b {
+    font-size: 1.25rem;
+  }
+
+  .alt--cal span {
+    font-size: 1rem;
+  }
+
+  .alt--notice--head svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .alt--notice {
+    padding: 12px 17px;
+  }
+
+  button.alt--recipe {
+    font-size: 1.25rem;
+    height: 52px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    top: calc(100% + 20px);
+  }
+
+  .alt--block:last-child button.alt--recipe {
+    background: #22c55e;
+    color: white;
+    border: 1px solid #22c55e;
+  }
+
+  .alt--block:last-child button.alt--recipe span {
+    color: white;
+  }
+
+  .alt--block:last-child button.alt--recipe svg path {
+    stroke: #fff;
+  }
+
+  .alt--block:last-child button.alt--recipe:hover {
+    background: #16a34a;
+  }
+
+  .alt--block:last-child button.alt--recipe:active {
+    background: #15803d;
+  }
+
+  button.alt--recipe:active {
+    transform: translateX(-50%) scale(0.98);
+  }
+
+  .section--alt {
+    margin-bottom: 70px;
+  }
+
+  .section--tip {
+    padding: 30px;
+  }
+
+  .section--tip p {
+    margin-top: 10px;
+    font-size: 1.125rem;
+  }
+
+  .analyze--navigation::after {
+    left: -20px;
+    width: calc(100% + 40px);
+  }
+}
+
+@media screen and (min-width: 1700px) {
+  p.subscribe--tip {
+    display: none;
   }
 }
