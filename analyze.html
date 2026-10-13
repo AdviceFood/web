@@ -548,8 +548,13 @@
         transform: translateX(-50%) translateY(-50%);
       }
 
-      .main--right {
+      .main--right .analyze__photo--comment {
         display: none;
+      }
+
+      main .container {
+        display: flex;
+        flex-direction: column;
       }
 
       .section--nutrition {
@@ -1158,7 +1163,9 @@
         -webkit-transition: .3s all ease-in-out;
       } */
 
-      .navigation--menu.open {
+      .navigation--menu .container {
+        max-height: calc(100dvh - 120px);
+        overflow-y: auto;
       }
 
       @media screen and (min-width: 430px) {
@@ -1302,6 +1309,20 @@
         main .container {
           max-width: 93%;
         }
+
+        header {
+          position: fixed;
+          z-index: 200;
+        }
+
+        main {
+          padding-left: 250px;
+        }
+
+        .navigation--menu .container {
+          max-height: calc(100dvh - 120px);
+          overflow-y: auto;
+        }
       }
 
       @media screen and (min-width: 1128px) {
@@ -1312,6 +1333,11 @@
 
           .section--nutrition {
             border: 0;
+          }
+
+          .navigation--menu .container {
+            max-height: calc(100dvh - 180px);
+            overflow-y: auto;
           }
 
           .analyze--navigation {
@@ -1579,6 +1605,10 @@
           min-width: 345px;
         }
 
+        main {
+          padding-left: 345px;
+        }
+
         a.header--logo svg {
           width: 40px;
           height: 44px;
@@ -1695,10 +1725,21 @@
           display: flex;
           flex-direction: column;
           max-width: 300px;
+          gap: 40px;
+        }
+
+        .main--right .analyze__photo--comment {
+          display: block;
+          order: 1;
+        }
+
+        .main--right .related--articles {
+          order: 2;
         }
 
         main .container {
           display: flex;
+          flex-direction: row;
           gap: 30px;
         }
 
@@ -1899,109 +1940,81 @@
                   <li class="active">
                     <a href="#">
                       <svg
+                        xmlns="http://www.w3.org/2000/svg"
                         width="26"
                         height="26"
-                        viewBox="0 0 26 26"
                         fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
                       >
-                        <g opacity="0.9">
-                          <path
-                            d="M5.41667 13H3.25L13 3.25L22.75 13H20.5833"
-                            stroke="black"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                          <path
-                            d="M5.41675 13V20.5833C5.41675 21.158 5.64502 21.7091 6.05135 22.1154C6.45768 22.5217 7.00878 22.75 7.58341 22.75H18.4167C18.9914 22.75 19.5425 22.5217 19.9488 22.1154C20.3551 21.7091 20.5834 21.158 20.5834 20.5833V13"
-                            stroke="black"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                          <path
-                            d="M9.75 22.75V16.25C9.75 15.6754 9.97827 15.1243 10.3846 14.7179C10.7909 14.3116 11.342 14.0833 11.9167 14.0833H14.0833C14.658 14.0833 15.2091 14.3116 15.6154 14.7179C16.0217 15.1243 16.25 15.6754 16.25 16.25V22.75"
-                            stroke="black"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
+                        <g
+                          stroke="#000"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2.5"
+                          clip-path="url(#a8)"
+                          opacity=".9"
+                        >
+                          <path d="M13 4v18M4 13h18" />
                         </g>
+                        <defs>
+                          <clipPath id="a8">
+                            <path fill="#fff" d="M0 0h26v26H0z" />
+                          </clipPath>
+                        </defs>
                       </svg>
-                      <b>Home</b>
+                      <b>New analysis</b>
                     </a>
                   </li>
                   <li>
                     <a href="#">
                       <svg
+                        xmlns="http://www.w3.org/2000/svg"
                         width="26"
                         height="26"
-                        viewBox="0 0 26 26"
                         fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
                       >
-                        <g opacity="0.9">
+                        <g clip-path="url(#a1)">
                           <path
-                            d="M5.41667 13H3.25L13 3.25L22.75 13H20.5833"
-                            stroke="black"
-                            stroke-width="2"
+                            fill="#fff"
+                            stroke="#000"
                             stroke-linecap="round"
                             stroke-linejoin="round"
-                          />
-                          <path
-                            d="M5.41675 13V20.5833C5.41675 21.158 5.64502 21.7091 6.05135 22.1154C6.45768 22.5217 7.00878 22.75 7.58341 22.75H18.4167C18.9914 22.75 19.5425 22.5217 19.9488 22.1154C20.3551 21.7091 20.5834 21.158 20.5834 20.5833V13"
-                            stroke="black"
                             stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                          <path
-                            d="M9.75 22.75V16.25C9.75 15.6754 9.97827 15.1243 10.3846 14.7179C10.7909 14.3116 11.342 14.0833 11.9167 14.0833H14.0833C14.658 14.0833 15.2091 14.3116 15.6154 14.7179C16.0217 15.1243 16.25 15.6754 16.25 16.25V22.75"
-                            stroke="black"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            d="M9.75 4.333H5.417A2.167 2.167 0 0 0 3.25 6.5v11.917a2.167 2.167 0 0 0 2.167 2.166h15.166a2.166 2.166 0 0 0 2.167-2.166V9.75a2.167 2.167 0 0 0-2.167-2.167H13z"
                           />
                         </g>
+                        <defs>
+                          <clipPath id="a1">
+                            <path fill="#fff" d="M0 0h26v26H0z" />
+                          </clipPath>
+                        </defs>
                       </svg>
-                      <b>Home</b>
+                      <b>My analyses</b>
                     </a>
                   </li>
                   <li>
                     <a href="#">
                       <svg
+                        xmlns="http://www.w3.org/2000/svg"
                         width="26"
                         height="26"
-                        viewBox="0 0 26 26"
                         fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
                       >
-                        <g opacity="0.9">
+                        <g clip-path="url(#a2)">
                           <path
-                            d="M5.41667 13H3.25L13 3.25L22.75 13H20.5833"
-                            stroke="black"
-                            stroke-width="2"
+                            stroke="#000"
                             stroke-linecap="round"
                             stroke-linejoin="round"
-                          />
-                          <path
-                            d="M5.41675 13V20.5833C5.41675 21.158 5.64502 21.7091 6.05135 22.1154C6.45768 22.5217 7.00878 22.75 7.58341 22.75H18.4167C18.9914 22.75 19.5425 22.5217 19.9488 22.1154C20.3551 21.7091 20.5834 21.158 20.5834 20.5833V13"
-                            stroke="black"
                             stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                          <path
-                            d="M9.75 22.75V16.25C9.75 15.6754 9.97827 15.1243 10.3846 14.7179C10.7909 14.3116 11.342 14.0833 11.9167 14.0833H14.0833C14.658 14.0833 15.2091 14.3116 15.6154 14.7179C16.0217 15.1243 16.25 15.6754 16.25 16.25V22.75"
-                            stroke="black"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            d="M9.75 7.583h6.5m-6.5 4.334h6.5m-2.167 4.333h2.167m-10.833 6.5V5.417A2.167 2.167 0 0 1 7.583 3.25h10.834a2.167 2.167 0 0 1 2.166 2.167V22.75l-3.25-2.167-2.166 2.167L13 20.583l-2.167 2.167-2.166-2.167z"
                           />
                         </g>
+                        <defs>
+                          <clipPath id="a2">
+                            <path fill="#fff" d="M0 0h26v26H0z" />
+                          </clipPath>
+                        </defs>
                       </svg>
-                      <b>Home</b>
+                      <b>My recipes</b>
                     </a>
                   </li>
                 </ul>
@@ -2010,109 +2023,161 @@
                   <li>
                     <a href="#">
                       <svg
+                        xmlns="http://www.w3.org/2000/svg"
                         width="26"
                         height="26"
-                        viewBox="0 0 26 26"
                         fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
                       >
-                        <g opacity="0.9">
+                        <g
+                          stroke="#000"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          clip-path="url(#a3)"
+                        >
                           <path
-                            d="M5.41667 13H3.25L13 3.25L22.75 13H20.5833"
-                            stroke="black"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                          <path
-                            d="M5.41675 13V20.5833C5.41675 21.158 5.64502 21.7091 6.05135 22.1154C6.45768 22.5217 7.00878 22.75 7.58341 22.75H18.4167C18.9914 22.75 19.5425 22.5217 19.9488 22.1154C20.3551 21.7091 20.5834 21.158 20.5834 20.5833V13"
-                            stroke="black"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                          <path
-                            d="M9.75 22.75V16.25C9.75 15.6754 9.97827 15.1243 10.3846 14.7179C10.7909 14.3116 11.342 14.0833 11.9167 14.0833H14.0833C14.658 14.0833 15.2091 14.3116 15.6154 14.7179C16.0217 15.1243 16.25 15.6754 16.25 16.25V22.75"
-                            stroke="black"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            d="M9.936 10.648a4.333 4.333 0 1 1 6.128-6.129 4.333 4.333 0 0 1-6.128 6.129M6.5 22.75v-2.167a4.333 4.333 0 0 1 4.333-4.333h4.334a4.333 4.333 0 0 1 4.333 4.333v2.167"
                           />
                         </g>
+                        <defs>
+                          <clipPath id="a3">
+                            <path fill="#fff" d="M0 0h26v26H0z" />
+                          </clipPath>
+                        </defs>
                       </svg>
-                      <b>Home</b>
+                      <b>Profile</b>
+                    </a>
+                  </li>
+
+                  <li class="al">
+                    <a href="#">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="26"
+                        height="26"
+                        fill="none"
+                      >
+                        <path
+                          fill="#000"
+                          stroke="#000"
+                          stroke-width=".5"
+                          d="M9.045 3.63c1.254-2.54 4.728-3.648 7.272-2.305l.024.012c2.575 1.25 3.676 4.64 2.33 7.118v.005l-.03.056a883 883 0 0 1-7.225 13.128l-.001-.001a5.1 5.1 0 0 1-3.673 2.547l.001.001a5 5 0 0 1-3.181-.563H4.56a4.93 4.93 0 0 1-2.324-6.583v-.007l.026-.053A864 864 0 0 1 7.328 6.958zm6.365-.513c-1.58-.846-3.789-.17-4.605 1.418l-.002.005a884 884 0 0 1-7.227 13.127l-.013.022a3.64 3.64 0 0 0-.222 2.994l.079.196v.002c.32.75.906 1.4 1.651 1.811l.017.01c.761.35 1.627.446 2.428.274l.002-.001c1.132-.234 2.11-1.003 2.59-1.998v-.003a868 868 0 0 1 6.783-13.355h.002c.847-1.568.14-3.716-1.474-4.498V3.12h-.001v.002l-.007-.003v-.002zm.993-1.735q0 0-.002-.003l-.005-.004z"
+                        />
+                        <path
+                          fill="url(#a9)"
+                          d="M14.462 6.994a4.9 4.9 0 0 1 2.366-.173v.001c1.762.294 3.343 1.623 3.9 3.385l.011.037v.003q1.17 3.599 2.281 7.215l.012.035v.007c.84 2.656-.843 5.772-3.563 6.523l-.04.02h-.028c-2.707.815-5.819-.927-6.52-3.637l-.007-.03v-.001a466 466 0 0 1-1.962-7.318l-.008-.03v-.01c-.459-1.77.141-3.725 1.466-4.912a4.8 4.8 0 0 1 2.092-1.115m2.105 1.04a3.76 3.76 0 0 0-1.801-.023c-.588.2-1.113.54-1.525.981v.002c-.922.973-1.226 2.42-.821 3.631l1.161 3.622q.573 1.814 1.133 3.63c.499 1.704 2.495 2.765 4.173 2.243l.036-.01h.008c1.673-.478 2.763-2.422 2.266-4.115h.001-.003a465 465 0 0 1-1.97-7.35v.002c-.31-1.233-1.354-2.285-2.655-2.613z"
+                        />
+                        <path
+                          fill="#000"
+                          d="M14.462 6.994a4.9 4.9 0 0 1 2.366-.173v.001c1.762.294 3.343 1.623 3.9 3.385l.011.037v.003q1.17 3.599 2.281 7.215l.012.035v.007c.84 2.656-.843 5.772-3.563 6.523l-.04.02h-.028c-2.707.815-5.819-.927-6.52-3.637l-.007-.03v-.001a466 466 0 0 1-1.962-7.318l-.008-.03v-.01c-.459-1.77.141-3.725 1.466-4.912a4.8 4.8 0 0 1 2.092-1.115m2.105 1.04a3.76 3.76 0 0 0-1.801-.023c-.588.2-1.113.54-1.525.981v.002c-.922.973-1.226 2.42-.821 3.631l1.161 3.622q.573 1.814 1.133 3.63c.499 1.704 2.495 2.765 4.173 2.243l.036-.01h.008c1.673-.478 2.763-2.422 2.266-4.115h.001-.003a465 465 0 0 1-1.97-7.35v.002c-.31-1.233-1.354-2.285-2.655-2.613z"
+                        />
+                        <path
+                          stroke="#000"
+                          stroke-width=".5"
+                          d="M14.462 6.994a4.9 4.9 0 0 1 2.366-.173v.001c1.762.294 3.343 1.623 3.9 3.385l.011.037v.003q1.17 3.599 2.281 7.215l.012.035v.007c.84 2.656-.843 5.772-3.563 6.523l-.04.02h-.028c-2.707.815-5.819-.927-6.52-3.637l-.007-.03v-.001a466 466 0 0 1-1.962-7.318l-.008-.03v-.01c-.459-1.77.141-3.725 1.466-4.912a4.8 4.8 0 0 1 2.092-1.115Zm2.105 1.04a3.76 3.76 0 0 0-1.801-.023c-.588.2-1.113.54-1.525.981v.002c-.922.973-1.226 2.42-.821 3.631l1.161 3.622q.573 1.814 1.133 3.63c.499 1.704 2.495 2.765 4.173 2.243l.036-.01h.008c1.673-.478 2.763-2.422 2.266-4.115h.001-.003a465 465 0 0 1-1.97-7.35v.002c-.31-1.233-1.354-2.285-2.655-2.613z"
+                        />
+                        <defs>
+                          <linearGradient
+                            id="a"
+                            x1="16.812"
+                            x2="17.191"
+                            y1="23.221"
+                            y2="7.367"
+                            gradientUnits="userSpaceOnUse"
+                          >
+                            <stop stop-color="#8356ff" />
+                            <stop offset="1" stop-color="#151abb" />
+                          </linearGradient>
+                        </defs>
+                      </svg>
+                      <b>AdviceLink</b>
                     </a>
                   </li>
                   <li>
                     <a href="#">
                       <svg
+                        xmlns="http://www.w3.org/2000/svg"
                         width="26"
                         height="26"
-                        viewBox="0 0 26 26"
                         fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
                       >
-                        <g opacity="0.9">
+                        <g
+                          stroke="#000"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          clip-path="url(#a4)"
+                        >
                           <path
-                            d="M5.41667 13H3.25L13 3.25L22.75 13H20.5833"
-                            stroke="black"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            d="M11.185 4.677c.462-1.903 3.168-1.903 3.63 0a1.867 1.867 0 0 0 2.787 1.155c1.672-1.019 3.586.894 2.567 2.567a1.867 1.867 0 0 0 1.154 2.786c1.903.462 1.903 3.168 0 3.63a1.867 1.867 0 0 0-1.155 2.787c1.019 1.672-.894 3.586-2.567 2.567a1.867 1.867 0 0 0-2.786 1.154c-.462 1.903-3.168 1.903-3.63 0a1.867 1.867 0 0 0-2.787-1.155c-1.672 1.019-3.586-.894-2.567-2.567a1.867 1.867 0 0 0-1.154-2.786c-1.903-.462-1.903-3.168 0-3.63a1.867 1.867 0 0 0 1.155-2.787c-1.019-1.672.894-3.586 2.567-2.567a1.866 1.866 0 0 0 2.786-1.154"
                           />
                           <path
-                            d="M5.41675 13V20.5833C5.41675 21.158 5.64502 21.7091 6.05135 22.1154C6.45768 22.5217 7.00878 22.75 7.58341 22.75H18.4167C18.9914 22.75 19.5425 22.5217 19.9488 22.1154C20.3551 21.7091 20.5834 21.158 20.5834 20.5833V13"
-                            stroke="black"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                          <path
-                            d="M9.75 22.75V16.25C9.75 15.6754 9.97827 15.1243 10.3846 14.7179C10.7909 14.3116 11.342 14.0833 11.9167 14.0833H14.0833C14.658 14.0833 15.2091 14.3116 15.6154 14.7179C16.0217 15.1243 16.25 15.6754 16.25 16.25V22.75"
-                            stroke="black"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            d="M9.75 13a3.25 3.25 0 1 0 6.5 0 3.25 3.25 0 0 0-6.5 0"
                           />
                         </g>
+                        <defs>
+                          <clipPath id="a4">
+                            <path fill="#fff" d="M0 0h26v26H0z" />
+                          </clipPath>
+                        </defs>
                       </svg>
-                      <b>Home</b>
+                      <b>Settings</b>
+                    </a>
+                  </li>
+                </ul>
+                <ul class="nav--list">
+                  <li>
+                    <a href="#">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="26"
+                        height="26"
+                        fill="none"
+                      >
+                        <g clip-path="url(#a5)">
+                          <path
+                            stroke="#000"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M6.314 22.745 13 19.229l6.671 3.516-1.277-7.446 5.417-5.273-7.475-1.083-3.343-6.774-3.344 6.774-7.475 1.083L7.591 15.3z"
+                          />
+                        </g>
+                        <defs>
+                          <clipPath id="a5">
+                            <path fill="#fff" d="M0 0h26v26H0z" />
+                          </clipPath>
+                        </defs>
+                      </svg>
+                      <b>Pro plan</b>
                     </a>
                   </li>
                   <li>
                     <a href="#">
                       <svg
+                        xmlns="http://www.w3.org/2000/svg"
                         width="26"
                         height="26"
-                        viewBox="0 0 26 26"
                         fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
                       >
-                        <g opacity="0.9">
+                        <g
+                          stroke="#000"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          clip-path="url(#a6)"
+                        >
                           <path
-                            d="M5.41667 13H3.25L13 3.25L22.75 13H20.5833"
-                            stroke="black"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                          <path
-                            d="M5.41675 13V20.5833C5.41675 21.158 5.64502 21.7091 6.05135 22.1154C6.45768 22.5217 7.00878 22.75 7.58341 22.75H18.4167C18.9914 22.75 19.5425 22.5217 19.9488 22.1154C20.3551 21.7091 20.5834 21.158 20.5834 20.5833V13"
-                            stroke="black"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                          <path
-                            d="M9.75 22.75V16.25C9.75 15.6754 9.97827 15.1243 10.3846 14.7179C10.7909 14.3116 11.342 14.0833 11.9167 14.0833H14.0833C14.658 14.0833 15.2091 14.3116 15.6154 14.7179C16.0217 15.1243 16.25 15.6754 16.25 16.25V22.75"
-                            stroke="black"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            d="M17.333 6.5h3.25a1.083 1.083 0 0 1 1.084 1.083V19.5a2.167 2.167 0 0 1-2.167 2.167m0 0a2.167 2.167 0 0 1-2.167-2.167V5.417a1.084 1.084 0 0 0-1.083-1.084H5.417a1.083 1.083 0 0 0-1.084 1.084v13a3.25 3.25 0 0 0 3.25 3.25zM8.667 8.667H13M8.667 13H13M8.667 17.333H13"
                           />
                         </g>
+                        <defs>
+                          <clipPath id="a6">
+                            <path fill="#fff" d="M0 0h26v26H0z" />
+                          </clipPath>
+                        </defs>
                       </svg>
-                      <b>Home</b>
+                      <b>Blog</b>
                     </a>
                   </li>
                 </ul>
@@ -2140,13 +2205,13 @@
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  clip-path="url(#a)"
+                  clip-path="url(#a7)"
                   opacity=".7"
                 >
                   <path d="M5 12h14M5 12l6 6M5 12l6-6" />
                 </g>
                 <defs>
-                  <clipPath id="a">
+                  <clipPath id="a7">
                     <path fill="#fff" d="M0 0h24v24H0z" />
                   </clipPath>
                 </defs>
@@ -2597,6 +2662,350 @@
               </div>
             </div>
           </section>
+
+          <section class="section--health">
+            <h2>Health</h2>
+            <p class="health--subtitle">Key health indicators</p>
+
+            <div class="health--wrapper">
+              <div class="health--block">
+                <div class="health--head">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="28"
+                    height="28"
+                    fill="none"
+                  >
+                    <g fill="#fff" clip-path="url(#aa)">
+                      <path
+                        d="M14.167 3.5a3.5 3.5 0 0 1 3.494 3.295l.006.205v4.667H20a3.5 3.5 0 0 1 3.477 3.091l.017.203.006.206-.023.228-1.174 5.871c-.444 1.897-1.752 3.262-3.278 3.243l-.191-.009H9.5a1.166 1.166 0 0 1-1.158-1.03l-.008-.137V12.208a1.17 1.17 0 0 1 .584-1.01 3.5 3.5 0 0 0 1.74-2.796l.009-.235V7a3.5 3.5 0 0 1 3.5-3.5M4.834 11.667a1.167 1.167 0 0 1 1.158 1.03l.008.136v10.5a1.166 1.166 0 0 1-1.03 1.159l-.136.008H3.667a2.334 2.334 0 0 1-2.328-2.158l-.006-.175V14a2.333 2.333 0 0 1 2.159-2.327l.175-.006z"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="aa">
+                        <path fill="#fff" d="M0 0h28v28H0z" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                  <strong>Whitch is good</strong>
+                </div>
+
+                <ul class="health--list">
+                  <li class="health--item">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="13"
+                      fill="none"
+                    >
+                      <path
+                        stroke="#22c55e"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="3"
+                        d="m1.5 6.5 5 5 10-10"
+                      />
+                    </svg>
+                    <p>High protein content</p>
+                  </li>
+                  <li class="health--item">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="13"
+                      fill="none"
+                    >
+                      <path
+                        stroke="#22c55e"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="3"
+                        d="m1.5 6.5 5 5 10-10"
+                      />
+                    </svg>
+                    <p>High protein content</p>
+                  </li>
+                  <li class="health--item">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="13"
+                      fill="none"
+                    >
+                      <path
+                        stroke="#22c55e"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="3"
+                        d="m1.5 6.5 5 5 10-10"
+                      />
+                    </svg>
+                    <p>High protein content</p>
+                  </li>
+                  <li class="health--item">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="13"
+                      fill="none"
+                    >
+                      <path
+                        stroke="#22c55e"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="3"
+                        d="m1.5 6.5 5 5 10-10"
+                      />
+                    </svg>
+                    <p>High protein content</p>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="health--block">
+                <div class="health--head">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="28"
+                    height="28"
+                    fill="none"
+                  >
+                    <g clip-path="url(#ab)">
+                      <path
+                        fill="#fff"
+                        d="M13 1.948a3.4 3.4 0 0 1 2.788 1.455l.123.187 9.466 15.806a3.4 3.4 0 0 1-2.691 5.09l-.228.01H3.528a3.4 3.4 0 0 1-3.011-4.9l.115-.217 9.462-15.794A3.4 3.4 0 0 1 13 1.948m.012 15.552-.149.008a1.166 1.166 0 0 0 0 2.317l.137.008.148-.008a1.167 1.167 0 0 0 0-2.317zM13 9.333a1.166 1.166 0 0 0-1.159 1.03l-.008.137v4.667l.008.136a1.167 1.167 0 0 0 2.317 0l.009-.136V10.5l-.009-.137A1.167 1.167 0 0 0 13 9.333"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="ab">
+                        <path fill="#fff" d="M0 0h28v28H0z" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                  <strong>Watch out</strong>
+                </div>
+
+                <ul class="health--list">
+                  <li class="health--item">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      fill="none"
+                    >
+                      <path
+                        fill="#ff8f00"
+                        d="m9.999 0 .642.005.616.017.299.013.579.034.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29.046.553.041.727.006.15.017.617.005.642-.005.642-.017.616-.013.299-.034.579-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03-.553.046-.727.041-.15.006-.617.017-.642.005-.642-.005-.616-.017-.299-.013-.579-.034-.553-.046C2.623 19.43.66 17.552.144 12.979l-.03-.29-.046-.553-.041-.727-.006-.15-.017-.617L0 10.324v-.648l.004-.318.017-.616.013-.299.034-.579.046-.553C.569 2.624 2.447.661 7.02.145l.29-.03.553-.046.727-.041.15-.006.617-.017Q9.672 0 9.999 0m.01 13-.127.007a1 1 0 0 0 0 1.986l.117.007.127-.007a1 1 0 0 0 0-1.986zm-.01-8a1 1 0 0 0-.993.883L8.999 6v4l.007.117a1 1 0 0 0 1.986 0l.007-.117V6l-.007-.117A1 1 0 0 0 9.999 5"
+                      />
+                    </svg>
+                    <p>
+                      Possible traces of additives (depends on the manufacturer)
+                    </p>
+                  </li>
+                  <li class="health--item">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      fill="none"
+                    >
+                      <path
+                        fill="#ff8f00"
+                        d="m9.999 0 .642.005.616.017.299.013.579.034.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29.046.553.041.727.006.15.017.617.005.642-.005.642-.017.616-.013.299-.034.579-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03-.553.046-.727.041-.15.006-.617.017-.642.005-.642-.005-.616-.017-.299-.013-.579-.034-.553-.046C2.623 19.43.66 17.552.144 12.979l-.03-.29-.046-.553-.041-.727-.006-.15-.017-.617L0 10.324v-.648l.004-.318.017-.616.013-.299.034-.579.046-.553C.569 2.624 2.447.661 7.02.145l.29-.03.553-.046.727-.041.15-.006.617-.017Q9.672 0 9.999 0m.01 13-.127.007a1 1 0 0 0 0 1.986l.117.007.127-.007a1 1 0 0 0 0-1.986zm-.01-8a1 1 0 0 0-.993.883L8.999 6v4l.007.117a1 1 0 0 0 1.986 0l.007-.117V6l-.007-.117A1 1 0 0 0 9.999 5"
+                      />
+                    </svg>
+                    <p>Increased salt content</p>
+                  </li>
+                  <li class="health--item">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      fill="none"
+                    >
+                      <path
+                        fill="#ff8f00"
+                        d="m9.999 0 .642.005.616.017.299.013.579.034.553.046c4.687.455 6.65 2.333 7.166 6.906l.03.29.046.553.041.727.006.15.017.617.005.642-.005.642-.017.616-.013.299-.034.579-.046.553c-.455 4.687-2.333 6.65-6.906 7.166l-.29.03-.553.046-.727.041-.15.006-.617.017-.642.005-.642-.005-.616-.017-.299-.013-.579-.034-.553-.046C2.623 19.43.66 17.552.144 12.979l-.03-.29-.046-.553-.041-.727-.006-.15-.017-.617L0 10.324v-.648l.004-.318.017-.616.013-.299.034-.579.046-.553C.569 2.624 2.447.661 7.02.145l.29-.03.553-.046.727-.041.15-.006.617-.017Q9.672 0 9.999 0m.01 13-.127.007a1 1 0 0 0 0 1.986l.117.007.127-.007a1 1 0 0 0 0-1.986zm-.01-8a1 1 0 0 0-.993.883L8.999 6v4l.007.117a1 1 0 0 0 1.986 0l.007-.117V6l-.007-.117A1 1 0 0 0 9.999 5"
+                      />
+                    </svg>
+                    <p>Increased salt content</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section class="section--alt">
+            <h2>Healthy Alternative</h2>
+            <p class="alt--subtitle">A better choice for you</p>
+
+            <div class="alt--wrapper">
+              <div class="alt--block">
+                <span class="alt--tag">Current meal</span>
+                <h3>The name of your dish</h3>
+                <p class="alt--desc">Mini lore about your dish/meal</p>
+                <div class="alt--cal">
+                  <b>435 kcal</b>
+                  <span>per serving</span>
+                </div>
+                <div class="alt--params">
+                  <span class="alt--param">
+                    <b>45g</b>
+                    protein
+                  </span>
+                  <span class="alt--param">
+                    <b>45g</b>
+                    fats
+                  </span>
+                  <span class="alt--param">
+                    <b>45g</b>
+                    carbs
+                  </span>
+                </div>
+                <div class="alt--notice">
+                  <div class="alt--notice--head">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                    >
+                      <g
+                        stroke="#000"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-opacity=".7"
+                        stroke-width="2.5"
+                        clip-path="url(#ac)"
+                      >
+                        <path
+                          d="M11 3c7.2 0 9 1.8 9 9s-1.8 9-9 9-9-1.8-9-9 1.8-9 9-9M11 8v4M11 16h.01"
+                        />
+                      </g>
+                      <defs>
+                        <clipPath id="ac">
+                          <path fill="#fff" d="M0 0h24v24H0z" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                    <strong>Key concern</strong>
+                  </div>
+                  <ul class="alt--keys">
+                    <li class="alt--key">Key concerns</li>
+                    <li class="alt--key">Key concerns</li>
+                    <li class="alt--key">Key concerns</li>
+                    <li class="alt--key">Key concerns</li>
+                  </ul>
+                </div>
+
+                <button class="alt--recipe">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="20"
+                    fill="none"
+                  >
+                    <path
+                      stroke="#000"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 5h6M5 9h6m-2 4h2M1 19V3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16l-3-2-2 2-2-2-2 2-2-2z"
+                    />
+                  </svg>
+                  <span>Get a recipe</span>
+                </button>
+              </div>
+              <div class="alt--block better">
+                <span class="alt--tag">A healthy alternative</span>
+                <h3>The name of your dish</h3>
+                <p class="alt--desc">Mini lore about your dish/meal</p>
+                <div class="alt--cal">
+                  <b>435 kcal</b>
+                  <span>per serving</span>
+                </div>
+                <div class="alt--params">
+                  <span class="alt--param">
+                    <b>45g</b>
+                    protein
+                  </span>
+                  <span class="alt--param boost">
+                    <b>45g</b>
+                    fats
+                  </span>
+                  <span class="alt--param">
+                    <b>45g</b>
+                    carbs
+                  </span>
+                </div>
+                <div class="alt--notice">
+                  <div class="alt--notice--head">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                    >
+                      <g clip-path="url(#ad)">
+                        <path
+                          fill="#16a34a"
+                          d="M16 3.34a10 10 0 1 1-14.995 8.984L1 12l.005-.324A10 10 0 0 1 16 3.34m-1.293 5.953a1 1 0 0 0-1.32-.083l-.094.083L10 12.585l-1.293-1.292-.094-.083a1 1 0 0 0-1.403 1.403l.083.094 2 2 .094.083a1 1 0 0 0 1.226 0l.094-.083 4-4 .083-.094a1 1 0 0 0-.083-1.32"
+                        />
+                      </g>
+                      <defs>
+                        <clipPath id="ad">
+                          <path fill="#fff" d="M0 0h24v24H0z" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                    <strong>Why is it better?</strong>
+                  </div>
+                  <ul class="alt--keys">
+                    <li class="alt--key">Key concerns</li>
+                    <li class="alt--key">Key concerns</li>
+                    <li class="alt--key">Key concerns</li>
+                    <li class="alt--key">Key concerns</li>
+                  </ul>
+                </div>
+
+                <button class="alt--recipe">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="20"
+                    fill="none"
+                  >
+                    <path
+                      stroke="#000"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 5h6M5 9h6m-2 4h2M1 19V3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16l-3-2-2 2-2-2-2 2-2-2z"
+                    />
+                  </svg>
+                  <span>Get a recipe</span>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <section class="section--tip">
+            <h2>Recommendations from&nbsp;Advice<span>Food</span></h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur.
+            </p>
+          </section>
+
+          <p class="subscribe--tip">
+            More insights are coming soon. <br />Follow us on
+            <a href="#">social media</a> and visit our <a href="#">blog</a> for
+            the latest updates.
+          </p>
         </div>
 
         <div class="main--right">
@@ -2606,6 +3015,60 @@
               Ex sapien vitae pellentesque sem placerat in id. Placerat in id
               cursus mi pretium tellus&nbsp;duis.
             </p>
+          </div>
+          <div class="related--articles">
+            <div class="ra--header">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                fill="none"
+              >
+                <g
+                  stroke="#000"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  clip-path="url(#af)"
+                >
+                  <path
+                    d="M18.667 7h3.5a1.167 1.167 0 0 1 1.166 1.166V21A2.334 2.334 0 0 1 21 23.333m0 0A2.334 2.334 0 0 1 18.666 21V5.833A1.167 1.167 0 0 0 17.5 4.667H5.833a1.167 1.167 0 0 0-1.166 1.166v14a3.5 3.5 0 0 0 3.5 3.5zM9.334 9.334H14M9.334 14H14M9.334 18.667H14"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="af">
+                    <path fill="#fff" d="M0 0h28v28H0z" />
+                  </clipPath>
+                </defs>
+              </svg>
+              <h2>Useful articles</h2>
+            </div>
+
+            <ul class="ra--list">
+              <li class="ra--item">
+                <a href="#">
+                  <span>The title of a useful article</span> <br />
+                  <b>Read</b>
+                </a>
+              </li>
+              <li class="ra--item">
+                <a href="#">
+                  <span>The title of a useful article</span> <br />
+                  <b>Read</b>
+                </a>
+              </li>
+              <li class="ra--item">
+                <a href="#">
+                  <span>The title of a useful article</span> <br />
+                  <b>Read</b>
+                </a>
+              </li>
+            </ul>
+
+            <a href="#" class="ra--full">
+              <span></span>
+              <b>Read more</b>
+            </a>
           </div>
         </div>
       </div>
