@@ -280,12 +280,31 @@ window.addEventListener("load", () => {
   const NUT_MAX = 2000;
   const NUT_TARGET = 0.72;
 
-  initDiag("#diag-nutrition", NUT_TARGET * NUT_MAX, {
-    max: NUT_MAX,
-    colors: BAD_COLORS,
-    reverse: false,
-    barSelector: ".nutrition--circle--bar",
-    valueSelector: "#nut_value",
-    displayValue: NUT_TARGET * NUT_MAX,
-  });
+  const nutEl = document.querySelector("#diag-nutrition");
+
+  if (!nutEl) return;
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          initDiag("#diag-nutrition", NUT_TARGET * NUT_MAX, {
+            max: NUT_MAX,
+            colors: BAD_COLORS,
+            reverse: false,
+            barSelector: ".nutrition--circle--bar",
+            valueSelector: "#nut_value",
+            displayValue: NUT_TARGET * NUT_MAX,
+          });
+
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.2,
+    },
+  );
+
+  observer.observe(nutEl);
 });
