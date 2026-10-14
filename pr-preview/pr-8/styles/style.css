@@ -871,6 +871,18 @@ ul.ra--list li:active {
     top: calc(100% + 20px);
   }
 
+  .alt--block:first-child button.alt--recipe:hover {
+    background: #f2f2f2;
+    border: 1px solid #0000001a;
+  }
+
+  .alt--block:first-child button.alt--recipe:active {
+    background: #e6e6e6;
+    border: 1px solid #e6e6e6;
+    transition: 0.05s all;
+    -webkit-transition: 0.05s all;
+  }
+
   .alt--block:last-child button.alt--recipe {
     background: #22c55e;
     color: white;
@@ -891,6 +903,8 @@ ul.ra--list li:active {
 
   .alt--block:last-child button.alt--recipe:active {
     background: #15803d;
+    transition: 0.05s all;
+    -webkit-transition: 0.05s all;
   }
 
   button.alt--recipe:active {
