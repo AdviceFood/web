@@ -429,12 +429,12 @@
 
       .progress-bar {
         fill: none;
-        stroke: #22c55e;
+        stroke: #e63946;
         stroke-width: 16px;
         stroke-dasharray: calc(2 * 3.14159 * 64);
-        stroke-dashoffset: calc((2 * 3.14159 * 64) * (1 - 0.84));
-        stroke-linecap: round;
-        transition: stroke-dashoffset 0.5s ease-in-out;
+        stroke-dashoffset: calc((2 * 3.14159 * 64));
+        /* stroke-linecap: round; */
+        /* transition: stroke-dashoffset 0.5s ease-in-out; */
       }
 
       .utility--title {
@@ -620,11 +620,11 @@
         stroke-width: 12px;
         stroke: #22c55e;
         stroke-dasharray: calc(2 * 3.1415 * 66);
-        stroke-dashoffset: calc((2 * 3.1415 * 66) * (1 - (416 / 2000)));
+        stroke-dashoffset: calc((2 * 3.1415 * 66));
 
-        transition: 0.3s stroke-dashoffset;
+        /* transition: 0.3s stroke-dashoffset; */
 
-        stroke-linecap: round;
+        /* stroke-linecap: round; */
       }
 
       ul.nutrition--items {
@@ -2240,12 +2240,18 @@
             </div>
 
             <div class="analyze__utility--container">
-              <div class="utility--diag">
+              <div class="utility--diag" id="diag">
                 <svg viewBox="0 0 150 150">
                   <circle class="progress-bg" cx="75" cy="75" r="66"></circle>
-                  <circle class="progress-bar" cx="75" cy="75" r="66"></circle>
+                  <circle
+                    class="progress-bar"
+                    id="progressBar"
+                    cx="75"
+                    cy="75"
+                    r="66"
+                  ></circle>
                 </svg>
-                84
+                <span class="utility--diag__value">0</span>
               </div>
 
               <div class="utility--info">
@@ -2327,20 +2333,20 @@
           </section>
 
           <nav class="analyze--navigation">
-            <a href="#" class="analyze--link">Nutrition</a>
-            <a href="#" class="analyze--link active">Ingredients</a>
-            <a href="#" class="analyze--link">Health</a>
-            <a href="#" class="analyze--link">Alternative</a>
-            <a href="#" class="analyze--link">Tips</a>
+            <a href="#sec_1" class="analyze--link">Nutrition</a>
+            <a href="#sec_2" class="analyze--link active">Ingredients</a>
+            <a href="#sec_3" class="analyze--link">Health</a>
+            <a href="#sec_4" class="analyze--link">Alternative</a>
+            <a href="#sec_5" class="analyze--link">Tips</a>
           </nav>
 
-          <section class="section--nutrition">
+          <section class="section--nutrition" id="sec_1">
             <h2 class="nutrition--title">Nutrition</h2>
             <p class="nutrition--subtitle">
               Calories & macronutrients daily allowance
             </p>
             <div class="nutrition--content">
-              <div class="nutrition--circle">
+              <div class="nutrition--circle" id="diag-nutrition">
                 <svg viewBox="0 0 150 150">
                   <circle
                     class="nutrition--circle--bg"
@@ -2355,7 +2361,9 @@
                     r="66"
                   ></circle>
                 </svg>
-                <strong>435/2000</strong>
+                <strong
+                  ><b style="font-weight: 500" id="nut_value">0</b>/2000</strong
+                >
                 <span>kcal</span>
               </div>
 
@@ -2516,7 +2524,7 @@
             </div>
           </section>
 
-          <section class="section--ing">
+          <section class="section--ing" id="sec_2">
             <h2 class="ing--title">Ingredients</h2>
             <p class="ing--subtitle">What’s inside your meal</p>
 
@@ -2663,7 +2671,7 @@
             </div>
           </section>
 
-          <section class="section--health">
+          <section class="section--health" id="sec_3">
             <h2>Health</h2>
             <p class="health--subtitle">Key health indicators</p>
 
@@ -2835,7 +2843,7 @@
             </div>
           </section>
 
-          <section class="section--alt">
+          <section class="section--alt" id="sec_4">
             <h2>Healthy Alternative</h2>
             <p class="alt--subtitle">A better choice for you</p>
 
@@ -2868,6 +2876,7 @@
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
                       height="24"
+                      viewBox="0 0 24 24"
                       fill="none"
                     >
                       <g
@@ -2944,6 +2953,7 @@
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
                       height="24"
+                      viewBox="0 0 24 24"
                       fill="none"
                     >
                       <g clip-path="url(#ad)">
@@ -2989,7 +2999,7 @@
             </div>
           </section>
 
-          <section class="section--tip">
+          <section class="section--tip" id="sec_5">
             <h2>Recommendations from&nbsp;Advice<span>Food</span></h2>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
