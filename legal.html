@@ -1168,7 +1168,81 @@
         overflow-y: auto;
       }
 
-      
+      section.legal--meta {
+        font-family: "AA";
+      }
+
+      h1.legal--title {
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+
+      p.legal--subtitle {
+        margin-top: 4px;
+        margin-bottom: 26px;
+      }
+
+      .legal--notice {
+        background: #22c55e1a;
+        border-radius: 15px;
+        padding: 14px 31px;
+        padding-bottom: 19px;
+        text-align: center;
+      }
+
+      strong.security--title {
+        font-weight: 500;
+        margin-top: 3px;
+        margin-bottom: 2px;
+      }
+
+      .docs--title {
+        margin-top: 48px;
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+
+      p.docs--subtitle {
+        margin-bottom: 32px;
+      }
+
+      ul.docs--container {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 70px;
+      }
+
+      a.doc--link {
+        text-decoration: none;
+        color: #000000;
+        border-radius: 15px;
+        padding: 21px 23px;
+        font-family: "AA";
+        display: block;
+        background: white;
+        box-shadow: 0 4px 20px 0 #0000001a;
+      }
+
+      strong.doc--title {
+        font-weight: 500;
+        font-size: 1.125rem;
+        margin-bottom: 3px;
+      }
+
+      p.doc--desc {
+        font-size: 0.875rem;
+        margin-bottom: 12px;
+      }
+
+      span.doc--date {
+        color: #000000b2;
+        font-size: 0.875rem;
+      }
 
       @media screen and (min-width: 430px) {
         a.header--logo svg {
@@ -1329,26 +1403,16 @@
 
       @media screen and (min-width: 1128px) {
         @supports (display: grid) {
-          
-
           .navigation--menu .container {
             max-height: calc(100dvh - 180px);
             overflow-y: auto;
           }
 
-        
-
-        
-
-        header.secondary {
-          display: none;
+          header.secondary {
+            display: none;
+          }
         }
-
-        
       }
-    }
-
-      
 
       @media screen and (min-width: 1440px) {
         a.header--logo b {
@@ -1398,11 +1462,7 @@
         a.back--block span {
           font-size: 1.25rem;
         }
-
-        
       }
-
-      
     </style>
   </head>
   <body>
@@ -1733,107 +1793,136 @@
         <div class="main--inner">
           <section class="legal--meta">
             <h1 class="legal--title">Legal information</h1>
-            <p class="legal--subtitle">AdviceFood documents and operating rules. We strive to explain clearly how the service works, how food photos are used, and what rights users have.</p>
+            <p class="legal--subtitle">
+              AdviceFood documents and operating rules. We strive to explain
+              clearly how the service works, how food photos are used, and what
+              rights users&nbsp;have.
+            </p>
             <div class="legal--notice">
               <div class="security--icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none"><g clip-path="url(#a)"><path fill="#22c55e" d="m23.996 4 .236.014.118.016.122.026.222.068q.231.086.434.224l.208.164.51.436a22 22 0 0 0 14.378 5.074l.684-.02a2 2 0 0 1 2.01 1.434 26 26 0 0 1-18.416 32.5 2 2 0 0 1-1.004 0 26 26 0 0 1-18.418-32.5 2 2 0 0 1 2.01-1.434 22 22 0 0 0 15.062-5.054l.526-.45.192-.15q.203-.138.434-.224l.224-.068q.117-.029.238-.042zm7.42 14.586a2 2 0 0 0-2.83 0L22 25.17l-2.586-2.584-.188-.166a2 2 0 0 0-2.64 2.994l4 4 .188.166a2 2 0 0 0 2.64-.166l8-8 .166-.188a2 2 0 0 0-.166-2.64z"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h48v48H0z"/></clipPath></defs></svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="48"
+                  height="48"
+                  fill="none"
+                >
+                  <g clip-path="url(#v)">
+                    <path
+                      fill="#22c55e"
+                      d="m23.996 4 .236.014.118.016.122.026.222.068q.231.086.434.224l.208.164.51.436a22 22 0 0 0 14.378 5.074l.684-.02a2 2 0 0 1 2.01 1.434 26 26 0 0 1-18.416 32.5 2 2 0 0 1-1.004 0 26 26 0 0 1-18.418-32.5 2 2 0 0 1 2.01-1.434 22 22 0 0 0 15.062-5.054l.526-.45.192-.15q.203-.138.434-.224l.224-.068q.117-.029.238-.042zm7.42 14.586a2 2 0 0 0-2.83 0L22 25.17l-2.586-2.584-.188-.166a2 2 0 0 0-2.64 2.994l4 4 .188.166a2 2 0 0 0 2.64-.166l8-8 .166-.188a2 2 0 0 0-.166-2.64z"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="v">
+                      <path fill="#fff" d="M0 0h48v48H0z" />
+                    </clipPath>
+                  </defs>
+                </svg>
               </div>
               <div class="security--info">
-                <strong class="security--title">Transparency and security</strong>
-                <p class="security--text">We value your trust and strive for an honest and understandable policy regarding data and technology.</p>
+                <strong class="security--title"
+                  >Transparency and&nbsp;security</strong
+                >
+                <p class="security--text">
+                  We value your trust and strive for an honest and
+                  understandable policy regarding data and&nbsp;technology.
+                </p>
               </div>
             </div>
             <h2 class="docs--title">Documents</h2>
-            <p class="docs--subtitle">Explore AdviceFood’s legal documents to learn about our policies, terms of service, and how we handle your data.</p>
+            <p class="docs--subtitle">
+              Explore AdviceFood’s legal documents to learn about our policies,
+              terms of service, and how we handle your&nbsp;data.
+            </p>
             <ul class="docs--container">
               <li class="doc--item">
                 <a href="#" class="doc--link">
                   <strong class="doc--title">Privacy policy</strong>
-                  <p class="doc--desc">Data processing and storage</p>
+                  <p class="doc--desc">Data processing and&nbsp;storage</p>
                   <span class="doc--date">Updated: 17.10.2026</span>
                 </a>
               </li>
               <li class="doc--item">
                 <a href="#" class="doc--link">
                   <strong class="doc--title">Privacy policy</strong>
-                  <p class="doc--desc">Data processing and storage</p>
+                  <p class="doc--desc">Data processing and&nbsp;storage</p>
                   <span class="doc--date">Updated: 17.10.2026</span>
                 </a>
               </li>
               <li class="doc--item">
                 <a href="#" class="doc--link">
                   <strong class="doc--title">Privacy policy</strong>
-                  <p class="doc--desc">Data processing and storage</p>
+                  <p class="doc--desc">Data processing and&nbsp;storage</p>
                   <span class="doc--date">Updated: 17.10.2026</span>
                 </a>
               </li>
               <li class="doc--item">
                 <a href="#" class="doc--link">
                   <strong class="doc--title">Privacy policy</strong>
-                  <p class="doc--desc">Data processing and storage</p>
+                  <p class="doc--desc">Data processing and&nbsp;storage</p>
                   <span class="doc--date">Updated: 17.10.2026</span>
                 </a>
               </li>
               <li class="doc--item">
                 <a href="#" class="doc--link">
                   <strong class="doc--title">Privacy policy</strong>
-                  <p class="doc--desc">Data processing and storage</p>
+                  <p class="doc--desc">Data processing and&nbsp;storage</p>
                   <span class="doc--date">Updated: 17.10.2026</span>
                 </a>
               </li>
               <li class="doc--item">
                 <a href="#" class="doc--link">
                   <strong class="doc--title">Privacy policy</strong>
-                  <p class="doc--desc">Data processing and storage</p>
+                  <p class="doc--desc">Data processing and&nbsp;storage</p>
                   <span class="doc--date">Updated: 17.10.2026</span>
                 </a>
               </li>
               <li class="doc--item">
                 <a href="#" class="doc--link">
                   <strong class="doc--title">Privacy policy</strong>
-                  <p class="doc--desc">Data processing and storage</p>
+                  <p class="doc--desc">Data processing and&nbsp;storage</p>
                   <span class="doc--date">Updated: 17.10.2026</span>
                 </a>
               </li>
               <li class="doc--item">
                 <a href="#" class="doc--link">
                   <strong class="doc--title">Privacy policy</strong>
-                  <p class="doc--desc">Data processing and storage</p>
+                  <p class="doc--desc">Data processing and&nbsp;storage</p>
                   <span class="doc--date">Updated: 17.10.2026</span>
                 </a>
               </li>
               <li class="doc--item">
                 <a href="#" class="doc--link">
                   <strong class="doc--title">Privacy policy</strong>
-                  <p class="doc--desc">Data processing and storage</p>
+                  <p class="doc--desc">Data processing and&nbsp;storage</p>
                   <span class="doc--date">Updated: 17.10.2026</span>
                 </a>
               </li>
               <li class="doc--item">
                 <a href="#" class="doc--link">
                   <strong class="doc--title">Privacy policy</strong>
-                  <p class="doc--desc">Data processing and storage</p>
+                  <p class="doc--desc">Data processing and&nbsp;storage</p>
                   <span class="doc--date">Updated: 17.10.2026</span>
                 </a>
               </li>
               <li class="doc--item">
                 <a href="#" class="doc--link">
                   <strong class="doc--title">Privacy policy</strong>
-                  <p class="doc--desc">Data processing and storage</p>
+                  <p class="doc--desc">Data processing and&nbsp;storage</p>
                   <span class="doc--date">Updated: 17.10.2026</span>
                 </a>
               </li>
               <li class="doc--item">
                 <a href="#" class="doc--link">
                   <strong class="doc--title">Privacy policy</strong>
-                  <p class="doc--desc">Data processing and storage</p>
+                  <p class="doc--desc">Data processing and&nbsp;storage</p>
                   <span class="doc--date">Updated: 17.10.2026</span>
                 </a>
               </li>
               <li class="doc--item">
                 <a href="#" class="doc--link">
                   <strong class="doc--title">Privacy policy</strong>
-                  <p class="doc--desc">Data processing and storage</p>
+                  <p class="doc--desc">Data processing and&nbsp;storage</p>
                   <span class="doc--date">Updated: 17.10.2026</span>
                 </a>
               </li>
