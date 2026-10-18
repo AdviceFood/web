@@ -949,6 +949,15 @@ a.doc--link:active {
   box-shadow: 0 4px 20px 0 transparent;
 }
 
+a.document--download {
+  transition:
+    0.3s transform,
+    0.3s background;
+  -webkit-transition:
+    0.3s transform,
+    0.3s background;
+}
+
 @media screen and (min-width: 850px) {
   a.doc--link:hover {
     transform: translateY(-4px);
@@ -961,5 +970,20 @@ a.doc--link:active {
     transition: 0.05s transform;
     -webkit-transition: 0.05s transform;
     box-shadow: 0 4px 20px 0 transparent;
+  }
+
+  a.document--download:hover {
+    background: #16a34a;
+  }
+
+  a.document--download:active {
+    transform: scale(0.98);
+    -webkit-transform: scale(0.98);
+    transition:
+      0.05s transform,
+      0.05s background;
+    -webkit-transition:
+      0.05s transform,
+      0.05s background;
   }
 }
