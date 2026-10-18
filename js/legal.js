@@ -19,12 +19,4 @@ document.addEventListener("DOMContentLoaded", () => {
       link.parentNode.classList.add("active");
     });
   });
-
-  const legals = document.querySelectorAll("a.doc--link");
-
-  legals.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-    });
-  });
 });
