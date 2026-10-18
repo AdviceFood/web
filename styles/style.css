@@ -948,3 +948,18 @@ a.doc--link:active {
   -webkit-transition: 0.05s transform;
   box-shadow: 0 4px 20px 0 transparent;
 }
+
+@media screen and (min-width: 850px) {
+  a.doc--link:hover {
+    transform: translateY(-4px);
+    -webkit-transform: translateY(-4px);
+  }
+
+  a.doc--link:active {
+    transform: scale(0.98) translateY(2px);
+    -webkit-transform: scale(0.98) translateY(2px);
+    transition: 0.05s transform;
+    -webkit-transition: 0.05s transform;
+    box-shadow: 0 4px 20px 0 transparent;
+  }
+}
