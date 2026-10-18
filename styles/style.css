@@ -935,3 +935,16 @@ ul.ra--list li:active {
     display: none;
   }
 }
+
+a.doc--link {
+  transition: 0.3s transform;
+  -webkit-transition: 0.3s transform;
+}
+
+a.doc--link:active {
+  transform: scale(0.98) translateY(2px);
+  -webkit-transform: scale(0.98) translateY(2px);
+  transition: 0.05s transform;
+  -webkit-transition: 0.05s transform;
+  box-shadow: 0 4px 20px 0 transparent;
+}
