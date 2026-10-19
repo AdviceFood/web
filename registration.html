@@ -1216,23 +1216,39 @@
         padding-left: 15px;
         padding-right: 15px;
         align-items: center;
-        background: #FFFFFF;
-        border-color: #E6E6E6;
+        background: #ffffff;
+        border-color: #e6e6e6;
         border-width: 1px;
         border-style: solid;
-        transition: .3s border-color, .3s border-width, .3s background, .3s transform;
-        -webkit-transition: .3s border-color,.3s border-color, .3s background, .3s transform;
+        transition:
+          0.3s border-color,
+          0.3s border-width,
+          0.3s background,
+          0.3s transform;
+        -webkit-transition:
+          0.3s border-color,
+          0.3s border-color,
+          0.3s background,
+          0.3s transform;
       }
 
       .input--block:hover {
-        border-color: #D7D7D7;
+        border-color: #d7d7d7;
       }
 
       .input--block:active {
         border-color: #c7c7c7;
         transform: scale(0.98);
-        transition: .05s border-color, .05s border-width, .05s background, .05s transform;
-        -webkit-transition: .05s border-color,.05s border-color, .05s background, .05s transform;
+        transition:
+          0.05s border-color,
+          0.05s border-width,
+          0.05s background,
+          0.05s transform;
+        -webkit-transition:
+          0.05s border-color,
+          0.05s border-color,
+          0.05s background,
+          0.05s transform;
       }
 
       .input--block:has(input:focus) {
@@ -1264,7 +1280,7 @@
       }
 
       .input--block input::placeholder {
-        color: #000000B2;
+        color: #000000b2;
       }
 
       .checkbox--flex {
@@ -1281,13 +1297,17 @@
         height: 26px;
         border-radius: 8px;
         background: white;
-        border: 1px solid #0000001A;
-        transition: .1s border, .1s background;
-        -webkit-transition: .1s border, .1s background;
+        border: 1px solid #0000001a;
+        transition:
+          0.1s border,
+          0.1s background;
+        -webkit-transition:
+          0.1s border,
+          0.1s background;
       }
 
       label.checkbox--label a {
-        color: #22C55E;
+        color: #22c55e;
         font-weight: 500;
         text-decoration: underline;
       }
@@ -1297,9 +1317,13 @@
       }
 
       button.register--btn {
-        background: #22C55E;
-        transition: .3s background, .3s transform;
-        -webkit-transition: .3s background, .3s transform;
+        background: #22c55e;
+        transition:
+          0.3s background,
+          0.3s transform;
+        -webkit-transition:
+          0.3s background,
+          0.3s transform;
         width: 100%;
         height: 52px;
         font-size: 1.125rem;
@@ -1313,18 +1337,22 @@
       }
 
       button.register--btn:hover {
-        background: #16A34A;
+        background: #16a34a;
       }
 
       button.register--btn:active {
-        background: #15803D;
+        background: #15803d;
         transform: scale(0.98);
-        transition: .05s background, .05s transform;
-        -webkit-transition: .05s background, .05s transform;
+        transition:
+          0.05s background,
+          0.05s transform;
+        -webkit-transition:
+          0.05s background,
+          0.05s transform;
       }
 
       span.register--line {
-        background: #0000001A;
+        background: #0000001a;
         height: 1px;
         width: 100%;
         margin-top: 26px;
@@ -1337,21 +1365,21 @@
 
       span.register--line:after {
         position: absolute;
-        content: 'or';
+        content: "or";
         top: 50%;
         transform: translateY(-60%) translateX(-50%);
         left: 50%;
         font-family: "AA";
         font-size: 1rem;
         font-weight: 500;
-        color: #000000B2;
+        color: #000000b2;
         padding-left: 10px;
         padding-right: 10px;
-        background: #F4F6F9;
+        background: #f4f6f9;
       }
 
       a.alt--btn {
-        border: 1px solid #E6E6E6;
+        border: 1px solid #e6e6e6;
         width: 100%;
         height: 52px;
         border-radius: 26px;
@@ -1364,8 +1392,12 @@
         font-size: 1rem;
         color: black;
         font-weight: 500;
-        transition: .3s background, .3s transform;
-        -webkit-transition: .3s background, .3s transform;
+        transition:
+          0.3s background,
+          0.3s transform;
+        -webkit-transition:
+          0.3s background,
+          0.3s transform;
       }
 
       .register--alternatives {
@@ -1375,9 +1407,13 @@
       }
 
       a.alt--btn:active {
-        transition: .05s background, .05s transform;
-        -webkit-transition: .05s background, .05s transform;
-        background: #E6E6E6;
+        transition:
+          0.05s background,
+          0.05s transform;
+        -webkit-transition:
+          0.05s background,
+          0.05s transform;
+        background: #e6e6e6;
         transform: scale(0.98);
       }
 
@@ -1472,7 +1508,7 @@
         }
 
         header nav {
-            display: none !important;
+          display: none !important;
         }
 
         a.header--logo {
@@ -1549,33 +1585,33 @@
         }
 
         header .secondary {
-            display: none !important;
+          display: none !important;
         }
 
         header .header--inner {
-            backdrop-filter: unset;
-            padding: 0;
-            padding-bottom: 0;
-            display: flex;
-            align-items: center;
-            flex-direction: row;
+          backdrop-filter: unset;
+          padding: 0;
+          padding-bottom: 0;
+          display: flex;
+          align-items: center;
+          flex-direction: row;
         }
 
         a.header--logo {
-            margin: 0;
+          margin: 0;
         }
 
         p.register--already {
-            display: block;
-            font-family: "AA";
-            font-size: 1.125rem;
+          display: block;
+          font-family: "AA";
+          font-size: 1.125rem;
         }
 
         p.register--already a {
-            color: #22C55E;
-            font-weight: 500;
-            text-decoration: underline;
-            font-family: "AA";
+          color: #22c55e;
+          font-weight: 500;
+          text-decoration: underline;
+          font-family: "AA";
         }
 
         main {
@@ -1615,14 +1651,18 @@
         }
 
         a.alt--btn:hover {
-            background: #F2F2F2;
+          background: #f2f2f2;
         }
 
         a.alt--btn:active {
-            transition: .05s background, .05s transform;
-            -webkit-transition: .05s background, .05s transform;
-            background: #E6E6E6;
-            transform: scale(0.98);
+          transition:
+            0.05s background,
+            0.05s transform;
+          -webkit-transition:
+            0.05s background,
+            0.05s transform;
+          background: #e6e6e6;
+          transform: scale(0.98);
         }
       }
 
@@ -1684,7 +1724,7 @@
         }
 
         header {
-            height: 120px;
+          height: 120px;
         }
       }
     </style>
@@ -2023,51 +2063,191 @@
           <p class="register--subtitle">
             Analyze food and save your analysis history.
           </p>
-          <form class="register--form" id="registerForm" action="#" method="post">
+          <form
+            class="register--form"
+            id="registerForm"
+            action="#"
+            method="post"
+          >
             <div class="input--block">
-                <span class="input--icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><g stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" clip-path="url(#a)" opacity=".7"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="m3 7 9 6 9-6"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h24v24H0z"/></clipPath></defs></svg>
-                </span>
-                <input placeholder="Enter your email" type="text" class="input--text">
-                
+              <span class="input--icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                >
+                  <g
+                    stroke="#000"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    clip-path="url(#a13)"
+                    opacity=".7"
+                  >
+                    <path
+                      d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+                    />
+                    <path d="m3 7 9 6 9-6" />
+                  </g>
+                  <defs>
+                    <clipPath id="a13">
+                      <path fill="#fff" d="M0 0h24v24H0z" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </span>
+              <input
+                placeholder="Enter your email"
+                type="text"
+                class="input--text"
+              />
             </div>
             <div class="input--block">
-                <span class="input--icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><g stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" clip-path="url(#a)" opacity=".7"><path d="M5 13a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"/><path d="M11 16a1 1 0 1 0 2 0 1 1 0 0 0-2 0M8 11V7a4 4 0 0 1 8 0v4"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h24v24H0z"/></clipPath></defs></svg>
-                </span>
-                <input placeholder="Create a password" type="password" class="input--text">
-                <span class="input--eye">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><g stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" clip-path="url(#a)"><path d="M10 12a2 2 0 1 0 4 0 2 2 0 0 0-4 0" opacity=".7"/><path d="M12 18q4.925 0 8.352-4.99a1.78 1.78 0 0 0 0-2.02Q16.924 6 12 6t-8.352 4.99a1.78 1.78 0 0 0 0 2.02Q7.076 18 12 18" opacity=".7"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h24v24H0z"/></clipPath></defs></svg>
-                </span>
+              <span class="input--icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                >
+                  <g
+                    stroke="#000"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    clip-path="url(#a14)"
+                    opacity=".7"
+                  >
+                    <path
+                      d="M5 13a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"
+                    />
+                    <path
+                      d="M11 16a1 1 0 1 0 2 0 1 1 0 0 0-2 0M8 11V7a4 4 0 0 1 8 0v4"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="a14">
+                      <path fill="#fff" d="M0 0h24v24H0z" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </span>
+              <input
+                placeholder="Create a password"
+                type="password"
+                class="input--text"
+              />
+              <span class="input--eye">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                >
+                  <g
+                    stroke="#000"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    clip-path="url(#a15)"
+                  >
+                    <path d="M10 12a2 2 0 1 0 4 0 2 2 0 0 0-4 0" opacity=".7" />
+                    <path
+                      d="M12 18q4.925 0 8.352-4.99a1.78 1.78 0 0 0 0-2.02Q16.924 6 12 6t-8.352 4.99a1.78 1.78 0 0 0 0 2.02Q7.076 18 12 18"
+                      opacity=".7"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="a15">
+                      <path fill="#fff" d="M0 0h24v24H0z" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </span>
             </div>
             <div class="input--block">
-                <span class="input--icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><g stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" clip-path="url(#a)" opacity=".7"><path d="M5 13a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"/><path d="M11 16a1 1 0 1 0 2 0 1 1 0 0 0-2 0M8 11V7a4 4 0 0 1 8 0v4"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h24v24H0z"/></clipPath></defs></svg>
-                </span>
-                <input placeholder="Confirm your password" type="password" class="input--text">
-                <span class="input--eye">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><g stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" clip-path="url(#a)"><path d="M10 12a2 2 0 1 0 4 0 2 2 0 0 0-4 0" opacity=".7"/><path d="M12 18q4.925 0 8.352-4.99a1.78 1.78 0 0 0 0-2.02Q16.924 6 12 6t-8.352 4.99a1.78 1.78 0 0 0 0 2.02Q7.076 18 12 18" opacity=".7"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h24v24H0z"/></clipPath></defs></svg>
-                </span>
+              <span class="input--icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                >
+                  <g
+                    stroke="#000"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    clip-path="url(#a16)"
+                    opacity=".7"
+                  >
+                    <path
+                      d="M5 13a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"
+                    />
+                    <path
+                      d="M11 16a1 1 0 1 0 2 0 1 1 0 0 0-2 0M8 11V7a4 4 0 0 1 8 0v4"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="a16">
+                      <path fill="#fff" d="M0 0h24v24H0z" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </span>
+              <input
+                placeholder="Confirm your password"
+                type="password"
+                class="input--text"
+              />
+              <span class="input--eye">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                >
+                  <g
+                    stroke="#000"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    clip-path="url(#a17)"
+                  >
+                    <path d="M10 12a2 2 0 1 0 4 0 2 2 0 0 0-4 0" opacity=".7" />
+                    <path
+                      d="M12 18q4.925 0 8.352-4.99a1.78 1.78 0 0 0 0-2.02Q16.924 6 12 6t-8.352 4.99a1.78 1.78 0 0 0 0 2.02Q7.076 18 12 18"
+                      opacity=".7"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="a17">
+                      <path fill="#fff" d="M0 0h24v24H0z" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </span>
             </div>
             <div class="checkbox--flex">
-                <div class="checkbox--block">
-                    <input type="checkbox" name="terms" id="termsCheck">
-                </div>
-                <label for="termsCheck" class="checkbox--label">
-                    I agree to the <a href="#">Terms of Service</a>.
-                </label>
+              <div class="checkbox--block">
+                <input type="checkbox" name="terms" id="termsCheck" />
+              </div>
+              <label for="termsCheck" class="checkbox--label">
+                I agree to the <a href="#">Terms of Service</a>.
+              </label>
             </div>
             <div class="checkbox--flex">
-                <div class="checkbox--block">
-                    <input type="checkbox" name="terms" id="termsCheck">
-                </div>
-                <label for="termsCheck" class="checkbox--label">
-                    I consent to the <a href="#">Processing of my personal data</a>.
-                </label>
+              <div class="checkbox--block">
+                <input type="checkbox" name="cons" id="consCheck" />
+              </div>
+              <label for="consCheck" class="checkbox--label">
+                I consent to the <a href="#">Processing of my personal data</a>.
+              </label>
             </div>
 
             <button type="submit" class="register--btn">
-                Create an account
+              Create an account
             </button>
           </form>
 
@@ -2075,12 +2255,47 @@
 
           <div class="register--alternatives">
             <a class="alt--btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><path fill="#fc3f1d" d="M2.04 12c0-5.523 4.476-10 10-10 5.522 0 10 4.477 10 10s-4.478 10-10 10c-5.524 0-10-4.477-10-10"/><path fill="#fff" d="M13.32 7.666h-.924c-1.694 0-2.585.858-2.585 2.123 0 1.43.616 2.1 1.881 2.96l1.045.703-3.003 4.487H7.49l2.695-4.014c-1.55-1.11-2.42-2.19-2.42-4.015 0-2.288 1.595-3.85 4.62-3.85h3.003v11.868H13.32z"/></svg>
-                <span>Continue with Yandex</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+              >
+                <path
+                  fill="#fc3f1d"
+                  d="M2.04 12c0-5.523 4.476-10 10-10 5.522 0 10 4.477 10 10s-4.478 10-10 10c-5.524 0-10-4.477-10-10"
+                />
+                <path
+                  fill="#fff"
+                  d="M13.32 7.666h-.924c-1.694 0-2.585.858-2.585 2.123 0 1.43.616 2.1 1.881 2.96l1.045.703-3.003 4.487H7.49l2.695-4.014c-1.55-1.11-2.42-2.19-2.42-4.015 0-2.288 1.595-3.85 4.62-3.85h3.003v11.868H13.32z"
+                />
+              </svg>
+              <span>Continue with Yandex</span>
             </a>
             <a class="alt--btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><g clip-path="url(#a)"><path fill="#07f" d="M0 11.52c0-5.43 0-8.146 1.687-9.833S6.09 0 11.52 0h.96c5.43 0 8.146 0 9.833 1.687S24 6.09 24 11.52v.96c0 5.43 0 8.146-1.687 9.833S17.911 24 12.48 24h-.96c-5.43 0-8.146 0-9.833-1.687S0 17.911 0 12.48z"/><path fill="#fff" d="M12.77 17.29c-5.47 0-8.59-3.75-8.72-9.99h2.74c.09 4.58 2.11 6.52 3.71 6.92V7.3h2.58v3.95c1.58-.17 3.24-1.97 3.8-3.95h2.58c-.43 2.44-2.23 4.24-3.51 4.98 1.28.6 3.33 2.17 4.11 5.01h-2.84c-.61-1.9-2.13-3.37-4.14-3.57v3.57z"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h24v24H0z"/></clipPath></defs></svg>
-                <span>Continue with Vkontakte</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+              >
+                <g clip-path="url(#a18)">
+                  <path
+                    fill="#07f"
+                    d="M0 11.52c0-5.43 0-8.146 1.687-9.833S6.09 0 11.52 0h.96c5.43 0 8.146 0 9.833 1.687S24 6.09 24 11.52v.96c0 5.43 0 8.146-1.687 9.833S17.911 24 12.48 24h-.96c-5.43 0-8.146 0-9.833-1.687S0 17.911 0 12.48z"
+                  />
+                  <path
+                    fill="#fff"
+                    d="M12.77 17.29c-5.47 0-8.59-3.75-8.72-9.99h2.74c.09 4.58 2.11 6.52 3.71 6.92V7.3h2.58v3.95c1.58-.17 3.24-1.97 3.8-3.95h2.58c-.43 2.44-2.23 4.24-3.51 4.98 1.28.6 3.33 2.17 4.11 5.01h-2.84c-.61-1.9-2.13-3.37-4.14-3.57v3.57z"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="a18">
+                    <path fill="#fff" d="M0 0h24v24H0z" />
+                  </clipPath>
+                </defs>
+              </svg>
+              <span>Continue with Vkontakte</span>
             </a>
           </div>
         </div>
