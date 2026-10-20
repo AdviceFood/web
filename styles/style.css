@@ -743,9 +743,6 @@ ul.ra--list li:active {
   transform: scale(1) translateX(-50%) translateY(-50%);
 }
 
-.input--block:hover {
-}
-
 @media screen and (min-width: 850px) {
   .navigation--menu.open,
   .navigation--menu {
