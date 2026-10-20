@@ -1239,8 +1239,7 @@
 
       .input--block:active {
         border-color: #c7c7c7;
-        border-width: 2px;
-        transform: scale(0.98);
+        transform: scale(0.99);
         transition:
           0.05s border-color,
           0.05s border-width,
@@ -1253,8 +1252,16 @@
           0.05s transform;
       }
 
+      .input--block:has(input.focused):active {
+        transform: scale(1);
+      }
+
       .input--block:has(input:focus) {
         border-color: #848484;
+      }
+
+      input:focus::placeholder {
+        opacity: 0;
       }
 
       span.input--icon,
@@ -1283,6 +1290,8 @@
 
       .input--block input::placeholder {
         color: #000000b2;
+        transition: 0.3s opacity;
+        -webkit-transition: 0.3s opacity;
       }
 
       .checkbox--flex {
@@ -1322,9 +1331,11 @@
         background: #22c55e;
         transition:
           0.3s background,
+          0.3s opacity,
           0.3s transform;
         -webkit-transition:
           0.3s background,
+          0.3s opacity,
           0.3s transform;
         width: 100%;
         height: 52px;
@@ -1351,6 +1362,17 @@
         -webkit-transition:
           0.05s background,
           0.05s transform;
+      }
+
+      button.register--btn:disabled {
+        opacity: 50%;
+      }
+
+      button.register--btn:disabled:active,
+      button.register--btn:disabled:hover {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        background: #22c55e;
       }
 
       span.register--line {
@@ -1417,6 +1439,40 @@
           0.05s transform;
         background: #e6e6e6;
         transform: scale(0.98);
+      }
+
+      .input--eye {
+        position: relative;
+        cursor: pointer;
+        min-width: 24px;
+      }
+
+      .input--eye svg:last-child {
+        opacity: 0;
+        pointer-events: none;
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        min-width: 24px;
+        left: 0;
+        top: 0;
+      }
+
+      .input--eye svg {
+        transition: 0.3s opacity;
+        -webkit-transition: 0.3s opacity;
+      }
+
+      .input--eye.show svg:last-child {
+        opacity: 1;
+        pointer-events: auto;
+        width: 24px;
+        height: 24px;
+      }
+
+      .input--eye.show svg:first-child {
+        opacity: 0;
+        pointer-events: none;
       }
 
       @media screen and (min-width: 430px) {
@@ -2166,6 +2222,34 @@
                     </clipPath>
                   </defs>
                 </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                >
+                  <g
+                    stroke="#000"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    clip-path="url(#a21)"
+                  >
+                    <path
+                      stroke-width="2"
+                      d="M14.113 14.116a2.666 2.666 0 1 0 3.772 3.77"
+                    />
+                    <path
+                      stroke-width="2.5"
+                      d="M22.241 22.23A11.6 11.6 0 0 1 16 24q-6.485 0-11.022-6.488a2.64 2.64 0 0 1 0-3.023q2.169-3.102 4.782-4.721m3.813-1.528A12 12 0 0 1 16 8q6.485 0 11.022 6.489a2.64 2.64 0 0 1 0 3.022 20 20 0 0 1-1.873 2.316M4 4l24 24"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="a21">
+                      <path fill="#fff" d="M0 0h32v32H0z" />
+                    </clipPath>
+                  </defs>
+                </svg>
               </span>
             </div>
             <div class="input--block">
@@ -2203,7 +2287,7 @@
                 type="password"
                 class="input--text"
               />
-              <span class="input--eye">
+              <span class="input--eye show">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -2229,11 +2313,39 @@
                     </clipPath>
                   </defs>
                 </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  fill="none"
+                  viewBox="0 0 32 32"
+                >
+                  <g
+                    stroke="#000"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    clip-path="url(#a20)"
+                  >
+                    <path
+                      stroke-width="2"
+                      d="M14.113 14.116a2.666 2.666 0 1 0 3.772 3.77"
+                    />
+                    <path
+                      stroke-width="2.5"
+                      d="M22.241 22.23A11.6 11.6 0 0 1 16 24q-6.485 0-11.022-6.488a2.64 2.64 0 0 1 0-3.023q2.169-3.102 4.782-4.721m3.813-1.528A12 12 0 0 1 16 8q6.485 0 11.022 6.489a2.64 2.64 0 0 1 0 3.022 20 20 0 0 1-1.873 2.316M4 4l24 24"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="a20">
+                      <path fill="#fff" d="M0 0h32v32H0z" />
+                    </clipPath>
+                  </defs>
+                </svg>
               </span>
             </div>
             <div class="checkbox--flex">
               <div class="checkbox--block">
-                <input type="checkbox" name="terms" id="termsCheck" />
+                <input required type="checkbox" name="terms" id="termsCheck" />
               </div>
               <label for="termsCheck" class="checkbox--label">
                 I agree to the <a href="#">Terms of Service</a>.
@@ -2241,14 +2353,14 @@
             </div>
             <div class="checkbox--flex">
               <div class="checkbox--block">
-                <input type="checkbox" name="cons" id="consCheck" />
+                <input required type="checkbox" name="cons" id="consCheck" />
               </div>
               <label for="consCheck" class="checkbox--label">
                 I consent to the <a href="#">Processing of my personal data</a>.
               </label>
             </div>
 
-            <button type="submit" class="register--btn">
+            <button type="submit" disabled class="register--btn">
               Create an account
             </button>
           </form>
@@ -2304,7 +2416,7 @@
       </div>
     </main>
 
-    <script src="js/sidebar.js"></script>
     <script src="js/legal.js"></script>
+    <script src="js/registration.js"></script>
   </body>
 </html>
