@@ -25,30 +25,25 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }, 125);
     } else {
-      let i = 0;
-      fillBorder = setInterval(() => {
+      for (let i = 0; i < code_fields.length; i++) {
         code_fields[i].classList.add("error");
-        i++;
-        if (i == code_fields.length) {
-          clearInterval(fillBorder);
+      }
 
-          setTimeout(() => {
-            for (let i = 0; i < code_fields.length; i++) {
-              code_fields[i].classList.add("shake");
-            }
-            let j = 0;
-            clear_code = setInterval(() => {
-              code_fields[j].querySelector("input").value = "";
-              code_fields[j].classList.remove("error");
-              code_fields[j].classList.remove("shake");
-              j++;
-              if (j == code_fields.length) {
-                clearInterval(clear_code);
-              }
-            }, 125);
-          }, 500);
+      setTimeout(() => {
+        for (let i = 0; i < code_fields.length; i++) {
+          code_fields[i].classList.add("shake");
         }
-      }, 125);
+        let j = 0;
+        clear_code = setInterval(() => {
+          code_fields[j].querySelector("input").value = "";
+          code_fields[j].classList.remove("error");
+          code_fields[j].classList.remove("shake");
+          j++;
+          if (j == code_fields.length) {
+            clearInterval(clear_code);
+          }
+        }, 125);
+      }, 500);
     }
   }
 
