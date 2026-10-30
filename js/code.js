@@ -4,47 +4,140 @@ document.addEventListener("DOMContentLoaded", () => {
   let fillBorder = null;
   let clear_code = null;
 
+  function playPiano(fields, opts = {}) {
+    const {
+      mode = "wave",
+      duration = 2000,
+      step = 140,
+      minGap = 80,
+      maxGap = 260,
+      containerSelector = ".code--fields",
+    } = opts;
+
+    const list = Array.from(fields);
+    const container = list[0]?.closest(containerSelector);
+
+    let stopped = false;
+    const timers = new Set();
+    let resolveDone;
+    const promise = new Promise((r) => (resolveDone = r));
+
+    function later(fn, ms) {
+      const id = setTimeout(() => {
+        timers.delete(id);
+        if (!stopped) fn();
+      }, ms);
+      timers.add(id);
+      return id;
+    }
+
+    function stop() {
+      if (stopped) return;
+      stopped = true;
+      timers.forEach(clearTimeout);
+      timers.clear();
+      list.forEach((f) => f.classList.remove("piano-up"));
+      container?.classList.remove("checking");
+      resolveDone();
+    }
+
+    container?.classList.add("checking");
+
+    const tick = (el) => {
+      if (stopped) return;
+      el.classList.remove("piano-up");
+      void el.offsetWidth;
+      el.classList.add("piano-up");
+      later(() => el.classList.remove("piano-up"), 300);
+    };
+
+    const endAt = performance.now() + duration;
+
+    function loop() {
+      if (stopped || performance.now() >= endAt) {
+        stop();
+        return;
+      }
+
+      if (mode === "simultaneous") {
+        list.forEach(tick);
+        later(loop, step * 2);
+      } else if (mode === "random") {
+        const el = list[Math.floor(Math.random() * list.length)];
+        tick(el);
+        later(loop, minGap + Math.random() * (maxGap - minGap));
+      } else {
+        let i = 0;
+        const waveStep = () => {
+          if (stopped || performance.now() >= endAt) {
+            stop();
+            return;
+          }
+          tick(list[i % list.length]);
+          i++;
+          later(waveStep, step);
+        };
+        waveStep();
+      }
+    }
+
+    requestAnimationFrame(loop);
+
+    return { stop, promise };
+  }
+
   function checkCode(code) {
     code_fields.forEach((f) =>
       f.classList.remove("success", "done", "error", "shake"),
     );
 
-    if (code == "777777") {
-      let i = 0;
-      fillBorder = setInterval(() => {
-        code_fields[i].classList.add("success");
-        i++;
-        if (i == code_fields.length) {
-          clearInterval(fillBorder);
+    const piano = playPiano(code_fields, {
+      mode: "wave",
+      duration: Infinity,
+      step: 200,
+    });
 
-          setTimeout(() => {
-            for (let i = 0; i < code_fields.length; i++) {
-              code_fields[i].classList.add("done");
-            }
-          }, 500);
-        }
-      }, 125);
-    } else {
-      for (let i = 0; i < code_fields.length; i++) {
-        code_fields[i].classList.add("error");
-      }
+    setTimeout(() => {
+      piano.stop();
+      if (code == "777777") {
+        let i = 0;
+        fillBorder = setInterval(() => {
+          code_fields[i].classList.add("success");
+          i++;
+          if (i == code_fields.length) {
+            clearInterval(fillBorder);
 
-      setTimeout(() => {
-        for (let i = 0; i < code_fields.length; i++) {
-          code_fields[i].classList.add("shake");
-        }
-        let j = 0;
-        clear_code = setInterval(() => {
-          code_fields[j].querySelector("input").value = "";
-          code_fields[j].classList.remove("error");
-          code_fields[j].classList.remove("shake");
-          j++;
-          if (j == code_fields.length) {
-            clearInterval(clear_code);
+            setTimeout(() => {
+              for (let i = 0; i < code_fields.length; i++) {
+                code_fields[i].classList.add("done");
+              }
+            }, 500);
           }
         }, 125);
-      }, 500);
-    }
+      } else {
+        for (let i = 0; i < code_fields.length; i++) {
+          code_fields[i].classList.add("error");
+        }
+
+        setTimeout(() => {
+          for (let i = 0; i < code_fields.length; i++) {
+            code_fields[i].classList.add("shake");
+          }
+          setTimeout(() => {
+            let j = 0;
+            clear_code = setInterval(() => {
+              code_fields[j].querySelector("input").value = "";
+              code_fields[j].classList.remove("error");
+              code_fields[j].classList.remove("shake");
+              j++;
+              if (j == code_fields.length) {
+                clearInterval(clear_code);
+              }
+            }, 125);
+          }, 500);
+        }, 500);
+      }
+    }, 5000);
   }
 
   form.addEventListener("submit", (e) => {
