@@ -1494,7 +1494,7 @@
       }
 
       p.code--resend a {
-        color: #22C55E;
+        color: #22c55e;
         font-weight: 500;
         text-decoration: underline;
         white-space: nowrap;
@@ -1508,9 +1508,14 @@
         position: relative;
         display: block;
         z-index: 2;
-        box-shadow: 0 0 0 1px #0000001A;
-        transition: .3s box-shadow, .3s transform;
-        -webkit-transition: .3s box-shadow, .3s background, .3s transform;
+        box-shadow: 0 0 0 1px #0000001a;
+        transition:
+          0.3s box-shadow,
+          0.3s transform;
+        -webkit-transition:
+          0.3s box-shadow,
+          0.3s background,
+          0.3s transform;
         overflow: hidden;
       }
 
@@ -1546,34 +1551,39 @@
       }
 
       .input--code:has(input:focus) {
-        box-shadow: 0 0 0 2px #000000B2;
+        box-shadow: 0 0 0 2px #000000b2;
       }
 
       .input--code:active {
-        box-shadow: 0 0 0 1px #0000001A;
-        background: #E6E6E6;
+        box-shadow: 0 0 0 1px #0000001a;
+        background: #e6e6e6;
         transform: scale(0.98);
         -webkit-transform: scale(0.98);
-        transition: .05s box-shadow, .05s transform;
-        -webkit-transition: .05s box-shadow, .05s background, .05s transform;
+        transition:
+          0.05s box-shadow,
+          0.05s transform;
+        -webkit-transition:
+          0.05s box-shadow,
+          0.05s background,
+          0.05s transform;
       }
 
       .input--code.success {
-        box-shadow: 0 0 0 2px #22C55E;
+        box-shadow: 0 0 0 2px #22c55e;
         animation: pulse ease-in-out 1 0.15s;
       }
 
       .input--code.success.done {
-        box-shadow: 0 0 0 2px #22C55E;
-        background: #22C55E1A;
+        box-shadow: 0 0 0 2px #22c55e;
+        background: #22c55e1a;
       }
 
       .input--code.error {
-        box-shadow: 0 0 0 2px #E53935;
+        box-shadow: 0 0 0 2px #e53935;
       }
 
       .input--code.error.shake {
-        box-shadow: 0 0 0 2px #E53935;
+        box-shadow: 0 0 0 2px #e53935;
         animation: shake ease-in-out 1 0.15s;
       }
 
@@ -1942,7 +1952,7 @@
 
         .input--code:has(input:focus),
         .input--code:hover {
-          box-shadow: 0 0 0 2px #000000B2;
+          box-shadow: 0 0 0 2px #000000b2;
         }
 
         .input--code {
@@ -2367,26 +2377,26 @@
             action="#"
             method="post"
           >
-          <div class="code--fields">
-            <div class="input--code">
-              <input type="number" name="code_1" id="code_1">
+            <div class="code--fields">
+              <div class="input--code">
+                <input type="number" name="code_1" id="code_1" />
+              </div>
+              <div class="input--code">
+                <input type="number" name="code_2" id="code_2" />
+              </div>
+              <div class="input--code">
+                <input type="number" name="code_3" id="code_3" />
+              </div>
+              <div class="input--code">
+                <input type="number" name="code_4" id="code_4" />
+              </div>
+              <div class="input--code">
+                <input type="number" name="code_5" id="code_5" />
+              </div>
+              <div class="input--code">
+                <input type="number" name="code_6" id="code_6" />
+              </div>
             </div>
-            <div class="input--code">
-              <input type="number" name="code_2" id="code_2">
-            </div>
-            <div class="input--code">
-              <input type="number" name="code_3" id="code_3">
-            </div>
-            <div class="input--code">
-              <input type="number" name="code_4" id="code_4">
-            </div>
-            <div class="input--code">
-              <input type="number" name="code_5" id="code_5">
-            </div>
-            <div class="input--code">
-              <input type="number" name="code_6" id="code_6">
-            </div>
-          </div>
           </form>
 
           <p class="code--resend">
@@ -2394,32 +2404,30 @@
           </p>
 
           <a class="back--block center" href="#">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                fill="none"
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+            >
+              <g
+                stroke="#000"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                clip-path="url(#a7)"
+                opacity=".7"
               >
-                <g
-                  stroke="#000"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  clip-path="url(#a7)"
-                  opacity=".7"
-                >
-                  <path d="M5 12h14M5 12l6 6M5 12l6-6" />
-                </g>
-                <defs>
-                  <clipPath id="a7">
-                    <path fill="#fff" d="M0 0h24v24H0z" />
-                  </clipPath>
-                </defs>
-              </svg>
-              <span>Back to sign up</span>
-            </a>
-
-          
+                <path d="M5 12h14M5 12l6 6M5 12l6-6" />
+              </g>
+              <defs>
+                <clipPath id="a7">
+                  <path fill="#fff" d="M0 0h24v24H0z" />
+                </clipPath>
+              </defs>
+            </svg>
+            <span>Back to sign up</span>
+          </a>
         </div>
       </div>
     </main>
