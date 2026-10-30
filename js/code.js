@@ -124,13 +124,14 @@ document.addEventListener("DOMContentLoaded", () => {
             code_fields[i].classList.add("shake");
           }
           setTimeout(() => {
-            let j = 0;
+            let j = 1;
             clear_code = setInterval(() => {
-              code_fields[j].querySelector("input").value = "";
-              code_fields[j].classList.remove("error");
-              code_fields[j].classList.remove("shake");
+              code_fields[code_fields.length - j].querySelector("input").value =
+                "";
+              code_fields[code_fields.length - j].classList.remove("error");
+              code_fields[code_fields.length - j].classList.remove("shake");
               j++;
-              if (j == code_fields.length) {
+              if (j == code_fields.length + 1) {
                 clearInterval(clear_code);
               }
             }, 125);
