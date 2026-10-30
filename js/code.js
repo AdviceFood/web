@@ -87,9 +87,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function checkCode(code) {
+    if (code.length != 6) return;
     code_fields.forEach((f) =>
       f.classList.remove("success", "done", "error", "shake"),
     );
+    code_fields.forEach((f) => f.querySelector("input").blur());
 
     const piano = playPiano(code_fields, {
       mode: "wave",
@@ -168,16 +170,10 @@ document.addEventListener("DOMContentLoaded", () => {
           if (target) target.querySelector("input").value = d;
         });
         this.value = digits[0];
-        const lastFilled = Math.min(
-          index + digits.length - 1,
-          code_fields.length - 1,
-        );
         code_fields.forEach((f) => f.querySelector("input").blur());
-        if (lastFilled === code_fields.length - 1) {
-          let code = "";
-          for (const f of code_fields) code += f.querySelector("input").value;
-          checkCode(code);
-        }
+        let code = "";
+        for (const f of code_fields) code += f.querySelector("input").value;
+        checkCode(code);
         return;
       }
 
@@ -192,6 +188,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const nextInput = code_fields[index + 1] ?? null;
         if (nextInput) {
           nextInput.querySelector("input").focus();
+          let code = "";
+          for (let i = 0; i < code_fields.length; i++)
+            code += code_fields[i].querySelector("input").value;
+          checkCode(code);
         } else {
           input.blur();
           let code = "";
