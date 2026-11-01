@@ -34,7 +34,6 @@ jobs:
       - name: Run pre-commit on all files
         id: precommit
         run: |
-          # Запускаем pre-commit на всех файлах
           pre-commit run --all-files --show-diff-on-failure
 
       - name: Upload pre-commit report
@@ -63,7 +62,7 @@ jobs:
           failed=0
 
           for file in *.html; do
-            echo "🔍 Проверка $file"
+            echo "🔍 Checking $file"
 
             curl -s \
               -H "Content-Type: text/html; charset=utf-8" \
@@ -72,12 +71,12 @@ jobs:
               -o validation-result.json
 
             if grep -q '"type":"error"' validation-result.json; then
-              echo "❌ Найдены ошибки в $file"
+              echo "❌ Errors in $file"
               echo ""
               cat validation-result.json | grep -A2 '"type":"error"' || true
               failed=1
             else
-              echo "✅ $file прошел валидацию"
+              echo "✅ $file Passed"
             fi
 
             echo ""
@@ -99,13 +98,11 @@ jobs:
       - name: Validate CSS with W3C API
         id: css-check
         run: |
-          # Отправляем CSS на валидатор W3C
           curl -s -H "Content-Type: text/css; charset=utf-8" \
                --data-binary @styles/style.css \
                "https://jigsaw.w3.org/css-validator/validator?output=json&text=true" \
                -o validation-result.json
 
-          # Проверяем результат
           if grep -q '"validity": false' validation-result.json; then
             echo "❌ Найдены ошибки в CSS!"
             echo ""
