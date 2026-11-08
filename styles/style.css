@@ -63,8 +63,8 @@ ul.nav--list li b {
 ul.nav--list li a:active {
   transform: scale(0.98);
   -webkit-transform: scale(0.98);
-  background: var(--lt-text-alt);
-  color: white;
+  background: transparent;
+  color: black;
   transition: 0.05s transform;
   -webkit-transition: 0.05s transform;
   -moz-transition: 0.05s transform;
@@ -80,7 +80,7 @@ ul.nav--list li a:active b {
   -ms-transition: 0.05s color; */
   transition: none;
   -webkit-transition: none;
-  color: white;
+  color: black;
 }
 
 a,
@@ -89,12 +89,17 @@ button {
   -webkit-tap-highlight-color: transparent;
 }
 
-ul.nav--list li.active a svg g path {
-  stroke: white;
+/* ul.nav--list li.active a svg path {
+  stroke: #22c55e;
+} */
+
+ul.nav--list li#homeLink.active a svg path {
+  fill: #22c55e;
+  stroke: none;
 }
 
-ul.nav--list li a:active svg g path {
-  stroke: white;
+ul.nav--list li:not(.active) a:active svg path {
+  stroke: #22c55e;
   /* transition: 0.05s stroke;
   -webkit-transition: 0.05s stroke;
   -moz-transition: 0.05s stroke;
@@ -105,11 +110,11 @@ ul.nav--list li a:active svg g path {
 }
 
 ul.nav--list li.active a {
-  background: var(--lt-text-alt);
+  background: transparent;
 }
 
 ul.nav--list li.active a {
-  color: white;
+  color: black;
 }
 
 .navigation--menu.open {
@@ -683,10 +688,8 @@ a.ra--full:active {
   transform: scale(0.98);
 }
 
-li.al.active a svg path,
-li.al:active a svg path {
-  stroke: #fff;
-  fill: #fff;
+li:not(.active).al:active a svg path {
+  stroke: #22c55e;
 }
 
 button.alt--recipe {
@@ -972,6 +975,15 @@ ul.ra--list li:active {
 @media screen and (min-width: 1700px) {
   p.subscribe--tip {
     display: none;
+  }
+
+  .navigation--menu.open,
+  .navigation--menu {
+    left: 0;
+    transform: none;
+    margin-top: 0;
+    position: static;
+    width: 285px;
   }
 }
 

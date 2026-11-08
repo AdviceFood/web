@@ -144,7 +144,7 @@
         border-radius: 1px;
       }
 
-      .nav--list:last-child::after {
+      .nav--list:nth-child(4)::after {
         display: none;
       }
 
@@ -1163,9 +1163,166 @@
         -webkit-transition: .3s all ease-in-out;
       } */
 
-      .navigation--menu .container {
-        max-height: calc(100dvh - 120px);
+      .navigation--menu .container .navigation--wrap {
+        max-height: calc(100dvh - 130px);
         overflow-y: auto;
+        height: calc(100dvh - 130px);
+        display: flex;
+        flex-direction: column;
+      }
+
+      ul.nav--list li.nav--profile {
+        height: 72px;
+      }
+
+      ul.nav--list li.nav--profile a {
+        background: #f5f5f7;
+        border-radius: 15px;
+        padding: 10px;
+        padding-right: 20px;
+      }
+
+      ul.nav--list li.nav--profile img {
+        min-width: 52px;
+        min-height: 52px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+      }
+
+      .profile--link--meta {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 42px;
+        margin-right: auto;
+      }
+
+      .profile--link--meta strong {
+        font-size: 1.125rem;
+        font-weight: 500;
+      }
+
+      .profile--link--meta span {
+        font-size: 1rem;
+        color: #000000b2;
+        font-weight: 400;
+      }
+
+      ul.nav--list li.centerMode a {
+        justify-content: center;
+      }
+
+      ul.nav--list li.centerMode:nth-child(2) a {
+        background: #22c55e;
+        color: white;
+      }
+
+      ul.nav--list li.centerMode:nth-child(2) {
+        margin-top: 20px;
+        margin-bottom: 13px;
+      }
+
+      ul.nav--list li.centerMode:nth-child(2) a svg g {
+        stroke: white;
+      }
+
+      ul.nav--list li.centerMode:nth-child(3) a {
+        background: #f5f5f7;
+      }
+
+      ul.nav--list.profile {
+        gap: 0;
+        padding-bottom: 30px;
+      }
+
+      ul.nav--list li.nav--profile:nth-child(3) a:active,
+      ul.nav--list li.active.nav--profile:nth-child(3) a,
+      ul.nav--list li.active.centerMode:nth-child(3) a,
+      ul.nav--list li.active.centerMode:nth-child(3) a svg g path,
+      ul.nav--list li.centerMode:nth-child(3) a svg g path,
+      ul.nav--list li.centerMode:nth-child(3) a:active b {
+        color: black;
+      }
+
+      ul.nav--list li.centerMode:nth-child(3) a:active svg g path,
+      ul.nav--list li.active.centerMode:nth-child(3) a svg g path {
+        stroke: black;
+      }
+
+      ul.nav--list li.centerMode:nth-child(2) a:active b,
+      ul.nav--list li.centerMode:nth-child(2) a:active svg g path,
+      ul.nav--list li.centerMode:nth-child(2) a svg g path {
+        color: white;
+        stroke: white;
+      }
+
+      ul.nav--list li.nav--profile:nth-child(1) a:active {
+        color: black;
+      }
+
+      ul.nav--list li.centerMode:nth-child(3) a:active,
+      ul.nav--list li.nav--profile:nth-child(1) a:active {
+        background: #00000026;
+      }
+
+      ul.nav--list li.centerMode:nth-child(2) a:active {
+        background: #15803d;
+      }
+
+      .navigation--menu .container {
+        position: relative;
+      }
+
+      p.copyright--nav {
+        color: #00000080;
+        font-family: "AA";
+        font-size: 0.875rem;
+        margin-top: auto;
+        padding-top: 30px;
+      }
+
+      body:has(.navigation--menu.open),
+      html:has(.navigation--menu.open) {
+        overflow-y: hidden;
+      }
+
+      .nav--list li a:has(.svg--transition) b {
+        opacity: 0.8;
+      }
+
+      .nav--list li.active a b {
+        opacity: 1;
+      }
+
+      .svg--transition {
+        position: relative;
+        width: 28px;
+        height: 28px;
+      }
+
+      .svg--transition svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transition: 0.3s opacity;
+        -webkit-transition: 0.3s opacity;
+        transform: translateX(-50%) translateY(-50%);
+      }
+
+      .svg--transition svg:last-child {
+        opacity: 0;
+      }
+
+      li.active .svg--transition svg:last-child {
+        opacity: 1;
+      }
+
+      li.active .svg--transition svg:first-child {
+        opacity: 0;
+      }
+
+      ul.nav--list li a {
+        padding-left: 0;
       }
 
       @media screen and (min-width: 430px) {
@@ -1210,6 +1367,10 @@
       }
 
       @media screen and (min-width: 850px) {
+        p.copyright--nav {
+          display: none;
+        }
+
         .burger--button {
           display: none;
         }
@@ -1272,6 +1433,11 @@
           padding: 0;
           border-radius: 26px;
           list-style: none;
+          max-width: 100%;
+        }
+
+        .nav--list::after {
+          max-width: 100%;
         }
 
         ul.nav--list li a {
@@ -1322,6 +1488,15 @@
         .navigation--menu .container {
           max-height: calc(100dvh - 120px);
           overflow-y: auto;
+        }
+
+        ul.nav--list.profile {
+          display: none;
+        }
+
+        .navigation--menu .container .navigation--wrap {
+          height: auto;
+          display: unset;
         }
       }
 
@@ -1591,6 +1766,7 @@
         }
 
         ul.nav--list li {
+          max-width: 250px;
           width: 285px;
           height: 52px;
         }
@@ -1759,6 +1935,10 @@
         .ing--block:nth-child(2) {
           flex: 1 1 calc((100% - 420px) / 3);
         }
+
+        ul.nav--list li {
+          max-width: 285px;
+        }
       }
 
       @media screen and (min-width: 1800px) {
@@ -1864,6 +2044,10 @@
           width: 100%;
         }
       }
+
+      .profile--link--meta strong {
+        color: #000 !important;
+      }
     </style>
   </head>
   <body>
@@ -1889,298 +2073,360 @@
           </a>
 
           <nav>
-            <div class="burger--button" id="burgerButton">
+            <div class="burger--button open" id="burgerButton">
               <span class="burger--line"></span>
               <span class="burger--line"></span>
               <span class="burger--line"></span>
             </div>
 
-            <div class="navigation--menu" id="navMenu">
+            <div class="navigation--menu open" id="navMenu">
               <div class="container">
-                <ul class="nav--list">
-                  <li>
-                    <a href="#">
-                      <svg
-                        width="26"
-                        height="26"
-                        viewBox="0 0 26 26"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <g opacity="0.9">
-                          <path
-                            d="M5.41667 13H3.25L13 3.25L22.75 13H20.5833"
-                            stroke="black"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                          <path
-                            d="M5.41675 13V20.5833C5.41675 21.158 5.64502 21.7091 6.05135 22.1154C6.45768 22.5217 7.00878 22.75 7.58341 22.75H18.4167C18.9914 22.75 19.5425 22.5217 19.9488 22.1154C20.3551 21.7091 20.5834 21.158 20.5834 20.5833V13"
-                            stroke="black"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                          <path
-                            d="M9.75 22.75V16.25C9.75 15.6754 9.97827 15.1243 10.3846 14.7179C10.7909 14.3116 11.342 14.0833 11.9167 14.0833H14.0833C14.658 14.0833 15.2091 14.3116 15.6154 14.7179C16.0217 15.1243 16.25 15.6754 16.25 16.25V22.75"
-                            stroke="black"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                        </g>
-                      </svg>
-                      <b>Home</b>
-                    </a>
-                  </li>
-                </ul>
-
-                <ul class="nav--list">
-                  <li class="active">
-                    <a href="#">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="26"
-                        height="26"
-                        fill="none"
-                      >
-                        <g
-                          stroke="#000"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2.5"
-                          clip-path="url(#a8)"
-                          opacity=".9"
+                <div class="navigation--wrap">
+                  <ul class="nav--list profile">
+                    <li class="nav--profile">
+                      <a href="#" class="nav--profile--link">
+                        <img
+                          src="/img/avatar.png"
+                          width="52"
+                          height="52"
+                          alt=""
+                          class="profile--photo"
+                        />
+                        <div class="profile--link--meta">
+                          <strong>Nickname</strong>
+                          <span>My profile</span>
+                        </div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="10"
+                          height="18"
+                          fill="none"
                         >
-                          <path d="M13 4v18M4 13h18" />
-                        </g>
-                        <defs>
-                          <clipPath id="a8">
-                            <path fill="#fff" d="M0 0h26v26H0z" />
-                          </clipPath>
-                        </defs>
-                      </svg>
-                      <b>New analysis</b>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="26"
-                        height="26"
-                        fill="none"
-                      >
-                        <g clip-path="url(#a1)">
-                          <path
-                            fill="#fff"
-                            stroke="#000"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M9.75 4.333H5.417A2.167 2.167 0 0 0 3.25 6.5v11.917a2.167 2.167 0 0 0 2.167 2.166h15.166a2.166 2.166 0 0 0 2.167-2.166V9.75a2.167 2.167 0 0 0-2.167-2.167H13z"
-                          />
-                        </g>
-                        <defs>
-                          <clipPath id="a1">
-                            <path fill="#fff" d="M0 0h26v26H0z" />
-                          </clipPath>
-                        </defs>
-                      </svg>
-                      <b>My analyses</b>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="26"
-                        height="26"
-                        fill="none"
-                      >
-                        <g clip-path="url(#a2)">
                           <path
                             stroke="#000"
                             stroke-linecap="round"
                             stroke-linejoin="round"
+                            stroke-opacity=".7"
                             stroke-width="2"
-                            d="M9.75 7.583h6.5m-6.5 4.334h6.5m-2.167 4.333h2.167m-10.833 6.5V5.417A2.167 2.167 0 0 1 7.583 3.25h10.834a2.167 2.167 0 0 1 2.166 2.167V22.75l-3.25-2.167-2.166 2.167L13 20.583l-2.167 2.167-2.166-2.167z"
+                            d="m1 17 8-8-8-8"
                           />
-                        </g>
-                        <defs>
-                          <clipPath id="a2">
-                            <path fill="#fff" d="M0 0h26v26H0z" />
-                          </clipPath>
-                        </defs>
-                      </svg>
-                      <b>My recipes</b>
-                    </a>
-                  </li>
-                </ul>
-
-                <ul class="nav--list">
-                  <li>
-                    <a href="#">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="26"
-                        height="26"
-                        fill="none"
-                      >
-                        <g
-                          stroke="#000"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          clip-path="url(#a3)"
+                        </svg>
+                      </a>
+                    </li>
+                    <li class="centerMode">
+                      <a href="#">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="26"
+                          height="26"
+                          fill="none"
                         >
-                          <path
-                            d="M9.936 10.648a4.333 4.333 0 1 1 6.128-6.129 4.333 4.333 0 0 1-6.128 6.129M6.5 22.75v-2.167a4.333 4.333 0 0 1 4.333-4.333h4.334a4.333 4.333 0 0 1 4.333 4.333v2.167"
-                          />
-                        </g>
-                        <defs>
-                          <clipPath id="a3">
-                            <path fill="#fff" d="M0 0h26v26H0z" />
-                          </clipPath>
-                        </defs>
-                      </svg>
-                      <b>Profile</b>
-                    </a>
-                  </li>
-
-                  <li class="al">
-                    <a href="#">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="26"
-                        height="26"
-                        fill="none"
-                      >
-                        <path
-                          fill="#000"
-                          stroke="#000"
-                          stroke-width=".5"
-                          d="M9.045 3.63c1.254-2.54 4.728-3.648 7.272-2.305l.024.012c2.575 1.25 3.676 4.64 2.33 7.118v.005l-.03.056a883 883 0 0 1-7.225 13.128l-.001-.001a5.1 5.1 0 0 1-3.673 2.547l.001.001a5 5 0 0 1-3.181-.563H4.56a4.93 4.93 0 0 1-2.324-6.583v-.007l.026-.053A864 864 0 0 1 7.328 6.958zm6.365-.513c-1.58-.846-3.789-.17-4.605 1.418l-.002.005a884 884 0 0 1-7.227 13.127l-.013.022a3.64 3.64 0 0 0-.222 2.994l.079.196v.002c.32.75.906 1.4 1.651 1.811l.017.01c.761.35 1.627.446 2.428.274l.002-.001c1.132-.234 2.11-1.003 2.59-1.998v-.003a868 868 0 0 1 6.783-13.355h.002c.847-1.568.14-3.716-1.474-4.498V3.12h-.001v.002l-.007-.003v-.002zm.993-1.735q0 0-.002-.003l-.005-.004z"
-                        />
-                        <path
-                          fill="url(#a9)"
-                          d="M14.462 6.994a4.9 4.9 0 0 1 2.366-.173v.001c1.762.294 3.343 1.623 3.9 3.385l.011.037v.003q1.17 3.599 2.281 7.215l.012.035v.007c.84 2.656-.843 5.772-3.563 6.523l-.04.02h-.028c-2.707.815-5.819-.927-6.52-3.637l-.007-.03v-.001a466 466 0 0 1-1.962-7.318l-.008-.03v-.01c-.459-1.77.141-3.725 1.466-4.912a4.8 4.8 0 0 1 2.092-1.115m2.105 1.04a3.76 3.76 0 0 0-1.801-.023c-.588.2-1.113.54-1.525.981v.002c-.922.973-1.226 2.42-.821 3.631l1.161 3.622q.573 1.814 1.133 3.63c.499 1.704 2.495 2.765 4.173 2.243l.036-.01h.008c1.673-.478 2.763-2.422 2.266-4.115h.001-.003a465 465 0 0 1-1.97-7.35v.002c-.31-1.233-1.354-2.285-2.655-2.613z"
-                        />
-                        <path
-                          fill="#000"
-                          d="M14.462 6.994a4.9 4.9 0 0 1 2.366-.173v.001c1.762.294 3.343 1.623 3.9 3.385l.011.037v.003q1.17 3.599 2.281 7.215l.012.035v.007c.84 2.656-.843 5.772-3.563 6.523l-.04.02h-.028c-2.707.815-5.819-.927-6.52-3.637l-.007-.03v-.001a466 466 0 0 1-1.962-7.318l-.008-.03v-.01c-.459-1.77.141-3.725 1.466-4.912a4.8 4.8 0 0 1 2.092-1.115m2.105 1.04a3.76 3.76 0 0 0-1.801-.023c-.588.2-1.113.54-1.525.981v.002c-.922.973-1.226 2.42-.821 3.631l1.161 3.622q.573 1.814 1.133 3.63c.499 1.704 2.495 2.765 4.173 2.243l.036-.01h.008c1.673-.478 2.763-2.422 2.266-4.115h.001-.003a465 465 0 0 1-1.97-7.35v.002c-.31-1.233-1.354-2.285-2.655-2.613z"
-                        />
-                        <path
-                          stroke="#000"
-                          stroke-width=".5"
-                          d="M14.462 6.994a4.9 4.9 0 0 1 2.366-.173v.001c1.762.294 3.343 1.623 3.9 3.385l.011.037v.003q1.17 3.599 2.281 7.215l.012.035v.007c.84 2.656-.843 5.772-3.563 6.523l-.04.02h-.028c-2.707.815-5.819-.927-6.52-3.637l-.007-.03v-.001a466 466 0 0 1-1.962-7.318l-.008-.03v-.01c-.459-1.77.141-3.725 1.466-4.912a4.8 4.8 0 0 1 2.092-1.115Zm2.105 1.04a3.76 3.76 0 0 0-1.801-.023c-.588.2-1.113.54-1.525.981v.002c-.922.973-1.226 2.42-.821 3.631l1.161 3.622q.573 1.814 1.133 3.63c.499 1.704 2.495 2.765 4.173 2.243l.036-.01h.008c1.673-.478 2.763-2.422 2.266-4.115h.001-.003a465 465 0 0 1-1.97-7.35v.002c-.31-1.233-1.354-2.285-2.655-2.613z"
-                        />
-                        <defs>
-                          <linearGradient
-                            id="a"
-                            x1="16.812"
-                            x2="17.191"
-                            y1="23.221"
-                            y2="7.367"
-                            gradientUnits="userSpaceOnUse"
+                          <g
+                            stroke="#000"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2.5"
+                            clip-path="url(#a8)"
+                            opacity="1"
                           >
-                            <stop stop-color="#8356ff" />
-                            <stop offset="1" stop-color="#151abb" />
-                          </linearGradient>
-                        </defs>
-                      </svg>
-                      <b>AdviceLink</b>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="26"
-                        height="26"
-                        fill="none"
-                      >
-                        <g
-                          stroke="#000"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          clip-path="url(#a4)"
+                            <path d="M13 4v18M4 13h18" />
+                          </g>
+                          <defs>
+                            <clipPath id="a8">
+                              <path fill="#fff" d="M0 0h26v26H0z" />
+                            </clipPath>
+                          </defs>
+                        </svg>
+                        <b>New analysis</b>
+                      </a>
+                    </li>
+                    <li class="centerMode">
+                      <a href="#">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="26"
+                          height="26"
+                          fill="none"
                         >
-                          <path
-                            d="M11.185 4.677c.462-1.903 3.168-1.903 3.63 0a1.867 1.867 0 0 0 2.787 1.155c1.672-1.019 3.586.894 2.567 2.567a1.867 1.867 0 0 0 1.154 2.786c1.903.462 1.903 3.168 0 3.63a1.867 1.867 0 0 0-1.155 2.787c1.019 1.672-.894 3.586-2.567 2.567a1.867 1.867 0 0 0-2.786 1.154c-.462 1.903-3.168 1.903-3.63 0a1.867 1.867 0 0 0-2.787-1.155c-1.672 1.019-3.586-.894-2.567-2.567a1.867 1.867 0 0 0-1.154-2.786c-1.903-.462-1.903-3.168 0-3.63a1.867 1.867 0 0 0 1.155-2.787c-1.019-1.672.894-3.586 2.567-2.567a1.866 1.866 0 0 0 2.786-1.154"
-                          />
-                          <path
-                            d="M9.75 13a3.25 3.25 0 1 0 6.5 0 3.25 3.25 0 0 0-6.5 0"
-                          />
-                        </g>
-                        <defs>
-                          <clipPath id="a4">
-                            <path fill="#fff" d="M0 0h26v26H0z" />
-                          </clipPath>
-                        </defs>
-                      </svg>
-                      <b>Settings</b>
-                    </a>
-                  </li>
-                </ul>
-                <ul class="nav--list">
-                  <li>
-                    <a href="#">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="26"
-                        height="26"
-                        fill="none"
-                      >
-                        <g clip-path="url(#a5)">
-                          <path
-                            stroke="#000"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M6.314 22.745 13 19.229l6.671 3.516-1.277-7.446 5.417-5.273-7.475-1.083-3.343-6.774-3.344 6.774-7.475 1.083L7.591 15.3z"
-                          />
-                        </g>
-                        <defs>
-                          <clipPath id="a5">
-                            <path fill="#fff" d="M0 0h26v26H0z" />
-                          </clipPath>
-                        </defs>
-                      </svg>
-                      <b>Pro plan</b>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="26"
-                        height="26"
-                        fill="none"
-                      >
-                        <g
-                          stroke="#000"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          clip-path="url(#a6)"
-                        >
-                          <path
-                            d="M17.333 6.5h3.25a1.083 1.083 0 0 1 1.084 1.083V19.5a2.167 2.167 0 0 1-2.167 2.167m0 0a2.167 2.167 0 0 1-2.167-2.167V5.417a1.084 1.084 0 0 0-1.083-1.084H5.417a1.083 1.083 0 0 0-1.084 1.084v13a3.25 3.25 0 0 0 3.25 3.25zM8.667 8.667H13M8.667 13H13M8.667 17.333H13"
-                          />
-                        </g>
-                        <defs>
-                          <clipPath id="a6">
-                            <path fill="#fff" d="M0 0h26v26H0z" />
-                          </clipPath>
-                        </defs>
-                      </svg>
-                      <b>Blog</b>
-                    </a>
-                  </li>
-                </ul>
+                          <g clip-path="url(#a1)">
+                            <path
+                              fill="none"
+                              stroke="#000"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M9.75 4.333H5.417A2.167 2.167 0 0 0 3.25 6.5v11.917a2.167 2.167 0 0 0 2.167 2.166h15.166a2.166 2.166 0 0 0 2.167-2.166V9.75a2.167 2.167 0 0 0-2.167-2.167H13z"
+                            />
+                          </g>
+                          <defs>
+                            <clipPath id="a1">
+                              <path fill="#fff" d="M0 0h26v26H0z" />
+                            </clipPath>
+                          </defs>
+                        </svg>
+                        <b>My analyses</b>
+                      </a>
+                    </li>
+                  </ul>
+
+                  <ul class="nav--list">
+                    <li id="homeLink">
+                      <a href="#">
+                        <div class="svg--transition">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="26"
+                            height="26"
+                            fill="none"
+                          >
+                            <g
+                              stroke="#000"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              opacity=".9"
+                            >
+                              <path
+                                d="M5.417 13H3.25L13 3.25 22.75 13h-2.167M5.416 13v7.583a2.167 2.167 0 0 0 2.167 2.167h10.833a2.167 2.167 0 0 0 2.167-2.167V13"
+                              />
+                              <path
+                                d="M9.75 22.75v-6.5a2.167 2.167 0 0 1 2.167-2.167h2.166a2.167 2.167 0 0 1 2.167 2.167v6.5"
+                              />
+                            </g>
+                          </svg>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="26"
+                            height="26"
+                            viewBox="0 0 26 26"
+                            fill="none"
+                          >
+                            <path
+                              fill="#22C55E"
+                              d="m12.494.342 10.5 10.5c.735.735.214 1.991-.825 1.991h-1.167v7a3.5 3.5 0 0 1-3.5 3.5h-1.167v-8.167a3.5 3.5 0 0 0-3.294-3.494l-.206-.006h-2.333a3.5 3.5 0 0 0-3.5 3.5v8.167H5.835a3.5 3.5 0 0 1-3.5-3.5v-7H1.17c-1.039 0-1.56-1.256-.825-1.991l10.5-10.5a1.167 1.167 0 0 1 1.65 0M12.834 14a1.167 1.167 0 0 1 1.167 1.166v8.167H9.335v-8.167a1.167 1.167 0 0 1 1.03-1.158l.137-.008z"
+                            />
+                          </svg>
+                        </div>
+                        <b>Home</b>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <div class="svg--transition">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="28"
+                            height="28"
+                            fill="none"
+                          >
+                            <g
+                              stroke="#000"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              clip-path="url(#a)"
+                              opacity=".8"
+                            >
+                              <path
+                                d="M3.5 22.167a10.5 10.5 0 0 1 10.5 0 10.5 10.5 0 0 1 10.5 0M3.5 7A10.5 10.5 0 0 1 14 7a10.5 10.5 0 0 1 10.5 0M3.5 7v15.167M14 7v15.167M24.5 7v15.167"
+                              />
+                            </g>
+                            <defs>
+                              <clipPath id="a">
+                                <path fill="#fff" d="M0 0h28v28H0z" />
+                              </clipPath>
+                            </defs>
+                          </svg>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="28"
+                            height="28"
+                            fill="none"
+                          >
+                            <g clip-path="url(#h)">
+                              <path
+                                fill="#22c55e"
+                                d="M25.083 5.99a1.17 1.17 0 0 1 .576.872l.008.138v15.167a1.167 1.167 0 0 1-1.75 1.01 9.33 9.33 0 0 0-8.75-.31V5.164a11.67 11.67 0 0 1 9.916.826m-12.25-.825.002 17.703a9.33 9.33 0 0 0-8.44.136l-.382.21-.12.052-.057.018-.128.03-.071.012-.137.007h-.049l-.128-.014-.09-.016-.126-.037-.147-.066-.111-.065-.104-.078-.07-.066-.085-.095-.075-.104-.025-.042-.038-.07-.051-.12-.019-.057-.03-.129-.012-.07-.004-.058L2.333 7a1.17 1.17 0 0 1 .584-1.01 11.67 11.67 0 0 1 9.916-.825"
+                              />
+                            </g>
+                            <defs>
+                              <clipPath id="h">
+                                <path fill="#fff" d="M0 0h28v28H0z" />
+                              </clipPath>
+                            </defs>
+                          </svg>
+                        </div>
+                        <b>Blog</b>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <div class="svg--transition">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="28"
+                            height="28"
+                            fill="none"
+                          >
+                            <g
+                              stroke="#000"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              clip-path="url(#h2)"
+                              opacity=".8"
+                            >
+                              <path
+                                d="M3.5 8.167a2.333 2.333 0 0 1 2.333-2.334h16.334A2.333 2.333 0 0 1 24.5 8.167v11.666a2.333 2.333 0 0 1-2.333 2.334H5.833A2.334 2.334 0 0 1 3.5 19.833z"
+                              />
+                              <path d="m3.5 8.167 10.5 7 10.5-7" />
+                            </g>
+                            <defs>
+                              <clipPath id="h2">
+                                <path fill="#fff" d="M0 0h28v28H0z" />
+                              </clipPath>
+                            </defs>
+                          </svg>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="28"
+                            height="28"
+                            fill="none"
+                          >
+                            <g fill="#22c55e" clip-path="url(#h3)">
+                              <path
+                                d="M25.667 8.79v11.043a3.5 3.5 0 0 1-3.295 3.495l-.205.005H5.833A3.5 3.5 0 0 1 2.34 20.04l-.006-.206V8.791l11.02 7.346.135.077a1.17 1.17 0 0 0 1.024 0l.136-.077z"
+                              />
+                              <path
+                                d="M22.167 4.667c1.26 0 2.364.665 2.98 1.664L14 13.763 2.853 6.331a3.5 3.5 0 0 1 2.746-1.656l.234-.008z"
+                              />
+                            </g>
+                            <defs>
+                              <clipPath id="h3">
+                                <path fill="#fff" d="M0 0h28v28H0z" />
+                              </clipPath>
+                            </defs>
+                          </svg>
+                        </div>
+                        <b>Contact</b>
+                      </a>
+                    </li>
+                  </ul>
+
+                  <ul class="nav--list">
+                    <li class="al">
+                      <a href="#">
+                        <div class="svg--transition">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="28"
+                            height="28"
+                            fill="none"
+                          >
+                            <g
+                              stroke="#000"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-opacity=".8"
+                              stroke-width="2"
+                              clip-path="url(#h4)"
+                            >
+                              <path
+                                d="M17.5 24.5H7A3.5 3.5 0 0 1 3.5 21v-1.167h2.333M17.5 24.5a2.333 2.333 0 0 1-2.333-2.333v-2.334H5.833M17.5 24.5a2.333 2.333 0 0 0 2.333-2.333v-14m-14 11.666V7a3.5 3.5 0 0 1 3.5-3.5h12.834m-2.334 4.667V5.833A2.333 2.333 0 0 1 22.167 3.5m-2.334 4.667h2.334a2.333 2.333 0 1 0 0-4.667M10.5 8.167h4.667M10.5 12.833h4.667"
+                              />
+                            </g>
+                            <defs>
+                              <clipPath id="h4">
+                                <path fill="#fff" d="M0 0h28v28H0z" />
+                              </clipPath>
+                            </defs>
+                          </svg>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="28"
+                            height="28"
+                            fill="none"
+                          >
+                            <g clip-path="url(#h5)">
+                              <path
+                                fill="#22c55e"
+                                d="M17.5 24.5H7A3.5 3.5 0 0 1 3.5 21v-1.167h2.333V7a3.5 3.5 0 0 1 3.5-3.5h12.834a2.333 2.333 0 1 1 0 4.667h-2.334v14A2.333 2.333 0 0 1 17.5 24.5"
+                              />
+                              <path
+                                stroke="#fff"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="1.5"
+                                d="M17.5 24.5H7A3.5 3.5 0 0 1 3.5 21v-1.167h2.333M17.5 24.5a2.333 2.333 0 0 1-2.333-2.333v-2.334H5.833M17.5 24.5a2.333 2.333 0 0 0 2.333-2.333v-14m-14 11.666V7a3.5 3.5 0 0 1 3.5-3.5h12.834m-2.334 4.667V5.833A2.333 2.333 0 0 1 22.167 3.5m-2.334 4.667h2.334a2.333 2.333 0 1 0 0-4.667M10.5 8.167h4.667M10.5 12.833h4.667"
+                              />
+                            </g>
+                            <defs>
+                              <clipPath id="h5">
+                                <path fill="#fff" d="M0 0h28v28H0z" />
+                              </clipPath>
+                            </defs>
+                          </svg>
+                        </div>
+                        <b>Legal</b>
+                      </a>
+                    </li>
+                  </ul>
+                  <ul class="nav--list">
+                    <li>
+                      <a href="#">
+                        <div class="svg--transition">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="28"
+                            height="28"
+                            fill="none"
+                          >
+                            <g
+                              stroke="#000"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-opacity=".8"
+                              stroke-width="2"
+                              clip-path="url(#h6)"
+                            >
+                              <path
+                                d="M12.046 5.037c.497-2.05 3.411-2.05 3.908 0a2.01 2.01 0 0 0 3.002 1.243c1.8-1.096 3.862.964 2.765 2.765a2.013 2.013 0 0 0 1.242 3c2.05.498 2.05 3.412 0 3.91a2.01 2.01 0 0 0-1.243 3.001c1.097 1.8-.964 3.862-2.765 2.765a2.012 2.012 0 0 0-3 1.242c-.498 2.05-3.412 2.05-3.91 0a2.01 2.01 0 0 0-3.001-1.243c-1.8 1.097-3.862-.964-2.765-2.765a2.01 2.01 0 0 0-1.242-3c-2.05-.498-2.05-3.412 0-3.91A2.01 2.01 0 0 0 6.28 9.045c-1.096-1.8.964-3.862 2.765-2.765a2.01 2.01 0 0 0 3-1.242"
+                              />
+                              <path
+                                d="M10.5 14a3.5 3.5 0 1 0 7 0 3.5 3.5 0 0 0-7 0"
+                              />
+                            </g>
+                            <defs>
+                              <clipPath id="h6">
+                                <path fill="#fff" d="M0 0h28v28H0z" />
+                              </clipPath>
+                            </defs>
+                          </svg>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="28"
+                            height="28"
+                            fill="none"
+                          >
+                            <g clip-path="url(#h7)">
+                              <path
+                                fill="#22c55e"
+                                d="M17.088 4.761a.845.845 0 0 0 1.26.523c2.846-1.733 6.102 1.522 4.37 4.368a.844.844 0 0 0 .52 1.26c3.238.785 3.238 5.39 0 6.176a.844.844 0 0 0-.522 1.26c1.733 2.846-1.522 6.102-4.368 4.37a.845.845 0 0 0-1.26.52c-.785 3.238-5.39 3.238-6.176 0a.845.845 0 0 0-1.26-.522c-2.846 1.733-6.102-1.522-4.37-4.368a.845.845 0 0 0-.52-1.26c-3.238-.785-3.238-5.39 0-6.176a.845.845 0 0 0 .522-1.26C3.55 6.806 6.806 3.55 9.652 5.282a.842.842 0 0 0 1.26-.52c.785-3.238 5.39-3.238 6.176 0M14 10.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7"
+                              />
+                            </g>
+                            <defs>
+                              <clipPath id="h7">
+                                <path fill="#fff" d="M0 0h28v28H0z" />
+                              </clipPath>
+                            </defs>
+                          </svg>
+                        </div>
+                        <b>Settings</b>
+                      </a>
+                    </li>
+                  </ul>
+                  <p class="copyright--nav">© 2026 AdviceFood</p>
+                </div>
               </div>
             </div>
           </nav>
