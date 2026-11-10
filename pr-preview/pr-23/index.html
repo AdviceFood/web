@@ -1,0 +1,1679 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analysis</title>
+
+    <link rel="stylesheet" href="styles/main.css" />
+
+    <style>
+      *,
+      *:after,
+      *:before {
+        box-sizing: border-box;
+      }
+
+      p,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-weight: normal;
+        margin: 0;
+        font-style: normal;
+      }
+
+      body,
+      html {
+        margin: 0;
+        background: var(--lt-body);
+        overflow-x: hidden;
+        max-width: 100vw;
+      }
+
+      a.header--logo {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        text-decoration: none;
+        color: var(--lt-main);
+      }
+
+      a.header--logo b {
+        font-size: 1.5rem;
+      }
+
+      a.header--logo b span {
+        color: var(--lt-text-alt);
+      }
+
+      .container {
+        max-width: 83.3vw;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .header--inner {
+        padding-top: 26px;
+        padding-bottom: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .burger--button {
+        background: var(--lt-burger-bg);
+        height: 44px;
+        width: 44px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      .burger--line {
+        width: 22px;
+        height: 3px;
+        border-radius: 5px;
+        background: var(--lt-text-alt);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translateY(-50%) translateX(-50%);
+      }
+
+      header nav {
+        margin: 0;
+        padding: 0;
+      }
+
+      .nav--list {
+        position: absolute;
+        left: -100%;
+      }
+
+      .burger--line:nth-child(1) {
+        width: 22px;
+        height: 3px;
+        border-radius: 5px;
+        background: var(--lt-text-alt);
+        transform: translateY(-10px) translateX(-50%);
+        top: 50%;
+        left: 50%;
+        position: absolute;
+      }
+      .burger--line:nth-child(3) {
+        width: 22px;
+        height: 3px;
+        border-radius: 5px;
+        background: var(--lt-text-alt);
+        transform: translateY(7px) translateX(-50%);
+        top: 50%;
+        left: 50%;
+        position: absolute;
+      }
+
+      .nav--list {
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        padding-bottom: 20px;
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+
+      .nav--list::after {
+        position: absolute;
+        content: "";
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 83.3vw;
+        max-width: 350px;
+        height: 1px;
+        background: var(--lt-menu-line);
+        border-radius: 1px;
+      }
+
+      .nav--list:nth-child(4)::after {
+        display: none;
+      }
+
+      ul.nav--list li {
+        width: 83.3vw;
+        max-width: 400px;
+        height: 52px;
+        margin: 0;
+        padding: 0;
+        border-radius: 26px;
+        list-style: none;
+      }
+
+      ul.nav--list li a {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        padding: 13px 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--lt-main);
+        text-decoration: none;
+        font-family: "AA";
+        font-weight: 500;
+        font-size: 1.25rem;
+        font-style: normal;
+        border-radius: 26px;
+        transition: 0.3s;
+        -webkit-transition: 0.3s;
+      }
+
+      ul.nav--list li a b {
+        font-weight: 500;
+      }
+
+      .navigation--menu {
+        position: fixed;
+        left: 0;
+        right: auto;
+        top: 0;
+        transition: 0.3s;
+        padding-top: 102px;
+        transform: translateX(100%);
+        width: 100vw;
+        height: 100vh;
+
+        background: var(--lt-menu);
+
+        transition:
+          transform 0.35s ease-in-out,
+          visibility 0.35s ease-in-out;
+      }
+
+      header {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        z-index: 100;
+      }
+
+      .navigation--menu {
+        z-index: -1;
+        left: -8.35vw;
+      }
+
+      .navigation--menu .nav--list {
+        align-items: center;
+      }
+
+      main {
+        padding-top: 128px;
+      }
+
+      .svg--wrapper {
+        display: flex;
+        position: relative;
+      }
+
+      .svg--wrapper:after {
+        position: absolute;
+        content: "";
+        width: 1cm;
+        height: 1cm;
+        background: transparent;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+      }
+
+      .main--right .analyze__photo--comment {
+        display: none;
+      }
+
+      main .container {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .header--inner {
+        position: relative;
+      }
+
+      .header--inner:after {
+        position: absolute;
+        content: "";
+        height: 100%;
+        width: 20px;
+        left: -20px;
+        right: auto;
+        top: 0;
+        background: linear-gradient(
+          180deg,
+          #f4f6f9 0%,
+          #f4f6f9 65%,
+          #f4f6f988 100%
+        );
+        backdrop-filter: blur(0.7px);
+        transition: 0.3s all;
+        -webkit-transition: 0.3s all;
+        opacity: 1;
+        z-index: -2;
+      }
+
+      .header--inner:before {
+        position: absolute;
+        content: "";
+        height: 100%;
+        width: 20px;
+        left: auto;
+        right: -20px;
+        top: 0;
+        background: linear-gradient(
+          180deg,
+          #f4f6f9 0%,
+          #f4f6f9 65%,
+          #f4f6f988 100%
+        );
+        backdrop-filter: blur(0.7px);
+        transition: 0.5s all ease-in-out;
+        -webkit-transition: 0.5s all ease-in-out;
+        opacity: 1;
+        z-index: -1;
+      }
+
+      /* .header--inner:has(.navigation--menu.open):after,
+      .header--inner:has(.navigation--menu.open):before {
+        opacity: 0;
+        transition: .3s all ease-in-out;
+        -webkit-transition: .3s all ease-in-out;
+      } */
+
+      .navigation--menu .container .navigation--wrap {
+        max-height: calc(100dvh - 130px);
+        overflow-y: auto;
+        height: calc(100dvh - 130px);
+        display: flex;
+        flex-direction: column;
+      }
+
+      ul.nav--list li.nav--profile {
+        height: 72px;
+      }
+
+      ul.nav--list li.nav--profile a {
+        background: #f5f5f7;
+        border-radius: 15px;
+        padding: 10px;
+        padding-right: 20px;
+      }
+
+      ul.nav--list li.nav--profile img {
+        min-width: 52px;
+        min-height: 52px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+      }
+
+      .profile--link--meta {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 42px;
+        margin-right: auto;
+      }
+
+      .profile--link--meta strong {
+        font-size: 1.125rem;
+        font-weight: 500;
+      }
+
+      .profile--link--meta span {
+        font-size: 1rem;
+        color: #000000b2;
+        font-weight: 400;
+      }
+
+      ul.nav--list li.centerMode a {
+        justify-content: center;
+      }
+
+      ul.nav--list li.centerMode:nth-child(2) a {
+        background: #22c55e;
+        color: white;
+      }
+
+      ul.nav--list li.centerMode:nth-child(2) {
+        margin-top: 20px;
+        margin-bottom: 13px;
+      }
+
+      ul.nav--list li.centerMode:nth-child(2) a svg g {
+        stroke: white;
+      }
+
+      ul.nav--list li.centerMode:nth-child(3) a {
+        background: #f5f5f7;
+      }
+
+      ul.nav--list.profile {
+        gap: 0;
+        padding-bottom: 30px;
+      }
+
+      ul.nav--list li.nav--profile:nth-child(3) a:active,
+      ul.nav--list li.active.nav--profile:nth-child(3) a,
+      ul.nav--list li.active.centerMode:nth-child(3) a,
+      ul.nav--list li.active.centerMode:nth-child(3) a svg g path,
+      ul.nav--list li.centerMode:nth-child(3) a svg g path,
+      ul.nav--list li.centerMode:nth-child(3) a:active b {
+        color: black;
+      }
+
+      ul.nav--list li.centerMode:nth-child(3) a:active svg g path,
+      ul.nav--list li.active.centerMode:nth-child(3) a svg g path {
+        stroke: black;
+      }
+
+      ul.nav--list li.centerMode:nth-child(2) a:active b,
+      ul.nav--list li.centerMode:nth-child(2) a:active svg g path,
+      ul.nav--list li.centerMode:nth-child(2) a svg g path {
+        color: white;
+        stroke: white;
+      }
+
+      ul.nav--list li.nav--profile:nth-child(1) a:active {
+        color: black;
+      }
+
+      ul.nav--list li.centerMode:nth-child(3) a:active,
+      ul.nav--list li.nav--profile:nth-child(1) a:active {
+        background: #00000026;
+      }
+
+      ul.nav--list li.centerMode:nth-child(2) a:active {
+        background: #15803d;
+      }
+
+      .navigation--menu .container {
+        position: relative;
+      }
+
+      p.copyright--nav {
+        color: #00000080;
+        font-family: "AA";
+        font-size: 0.875rem;
+        margin-top: auto;
+        padding-top: 30px;
+      }
+
+      body:has(.navigation--menu.open),
+      html:has(.navigation--menu.open) {
+        overflow-y: hidden;
+      }
+
+      .nav--list li a:has(.svg--transition) b {
+        opacity: 0.8;
+      }
+
+      .nav--list li.active a b {
+        opacity: 1;
+      }
+
+      .svg--transition {
+        position: relative;
+        width: 28px;
+        height: 28px;
+      }
+
+      .svg--transition svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transition: 0.3s opacity;
+        -webkit-transition: 0.3s opacity;
+        transform: translateX(-50%) translateY(-50%);
+      }
+
+      .svg--transition svg:last-child {
+        opacity: 0;
+      }
+
+      li.active .svg--transition svg:last-child {
+        opacity: 1;
+      }
+
+      li.active .svg--transition svg:first-child {
+        opacity: 0;
+      }
+
+      ul.nav--list li a {
+        padding-left: 0;
+      }
+
+      .nav--desktop,
+      .nav--right {
+        display: none;
+      }
+
+      .section--title {
+        text-align: center;
+        font-size: 1.875rem;
+        color: #000;
+        font-family: "AA";
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .section--subtitle {
+        text-align: center;
+        color: #000;
+        font-size: 1rem;
+      }
+
+      main {
+        font-family: "AA";
+        padding-top: 115px;
+      }
+
+      form.analyzeForm {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin: 0;
+        padding: 0;
+        margin-top: 37px;
+      }
+
+      fieldset.analyze--type {
+        order: 1;
+        border: 0;
+        outline: none;
+        height: 48px;
+        width: 100%;
+        background: #fff;
+        border-radius: 24px;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+        position: relative;
+        margin-bottom: 14px;
+      }
+
+      fieldset.analyze--type legend {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+      }
+
+      fieldset.analyze--type input {
+        appearance: none;
+        -webkit-appearance: none;
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+      }
+
+      fieldset.analyze--type label {
+        width: 100%;
+        display: block;
+        height: inherit;
+        border-radius: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #000000b2;
+        font-weight: 400;
+        position: relative;
+        z-index: 2;
+        transition: 0.3s color ease-in-out;
+        -webkit-transition: 0.3s color ease-in-out;
+        font-size: 1.125rem;
+      }
+
+      fieldset.analyze--type label:has(input:checked) {
+        color: #ffffff;
+        font-weight: 500;
+      }
+
+      fieldset.analyze--type:before {
+        position: absolute;
+        content: "";
+        width: 50%;
+        height: 48px;
+        border-radius: 24px;
+        background: #22c55e;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        transition: 0.3s left ease-in-out;
+        -webkit-transition: 0.3s left ease-in-out;
+      }
+
+      fieldset.analyze--type:has(#recipeType:checked)::before {
+        left: 50%;
+      }
+
+      .analyze--primary--content {
+        order: 2;
+        background-image: url(img/analyze_bg.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding-top: 40px;
+        padding-bottom: 30px;
+        padding-left: 20px;
+        padding-right: 20px;
+        width: 100%;
+        position: relative;
+        border-radius: 16px;
+        text-align: center;
+        color: white;
+      }
+
+      .analyze--appeariance {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 2;
+        border-radius: inherit;
+      }
+
+      .analyze--appeariance svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+        overflow: visible;
+      }
+
+      .analyze--instruction {
+        text-align: center;
+        display: block;
+        margin-top: 8px;
+        font-size: 1.375rem;
+      }
+
+      .analyze--instruction b {
+        font-weight: 500;
+      }
+
+      .analyze--instruction b.desktop {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+      }
+
+      .analyze--formats {
+        color: #ffffffcc;
+        text-align: center;
+        font-size: 1rem;
+        margin-top: 36px;
+        display: block;
+      }
+
+      .analyze--notice {
+        color: #00000099;
+        text-align: center;
+        font-size: 0.875rem;
+        margin-bottom: 20px;
+      }
+
+      form .analyze--notice {
+        display: none;
+      }
+
+      .analyze--instruction label {
+        color: #3cf480;
+        font-weight: 500;
+        text-decoration: underline;
+      }
+
+      .analyze--instruction input {
+        appearance: none;
+        -webkit-appearance: none;
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+      }
+
+      .analyze--open--comment {
+        border: 1px solid #0000001a;
+        background: #ffffff;
+        width: 100%;
+        height: 48px;
+        border-radius: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: black;
+        font-family: "AA";
+        font-size: 1.125rem;
+        font-weight: 500;
+        gap: 5px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 1;
+        transition:
+          0.3s transform ease-in-out,
+          0.3s background ease-in-out,
+          0.3s opacity ease-in-out,
+          0.3s border-color ease-in-out;
+        -webkit-transition:
+          0.3s transform ease-in-out,
+          0.3s background ease-in-out,
+          0.3s opacity ease-in-out,
+          0.3s border-color ease-in-out;
+        z-index: 2;
+      }
+
+      .analyze--open--comment:active {
+        background: #00000026;
+        border-color: #00000026;
+        transform: scale(0.98);
+        transition:
+          0.05s transform ease-in-out,
+          0.05s background ease-in-out,
+          0.05s opacity ease-in-out,
+          0.05s border-color ease-in-out;
+        -webkit-transition:
+          0.05s transform ease-in-out,
+          0.05s background ease-in-out,
+          0.05s opacity ease-in-out,
+          0.05s border-color ease-in-out;
+      }
+
+      .analyze--open--comment.hide {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .analyze--comment {
+        order: 3;
+        margin-top: 16px;
+        margin-bottom: 11px;
+        position: relative;
+      }
+
+      .analyze--start {
+        order: 4;
+        background: #22c55e;
+        height: 48px;
+        width: 100%;
+        border-radius: 24px;
+        color: white;
+        font-weight: 500;
+        font-size: 1.125rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        border: 0;
+        outline: none;
+        font-family: "AA";
+        margin-bottom: 12px;
+        transition:
+          0.3s transform ease-in-out,
+          0.3s background ease-in-out,
+          0.3s opacity ease-in-out,
+          0.3s border-color ease-in-out;
+        -webkit-transition:
+          0.3s transform ease-in-out,
+          0.3s background ease-in-out,
+          0.3s opacity ease-in-out,
+          0.3s border-color ease-in-out;
+      }
+
+      .analyze--start:active {
+        background: #15803d;
+        transform: scale(0.98);
+        transition:
+          0.05s transform ease-in-out,
+          0.05s background ease-in-out,
+          0.05s opacity ease-in-out,
+          0.05s border-color ease-in-out;
+        -webkit-transition:
+          0.05s transform ease-in-out,
+          0.05s background ease-in-out,
+          0.05s opacity ease-in-out,
+          0.05s border-color ease-in-out;
+      }
+
+      .analyze--comment textarea {
+        border: 1px solid #0000001a;
+        width: 100%;
+        min-height: 0px;
+        max-height: 300px;
+        max-width: 100%;
+        resize: vertical;
+        border-radius: 20px;
+        padding: 12px 14px;
+        font-family: "AA";
+        font-size: 1rem;
+        color: black;
+        opacity: 0;
+        transition:
+          0.3s min-height,
+          0.3s opacity;
+        -webkit-transition:
+          0.3s min-height,
+          0.3s opacity;
+      }
+
+      .analyze--comment textarea.show {
+        opacity: 1;
+        min-height: 144px;
+      }
+
+      .analyze--comment textarea::placeholder {
+        color: #00000099;
+      }
+
+      @media screen and (min-width: 430px) {
+        a.header--logo svg {
+          width: 40px;
+          height: 44px;
+        }
+
+        a.header--logo b {
+          font-size: 2rem;
+          font-weight: 700;
+          font-style: normal;
+        }
+
+        a.header--logo {
+          gap: 13px;
+        }
+
+        .burger--button {
+          width: 56px;
+          height: 56px;
+        }
+
+        .burger--line {
+          width: 36px;
+          height: 4px;
+        }
+
+        .burger--line:nth-child(3) {
+          width: 36px;
+          height: 4px;
+          transform: translateY(10px) translateX(-50%);
+          top: 50%;
+        }
+
+        .burger--line:nth-child(1) {
+          width: 36px;
+          height: 4px;
+          transform: translateY(-14px) translateX(-50%);
+          top: 50%;
+        }
+      }
+
+      @media screen and (min-width: 1024px) {
+        header {
+          position: fixed;
+          top: 0;
+          left: 0;
+          height: 80px;
+          display: flex;
+          align-items: center;
+          background: transparent;
+        }
+
+        .nav--desktop,
+        .nav--right {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        header nav.headerNav {
+          display: none;
+        }
+
+        header .header--inner {
+          padding: 0;
+        }
+
+        a.header--logo svg {
+          width: 30px;
+          height: auto;
+        }
+
+        a.header--logo b {
+          font-size: 1.25rem;
+        }
+
+        header nav {
+          display: flex;
+          align-items: center;
+        }
+
+        a.header--desktop--link {
+          color: #000000;
+          font-size: 1rem;
+          font-family: "AA";
+          padding: 0px 20px;
+          text-decoration: none;
+          border-radius: 20px;
+          background: #ffffff;
+          height: 40px;
+          display: flex;
+          align-items: center;
+        }
+
+        a.header--desktop--link.dev {
+          opacity: 50%;
+          pointer-events: none;
+        }
+
+        a.new--analysis--btn {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          font-size: 1rem;
+          font-weight: 500;
+          color: #ffffff;
+          padding-left: 20px;
+          padding-right: 20px;
+          background: #22c55e;
+          border-radius: 20px;
+          height: 40px;
+          font-family: "AA";
+          text-decoration: none;
+        }
+
+        a.login--link {
+          font-family: "AA";
+          font-size: 1rem;
+          padding-left: 10px;
+          height: 40px;
+          border-radius: 20px;
+          display: flex;
+          align-items: center;
+          color: black;
+          text-decoration: none;
+          font-weight: 500;
+        }
+
+        .header--avatar--wrapper {
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          overflow: hidden;
+          cursor: pointer;
+          border: 1px solid #0000001a;
+        }
+
+        .header--avatar {
+          margin-left: 10px;
+        }
+
+        .header--avatar--wrapper img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          aspect-ratio: 1;
+        }
+
+        a.header--desktop--link {
+          transition:
+            0.3s background,
+            0.3s color,
+            0.3s transform;
+          -webkit-transition:
+            0.3s background,
+            0.3s color,
+            0.3s transform;
+        }
+
+        a.header--desktop--link:hover {
+          background: #00000008;
+        }
+
+        a.header--desktop--link:active {
+          background: #22c55e;
+          color: white;
+          transform: scale(0.96);
+          transition:
+            0.05s background,
+            0.05s color,
+            0.05s transform;
+          -webkit-transition:
+            0.05s background,
+            0.05s color,
+            0.05s transform;
+        }
+
+        a.header--desktop--link.active {
+          background: #22c55e;
+          color: white;
+        }
+
+        a.new--analysis--btn {
+          transition:
+            0.3s background,
+            0.3s color,
+            0.3s transform;
+          -webkit-transition:
+            0.3s background,
+            0.3s color,
+            0.3s transform;
+        }
+
+        a.new--analysis--btn:hover {
+          background: #16a34a;
+        }
+
+        a.new--analysis--btn:active {
+          background: #15803d;
+          transform: scale(0.96);
+          transition:
+            0.05s background,
+            0.05s color,
+            0.05s transform;
+          -webkit-transition:
+            0.05s background,
+            0.05s color,
+            0.05s transform;
+        }
+      }
+
+      @media screen and (min-width: 1440px) {
+        header {
+          height: 130px;
+        }
+
+        a.header--logo svg {
+          width: 45px;
+        }
+
+        a.header--logo b {
+          font-size: 2.25rem;
+        }
+
+        a.header--desktop--link {
+          font-size: 1.25rem;
+          padding-left: 30px;
+          padding-right: 30px;
+          height: 48px;
+          border-radius: 24px;
+        }
+
+        a.new--analysis--btn {
+          padding-left: 26px;
+          padding-right: 26px;
+          font-size: 1.25rem;
+          height: 48px;
+          border-radius: 24px;
+        }
+
+        a.login--link {
+          font-size: 1.25rem;
+          padding-left: 20px;
+        }
+
+        .nav--desktop {
+          gap: 15px;
+          margin-left: 10px;
+          margin-right: 10px;
+        }
+      }
+
+      @media screen and (min-width: 1600px) {
+        .container {
+          max-width: 73.5vw;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="header--inner">
+          <a class="header--logo" href="#">
+            <svg
+              width="29"
+              height="32"
+              viewBox="0 0 29 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M9.30515 0.000192594C9.17014 0.000336296 9.03513 0.000454593 8.90011 0.000544823C8.22057 -0.000236026 7.5421 0.00346115 6.86297 0.0302168C6.76181 0.0344932 6.76181 0.0344932 6.66267 0.0386848C4.90666 0.111045 3.33257 0.734451 2.04695 1.97837C0.214564 3.93513 -0.00620089 6.1197 0.000223302 8.71837C0.00101399 9.01572 0.000933223 9.31305 0.000550344 9.61039C-0.000236352 10.1941 -0.000152598 10.7779 0.000629113 11.3616C0.00155639 12.0465 0.00171593 12.7315 0.0015913 13.4163C0.00134601 14.6372 0.00188245 15.858 0.00315073 17.0788C0.00439508 18.2667 0.00512794 19.4545 0.00479092 20.6424C0.00439309 21.9433 0.0042505 23.2442 0.00496242 24.5451C0.00504119 24.6837 0.00512096 24.8223 0.00519972 24.9609C0.0052406 25.0312 0.00527949 25.0994 0.00531837 25.1676C0.00559656 25.647 0.00571023 26.1263 0.00559357 26.6056C0.00544102 27.1947 0.00555668 27.7839 0.00639124 28.3729C0.00688081 28.6734 0.00746909 28.974 0.00730855 29.2746C0.00702937 29.5531 0.0068848 29.8318 0.00755782 30.1105C0.00786393 30.2118 0.00811819 30.3132 0.0083156 30.4145C0.00805437 30.5098 0.00780509 30.6052 0.0075668 30.7005C0.00795965 30.789 0.00834052 30.8751 0.00872242 30.961C0.00889391 31.1861 0.00889391 31.1861 0.0253507 31.3843C0.118796 31.6789 0.21364 31.8244 0.482763 31.9814C0.959099 32.0524 1.29512 31.9134 1.70817 31.6789C1.74976 31.6548 1.79012 31.6315 1.83049 31.6082C2.95866 30.9598 4.06861 30.2786 5.17533 29.5934C5.39024 29.4598 5.60526 29.3265 5.82102 29.1943C5.89447 29.1496 5.96576 29.1062 6.03705 29.0627C6.15471 28.9903 6.27244 28.9179 6.39081 28.8467C6.43048 28.8228 6.46899 28.7998 6.50748 28.7767C7.18333 28.367 7.79567 28.3052 8.56594 28.316C8.67117 28.3176 8.77642 28.3187 8.88166 28.3193C9.15892 28.3206 9.43615 28.3225 9.71339 28.3253C10.1667 28.3301 10.6199 28.3344 11.0733 28.337C11.2327 28.3379 11.3921 28.3391 11.5515 28.341C11.6519 28.3423 11.7522 28.3434 11.8527 28.3441C11.9002 28.3444 11.9464 28.3447 11.9925 28.345C12.2459 28.3477 12.2459 28.3477 12.4408 28.333C12.5716 28.2004 12.5716 28.2004 12.5971 28.0236C12.6038 27.9085 12.6038 27.9085 12.6103 27.7957C12.6185 27.663 12.6266 27.5303 12.6338 27.3975C12.639 27.3012 12.6443 27.2048 12.6498 27.1085C12.6617 26.9054 12.6734 26.7021 12.6845 26.4989C12.6986 26.2382 12.7129 25.9774 12.7284 25.7168C12.786 24.7453 12.8383 23.7738 12.8508 22.8006C12.8515 22.715 12.8522 22.632 12.8528 22.5489C12.8592 22.1307 12.8641 21.7486 12.7336 21.3482C12.7008 21.2648 12.6338 21.1028 12.6338 21.1028C12.5971 21.0033 12.5716 20.937 12.5062 20.8375C11.9737 20.1574 11.3188 19.6942 10.6112 19.2165C10.0322 18.8281 9.46895 18.4231 9.03066 17.8691C7.92832 16.412 7.90207 14.6057 8.09015 12.8622C8.10191 12.7536 8.11347 12.645 8.12487 12.5364C8.16203 12.1806 8.2001 11.8249 8.23878 11.4693C8.25208 11.3471 8.26535 11.2249 8.27859 11.1028C8.35904 10.3604 8.44127 9.61834 8.52565 8.87646C8.56168 8.55976 8.59745 8.24305 8.63261 7.92625C8.66076 7.67246 8.68924 7.41872 8.71809 7.16502C8.73188 7.04427 8.74563 6.92352 8.75933 6.80276C8.83923 6.07572 8.87215 5.30099 9.23894 4.6524C9.4255 4.54615 9.56493 4.51979 9.7788 4.50445C9.89185 4.50588 9.89185 4.50589 10.0027 4.50729C10.2895 4.50895 10.444 4.50598 10.6724 4.68556C11.0481 5.48964 11.0481 5.48964 10.9701 6.40365C10.9626 6.49883 10.9626 6.49883 10.9553 6.59215C10.9447 6.73037 10.9342 6.86859 10.9235 7.00682C10.906 7.23194 10.8887 7.45706 10.8714 7.6822C10.8222 8.32861 10.7727 8.975 10.7229 9.62136C10.6917 10.0245 10.6607 10.4277 10.63 10.8309C10.6183 10.9848 10.6065 11.1387 10.5949 11.2927C10.5203 12.2494 10.2255 13.5134 10.7418 14.3784C10.9999 14.7177 11.364 14.9039 11.7798 14.9588C12.3315 14.971 12.6885 14.8637 13.0942 14.4695C13.4945 13.9843 13.4945 13.9843 13.5224 12.3036C13.5244 12.1796 13.5267 12.0555 13.5291 11.9315C13.536 11.6015 13.5425 11.2716 13.5485 10.9416C13.5545 10.6069 13.5608 10.2721 13.5674 9.93731C13.5687 9.8702 13.5699 9.80506 13.5712 9.73991C13.5915 8.70736 13.609 7.67462 13.6382 6.64229C13.6406 6.55818 13.643 6.47654 13.6454 6.39492C13.6589 5.83017 13.6322 5.14694 13.9438 4.6524C14.1358 4.57716 14.2661 4.53671 14.4666 4.51973C14.7649 4.53907 14.9836 4.59142 15.2139 4.78921C15.4389 5.21857 15.4624 5.68322 15.4732 6.16226C15.4743 6.23704 15.4753 6.30964 15.4764 6.38223C15.4797 6.54388 15.4831 6.70554 15.4863 6.86721C15.4917 7.17486 15.4973 7.48249 15.5038 7.79011C15.5189 8.49872 15.5328 9.20735 15.546 9.916C15.5547 10.3868 15.5637 10.8577 15.5739 11.3286C15.5778 11.5078 15.5817 11.6869 15.5853 11.8661C15.5895 12.1226 15.5938 12.3793 15.5993 12.6359C15.6011 12.7163 15.6028 12.7944 15.6045 12.8724C15.6122 13.4716 15.6499 13.9804 15.9817 14.4903C16.2608 14.761 16.4965 14.9162 16.8871 14.9523C17.4853 14.9589 17.8049 14.8714 18.2565 14.4695C18.5828 14.0773 18.6748 13.6028 18.6469 13.096C18.6433 13.0485 18.6398 13.0025 18.6363 12.9564C18.625 12.7789 18.613 12.6014 18.5996 12.4239C18.594 12.3527 18.5886 12.2835 18.5832 12.2142C18.5088 11.2554 18.4279 10.297 18.345 9.33884C18.3143 8.98262 18.2837 8.62637 18.2535 8.27009C18.2344 8.04483 18.2154 7.81957 18.1957 7.59438C18.1767 7.37736 18.1577 7.16034 18.1393 6.94325C18.1323 6.8598 18.1255 6.77881 18.1187 6.69782C18.0557 5.99969 17.9587 5.31082 18.3872 4.71873C18.5692 4.58135 18.6859 4.5228 18.9128 4.49797C18.9826 4.49973 19.0504 4.50144 19.1183 4.50315C19.4326 4.50787 19.5595 4.53823 19.8207 4.71873C20.2098 5.28942 20.2098 5.28942 20.2871 6.00489C20.2934 6.0664 20.2996 6.12611 20.3057 6.18581C20.3286 6.39327 20.3513 6.60074 20.3731 6.80831C20.3889 6.95892 20.4048 7.10952 20.421 7.26009C20.4559 7.58472 20.4906 7.90936 20.5247 8.23406C20.5725 8.68896 20.6211 9.14374 20.6716 9.59834C20.7148 9.98837 20.7576 10.3784 20.7996 10.7686C20.8254 11.0084 20.851 11.248 20.8777 11.4876C21.0491 13.0113 21.2854 14.6872 20.9558 16.203C20.5609 17.5799 19.7176 18.4404 18.5424 19.1958C18.2379 19.3911 17.9395 19.593 17.6469 19.8063C17.6014 19.8398 17.5573 19.8722 17.5132 19.9047C17.3642 20.0129 17.2222 20.1225 17.0803 20.2405C17.0149 20.3069 17.0803 20.2405 17.0149 20.3069C16.9496 20.3732 17.0149 20.3069 16.9496 20.3732C16.9052 20.4409 16.8621 20.5065 16.819 20.5722C16.7878 20.6152 16.7576 20.6571 16.7273 20.6989C16.6932 20.7474 16.6601 20.7945 16.6269 20.8416C16.3272 21.2596 16.2075 21.7671 16.2071 22.2786C16.2083 22.3344 16.2095 22.3885 16.2106 22.4427C16.2204 23.3433 16.2204 23.3433 16.3389 25.5237C16.3515 25.7546 16.3637 25.9855 16.3756 26.2164C16.3873 26.4441 16.3992 26.6718 16.4114 26.8994C16.4172 27.0074 16.4228 27.1154 16.4286 27.2233C16.4365 27.3775 16.4446 27.5316 16.453 27.6857C16.4556 27.7333 16.4583 27.7795 16.4608 27.8257C16.4687 27.9729 16.4783 28.12 16.4922 28.2667C16.565 28.3406 16.565 28.3406 16.926 28.342C16.9805 28.3419 17.0335 28.3418 17.0864 28.3416C17.2635 28.342 17.4405 28.3422 17.6176 28.3421C17.7449 28.3419 17.8724 28.3419 17.9998 28.3419C18.2656 28.3421 18.5314 28.3422 18.7971 28.3419C19.1423 28.3415 19.4877 28.3413 19.833 28.3417C20.1018 28.342 20.3705 28.3421 20.6394 28.342C20.7686 28.342 20.8977 28.3419 21.0268 28.3419C21.6279 28.3426 22.2289 28.3512 22.8285 28.3022C24.5899 28.13 26.253 27.3513 27.408 25.9708C27.4514 25.9169 27.4934 25.8646 27.5354 25.8125C28.7426 24.3807 29.0038 22.7031 28.9991 20.8845C28.9986 20.7363 28.9986 20.5881 28.9988 20.4399C28.9999 20.0336 29.0003 19.6273 28.9998 19.2211C28.9991 18.789 28.9992 18.3569 28.9995 17.9248C29 17.106 28.9996 16.2871 28.9986 15.4683C28.9977 14.7664 28.9976 14.0646 28.9984 13.3627C28.9994 12.5857 29.0001 11.8089 28.9996 11.032C28.9993 10.5968 28.9989 10.1616 28.9994 9.72644C29 9.31283 29.0003 8.89923 28.9994 8.48562C28.999 8.33183 28.9987 8.17803 28.9984 8.02424C29.0014 6.989 28.9893 5.96196 28.7357 4.95231C28.4595 3.93974 27.8893 2.53382 26.9481 1.97601L26.6206 1.66744C26.1841 1.32071 25.769 1.0053 25.2642 0.765732C25.1921 0.734017 25.1222 0.703234 25.0523 0.672452C24.169 0.280457 23.3006 0.0921679 22.3378 0.0453778C22.2491 0.0416053 22.2491 0.0416053 22.1621 0.0379074C21.4962 0.00866469 20.8314 -0.000365428 20.1649 0.000327969C20.0356 0.000476399 19.9063 0.000498207 19.777 0.000411725C19.4211 3.25483e-05 19.0652 -0.000106853 18.7094 8.70769e-05C18.331 0.000308637 17.9527 0.000291535 17.5744 0.000188996C16.9379 1.61668e-05 16.3015 5.6304e-05 15.665 0.000358895C14.9285 0.000723873 14.1921 0.000841022 13.4556 0.000480046C12.8154 0.000162598 12.1751 5.70567e-06 11.5349 0.000125792C11.1534 0.000229377 10.7718 0.000387706 10.3902 0.00021774C10.0285 5.79784e-06 9.66685 -0.000105883 9.30515 0.000192594Z"
+                fill="#22C55E"
+              />
+            </svg>
+            <b>Advice<span>Food</span></b>
+          </a>
+
+          <div class="nav--desktop">
+            <a href="#" class="header--desktop--link active">Food analysis</a>
+            <a href="#" class="header--desktop--link dev">Recipe</a>
+            <a href="#" class="header--desktop--link">Blog</a>
+            <a href="#" class="header--desktop--link">Contacts</a>
+          </div>
+
+          <div class="nav--right">
+            <a href="#" class="new--analysis--btn"
+              >New analysis
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+              >
+                <g
+                  stroke="#fff"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2.5"
+                  clip-path="url(#h8)"
+                >
+                  <path d="M12 5v14M5 12h14" />
+                </g>
+                <defs>
+                  <clipPath id="h8">
+                    <path fill="#fff" d="M0 0h24v24H0z" />
+                  </clipPath>
+                </defs></svg
+            ></a>
+            <!-- <a href="#" class="login--link">Log in</a> -->
+            <div class="header--avatar">
+              <div class="header--avatar--wrapper">
+                <img src="img/avatar.png" alt="" />
+              </div>
+            </div>
+          </div>
+
+          <nav class="headerNav">
+            <div class="burger--button" id="burgerButton">
+              <span class="burger--line"></span>
+              <span class="burger--line"></span>
+              <span class="burger--line"></span>
+            </div>
+
+            <div class="navigation--menu" id="navMenu">
+              <div class="container">
+                <div class="navigation--wrap">
+                  <ul class="nav--list profile">
+                    <li class="nav--profile">
+                      <a href="#" class="nav--profile--link">
+                        <img
+                          src="/img/avatar.png"
+                          width="52"
+                          height="52"
+                          alt=""
+                          class="profile--photo"
+                        />
+                        <div class="profile--link--meta">
+                          <strong>Nickname</strong>
+                          <span>My profile</span>
+                        </div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="10"
+                          height="18"
+                          fill="none"
+                        >
+                          <path
+                            stroke="#000"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-opacity=".7"
+                            stroke-width="2"
+                            d="m1 17 8-8-8-8"
+                          />
+                        </svg>
+                      </a>
+                    </li>
+                    <li class="centerMode">
+                      <a href="#">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="26"
+                          height="26"
+                          fill="none"
+                        >
+                          <g
+                            stroke="#000"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2.5"
+                            clip-path="url(#a8)"
+                            opacity="1"
+                          >
+                            <path d="M13 4v18M4 13h18" />
+                          </g>
+                          <defs>
+                            <clipPath id="a8">
+                              <path fill="#fff" d="M0 0h26v26H0z" />
+                            </clipPath>
+                          </defs>
+                        </svg>
+                        <b>New analysis</b>
+                      </a>
+                    </li>
+                    <li class="centerMode">
+                      <a href="#">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="26"
+                          height="26"
+                          fill="none"
+                        >
+                          <g clip-path="url(#a1)">
+                            <path
+                              fill="none"
+                              stroke="#000"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M9.75 4.333H5.417A2.167 2.167 0 0 0 3.25 6.5v11.917a2.167 2.167 0 0 0 2.167 2.166h15.166a2.166 2.166 0 0 0 2.167-2.166V9.75a2.167 2.167 0 0 0-2.167-2.167H13z"
+                            />
+                          </g>
+                          <defs>
+                            <clipPath id="a1">
+                              <path fill="#fff" d="M0 0h26v26H0z" />
+                            </clipPath>
+                          </defs>
+                        </svg>
+                        <b>My analyses</b>
+                      </a>
+                    </li>
+                  </ul>
+
+                  <ul class="nav--list">
+                    <li id="homeLink">
+                      <a href="#">
+                        <div class="svg--transition">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="26"
+                            height="26"
+                            fill="none"
+                          >
+                            <g
+                              stroke="#000"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              opacity=".9"
+                            >
+                              <path
+                                d="M5.417 13H3.25L13 3.25 22.75 13h-2.167M5.416 13v7.583a2.167 2.167 0 0 0 2.167 2.167h10.833a2.167 2.167 0 0 0 2.167-2.167V13"
+                              />
+                              <path
+                                d="M9.75 22.75v-6.5a2.167 2.167 0 0 1 2.167-2.167h2.166a2.167 2.167 0 0 1 2.167 2.167v6.5"
+                              />
+                            </g>
+                          </svg>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="26"
+                            height="26"
+                            viewBox="0 0 26 26"
+                            fill="none"
+                          >
+                            <path
+                              fill="#22C55E"
+                              d="m12.494.342 10.5 10.5c.735.735.214 1.991-.825 1.991h-1.167v7a3.5 3.5 0 0 1-3.5 3.5h-1.167v-8.167a3.5 3.5 0 0 0-3.294-3.494l-.206-.006h-2.333a3.5 3.5 0 0 0-3.5 3.5v8.167H5.835a3.5 3.5 0 0 1-3.5-3.5v-7H1.17c-1.039 0-1.56-1.256-.825-1.991l10.5-10.5a1.167 1.167 0 0 1 1.65 0M12.834 14a1.167 1.167 0 0 1 1.167 1.166v8.167H9.335v-8.167a1.167 1.167 0 0 1 1.03-1.158l.137-.008z"
+                            />
+                          </svg>
+                        </div>
+                        <b>Home</b>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <div class="svg--transition">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="28"
+                            height="28"
+                            fill="none"
+                          >
+                            <g
+                              stroke="#000"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              clip-path="url(#a)"
+                              opacity=".8"
+                            >
+                              <path
+                                d="M3.5 22.167a10.5 10.5 0 0 1 10.5 0 10.5 10.5 0 0 1 10.5 0M3.5 7A10.5 10.5 0 0 1 14 7a10.5 10.5 0 0 1 10.5 0M3.5 7v15.167M14 7v15.167M24.5 7v15.167"
+                              />
+                            </g>
+                            <defs>
+                              <clipPath id="a">
+                                <path fill="#fff" d="M0 0h28v28H0z" />
+                              </clipPath>
+                            </defs>
+                          </svg>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="28"
+                            height="28"
+                            fill="none"
+                          >
+                            <g clip-path="url(#h)">
+                              <path
+                                fill="#22c55e"
+                                d="M25.083 5.99a1.17 1.17 0 0 1 .576.872l.008.138v15.167a1.167 1.167 0 0 1-1.75 1.01 9.33 9.33 0 0 0-8.75-.31V5.164a11.67 11.67 0 0 1 9.916.826m-12.25-.825.002 17.703a9.33 9.33 0 0 0-8.44.136l-.382.21-.12.052-.057.018-.128.03-.071.012-.137.007h-.049l-.128-.014-.09-.016-.126-.037-.147-.066-.111-.065-.104-.078-.07-.066-.085-.095-.075-.104-.025-.042-.038-.07-.051-.12-.019-.057-.03-.129-.012-.07-.004-.058L2.333 7a1.17 1.17 0 0 1 .584-1.01 11.67 11.67 0 0 1 9.916-.825"
+                              />
+                            </g>
+                            <defs>
+                              <clipPath id="h">
+                                <path fill="#fff" d="M0 0h28v28H0z" />
+                              </clipPath>
+                            </defs>
+                          </svg>
+                        </div>
+                        <b>Blog</b>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <div class="svg--transition">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="28"
+                            height="28"
+                            fill="none"
+                          >
+                            <g
+                              stroke="#000"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              clip-path="url(#h2)"
+                              opacity=".8"
+                            >
+                              <path
+                                d="M3.5 8.167a2.333 2.333 0 0 1 2.333-2.334h16.334A2.333 2.333 0 0 1 24.5 8.167v11.666a2.333 2.333 0 0 1-2.333 2.334H5.833A2.334 2.334 0 0 1 3.5 19.833z"
+                              />
+                              <path d="m3.5 8.167 10.5 7 10.5-7" />
+                            </g>
+                            <defs>
+                              <clipPath id="h2">
+                                <path fill="#fff" d="M0 0h28v28H0z" />
+                              </clipPath>
+                            </defs>
+                          </svg>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="28"
+                            height="28"
+                            fill="none"
+                          >
+                            <g fill="#22c55e" clip-path="url(#h3)">
+                              <path
+                                d="M25.667 8.79v11.043a3.5 3.5 0 0 1-3.295 3.495l-.205.005H5.833A3.5 3.5 0 0 1 2.34 20.04l-.006-.206V8.791l11.02 7.346.135.077a1.17 1.17 0 0 0 1.024 0l.136-.077z"
+                              />
+                              <path
+                                d="M22.167 4.667c1.26 0 2.364.665 2.98 1.664L14 13.763 2.853 6.331a3.5 3.5 0 0 1 2.746-1.656l.234-.008z"
+                              />
+                            </g>
+                            <defs>
+                              <clipPath id="h3">
+                                <path fill="#fff" d="M0 0h28v28H0z" />
+                              </clipPath>
+                            </defs>
+                          </svg>
+                        </div>
+                        <b>Contact</b>
+                      </a>
+                    </li>
+                  </ul>
+
+                  <ul class="nav--list">
+                    <li class="al">
+                      <a href="#">
+                        <div class="svg--transition">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="28"
+                            height="28"
+                            fill="none"
+                          >
+                            <g
+                              stroke="#000"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-opacity=".8"
+                              stroke-width="2"
+                              clip-path="url(#h4)"
+                            >
+                              <path
+                                d="M17.5 24.5H7A3.5 3.5 0 0 1 3.5 21v-1.167h2.333M17.5 24.5a2.333 2.333 0 0 1-2.333-2.333v-2.334H5.833M17.5 24.5a2.333 2.333 0 0 0 2.333-2.333v-14m-14 11.666V7a3.5 3.5 0 0 1 3.5-3.5h12.834m-2.334 4.667V5.833A2.333 2.333 0 0 1 22.167 3.5m-2.334 4.667h2.334a2.333 2.333 0 1 0 0-4.667M10.5 8.167h4.667M10.5 12.833h4.667"
+                              />
+                            </g>
+                            <defs>
+                              <clipPath id="h4">
+                                <path fill="#fff" d="M0 0h28v28H0z" />
+                              </clipPath>
+                            </defs>
+                          </svg>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="28"
+                            height="28"
+                            fill="none"
+                          >
+                            <g clip-path="url(#h5)">
+                              <path
+                                fill="#22c55e"
+                                d="M17.5 24.5H7A3.5 3.5 0 0 1 3.5 21v-1.167h2.333V7a3.5 3.5 0 0 1 3.5-3.5h12.834a2.333 2.333 0 1 1 0 4.667h-2.334v14A2.333 2.333 0 0 1 17.5 24.5"
+                              />
+                              <path
+                                stroke="#fff"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="1.5"
+                                d="M17.5 24.5H7A3.5 3.5 0 0 1 3.5 21v-1.167h2.333M17.5 24.5a2.333 2.333 0 0 1-2.333-2.333v-2.334H5.833M17.5 24.5a2.333 2.333 0 0 0 2.333-2.333v-14m-14 11.666V7a3.5 3.5 0 0 1 3.5-3.5h12.834m-2.334 4.667V5.833A2.333 2.333 0 0 1 22.167 3.5m-2.334 4.667h2.334a2.333 2.333 0 1 0 0-4.667M10.5 8.167h4.667M10.5 12.833h4.667"
+                              />
+                            </g>
+                            <defs>
+                              <clipPath id="h5">
+                                <path fill="#fff" d="M0 0h28v28H0z" />
+                              </clipPath>
+                            </defs>
+                          </svg>
+                        </div>
+                        <b>Legal</b>
+                      </a>
+                    </li>
+                  </ul>
+                  <ul class="nav--list">
+                    <li>
+                      <a href="#">
+                        <div class="svg--transition">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="28"
+                            height="28"
+                            fill="none"
+                          >
+                            <g
+                              stroke="#000"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-opacity=".8"
+                              stroke-width="2"
+                              clip-path="url(#h6)"
+                            >
+                              <path
+                                d="M12.046 5.037c.497-2.05 3.411-2.05 3.908 0a2.01 2.01 0 0 0 3.002 1.243c1.8-1.096 3.862.964 2.765 2.765a2.013 2.013 0 0 0 1.242 3c2.05.498 2.05 3.412 0 3.91a2.01 2.01 0 0 0-1.243 3.001c1.097 1.8-.964 3.862-2.765 2.765a2.012 2.012 0 0 0-3 1.242c-.498 2.05-3.412 2.05-3.91 0a2.01 2.01 0 0 0-3.001-1.243c-1.8 1.097-3.862-.964-2.765-2.765a2.01 2.01 0 0 0-1.242-3c-2.05-.498-2.05-3.412 0-3.91A2.01 2.01 0 0 0 6.28 9.045c-1.096-1.8.964-3.862 2.765-2.765a2.01 2.01 0 0 0 3-1.242"
+                              />
+                              <path
+                                d="M10.5 14a3.5 3.5 0 1 0 7 0 3.5 3.5 0 0 0-7 0"
+                              />
+                            </g>
+                            <defs>
+                              <clipPath id="h6">
+                                <path fill="#fff" d="M0 0h28v28H0z" />
+                              </clipPath>
+                            </defs>
+                          </svg>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="28"
+                            height="28"
+                            fill="none"
+                          >
+                            <g clip-path="url(#h7)">
+                              <path
+                                fill="#22c55e"
+                                d="M17.088 4.761a.845.845 0 0 0 1.26.523c2.846-1.733 6.102 1.522 4.37 4.368a.844.844 0 0 0 .52 1.26c3.238.785 3.238 5.39 0 6.176a.844.844 0 0 0-.522 1.26c1.733 2.846-1.522 6.102-4.368 4.37a.845.845 0 0 0-1.26.52c-.785 3.238-5.39 3.238-6.176 0a.845.845 0 0 0-1.26-.522c-2.846 1.733-6.102-1.522-4.37-4.368a.845.845 0 0 0-.52-1.26c-3.238-.785-3.238-5.39 0-6.176a.845.845 0 0 0 .522-1.26C3.55 6.806 6.806 3.55 9.652 5.282a.842.842 0 0 0 1.26-.52c.785-3.238 5.39-3.238 6.176 0M14 10.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7"
+                              />
+                            </g>
+                            <defs>
+                              <clipPath id="h7">
+                                <path fill="#fff" d="M0 0h28v28H0z" />
+                              </clipPath>
+                            </defs>
+                          </svg>
+                        </div>
+                        <b>Settings</b>
+                      </a>
+                    </li>
+                  </ul>
+                  <p class="copyright--nav">© 2026 AdviceFood</p>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <div class="secondary"></div>
+    </header>
+
+    <main>
+      <section class="section--analyze">
+        <div class="container">
+          <div class="section--inner">
+            <h1 class="section--title">Analyze Your Food with&nbsp;AI</h1>
+            <p class="section--subtitle">
+              Upload a&nbsp;food photo to&nbsp;estimate calories,
+              macronutrients, and&nbsp;ingredients in&nbsp;your&nbsp;meal.
+            </p>
+
+            <div class="analyze--wrapper">
+              <form action="/upload" class="analyzeForm">
+                <div class="analyze--primary--content">
+                  <svg
+                    class="cloud--icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="68"
+                    height="68"
+                    fill="none"
+                  >
+                    <path
+                      stroke="#fff"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="4"
+                      d="M19.768 50.83c-3.524 0-6.903-1.338-9.395-3.721s-3.89-5.616-3.89-8.986 1.399-6.602 3.89-8.985c2.492-2.384 5.871-3.722 9.395-3.722.832-3.708 3.266-6.966 6.767-9.058a16.9 16.9 0 0 1 5.72-2.114 17.6 17.6 0 0 1 6.182.017c2.04.37 3.978 1.1 5.705 2.145a15.1 15.1 0 0 1 4.358 3.946c1.151 1.56 1.95 3.31 2.35 5.147s.393 3.729-.02 5.564h2.825a9.884 9.884 0 0 1 0 19.768H50.83"
+                    />
+                    <path
+                      stroke="#fff"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="4"
+                      d="m25.415 42.359 8.472-8.472 8.472 8.472M33.887 33.887v25.416"
+                    />
+                  </svg>
+
+                  <span class="analyze--instruction">
+                    <b class="desktop">Drop your photo/video here</b>
+                    <b class="mobile" aria-hidden="true">Drop your photo</b>
+                    <br />
+                    or
+                    <label for="analyzeFile" class="analyze--upload--label">
+                      choose a file
+                      <input
+                        required
+                        type="file"
+                        name="analyzeFile"
+                        id="analyzeFile"
+                      />
+                    </label>
+                  </span>
+
+                  <span class="analyze--formats">
+                    JPG, JPEG, PNG, WEBP, HEIC, HEIF, AVIF · up to 25 MB
+                  </span>
+
+                  <p class="analyze--notice">
+                    AI can make mistakes and inaccuracies. Please check
+                    important facts before making decisions.
+                  </p>
+
+                  <div class="analyze--appeariance">
+                    <svg class="dashed-border">
+                      <rect
+                        x="0"
+                        y="0"
+                        width="100%"
+                        height="100%"
+                        rx="16"
+                        ry="16"
+                        fill="none"
+                        stroke="#6B4C2D"
+                        stroke-width="3"
+                        stroke-dasharray="10 10"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                <div class="analyze--comment">
+                  <button
+                    type="button"
+                    id="openComm"
+                    class="analyze--open--comment"
+                  >
+                    Add a comment
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                    >
+                      <g
+                        stroke="#000"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        clip-path="url(#h9)"
+                      >
+                        <path
+                          d="M8 9h8M8 13h6M9 18H6a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-3l-3 3z"
+                        />
+                      </g>
+                      <defs>
+                        <clipPath id="h9">
+                          <path fill="#fff" d="M0 0h24v24H0z" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </button>
+                  <textarea
+                    name="comment"
+                    id="analyzeComment"
+                    placeholder="Write down the details of the product/dish (optional)"
+                  ></textarea>
+                </div>
+
+                <fieldset class="analyze--type">
+                  <legend class="analyze--type--title">
+                    Choose the type of operation
+                  </legend>
+
+                  <label for="analyzeType" class="analyze--type--label">
+                    <input
+                      type="radio"
+                      value="analysis"
+                      name="type"
+                      id="analyzeType"
+                      checked
+                    />
+                    <span>Analysis</span>
+                  </label>
+
+                  <label for="recipeType" class="analyze--type--label">
+                    <input
+                      type="radio"
+                      value="recipe"
+                      name="type"
+                      id="recipeType"
+                    />
+                    <span>Recipe</span>
+                  </label>
+                </fieldset>
+
+                <button class="analyze--start">
+                  Start the analysis
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                    focusable="false"
+                    width="32"
+                    height="32"
+                    fill="none"
+                  >
+                    <g
+                      stroke="#fff"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      clip-path="url(#h10)"
+                    >
+                      <path
+                        d="M6.667 16h18.666M20 21.333 25.333 16M20 10.667 25.333 16"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="h10">
+                        <path fill="#fff" d="M0 0h32v32H0z" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </button>
+              </form>
+
+              <p class="analyze--notice mobile">
+                AI can make mistakes and inaccuracies. Please check important
+                facts before making decisions.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
