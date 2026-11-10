@@ -48,7 +48,7 @@ function setup(device, frame) {
     { right: [1, 0, 0], up: [0, 1, 0] },
     { right: [-1, 0, 0], up: [0, 1, 0] },
   ];
-  const resolution = 112;
+  const resolution = 32;
   const verticesPerFace = (resolution + 1) * (resolution + 1);
   const vertexCount = faces.length * verticesPerFace;
   const triangleCount = faces.length * resolution * resolution * 2;
@@ -160,7 +160,7 @@ function setup(device, frame) {
 
 function render(device, frame) {
   const s = frame.state;
-  const sampleCount = 4;
+  const sampleCount = 1;
 
   if (s.pipelineFormat !== frame.output.format) {
     s.pipeline = device.createRenderPipeline({
