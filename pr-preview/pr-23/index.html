@@ -646,7 +646,7 @@
         color: #00000099;
         text-align: center;
         font-size: 0.875rem;
-        margin-bottom: 20px;
+        margin-bottom: 40px;
       }
 
       form .analyze--notice {
@@ -804,6 +804,66 @@
 
       .analyze--comment textarea::placeholder {
         color: #00000099;
+      }
+
+      .section--how-to {
+        height: auto;
+        width: 100%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-bottom: 56px;
+      }
+
+      #gpu-canvas {
+        height: 100%;
+        width: 100vw;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 1;
+      }
+
+      ol.ht--steps {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+        padding-top: 26px;
+        padding-bottom: 41px;
+        position: relative;
+        z-index: 2;
+        gap: 40px;
+        color: white;
+      }
+
+      li.ht--step {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      li.ht--step span {
+        font-size: 3.75rem;
+        font-weight: 900;
+        font-style: normal;
+        font-family: "AA";
+      }
+
+      li.ht--step strong {
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-top: 11px;
+        font-style: normal;
+      }
+
+      li.ht--step b {
+        font-weight: 400;
+        margin-top: 1px;
+        font-style: normal;
       }
 
       @media screen and (min-width: 430px) {
@@ -1671,9 +1731,37 @@
           </div>
         </div>
       </section>
+
+      <section class="section--how-to">
+        <div class="container">
+          <div class="section--inner">
+            <ol class="ht--steps">
+              <li class="ht--step">
+                <span>1</span>
+                <strong>Upload a photo</strong>
+                <b>Choose a photo of your meal</b>
+              </li>
+              <li class="ht--step">
+                <span>2</span>
+                <strong>Get your analysis</strong>
+                <b>Let AI estimate its nutritional value</b>
+              </li>
+              <li class="ht--step">
+                <span>3</span>
+                <strong>Explore the results</strong>
+                <b>Eat smarter every day</b>
+              </li>
+            </ol>
+          </div>
+        </div>
+        <canvas id="gpu-canvas"></canvas>
+        <div id="fallback" style="display: none">
+          <img src="img/avatar.png" alt="" />
+        </div>
+      </section>
     </main>
 
     <script src="js/main.js"></script>
-    <script src="js/script.js"></script>
+    <script type="module" src="js/background-effect.js"></script>
   </body>
 </html>
