@@ -1,6 +1,8 @@
 @font-face {
   font-family: "AA";
-  src: url(../fonts/AA_Stetica_Regular.otf);
+  src:
+    url(../fonts/aa_stetica_regular-webfont.woff2) format("woff2"),
+    url(../fonts/aa_stetica_regular-webfont.woff) format("woff");
   font-weight: 400;
   font-display: swap;
   font-style: normal;
@@ -8,7 +10,9 @@
 
 @font-face {
   font-family: "AA";
-  src: url(../fonts/AA_Stetica_Medium.ttf);
+  src:
+    url(../fonts/aa_stetica_medium-webfont.woff2) format("woff2"),
+    url(../fonts/aa_stetica_medium-webfont.woff) format("woff");
   font-weight: 500;
   font-display: swap;
   font-style: normal;
@@ -16,7 +20,9 @@
 
 @font-face {
   font-family: "AA";
-  src: url(../fonts/AA_Stetica_Bold.otf);
+  src:
+    url(../fonts/aa_stetica_bold-webfont.woff2) format("woff2"),
+    url(../fonts/aa_stetica_bold-webfont.woff) format("woff");
   font-weight: 700;
   font-display: swap;
   font-style: normal;
