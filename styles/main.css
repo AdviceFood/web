@@ -28,6 +28,14 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "AA";
+  src: url(../fonts/AA_Stetica_Black_0.otf);
+  font-weight: 900;
+  font-display: swap;
+  font-style: normal;
+}
+
 :root {
   --lt-body: #f4f6f9;
   --lt-menu: #ffffff;
