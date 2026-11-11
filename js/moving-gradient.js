@@ -1,13 +1,3 @@
-// Moving gradient — порт Figma Shaders плагина на чистый WebGPU + <canvas>.
-// Шейдер (WGSL) перенесён из main.ts без изменений.
-//
-// Использование:
-//   import { createMovingGradient } from "./moving-gradient.js"
-//   const fx = await createMovingGradient(canvas, { zoom: 72 })
-//   if (!fx) { /* WebGPU недоступен — показать запасной фон */ }
-//   fx.setParams({ material: 2 })   // менять параметры на лету
-//   fx.stop() / fx.start() / fx.destroy()
-
 const SHADER = `struct Uniforms {
   detail: f32,
   time: f32,
@@ -631,16 +621,16 @@ fn coverSphereScale(aspect: f32) -> f32 {
 `;
 
 export const DEFAULT_PARAMS = {
-  detail: 1.78, // 0..5
-  intensity: 4.29, // 0..5
-  twist: 0.04, // 0..7
-  warp: 0.26, // 0..1.5  (Flow)
-  zoom: 72, // 0..100 %
-  rotationSpeed: 12, // 0..100 %
-  morphSpeed: 3.74, // 0..5
-  material: 0, // 0 None, 1 Satin, 2 Glossy, 3 Metallic, 4 Iridescent
-  gradientBalance: 0, // -100..100 %
-  gradientMethod: 0, // 0 Height, 1 Noise, 2 Facing
+  detail: 1.78,
+  intensity: 4.29,
+  twist: 0.04,
+  warp: 0.26,
+  zoom: 72,
+  rotationSpeed: 12,
+  morphSpeed: 3.74,
+  material: 0,
+  gradientBalance: 0,
+  gradientMethod: 0,
   gradient: {
     stops: [
       { position: 0, color: { r: 1, g: 0.9137254902, b: 0.6196078431, a: 1 } },
@@ -657,7 +647,6 @@ const SAMPLE_COUNT = 4;
 const DEPTH_FORMAT = "depth24plus";
 const MAXIMUM_ZOOM = 10;
 
-// Цвет можно задавать как {r,g,b,a} (0..1, sRGB) или строкой "#rgb" / "#rrggbb" / "#rrggbbaa"
 function parseColor(c) {
   if (typeof c !== "string") return { r: c.r, g: c.g, b: c.b, a: c.a ?? 1 };
   let h = c.replace("#", "");
