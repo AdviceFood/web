@@ -1778,15 +1778,25 @@
 
       let fx = null;
       try {
-        fx = await createMovingGradient(canvas, {
-          gradient: {
-            stops: [
-              { position: 0, color: "#a8ff78" },
-              { position: 0.5, color: "#1db954" },
-              { position: 1, color: "#0b6e4f" },
-            ],
+        fx = await createMovingGradient(
+          canvas,
+          {
+            // 1-й аргумент: параметры эффекта
+            gradient: {
+              stops: [
+                { position: 0, color: "#a8ff78" },
+                { position: 0.5, color: "#1db954" },
+                { position: 1, color: "#0b6e4f" },
+              ],
+            },
           },
-        });
+          {
+            // 2-й аргумент: настройки производительности
+            maxFps: 30,
+            maxDpr: 1,
+            meshResolution: 64,
+          },
+        );
       } catch (e) {
         console.warn("WebGPU init failed", e);
       }
