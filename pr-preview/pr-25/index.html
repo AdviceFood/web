@@ -1762,6 +1762,35 @@
     </main>
 
     <script src="js/main.js"></script>
-    <script type="module" src="js/background-effect.js"></script>
+    <script type="module">
+      import { createMovingGradient } from "./js/moving-gradient.js";
+
+      const canvas = document.getElementById("gpu-canvas");
+
+      function whenLoaded() {
+        if (document.readyState === "complete") return Promise.resolve();
+        return new Promise((resolve) =>
+          window.addEventListener("load", resolve, { once: true }),
+        );
+      }
+
+      await whenLoaded();
+
+      let fx = null;
+      try {
+        fx = await createMovingGradient(canvas, {
+          gradient: {
+            stops: [
+              { position: 0, color: "#a8ff78" },
+              { position: 0.5, color: "#1db954" },
+              { position: 1, color: "#0b6e4f" },
+            ],
+          },
+        });
+      } catch (e) {
+        console.warn("WebGPU init failed", e);
+      }
+      if (!fx) canvas.remove();
+    </script>
   </body>
 </html>
