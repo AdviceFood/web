@@ -1,3 +1,13 @@
+// Moving gradient — порт Figma Shaders плагина на чистый WebGPU + <canvas>.
+// Шейдер (WGSL) перенесён из main.ts без изменений.
+//
+// Использование:
+//   import { createMovingGradient } from "./moving-gradient.js"
+//   const fx = await createMovingGradient(canvas, { zoom: 72 })
+//   if (!fx) { /* WebGPU недоступен — показать запасной фон */ }
+//   fx.setParams({ material: 2 })   // менять параметры на лету
+//   fx.stop() / fx.start() / fx.destroy()
+
 const SHADER = `struct Uniforms {
   detail: f32,
   time: f32,
@@ -621,16 +631,16 @@ fn coverSphereScale(aspect: f32) -> f32 {
 `;
 
 export const DEFAULT_PARAMS = {
-  detail: 1.78,
-  intensity: 4.29,
-  twist: 0.04,
-  warp: 0.26,
-  zoom: 72,
-  rotationSpeed: 12,
-  morphSpeed: 3.74,
-  material: 0,
-  gradientBalance: 0,
-  gradientMethod: 0,
+  detail: 1.78, // 0..5
+  intensity: 4.29, // 0..5
+  twist: 0.04, // 0..7
+  warp: 0.26, // 0..1.5  (Flow)
+  zoom: 72, // 0..100 %
+  rotationSpeed: 12, // 0..100 %
+  morphSpeed: 3.74, // 0..5
+  material: 0, // 0 None, 1 Satin, 2 Glossy, 3 Metallic, 4 Iridescent
+  gradientBalance: 0, // -100..100 %
+  gradientMethod: 0, // 0 Height, 1 Noise, 2 Facing
   gradient: {
     stops: [
       { position: 0, color: { r: 1, g: 0.9137254902, b: 0.6196078431, a: 1 } },
@@ -643,10 +653,10 @@ export const DEFAULT_PARAMS = {
   },
 };
 
-const SAMPLE_COUNT = 4;
 const DEPTH_FORMAT = "depth24plus";
 const MAXIMUM_ZOOM = 10;
 
+// Цвет можно задавать как {r,g,b,a} (0..1, sRGB) или строкой "#rgb" / "#rrggbb" / "#rrggbbaa"
 function parseColor(c) {
   if (typeof c !== "string") return { r: c.r, g: c.g, b: c.b, a: c.a ?? 1 };
   let h = c.replace("#", "");
@@ -659,8 +669,8 @@ function parseColor(c) {
   return { r: n(0), g: n(2), b: n(4), a: h.length >= 8 ? n(6) : 1 };
 }
 
-// Сфера из 6 граней куба (cube-sphere), 112x112 квадов на грань
-function buildSphere() {
+// Сфера из 6 граней куба (cube-sphere), resolution x resolution квадов на грань
+function buildSphere(resolution) {
   const faces = [
     { right: [0, 0, -1], up: [0, 1, 0] },
     { right: [0, 0, 1], up: [0, 1, 0] },
@@ -669,7 +679,6 @@ function buildSphere() {
     { right: [1, 0, 0], up: [0, 1, 0] },
     { right: [-1, 0, 0], up: [0, 1, 0] },
   ];
-  const resolution = 112;
   const verticesPerFace = (resolution + 1) * (resolution + 1);
   const vertices = new Float32Array(faces.length * verticesPerFace * 3);
   const indices = new Uint32Array(faces.length * resolution * resolution * 6);
@@ -746,7 +755,17 @@ function computeMinimumZoom(aspect) {
 /**
  * @param {HTMLCanvasElement} canvas
  * @param {Partial<typeof DEFAULT_PARAMS>} [userParams]
- * @param {{maxDpr?: number, alphaMode?: "premultiplied"|"opaque", pauseWhenHidden?: boolean, autoStart?: boolean}} [options]
+ * @param {{
+ *   maxDpr?: number,           // потолок devicePixelRatio, по умолчанию 2 (можно <1, напр. 0.75)
+ *   maxFps?: number,           // ограничение кадров в секунду, 0 = без ограничения
+ *   adaptive?: boolean,        // автоматически снижать разрешение при низком FPS (по умолчанию true)
+ *   minScale?: number,         // нижняя граница авто-снижения разрешения, по умолчанию 0.4
+ *   msaa?: 1|4,                // сглаживание; по умолчанию 1 (выкл.) — сфера и так перекрывает весь кадр
+ *   meshResolution?: number,   // квадов на грань сферы, по умолчанию 112 (76 тыс. вершин); 64 — ~25 тыс.
+ *   alphaMode?: "premultiplied"|"opaque",
+ *   pauseWhenHidden?: boolean,
+ *   autoStart?: boolean
+ * }} [options]
  * @returns {Promise<null | {setParams, start, stop, renderFrame, destroy}>}
  *   null — если WebGPU недоступен
  */
@@ -757,6 +776,11 @@ export async function createMovingGradient(
 ) {
   const {
     maxDpr = 2,
+    maxFps = 0,
+    adaptive = true,
+    minScale = 0.4,
+    msaa = 1,
+    meshResolution = 112,
     alphaMode = "premultiplied",
     pauseWhenHidden = true,
     autoStart = true,
@@ -776,7 +800,8 @@ export async function createMovingGradient(
   const shaderModule = device.createShaderModule({ code: SHADER });
 
   // --- геометрия ---
-  const { vertices, indices } = buildSphere();
+  const sampleCount = msaa > 1 ? 4 : 1;
+  const { vertices, indices } = buildSphere(meshResolution);
   const vertexBuffer = device.createBuffer({
     size: vertices.byteLength,
     usage: GPUBufferUsage.VERTEX | GPUBufferUsage.COPY_DST,
@@ -823,7 +848,7 @@ export async function createMovingGradient(
       depthWriteEnabled: true,
       depthCompare: "less",
     },
-    multisample: { count: SAMPLE_COUNT },
+    multisample: { count: sampleCount },
   });
 
   const backdropPipeline = device.createRenderPipeline({
@@ -840,7 +865,7 @@ export async function createMovingGradient(
       depthWriteEnabled: false,
       depthCompare: "always",
     },
-    multisample: { count: SAMPLE_COUNT },
+    multisample: { count: sampleCount },
   });
 
   const bindGroup = device.createBindGroup({
@@ -860,31 +885,35 @@ export async function createMovingGradient(
   let depthTexture = null;
   let msaaView = null;
   let depthView = null;
+  let scale = 1; // множитель разрешения (меняется авто-режимом)
   let zoomAspect = NaN;
   let minimumZoom = 0.5;
 
   function resize() {
-    const dpr = Math.min(window.devicePixelRatio || 1, maxDpr);
+    const dpr = Math.min(window.devicePixelRatio || 1, maxDpr) * scale;
     const w = Math.max(1, Math.round(canvas.clientWidth * dpr));
     const h = Math.max(1, Math.round(canvas.clientHeight * dpr));
-    if (canvas.width === w && canvas.height === h && msaaTexture) return;
+    if (canvas.width === w && canvas.height === h && depthTexture) return;
     canvas.width = w;
     canvas.height = h;
     msaaTexture?.destroy();
     depthTexture?.destroy();
-    msaaTexture = device.createTexture({
-      size: { width: w, height: h },
-      format,
-      sampleCount: SAMPLE_COUNT,
-      usage: GPUTextureUsage.RENDER_ATTACHMENT,
-    });
+    msaaTexture =
+      sampleCount > 1
+        ? device.createTexture({
+            size: { width: w, height: h },
+            format,
+            sampleCount,
+            usage: GPUTextureUsage.RENDER_ATTACHMENT,
+          })
+        : null;
     depthTexture = device.createTexture({
       size: { width: w, height: h },
       format: DEPTH_FORMAT,
-      sampleCount: SAMPLE_COUNT,
+      sampleCount,
       usage: GPUTextureUsage.RENDER_ATTACHMENT,
     });
-    msaaView = msaaTexture.createView();
+    msaaView = msaaTexture ? msaaTexture.createView() : null;
     depthView = depthTexture.createView();
   }
 
@@ -953,15 +982,16 @@ export async function createMovingGradient(
     resize();
     writeUniforms((now - t0) * 0.001);
 
+    const canvasView = context.getCurrentTexture().createView();
     const encoder = device.createCommandEncoder();
     const pass = encoder.beginRenderPass({
       colorAttachments: [
         {
-          view: msaaView,
-          resolveTarget: context.getCurrentTexture().createView(),
+          view: msaaView ?? canvasView,
+          ...(msaaView ? { resolveTarget: canvasView } : {}),
           loadOp: "clear",
           clearValue: { r: 0, g: 0, b: 0, a: 0 },
-          storeOp: "discard",
+          storeOp: msaaView ? "discard" : "store",
         },
       ],
       depthStencilAttachment: {
@@ -989,10 +1019,42 @@ export async function createMovingGradient(
   let visible = true;
   let destroyed = false;
 
+  // ограничение FPS + авто-снижение разрешения, если кадры идут медленно
+  const targetMs = 1000 / (maxFps || 60);
+  let lastRender = 0;
+  let warmup = 20; // первые кадры (компиляция, создание ресурсов) не считаем
+  let sumMs = 0;
+  let samples = 0;
+
   const loop = (now) => {
     if (!running) return;
     rafId = requestAnimationFrame(loop);
-    if (visible) renderFrame(now);
+    if (!visible) {
+      lastRender = 0;
+      return;
+    }
+    if (maxFps && lastRender && now - lastRender < targetMs - 2) return;
+
+    if (adaptive && lastRender) {
+      const dt = now - lastRender;
+      if (dt < 250) {
+        // большие паузы (вкладка была скрыта) игнорируем
+        if (warmup > 0) warmup--;
+        else {
+          sumMs += dt;
+          samples++;
+        }
+      }
+      if (samples >= 30) {
+        if (sumMs / samples > targetMs * 1.35 && scale > minScale) {
+          scale = Math.max(minScale, scale * 0.85);
+        }
+        sumMs = 0;
+        samples = 0;
+      }
+    }
+    lastRender = now;
+    renderFrame(now);
   };
 
   let observer = null;
