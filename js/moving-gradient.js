@@ -1,6 +1,14 @@
-// js/shader-code.js
-export const shaderCode = `
-struct Uniforms {
+// Moving gradient — порт Figma Shaders плагина на чистый WebGPU + <canvas>.
+// Шейдер (WGSL) перенесён из main.ts без изменений.
+//
+// Использование:
+//   import { createMovingGradient } from "./moving-gradient.js"
+//   const fx = await createMovingGradient(canvas, { zoom: 72 })
+//   if (!fx) { /* WebGPU недоступен — показать запасной фон */ }
+//   fx.setParams({ material: 2 })   // менять параметры на лету
+//   fx.stop() / fx.start() / fx.destroy()
+
+const SHADER = `struct Uniforms {
   detail: f32,
   time: f32,
   aspectRatio: f32,
@@ -621,3 +629,423 @@ fn coverSphereScale(aspect: f32) -> f32 {
   return vec4f(finalColor, baseColor.a);
 }
 `;
+
+export const DEFAULT_PARAMS = {
+  detail: 1.78, // 0..5
+  intensity: 4.29, // 0..5
+  twist: 0.04, // 0..7
+  warp: 0.26, // 0..1.5  (Flow)
+  zoom: 72, // 0..100 %
+  rotationSpeed: 12, // 0..100 %
+  morphSpeed: 3.74, // 0..5
+  material: 0, // 0 None, 1 Satin, 2 Glossy, 3 Metallic, 4 Iridescent
+  gradientBalance: 0, // -100..100 %
+  gradientMethod: 0, // 0 Height, 1 Noise, 2 Facing
+  gradient: {
+    stops: [
+      { position: 0, color: { r: 1, g: 0.9137254902, b: 0.6196078431, a: 1 } },
+      {
+        position: 0.5,
+        color: { r: 0.5058823529, g: 0.4705882353, b: 1, a: 1 },
+      },
+      { position: 1, color: { r: 1, g: 0, b: 0.6078431373, a: 1 } },
+    ],
+  },
+};
+
+const SAMPLE_COUNT = 4;
+const DEPTH_FORMAT = "depth24plus";
+const MAXIMUM_ZOOM = 10;
+
+// Цвет можно задавать как {r,g,b,a} (0..1, sRGB) или строкой "#rgb" / "#rrggbb" / "#rrggbbaa"
+function parseColor(c) {
+  if (typeof c !== "string") return { r: c.r, g: c.g, b: c.b, a: c.a ?? 1 };
+  let h = c.replace("#", "");
+  if (h.length <= 4)
+    h = h
+      .split("")
+      .map((x) => x + x)
+      .join("");
+  const n = (i) => parseInt(h.slice(i, i + 2), 16) / 255;
+  return { r: n(0), g: n(2), b: n(4), a: h.length >= 8 ? n(6) : 1 };
+}
+
+// Сфера из 6 граней куба (cube-sphere), 112x112 квадов на грань
+function buildSphere() {
+  const faces = [
+    { right: [0, 0, -1], up: [0, 1, 0] },
+    { right: [0, 0, 1], up: [0, 1, 0] },
+    { right: [1, 0, 0], up: [0, 0, -1] },
+    { right: [1, 0, 0], up: [0, 0, 1] },
+    { right: [1, 0, 0], up: [0, 1, 0] },
+    { right: [-1, 0, 0], up: [0, 1, 0] },
+  ];
+  const resolution = 112;
+  const verticesPerFace = (resolution + 1) * (resolution + 1);
+  const vertices = new Float32Array(faces.length * verticesPerFace * 3);
+  const indices = new Uint32Array(faces.length * resolution * resolution * 6);
+  let vo = 0;
+  let io = 0;
+
+  for (const { right, up } of faces) {
+    const forward = [
+      right[1] * up[2] - right[2] * up[1],
+      right[2] * up[0] - right[0] * up[2],
+      right[0] * up[1] - right[1] * up[0],
+    ];
+    const baseIndex = vo / 3;
+
+    for (let row = 0; row <= resolution; row++) {
+      const v = (row / resolution) * 2 - 1;
+      for (let col = 0; col <= resolution; col++) {
+        const u = (col / resolution) * 2 - 1;
+        const x = forward[0] + right[0] * u + up[0] * v;
+        const y = forward[1] + right[1] * u + up[1] * v;
+        const z = forward[2] + right[2] * u + up[2] * v;
+        const x2 = x * x,
+          y2 = y * y,
+          z2 = z * z;
+        vertices[vo++] = x * Math.sqrt(1 - y2 / 2 - z2 / 2 + (y2 * z2) / 3);
+        vertices[vo++] = y * Math.sqrt(1 - z2 / 2 - x2 / 2 + (z2 * x2) / 3);
+        vertices[vo++] = z * Math.sqrt(1 - x2 / 2 - y2 / 2 + (x2 * y2) / 3);
+      }
+    }
+
+    const rowSize = resolution + 1;
+    for (let row = 0; row < resolution; row++) {
+      for (let col = 0; col < resolution; col++) {
+        const a = baseIndex + row * rowSize + col;
+        const b = a + 1;
+        const c = a + rowSize + 1;
+        const d = a + rowSize;
+        indices.set([a, b, c, a, c, d], io);
+        io += 6;
+      }
+    }
+  }
+  return { vertices, indices };
+}
+
+// Минимальный зум, при котором сфера закрывает весь кадр (зависит от пропорций)
+function computeMinimumZoom(aspect) {
+  const diagonal = Math.sqrt(1 + aspect * aspect);
+  const safeRadius = 0.72;
+  const cameraDistance = 3;
+  const baseFocalLength = 1.73;
+  const targetFocalLength = baseFocalLength * 4;
+  const requiredRadius =
+    (cameraDistance * diagonal) /
+    Math.sqrt(targetFocalLength * targetFocalLength + diagonal * diagonal);
+  const sphereScale = Math.max(0.82, requiredRadius / safeRadius);
+  const conservativeRadius = Math.min(
+    cameraDistance - 0.001,
+    sphereScale * safeRadius,
+  );
+  const perspectiveDepth = Math.sqrt(
+    Math.max(
+      0.0001,
+      cameraDistance * cameraDistance - conservativeRadius * conservativeRadius,
+    ),
+  );
+  const coverZoom =
+    ((diagonal * perspectiveDepth) / (baseFocalLength * conservativeRadius)) *
+    1.12;
+  const minimumCoverZoom = Math.min(MAXIMUM_ZOOM, Math.max(0.5, coverZoom));
+  return Math.min(MAXIMUM_ZOOM, Math.max(0.5, minimumCoverZoom * 0.65));
+}
+
+/**
+ * @param {HTMLCanvasElement} canvas
+ * @param {Partial<typeof DEFAULT_PARAMS>} [userParams]
+ * @param {{maxDpr?: number, alphaMode?: "premultiplied"|"opaque", pauseWhenHidden?: boolean, autoStart?: boolean}} [options]
+ * @returns {Promise<null | {setParams, start, stop, renderFrame, destroy}>}
+ *   null — если WebGPU недоступен
+ */
+export async function createMovingGradient(
+  canvas,
+  userParams = {},
+  options = {},
+) {
+  const {
+    maxDpr = 2,
+    alphaMode = "premultiplied",
+    pauseWhenHidden = true,
+    autoStart = true,
+  } = options;
+
+  if (!navigator.gpu) return null;
+  const adapter = await navigator.gpu.requestAdapter();
+  if (!adapter) return null;
+  const device = await adapter.requestDevice();
+
+  const context = canvas.getContext("webgpu");
+  if (!context) return null;
+  const format = navigator.gpu.getPreferredCanvasFormat();
+  context.configure({ device, format, alphaMode });
+
+  // --- шейдер ---
+  const shaderModule = device.createShaderModule({ code: SHADER });
+
+  // --- геометрия ---
+  const { vertices, indices } = buildSphere();
+  const vertexBuffer = device.createBuffer({
+    size: vertices.byteLength,
+    usage: GPUBufferUsage.VERTEX | GPUBufferUsage.COPY_DST,
+  });
+  device.queue.writeBuffer(vertexBuffer, 0, vertices);
+  const indexBuffer = device.createBuffer({
+    size: indices.byteLength,
+    usage: GPUBufferUsage.INDEX | GPUBufferUsage.COPY_DST,
+  });
+  device.queue.writeBuffer(indexBuffer, 0, indices);
+
+  // --- uniforms: 56 float = 224 байта (раскладка совпадает со struct Uniforms в WGSL) ---
+  const uniformData = new Float32Array(56);
+  const uniformBuf = device.createBuffer({
+    size: 224,
+    usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST,
+  });
+
+  // --- пайплайны ---
+  const pipeline = device.createRenderPipeline({
+    layout: "auto",
+    vertex: {
+      module: shaderModule,
+      entryPoint: "vs_main",
+      buffers: [
+        {
+          arrayStride: 12,
+          attributes: [{ shaderLocation: 0, format: "float32x3", offset: 0 }],
+        },
+      ],
+    },
+    fragment: {
+      module: shaderModule,
+      entryPoint: "fs_main",
+      targets: [{ format }],
+    },
+    primitive: {
+      topology: "triangle-list",
+      frontFace: "ccw",
+      cullMode: "back",
+    },
+    depthStencil: {
+      format: DEPTH_FORMAT,
+      depthWriteEnabled: true,
+      depthCompare: "less",
+    },
+    multisample: { count: SAMPLE_COUNT },
+  });
+
+  const backdropPipeline = device.createRenderPipeline({
+    layout: "auto",
+    vertex: { module: shaderModule, entryPoint: "vs_backdrop" },
+    fragment: {
+      module: shaderModule,
+      entryPoint: "fs_backdrop",
+      targets: [{ format }],
+    },
+    primitive: { topology: "triangle-list" },
+    depthStencil: {
+      format: DEPTH_FORMAT,
+      depthWriteEnabled: false,
+      depthCompare: "always",
+    },
+    multisample: { count: SAMPLE_COUNT },
+  });
+
+  const bindGroup = device.createBindGroup({
+    layout: pipeline.getBindGroupLayout(0),
+    entries: [{ binding: 0, resource: { buffer: uniformBuf } }],
+  });
+  const backdropBindGroup = device.createBindGroup({
+    layout: backdropPipeline.getBindGroupLayout(0),
+    entries: [{ binding: 0, resource: { buffer: uniformBuf } }],
+  });
+
+  // --- параметры ---
+  let params = { ...DEFAULT_PARAMS, ...userParams };
+
+  // --- вложения (MSAA + глубина), пересоздаются при смене размера ---
+  let msaaTexture = null;
+  let depthTexture = null;
+  let msaaView = null;
+  let depthView = null;
+  let zoomAspect = NaN;
+  let minimumZoom = 0.5;
+
+  function resize() {
+    const dpr = Math.min(window.devicePixelRatio || 1, maxDpr);
+    const w = Math.max(1, Math.round(canvas.clientWidth * dpr));
+    const h = Math.max(1, Math.round(canvas.clientHeight * dpr));
+    if (canvas.width === w && canvas.height === h && msaaTexture) return;
+    canvas.width = w;
+    canvas.height = h;
+    msaaTexture?.destroy();
+    depthTexture?.destroy();
+    msaaTexture = device.createTexture({
+      size: { width: w, height: h },
+      format,
+      sampleCount: SAMPLE_COUNT,
+      usage: GPUTextureUsage.RENDER_ATTACHMENT,
+    });
+    depthTexture = device.createTexture({
+      size: { width: w, height: h },
+      format: DEPTH_FORMAT,
+      sampleCount: SAMPLE_COUNT,
+      usage: GPUTextureUsage.RENDER_ATTACHMENT,
+    });
+    msaaView = msaaTexture.createView();
+    depthView = depthTexture.createView();
+  }
+
+  function writeUniforms(timeSeconds) {
+    const aspect = canvas.width / Math.max(canvas.height, 1);
+    if (zoomAspect !== aspect) {
+      minimumZoom = computeMinimumZoom(aspect);
+      zoomAspect = aspect;
+    }
+
+    const p = params;
+    const stops = (
+      p.gradient?.stops?.length
+        ? p.gradient.stops
+        : DEFAULT_PARAMS.gradient.stops
+    )
+      .map((s) => ({ position: s.position, color: parseColor(s.color) }))
+      .sort((a, b) => a.position - b.position);
+    const stopCount = Math.min(8, stops.length);
+
+    const zoomProgress = Math.min(100, Math.max(0, p.zoom)) / 100;
+    const zoom = Math.min(
+      MAXIMUM_ZOOM,
+      Math.max(
+        minimumZoom,
+        minimumZoom * Math.pow(MAXIMUM_ZOOM / minimumZoom, zoomProgress),
+      ),
+    );
+    const rotationSpeed = Math.min(
+      0.25,
+      Math.max(0, (Math.min(100, Math.max(0, p.rotationSpeed)) / 100) * 0.25),
+    );
+    const balance = Math.min(100, Math.max(-100, p.gradientBalance)) / 100;
+
+    const u = uniformData;
+    u[0] = p.detail;
+    u[1] = timeSeconds;
+    u[2] = aspect;
+    u[3] = stopCount;
+    u[44] = zoom;
+    u[45] = p.morphSpeed;
+    u[46] = p.material;
+    u[47] = rotationSpeed;
+    u[48] = balance;
+    u[49] = p.material === 0 ? 0 : 0.5; // shading
+    u[50] = p.warp;
+    u[51] = p.intensity;
+    u[52] = p.twist;
+    u[53] = p.gradientMethod;
+
+    for (let i = 0; i < stopCount; i++) {
+      const { color, position } = stops[i];
+      const o = 4 + i * 4;
+      u[o] = color.r;
+      u[o + 1] = color.g;
+      u[o + 2] = color.b;
+      u[o + 3] = color.a;
+      u[36 + i] = position;
+    }
+    device.queue.writeBuffer(uniformBuf, 0, u);
+  }
+
+  const t0 = performance.now();
+
+  function renderFrame(now = performance.now()) {
+    resize();
+    writeUniforms((now - t0) * 0.001);
+
+    const encoder = device.createCommandEncoder();
+    const pass = encoder.beginRenderPass({
+      colorAttachments: [
+        {
+          view: msaaView,
+          resolveTarget: context.getCurrentTexture().createView(),
+          loadOp: "clear",
+          clearValue: { r: 0, g: 0, b: 0, a: 0 },
+          storeOp: "discard",
+        },
+      ],
+      depthStencilAttachment: {
+        view: depthView,
+        depthLoadOp: "clear",
+        depthClearValue: 1,
+        depthStoreOp: "discard",
+      },
+    });
+    pass.setPipeline(backdropPipeline);
+    pass.setBindGroup(0, backdropBindGroup);
+    pass.draw(3);
+    pass.setPipeline(pipeline);
+    pass.setBindGroup(0, bindGroup);
+    pass.setVertexBuffer(0, vertexBuffer);
+    pass.setIndexBuffer(indexBuffer, "uint32");
+    pass.drawIndexed(indices.length);
+    pass.end();
+    device.queue.submit([encoder.finish()]);
+  }
+
+  // --- цикл анимации ---
+  let rafId = 0;
+  let running = false;
+  let visible = true;
+  let destroyed = false;
+
+  const loop = (now) => {
+    if (!running) return;
+    rafId = requestAnimationFrame(loop);
+    if (visible) renderFrame(now);
+  };
+
+  let observer = null;
+  if (pauseWhenHidden && "IntersectionObserver" in window) {
+    observer = new IntersectionObserver(([e]) => {
+      visible = e.isIntersecting;
+    });
+    observer.observe(canvas);
+  }
+
+  function start() {
+    if (running || destroyed) return;
+    running = true;
+    rafId = requestAnimationFrame(loop);
+  }
+  function stop() {
+    running = false;
+    cancelAnimationFrame(rafId);
+  }
+  function destroy() {
+    stop();
+    destroyed = true;
+    observer?.disconnect();
+    msaaTexture?.destroy();
+    depthTexture?.destroy();
+    vertexBuffer.destroy();
+    indexBuffer.destroy();
+    uniformBuf.destroy();
+    context.unconfigure();
+    device.destroy();
+  }
+  function setParams(patch) {
+    params = { ...params, ...patch };
+    if (!running && !destroyed) renderFrame(); // если анимация остановлена — перерисовать кадр
+  }
+
+  device.lost.then(() => {
+    running = false;
+  });
+
+  if (autoStart) start();
+  else renderFrame();
+
+  return { setParams, start, stop, renderFrame, destroy };
+}
