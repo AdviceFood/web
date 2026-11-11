@@ -252,8 +252,8 @@
         position: absolute;
         content: "";
         height: 100%;
-        width: 20px;
-        left: -20px;
+        width: 10vw;
+        left: -10vw;
         right: auto;
         top: 0;
         background: linear-gradient(
@@ -273,9 +273,9 @@
         position: absolute;
         content: "";
         height: 100%;
-        width: 20px;
+        width: 10vw;
         left: auto;
-        right: -20px;
+        right: -10vw;
         top: 0;
         background: linear-gradient(
           180deg,
@@ -821,7 +821,7 @@
         position: absolute;
         left: 0;
         top: 0;
-        z-index: 1;
+        z-index: 3;
       }
 
       ol.ht--steps {
@@ -834,7 +834,7 @@
         padding-top: 26px;
         padding-bottom: 41px;
         position: relative;
-        z-index: 2;
+        z-index: 5;
         gap: 40px;
         color: white;
       }
@@ -864,6 +864,22 @@
         font-weight: 400;
         margin-top: 1px;
         font-style: normal;
+      }
+
+      #fallback {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        left: 0;
+        top: 0;
+        z-index: 2;
+      }
+
+      #fallback img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
 
       @media screen and (min-width: 430px) {
@@ -1755,8 +1771,8 @@
           </div>
         </div>
         <canvas id="gpu-canvas"></canvas>
-        <div id="fallback" style="display: none">
-          <img src="img/avatar.png" alt="" />
+        <div id="fallback" style="display: block">
+          <img src="img/how_it_works.png" alt="" />
         </div>
       </section>
     </main>
@@ -1781,7 +1797,6 @@
         fx = await createMovingGradient(
           canvas,
           {
-            // 1-й аргумент: параметры эффекта
             gradient: {
               stops: [
                 { position: 0, color: "#a8ff78" },
@@ -1791,16 +1806,18 @@
             },
           },
           {
-            // 2-й аргумент: настройки производительности
             maxFps: 30,
             maxDpr: 1,
             meshResolution: 64,
           },
         );
       } catch (e) {
-        console.warn("WebGPU init failed", e);
+        document.getElementById("fallback").style.display = "block";
       }
-      if (!fx) canvas.remove();
+      if (!fx) {
+        canvas.remove();
+        document.getElementById("fallback").style.display = "block";
+      }
     </script>
   </body>
 </html>
