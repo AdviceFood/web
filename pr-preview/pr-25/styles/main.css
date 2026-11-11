@@ -1,0 +1,205 @@
+@font-face {
+  font-family: "AA";
+  src:
+    url(../fonts/aa_stetica_regular-webfont.woff2) format("woff2"),
+    url(../fonts/aa_stetica_regular-webfont.woff) format("woff");
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "AA";
+  src:
+    url(../fonts/aa_stetica_medium-webfont.woff2) format("woff2"),
+    url(../fonts/aa_stetica_medium-webfont.woff) format("woff");
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "AA";
+  src:
+    url(../fonts/aa_stetica_bold-webfont.woff2) format("woff2"),
+    url(../fonts/aa_stetica_bold-webfont.woff) format("woff");
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "AA";
+  src: url(../fonts/AA_Stetica_Black_0.otf);
+  font-weight: 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+:root {
+  --lt-body: #f4f6f9;
+  --lt-menu: #ffffff;
+  --lt-main: #000000;
+  --lt-text-alt: #22c55e;
+  --lt-burger-bg: #0000000a;
+  --lt-menu-line: #0000001a;
+  --lt-text-act: #15803d;
+  --lt-back: #000000b2;
+  --lt-border: #00000080;
+  --lt-comment: #0000000d;
+  --lt-progress-bg: #0000001a;
+  --lt-burger: #e8e9eb;
+  --lt-burger-bg: #e8e9eb9c;
+}
+
+a.header--logo b {
+  font-family: "AA";
+  font-weight: 700;
+}
+
+ul.nav--list li,
+ul.nav--list li a svg g path,
+ul.nav--list li b {
+  transition:
+    0.3s all,
+    0.2s transform;
+  -webkit-transition:
+    0.3s all,
+    0.2s transform;
+  -moz-transition:
+    0.3s all,
+    0.2s transform;
+  -o-transition:
+    0.3s all,
+    0.2s transform;
+  -ms-transition:
+    0.3s all,
+    0.2s transform;
+}
+
+ul.nav--list li a:active {
+  transform: scale(0.98);
+  -webkit-transform: scale(0.98);
+  background: transparent;
+  color: black;
+  transition: 0.05s transform;
+  -webkit-transition: 0.05s transform;
+  -moz-transition: 0.05s transform;
+  -o-transition: 0.05s transform;
+  -ms-transition: 0.05s transform;
+}
+
+ul.nav--list li a:active b {
+  /* transition: 0.05s color;
+  -webkit-transition: 0.05s color;
+  -moz-transition: 0.05s color;
+  -o-transition: 0.05s color;
+  -ms-transition: 0.05s color; */
+  transition: none;
+  -webkit-transition: none;
+  color: black;
+}
+
+a,
+li,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ul.nav--list li.active a svg path {
+  stroke: #22c55e;
+} */
+
+ul.nav--list li#homeLink.active a svg path {
+  fill: #22c55e;
+  stroke: none;
+}
+
+ul.nav--list li:not(.active) a:active svg path {
+  stroke: #22c55e;
+  /* transition: 0.05s stroke;
+  -webkit-transition: 0.05s stroke;
+  -moz-transition: 0.05s stroke;
+  -o-transition: 0.05s stroke;
+  -ms-transition: 0.05s stroke; */
+  transition: none;
+  -webkit-transition: none;
+}
+
+ul.nav--list li.active a {
+  background: transparent;
+}
+
+ul.nav--list li.active a {
+  color: black;
+}
+
+.navigation--menu.open {
+  transform: translateX(0%);
+  left: -8.35vw;
+}
+
+.burger--button .burger--line {
+  transition: 0.3s all;
+  transform-origin: center center;
+}
+
+.burger--button.open .burger--line:nth-child(2) {
+  opacity: 0;
+}
+
+.burger--button.open .burger--line:nth-child(1) {
+  transform: translateY(-1px) translateX(-50%) rotate(45deg);
+}
+
+.burger--button.open .burger--line:nth-child(3) {
+  transform: translateY(-1px) translateX(-50%) rotate(-45deg);
+}
+header .header--inner {
+  backdrop-filter: blur(0.7px);
+  background: linear-gradient(180deg, #f4f6f9 0%, #f4f6f9 65%, #f4f6f988 100%);
+}
+
+header .secondary {
+  transition: 0.3s opacity;
+  -webkit-transition: 0.3s opacity;
+}
+
+header:has(.navigation--menu.open) .secondary {
+  z-index: -2;
+}
+
+header .secondary {
+  width: 100vw;
+  backdrop-filter: blur(0.5px);
+  position: relative;
+  background: linear-gradient(180deg, #f4f6f988 0%, #f4f6f900 100%);
+  height: 20px;
+  display: block;
+  top: 100%;
+  left: 0;
+}
+
+@media screen and (min-width: 1024px) {
+  .navigation--menu.open,
+  .navigation--menu {
+    left: 0;
+    transform: none;
+    margin-top: 0;
+    position: static;
+    width: 250px;
+  }
+
+  ul.nav--list li:not(.active) a:hover:not(:active) {
+    background: var(--lt-burger-bg);
+  }
+
+  header .secondary {
+    display: none;
+  }
+
+  .header--inner:after,
+  .header--inner:before {
+    display: none;
+  }
+}
