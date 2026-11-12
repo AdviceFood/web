@@ -17,6 +17,7 @@ repos:
     hooks:
       - id: eslint
         files: \.js$
+        exclude: ^plugins/swiper-bundle\.min\.js$
         additional_dependencies:
           - eslint@8.57.0
         args: ["--fix", "--max-warnings=0"]
