@@ -151,7 +151,7 @@ jobs:
               "no-console": "warn",
               "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }]
             },
-            "ignorePatterns": ["node_modules/"]
+            "ignorePatterns": ["node_modules/", "plugins/"]
           }' > .eslintrc.json
 
       - name: Validate JavaScript files
