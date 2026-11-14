@@ -1,4 +1,7 @@
 # .pre-commit-config.yaml
+
+exclude: ^videos/
+
 repos:
   # Базовые проверки (работают 100%)
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -17,6 +20,7 @@ repos:
     hooks:
       - id: eslint
         files: \.js$
+        exclude: ^plugins/swiper-bundle\.min\.js$
         additional_dependencies:
           - eslint@8.57.0
         args: ["--fix", "--max-warnings=0"]

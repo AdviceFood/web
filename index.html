@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Analysis</title>
 
+    <link rel="stylesheet" href="plugins/swiper-bundle.min.css" />
     <link rel="stylesheet" href="styles/main.css" />
 
     <style>
@@ -646,7 +647,7 @@
         color: #00000099;
         text-align: center;
         font-size: 0.875rem;
-        margin-bottom: 40px;
+        margin-bottom: 90px;
       }
 
       form .analyze--notice {
@@ -812,7 +813,7 @@
         position: relative;
         display: flex;
         align-items: center;
-        margin-bottom: 56px;
+        margin-bottom: 90px;
       }
 
       #gpu-canvas {
@@ -880,6 +881,161 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+      }
+
+      .preview--slide {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        padding-top: 24px;
+        background: #ffffff;
+        border-radius: 20px;
+        margin: 0 auto;
+        transition: 0.3s;
+        -webkit-transition: 0.3s;
+      }
+
+      .preview--title {
+        font-size: 1.25rem;
+        text-align: center;
+        color: #000000;
+        font-weight: 500;
+        font-family: "AA";
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      .preview--subtitle {
+        margin-top: 6px;
+        text-align: center;
+        font-size: 1rem;
+        color: #000000;
+        padding-left: 30px;
+        padding-right: 30px;
+      }
+
+      .preview--bg {
+        width: calc(100% - 60px);
+        height: auto;
+        margin-top: 11px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .preview--bg img {
+        aspect-ratio: 0.596;
+        width: 100%;
+        height: auto;
+      }
+
+      .preview--bg img:nth-child(2) {
+        display: none;
+      }
+
+      .swiper {
+        width: 100%;
+        height: auto;
+        padding-left: 8.35vw;
+        padding-right: 8.35vw;
+      }
+
+      .swiper-slide {
+        transition: 0.3s ease-in-out;
+        -webkit-transition: 0.3s ease-in-out;
+      }
+
+      .swiper-slide:not(.swiper-slide-active) {
+        opacity: 80%;
+        transform: scale(0.9);
+      }
+
+      .swiper-slide:not(.swiper-slide-active) .preview--slide {
+        border: 1px solid rgba(0, 0, 0, 10%);
+      }
+
+      .swiper-slide.swiper-slide-active .preview--slide {
+        border: 1px solid rgba(0, 0, 0, 20%);
+      }
+
+      .swiper {
+        margin-left: 0;
+        transition: 0.3s margin-left;
+      }
+
+      .swiper:has(.swiper-slide:first-child.swiper-slide-active) {
+        margin-left: -20px;
+        overflow: visible;
+      }
+
+      p.preview--description {
+        text-align: center;
+        margin-top: 36px;
+        margin-bottom: 42px;
+        color: #000000b2;
+        font-size: 1rem;
+      }
+
+      a.preview--cta {
+        width: 100%;
+        max-width: 300px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #22c55e;
+        border-radius: 24px;
+        font-size: 1.125rem;
+        text-decoration: none;
+        color: white;
+        font-family: "AA";
+        font-weight: 500;
+        transition: 0.3s;
+        -webkit-transition: 0.3s;
+        margin-bottom: 53px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      a.preview--cta:active {
+        background: #15803d;
+        transform: scale(0.98);
+        transition: 0.02s;
+        -webkit-transition: 0.02s;
+      }
+
+      .preview--cta--block {
+        padding: 25px 20px;
+        border-radius: 20px;
+        background: #ffffff;
+        margin-top: 60px;
+        margin-bottom: 90px;
+      }
+
+      .preview--cta--title {
+        font-weight: 500;
+        font-size: 1.5rem;
+        text-align: center;
+        color: black;
+      }
+
+      .preview--cta--subtitle {
+        text-align: center;
+        color: black;
+        font-size: 1rem;
+        margin-top: 10px;
+        margin-bottom: 26px;
+      }
+
+      .preview--cta--block a.preview--cta {
+        margin-bottom: 0;
+      }
+
+      @media screen and (min-width: 360px) {
+        .preview--title {
+          font-size: 1.5rem;
+          padding-left: 30px;
+          padding-right: 30px;
+        }
       }
 
       @media screen and (min-width: 430px) {
@@ -1775,9 +1931,572 @@
           <img src="img/how_it_works.png" alt="" />
         </div>
       </section>
+
+      <section class="section--preview">
+        <div class="container">
+          <div class="section--inner">
+            <h2 class="section--title">
+              What You Can Learn from a&nbsp;Food&nbsp;Photo
+            </h2>
+            <p class="section--subtitle">Discover more about every meal</p>
+
+            <p class="preview--description">
+              Get calories, macronutrients, ingredient insights,
+              and&nbsp;personalized recommendations&nbsp;—&nbsp;all in&nbsp;one
+              clear, easy-to-understand&nbsp;result.
+            </p>
+
+            <a href="#" class="preview--cta"> Try Food Analysis </a>
+          </div>
+        </div>
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="preview--slide">
+                <h3 class="preview--title">Calories and Macronutrients</h3>
+                <p class="preview--subtitle">
+                  Understand the nutritional value of every meal.
+                </p>
+
+                <div class="preview--bg">
+                  <img src="img/advicefood-preview-ingredients.png" alt="" />
+                  <img
+                    src="img/advicefood-preview-ingredients-1920.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="preview--slide">
+                <h3 class="preview--title">Calories and Macronutrients</h3>
+                <p class="preview--subtitle">
+                  Understand the nutritional value of every meal.
+                </p>
+
+                <div class="preview--bg">
+                  <img src="img/advicefood-preview-ingredients.png" alt="" />
+                  <img
+                    src="img/advicefood-preview-ingredients-1920.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="preview--slide">
+                <h3 class="preview--title">Calories and Macronutrients</h3>
+                <p class="preview--subtitle">
+                  Understand the nutritional value of every meal.
+                </p>
+
+                <div class="preview--bg">
+                  <img src="img/advicefood-preview-ingredients.png" alt="" />
+                  <img
+                    src="img/advicefood-preview-ingredients-1920.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="preview--slide">
+                <h3 class="preview--title">Calories and Macronutrients</h3>
+                <p class="preview--subtitle">
+                  Understand the nutritional value of every meal.
+                </p>
+
+                <div class="preview--bg">
+                  <img src="img/advicefood-preview-ingredients.png" alt="" />
+                  <img
+                    src="img/advicefood-preview-ingredients-1920.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="section--inner">
+            <div class="preview--cta--block">
+              <h3 class="preview--cta--title">
+                Save and&nbsp;Review Your&nbsp;Food&nbsp;Analyses
+              </h3>
+              <p class="preview--cta--subtitle">
+                Keep your&nbsp;analysis and&nbsp;add them
+                to&nbsp;your&nbsp;favorites in&nbsp;one place. Access them
+                at&nbsp;any&nbsp;time if&nbsp;you have an&nbsp;account.
+              </p>
+              <a href="#" class="preview--cta"> Create an account </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section--switcher">
+        <div class="container">
+          <div class="section--inner">
+            <h2 class="section--title">
+              Every meal <br />
+              has&nbsp;something <br />
+              to&nbsp;tell.
+            </h2>
+
+            <ul class="meal--list" id="switcher">
+              <li class="meal--item active">Breakfast.</li>
+              <li class="meal--item preActive">Lunch.</li>
+              <li class="meal--item">Snacks.</li>
+              <li class="meal--item">Eating out.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section--advantages">
+        <div class="container">
+          <div class="section--inner">
+            <h2 class="section--title">
+              Why Use AdviceFood for&nbsp;Food&nbsp;Analysis?
+            </h2>
+            <p class="section--subtitle">
+              A clearer way to&nbsp;understand your&nbsp;food
+            </p>
+
+            <div class="advantages--banner">
+              <strong>Meal. Clearer.</strong>
+              <p>
+                Useful information about&nbsp;familiar
+                dishes&nbsp;—&nbsp;without&nbsp;the&nbsp;need to&nbsp;understand
+                complex&nbsp;tables.
+              </p>
+              <svg
+                width="100%"
+                height="auto"
+                viewBox="0 0 300 111"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M-9 83.2659C97.0282 35.4164 239.552 0.93865 456.5 1.76453"
+                  stroke-width="3.5"
+                  stroke="white"
+                />
+                <path
+                  d="M-9 96.2805C97.0282 48.431 239.552 13.9533 456.5 14.7792"
+                  stroke-width="3"
+                  stroke="white"
+                />
+                <path
+                  d="M-9 109.295C97.0282 61.4457 239.552 26.9679 456.5 27.7938"
+                  stroke-width="2.5"
+                  stroke="white"
+                />
+              </svg>
+            </div>
+
+            <ul class="advantages--list">
+              <li class="advantage--item">
+                <svg
+                  width="42"
+                  height="42"
+                  viewBox="0 0 42 42"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clip-path="url(#clip0_815_1132)">
+                    <path
+                      d="M8.75 21H33.25"
+                      stroke-width="3.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke="#22C55E"
+                    />
+                    <path
+                      d="M5.25 12.25V8.75C5.25 7.82174 5.61875 6.9315 6.27513 6.27513C6.9315 5.61875 7.82174 5.25 8.75 5.25H12.25"
+                      stroke-width="3.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke="#22C55E"
+                    />
+                    <path
+                      d="M5.25 29.75V33.25C5.25 34.1783 5.61875 35.0685 6.27513 35.7249C6.9315 36.3813 7.82174 36.75 8.75 36.75H12.25"
+                      stroke-width="3.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke="#22C55E"
+                    />
+                    <path
+                      d="M29.75 5.25H33.25C34.1783 5.25 35.0685 5.61875 35.7249 6.27513C36.3813 6.9315 36.75 7.82174 36.75 8.75V12.25"
+                      stroke-width="3.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke="#22C55E"
+                    />
+                    <path
+                      d="M29.75 36.75H33.25C34.1783 36.75 35.0685 36.3813 35.7249 35.7249C36.3813 35.0685 36.75 34.1783 36.75 33.25V29.75"
+                      stroke-width="3.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke="#22C55E"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_815_1132">
+                      <rect width="42" height="42" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+
+                <div class="advantage--info">
+                  <strong>Photo-based analysis</strong>
+                  <p>Start by uploading a photo of your meal.</p>
+                </div>
+              </li>
+              <li class="advantage--item">
+                <svg
+                  width="42"
+                  height="42"
+                  viewBox="0 0 42 42"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clip-path="url(#clip0_815_1131)">
+                    <path
+                      d="M8.75 21H33.25"
+                      stroke-width="3.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke="#22C55E"
+                    />
+                    <path
+                      d="M5.25 12.25V8.75C5.25 7.82174 5.61875 6.9315 6.27513 6.27513C6.9315 5.61875 7.82174 5.25 8.75 5.25H12.25"
+                      stroke-width="3.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke="#22C55E"
+                    />
+                    <path
+                      d="M5.25 29.75V33.25C5.25 34.1783 5.61875 35.0685 6.27513 35.7249C6.9315 36.3813 7.82174 36.75 8.75 36.75H12.25"
+                      stroke-width="3.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke="#22C55E"
+                    />
+                    <path
+                      d="M29.75 5.25H33.25C34.1783 5.25 35.0685 5.61875 35.7249 6.27513C36.3813 6.9315 36.75 7.82174 36.75 8.75V12.25"
+                      stroke-width="3.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke="#22C55E"
+                    />
+                    <path
+                      d="M29.75 36.75H33.25C34.1783 36.75 35.0685 36.3813 35.7249 35.7249C36.3813 35.0685 36.75 34.1783 36.75 33.25V29.75"
+                      stroke-width="3.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke="#22C55E"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_815_1131">
+                      <rect width="42" height="42" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+
+                <div class="advantage--info">
+                  <strong>Photo-based analysis</strong>
+                  <p>Start by uploading a photo of your meal.</p>
+                </div>
+              </li>
+              <li class="advantage--item">
+                <svg
+                  width="42"
+                  height="42"
+                  viewBox="0 0 42 42"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clip-path="url(#clip0_815_1133)">
+                    <path
+                      d="M8.75 21H33.25"
+                      stroke-width="3.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke="#22C55E"
+                    />
+                    <path
+                      d="M5.25 12.25V8.75C5.25 7.82174 5.61875 6.9315 6.27513 6.27513C6.9315 5.61875 7.82174 5.25 8.75 5.25H12.25"
+                      stroke-width="3.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke="#22C55E"
+                    />
+                    <path
+                      d="M5.25 29.75V33.25C5.25 34.1783 5.61875 35.0685 6.27513 35.7249C6.9315 36.3813 7.82174 36.75 8.75 36.75H12.25"
+                      stroke-width="3.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke="#22C55E"
+                    />
+                    <path
+                      d="M29.75 5.25H33.25C34.1783 5.25 35.0685 5.61875 35.7249 6.27513C36.3813 6.9315 36.75 7.82174 36.75 8.75V12.25"
+                      stroke-width="3.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke="#22C55E"
+                    />
+                    <path
+                      d="M29.75 36.75H33.25C34.1783 36.75 35.0685 36.3813 35.7249 35.7249C36.3813 35.0685 36.75 34.1783 36.75 33.25V29.75"
+                      stroke-width="3.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke="#22C55E"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_815_1133">
+                      <rect width="42" height="42" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+
+                <div class="advantage--info">
+                  <strong>Photo-based analysis</strong>
+                  <p>Start by uploading a photo of your meal.</p>
+                </div>
+              </li>
+              <li class="advantage--item">
+                <svg
+                  width="42"
+                  height="42"
+                  viewBox="0 0 42 42"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clip-path="url(#clip0_815_1134)">
+                    <path
+                      d="M8.75 21H33.25"
+                      stroke-width="3.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke="#22C55E"
+                    />
+                    <path
+                      d="M5.25 12.25V8.75C5.25 7.82174 5.61875 6.9315 6.27513 6.27513C6.9315 5.61875 7.82174 5.25 8.75 5.25H12.25"
+                      stroke-width="3.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke="#22C55E"
+                    />
+                    <path
+                      d="M5.25 29.75V33.25C5.25 34.1783 5.61875 35.0685 6.27513 35.7249C6.9315 36.3813 7.82174 36.75 8.75 36.75H12.25"
+                      stroke-width="3.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke="#22C55E"
+                    />
+                    <path
+                      d="M29.75 5.25H33.25C34.1783 5.25 35.0685 5.61875 35.7249 6.27513C36.3813 6.9315 36.75 7.82174 36.75 8.75V12.25"
+                      stroke-width="3.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke="#22C55E"
+                    />
+                    <path
+                      d="M29.75 36.75H33.25C34.1783 36.75 35.0685 36.3813 35.7249 35.7249C36.3813 35.0685 36.75 34.1783 36.75 33.25V29.75"
+                      stroke-width="3.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke="#22C55E"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_815_1134">
+                      <rect width="42" height="42" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+
+                <div class="advantage--info">
+                  <strong>Photo-based analysis</strong>
+                  <p>Start by uploading a photo of your meal.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section--demo">
+        <div class="container">
+          <div class="section--inner">
+            <h2 class="section--title">See Your AI Food Analysis in Action</h2>
+            <p class="section--subtitle">
+              Discover more about your meals with AdviceFood.
+            </p>
+
+            <div class="demo--video">
+              <video autoplay muted loop width="273" height="575">
+                <source src="videos/demo.mp4" type="video/mp4" />
+              </video>
+
+              <img
+                src="img/iphone.svg"
+                alt=""
+                loading="lazy"
+                width="273"
+                height="575"
+              />
+            </div>
+
+            <p class="demo--comment">
+              Understand your&nbsp;meals with&nbsp;AI-powered food&nbsp;analysis
+            </p>
+
+            <a href="#" class="preview--cta">Try it now</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section--faq">
+        <div class="container">
+          <div class="section--inner">
+            <h2 class="section--title">Frequently asked questions</h2>
+            <p class="section--subtitle">
+              Everything you need to know about AdviceFood.
+            </p>
+
+            <ul class="faq--list">
+              <li class="faq--item open">
+                <div class="faq--info">
+                  <strong class="faq--question"
+                    >How does AdviceFood work?</strong
+                  >
+                  <svg
+                    width="25"
+                    height="15"
+                    viewBox="0 0 25 15"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M23 12.5L12.5 2L2 12.5"
+                      stroke-width="4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke="#22C55E"
+                    />
+                  </svg>
+                </div>
+
+                <div class="faq--content">
+                  <p class="faq--answer">
+                    Upload a photo of your meal to get an estimated calorie
+                    count, macronutrients, a healthfulness score, and practical
+                    suggestions.
+                  </p>
+                </div>
+              </li>
+              <li class="faq--item">
+                <div class="faq--info">
+                  <strong class="faq--question"
+                    >How does AdviceFood work?</strong
+                  >
+                  <svg
+                    width="25"
+                    height="15"
+                    viewBox="0 0 25 15"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M23 12.5L12.5 2L2 12.5"
+                      stroke-width="4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke="#22C55E"
+                    />
+                  </svg>
+                </div>
+
+                <div class="faq--content">
+                  <p class="faq--answer">
+                    Upload a photo of your meal to get an estimated calorie
+                    count, macronutrients, a healthfulness score, and practical
+                    suggestions.
+                  </p>
+                </div>
+              </li>
+              <li class="faq--item">
+                <div class="faq--info">
+                  <strong class="faq--question"
+                    >How does AdviceFood work?</strong
+                  >
+                  <svg
+                    width="25"
+                    height="15"
+                    viewBox="0 0 25 15"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M23 12.5L12.5 2L2 12.5"
+                      stroke-width="4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke="#22C55E"
+                    />
+                  </svg>
+                </div>
+
+                <div class="faq--content">
+                  <p class="faq--answer">
+                    Upload a photo of your meal to get an estimated calorie
+                    count, macronutrients, a healthfulness score, and practical
+                    suggestions.
+                  </p>
+                </div>
+              </li>
+              <li class="faq--item">
+                <div class="faq--info">
+                  <strong class="faq--question"
+                    >How does AdviceFood work?</strong
+                  >
+                  <svg
+                    width="25"
+                    height="15"
+                    viewBox="0 0 25 15"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M23 12.5L12.5 2L2 12.5"
+                      stroke-width="4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke="#22C55E"
+                    />
+                  </svg>
+                </div>
+
+                <div class="faq--content">
+                  <p class="faq--answer">
+                    Upload a photo of your meal to get an estimated calorie
+                    count, macronutrients, a healthfulness score, and practical
+                    suggestions.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
     </main>
 
     <script src="js/main.js"></script>
+    <script src="plugins/swiper-bundle.min.js"></script>
     <script type="module">
       import { createMovingGradient } from "./js/moving-gradient.js";
 
