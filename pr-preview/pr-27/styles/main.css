@@ -320,4 +320,32 @@ li.advantage--item p {
 
 .demo--video {
   margin-top: 20px;
+  width: 273px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 13px;
+  position: relative;
+  height: 575px;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.demo--video img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  top: 0;
+}
+
+.demo--video video {
+  padding: 10px;
+}
+
+p.demo--comment {
+  text-align: center;
+  color: black;
+  font-size: 1rem;
+  margin-bottom: 23px;
 }
