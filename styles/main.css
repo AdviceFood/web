@@ -290,6 +290,7 @@ ul.advantages--list {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  margin-bottom: 140px;
 }
 
 li.advantage--item {
@@ -315,4 +316,8 @@ li.advantage--item strong {
 li.advantage--item p {
   color: #000000b2;
   margin-top: 2px;
+}
+
+.demo--video {
+  margin-top: 20px;
 }
