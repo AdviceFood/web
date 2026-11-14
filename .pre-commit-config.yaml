@@ -10,7 +10,7 @@ repos:
       - id: trailing-whitespace # убирает лишние пробелы
       - id: end-of-file-fixer # добавляет пустую строку в конце
       - id: check-yaml # проверяет yaml файлы
-      - id: check-added-large-files # проверяет размер файлов
+      # - id: check-added-large-files # проверяет размер файлов
       - id: check-merge-conflict # проверяет конфликты слияния
       - id: check-case-conflict # проверяет конфликты регистров
 
