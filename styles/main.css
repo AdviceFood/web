@@ -214,7 +214,7 @@ header .secondary {
   list-style: none;
   padding: 0;
   margin: 0;
-  margin-bottom: 171px;
+  margin-bottom: 90px;
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -290,7 +290,11 @@ ul.advantages--list {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  margin-bottom: 140px;
+  margin-bottom: 90px;
+}
+
+.section--demo a.preview--cta {
+  margin-bottom: 90px;
 }
 
 li.advantage--item {
