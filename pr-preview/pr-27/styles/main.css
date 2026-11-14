@@ -205,7 +205,7 @@ header .secondary {
 }
 
 .section--switcher h2.section--title {
-  font-size: 2.5rem;
+  font-size: 2rem;
   text-align: left;
   margin-bottom: 30px;
 }
@@ -226,7 +226,7 @@ li.meal--item {
   white-space: nowrap;
   color: #22c55e;
   font-weight: 700;
-  font-size: 2.5rem;
+  font-size: 2rem;
   opacity: 0.2;
   transition: 0.3s ease-in-out;
   -webkit-transition: 0.3s ease-in-out;
@@ -246,4 +246,11 @@ li.meal--item.active {
   opacity: 1;
   transform: scale(1.02);
   -webkit-transform: scale(1.02);
+}
+
+@media screen and (min-width: 340px) {
+  .section--switcher h2.section--title,
+  li.meal--item {
+    font-size: 2.5rem;
+  }
 }
