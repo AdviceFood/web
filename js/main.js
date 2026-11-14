@@ -77,4 +77,12 @@ document.addEventListener("DOMContentLoaded", () => {
       q.parentNode.classList.toggle("open");
     });
   });
+
+  const themes = document.querySelectorAll(".footer--theme--header");
+
+  themes.forEach((q) => {
+    q.addEventListener("click", () => {
+      q.parentNode.classList.toggle("closed");
+    });
+  });
 });
