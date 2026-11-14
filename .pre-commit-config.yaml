@@ -1,4 +1,7 @@
 # .pre-commit-config.yaml
+
+exclude: ^videos/
+
 repos:
   # Базовые проверки (работают 100%)
   - repo: https://github.com/pre-commit/pre-commit-hooks
