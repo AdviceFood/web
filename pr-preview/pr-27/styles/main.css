@@ -570,3 +570,58 @@ p.blog--comment {
   color: #000000b2;
   font-size: 1rem;
 }
+
+.section--stats {
+  margin-bottom: 90px;
+}
+
+.section--stats a.preview--cta {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+ul.stats--list {
+  margin: 0;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 23px;
+}
+
+li.stats--item {
+  width: 100%;
+  max-width: 330px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 22px 32px;
+  min-height: 148px;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 60px;
+}
+
+li.stats--item span {
+  display: block;
+  font-size: 1.875rem;
+  color: #22c55e;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+li.stats--item strong {
+  font-style: normal;
+  font-weight: 500;
+  color: #000000;
+  font-size: 1.25rem;
+}
+
+li.stats--item p {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 3px;
+}
