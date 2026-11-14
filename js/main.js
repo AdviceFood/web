@@ -13,6 +13,11 @@ document.addEventListener("DOMContentLoaded", () => {
     direction: "horizontal",
     slidesPerView: 1.1,
     spaceBetween: 10,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: true,
+      pauseOnMouseEnter: true,
+    },
     centeredSlides: true,
   });
 
