@@ -254,3 +254,65 @@ li.meal--item.active {
     font-size: 2.5rem;
   }
 }
+
+.advantages--banner {
+  background: #22c55e;
+  border-radius: 20px;
+  margin-top: 40px;
+  padding-top: 25px;
+}
+
+.advantages--banner strong {
+  color: white;
+  padding-left: 25px;
+  padding-right: 25px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-style: normal;
+  display: block;
+}
+
+.advantages--banner p {
+  color: white;
+  font-size: 1rem;
+  margin-top: 6px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 5px;
+  display: block;
+}
+
+ul.advantages--list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+li.advantage--item {
+  padding: 17px 15px;
+  background: #ffffff;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+li.advantage--item svg {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+}
+
+li.advantage--item strong {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+li.advantage--item p {
+  color: #000000b2;
+  margin-top: 2px;
+}
