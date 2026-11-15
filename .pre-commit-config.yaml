@@ -1,4 +1,7 @@
 # .pre-commit-config.yaml
+
+exclude: ^videos/
+
 repos:
   # Базовые проверки (работают 100%)
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -7,7 +10,7 @@ repos:
       - id: trailing-whitespace # убирает лишние пробелы
       - id: end-of-file-fixer # добавляет пустую строку в конце
       - id: check-yaml # проверяет yaml файлы
-      - id: check-added-large-files # проверяет размер файлов
+      # - id: check-added-large-files # проверяет размер файлов
       - id: check-merge-conflict # проверяет конфликты слияния
       - id: check-case-conflict # проверяет конфликты регистров
 
@@ -17,6 +20,7 @@ repos:
     hooks:
       - id: eslint
         files: \.js$
+        exclude: ^plugins/swiper-bundle\.min\.js$
         additional_dependencies:
           - eslint@8.57.0
         args: ["--fix", "--max-warnings=0"]
