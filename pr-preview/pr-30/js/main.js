@@ -9,20 +9,61 @@ document.addEventListener("DOMContentLoaded", () => {
     analyzeComment.classList.add("show");
   });
 
-  const swiper = new Swiper(".swiper", {
-    direction: "horizontal",
-    slidesPerView: 1.1,
-    spaceBetween: 10,
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: true,
-      pauseOnMouseEnter: true,
-    },
-    centeredSlides: true,
-  });
+  if (window.innerWidth < 1024) {
+    new Swiper(".swiper", {
+      direction: "horizontal",
+      slidesPerView: 1.1,
+      spaceBetween: 10,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: true,
+        pauseOnMouseEnter: true,
+      },
+      centeredSlides: true,
+      breakpoints: {
+        500: {
+          slidesPerView: 1.5,
+          centeredSlides: true,
+        },
+        800: {
+          slidesPerView: 2,
+          centeredSlides: false,
+        },
+      },
+    });
+  } else {
+    const el = document.querySelectorAll(".preview--bg");
 
-  if (swiper == 10) {
-    swiper.stop();
+    let rafId = null;
+
+    const updateParallax = () => {
+      const rect = el[0].getBoundingClientRect();
+      const vh = window.innerHeight;
+
+      const progress = (vh - rect.top) / (vh + rect.height);
+
+      const y = (progress - 0.5) * 20;
+
+      el.forEach(
+        (e) =>
+          (e.style.transform = `
+        rotateX(12deg)
+        rotateY(-6deg)
+        translate3d(0, ${y}px, 0px)
+      `),
+      );
+
+      rafId = null;
+    };
+
+    const onScroll = () => {
+      if (rafId !== null) return;
+      rafId = requestAnimationFrame(updateParallax);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    updateParallax();
   }
 
   const switcher = document.getElementById("switcher");
