@@ -1219,6 +1219,17 @@
         }
       }
 
+      @media screen and (min-width: 800px) {
+        .swiper-slide.swiper-slide-next {
+          opacity: 1;
+          transform: scale(1);
+        }
+
+        .swiper-slide.swiper-slide-next .preview--slide {
+          border: 1px solid rgba(0, 0, 0, 20%);
+        }
+      }
+
       @media screen and (min-width: 1024px) {
         header {
           position: fixed;
@@ -1358,6 +1369,7 @@
         a.header--desktop--link.active {
           background: #22c55e;
           color: white;
+          font-weight: 500;
         }
 
         a.new--analysis--btn {
@@ -1499,11 +1511,132 @@
         .analyze--comment textarea {
           outline: none;
         }
+
+        .swiper,
+        .swiper-wrapper,
+        .swiper-slide {
+          all: initial;
+        }
+
+        .swiper {
+          max-width: 83.3vw;
+          width: 100%;
+          margin-left: auto;
+          margin-right: auto;
+          display: block;
+        }
+
+        .preview--bg img:nth-child(1) {
+          display: none;
+        }
+
+        .preview--bg img:nth-child(2) {
+          display: block;
+          aspect-ratio: 1.77;
+          object-fit: cover;
+        }
+
+        p.preview--description {
+          font-size: 1.125rem;
+          margin-top: 20px;
+        }
+
+        a.preview--cta {
+          max-width: 330px;
+          height: 52px;
+          border-radius: 26px;
+        }
+
+        .preview--subtitle {
+          font-family: "AA";
+          font-size: 1.125rem;
+        }
+
+        .preview--bg {
+          margin-top: 20px;
+          margin-left: 30px;
+          margin-right: 30px;
+          margin-bottom: 30px;
+          max-width: 100%;
+          width: calc(100% - 60px);
+
+          transform-style: preserve-3d;
+          transform: rotateX(12deg) rotateY(-6deg) translateZ(0);
+          transform-origin: center center;
+          transition: transform 0.25s ease-out;
+          will-change: transform;
+
+          filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.18));
+          overflow: hidden;
+        }
+
+        .preview--bg img {
+          border-radius: 30px;
+          border: 1px solid #00000063;
+          display: block;
+          backface-visibility: hidden;
+          transform: translateZ(0);
+          height: auto;
+        }
+
+        .swiper-wrapper {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 10px;
+        }
+
+        .swiper-slide {
+          flex: 0 0 calc(50% - 5px);
+        }
+
+        .swiper-slide:not(.swiper-slide-active) {
+          transform: none;
+          opacity: 1;
+        }
+
+        .preview--slide {
+          perspective: 1200px;
+          perspective-origin: 50% 50%;
+          position: relative;
+        }
+
+        a.preview--cta {
+          margin-bottom: 120px;
+        }
+
+        .preview--cta--subtitle {
+          font-size: 1.125rem;
+        }
+
+        .section--switcher h2.section--title br {
+          display: none;
+        }
+
+        .section--switcher h2.section--title {
+          font-size: 3rem;
+          margin-bottom: 10px;
+        }
+
+        .meal--list {
+          flex-direction: row;
+          gap: 20px;
+          width: 100%;
+          justify-content: end;
+        }
       }
 
       @media screen and (min-width: 1440px) {
         header {
           height: 130px;
+        }
+
+        .section--switcher h2.section--title {
+          font-size: 4rem;
+        }
+
+        li.meal--item {
+          font-size: 3.25rem;
         }
 
         a.header--logo svg {
@@ -1540,10 +1673,42 @@
           margin-left: 10px;
           margin-right: 10px;
         }
+
+        .preview--title {
+          font-size: 2rem;
+        }
+
+        .preview--subtitle {
+          margin-top: 0;
+          font-size: 1.125rem;
+        }
+
+        .preview--slide {
+          padding-top: 36px;
+        }
+
+        .swiper-wrapper {
+          gap: 30px;
+        }
+
+        .swiper-slide {
+          flex: 0 0 calc(50% - 15px);
+        }
+
+        .preview--bg {
+          margin-left: 60px;
+          margin-right: 60px;
+          margin-bottom: 60px;
+          width: calc(100% - 120px);
+        }
       }
 
       @media screen and (min-width: 1600px) {
         .container {
+          max-width: 73.5vw;
+        }
+
+        .swiper {
           max-width: 73.5vw;
         }
       }
@@ -2219,10 +2384,7 @@
 
                 <div class="preview--bg">
                   <img src="img/advicefood-preview-ingredients.png" alt="" />
-                  <img
-                    src="img/advicefood-preview-ingredients-1920.png"
-                    alt=""
-                  />
+                  <img src="img/3d_test.jpg" alt="" />
                 </div>
               </div>
             </div>
@@ -2235,10 +2397,7 @@
 
                 <div class="preview--bg">
                   <img src="img/advicefood-preview-ingredients.png" alt="" />
-                  <img
-                    src="img/advicefood-preview-ingredients-1920.png"
-                    alt=""
-                  />
+                  <img src="img/3d_test.jpg" alt="" />
                 </div>
               </div>
             </div>
@@ -2251,10 +2410,7 @@
 
                 <div class="preview--bg">
                   <img src="img/advicefood-preview-ingredients.png" alt="" />
-                  <img
-                    src="img/advicefood-preview-ingredients-1920.png"
-                    alt=""
-                  />
+                  <img src="img/3d_test.jpg" alt="" />
                 </div>
               </div>
             </div>
@@ -2267,10 +2423,7 @@
 
                 <div class="preview--bg">
                   <img src="img/advicefood-preview-ingredients.png" alt="" />
-                  <img
-                    src="img/advicefood-preview-ingredients-1920.png"
-                    alt=""
-                  />
+                  <img src="img/3d_test.jpg" alt="" />
                 </div>
               </div>
             </div>
@@ -2331,7 +2484,6 @@
               </p>
               <svg
                 width="100%"
-                height="auto"
                 viewBox="0 0 300 111"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
