@@ -649,7 +649,6 @@
       .footer--theme .footer--theme--content {
         height: auto;
         overflow: hidden;
-        interpolate-size: allow-keywords;
       }
 
       .footer--theme.closed .footer--theme--content {
@@ -793,12 +792,12 @@
         background: #22c55e;
       }
 
-      p.consent--text {
+      .consent--text {
         font-size: 1rem;
         color: black;
       }
 
-      p.consent--text a {
+      .consent--text a {
         color: #22c55e;
         font-weight: 500;
         text-decoration: underline;
@@ -1741,7 +1740,7 @@
                 </svg>
 
                 <input
-                  type="mail"
+                  type="email"
                   name="mail"
                   id="mail"
                   placeholder="Enter your email"
@@ -1757,13 +1756,13 @@
               </div>
 
               <label class="checkbox--block" for="consent">
-                <div class="input--checkbox">
+                <span class="input--checkbox">
                   <input type="checkbox" name="consent" id="consent" />
-                </div>
-                <p class="consent--text">
+                </span>
+                <span class="consent--text">
                   I consent to the
                   <a href="#">Processing of my personal data</a>.
-                </p>
+                </span>
               </label>
 
               <button type="submit" class="submit--form">
