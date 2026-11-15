@@ -1030,6 +1030,11 @@
         margin-bottom: 0;
       }
 
+      .ht--info {
+        display: flex;
+        flex-direction: column;
+      }
+
       @media screen and (min-width: 360px) {
         .preview--title {
           font-size: 1.5rem;
@@ -1177,6 +1182,40 @@
           border-radius: 26px;
           font-size: 1.25rem;
           margin-bottom: 0;
+        }
+
+        li.ht--step span {
+          font-size: 4.625rem;
+        }
+
+        li.ht--step strong {
+          font-size: 2rem;
+          margin-top: 0;
+        }
+
+        li.ht--step b {
+          font-size: 1.25rem;
+        }
+
+        ol.ht--steps {
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        li.ht--step {
+          display: flex;
+          flex-direction: row;
+          text-align: left;
+          gap: 13px;
+          align-items: center;
+          width: 430px;
+        }
+
+        ol.ht--steps {
+          padding-top: 52px;
+          padding-bottom: 58px;
+          gap: 25px;
         }
       }
 
@@ -2124,18 +2163,24 @@
             <ol class="ht--steps">
               <li class="ht--step">
                 <span>1</span>
-                <strong>Upload a photo</strong>
-                <b>Choose a photo of your meal</b>
+                <div class="ht--info">
+                  <strong>Upload a photo</strong>
+                  <b>Choose a photo of your meal</b>
+                </div>
               </li>
               <li class="ht--step">
                 <span>2</span>
-                <strong>Get your analysis</strong>
-                <b>Let AI estimate its nutritional value</b>
+                <div class="ht--info">
+                  <strong>Get your analysis</strong>
+                  <b>Let AI estimate its nutritional value</b>
+                </div>
               </li>
               <li class="ht--step">
                 <span>3</span>
-                <strong>Explore the results</strong>
-                <b>Eat smarter every day</b>
+                <div class="ht--info">
+                  <strong>Explore the results</strong>
+                  <b>Eat smarter every day</b>
+                </div>
               </li>
             </ol>
           </div>
