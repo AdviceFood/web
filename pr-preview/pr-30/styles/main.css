@@ -773,3 +773,72 @@ p.footer--copyright {
   color: #000000b2;
   font-size: 1rem;
 }
+
+@media screen and (min-width: 700px) {
+  .advantages--banner strong {
+    font-size: 2rem;
+  }
+
+  .advantages--banner p {
+    font-size: 1.125rem;
+  }
+
+  li.advantage--item {
+    padding: 21px 28px;
+    gap: 15px;
+  }
+
+  li.advantage--item svg {
+    width: 64px;
+    height: 64px;
+  }
+
+  li.advantage--item strong {
+    font-size: 1.5rem;
+  }
+
+  li.advantage--item p {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  ul.advantages--list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 0;
+  }
+
+  li.advantage--item {
+    flex: 0 0 calc(50% - 15px);
+    width: 100%;
+  }
+
+  .advantages--cont {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .header--inner {
+    background: transparent !important;
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  .advantages--cont {
+    flex-direction: row;
+    margin-top: 52px;
+    margin-bottom: 90px;
+  }
+
+  .advantages--banner {
+    margin-top: 0;
+    flex: 0 0 33%;
+  }
+
+  ul.advantages--list {
+    margin-bottom: 0;
+  }
+}
