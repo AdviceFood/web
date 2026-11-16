@@ -64,31 +64,51 @@ jobs:
           for file in *.html; do
             echo "🔍 Checking $file"
 
-            # Добавляем User-Agent и флаг -f, чтобы curl падал при HTTP-ошибках
-            http_code=$(curl -s -w "%{http_code}" -o validation-result.json \
-              -A "Mozilla/5.0 (CI HTML Validator)" \
+            # -w "%{http_code}"  → пишем HTTP-код в конец файла через -o
+            # -A "..."           → User-Agent, чтобы W3C не блокировал curl
+            # -f                 → curl вернёт ошибку при HTTP >= 400
+            http_code=$(curl -s -w "%{http_code}" \
+              -A "Mozilla/5.0 (compatible; HTML-Validator-CI/1.0)" \
               -H "Content-Type: text/html; charset=utf-8" \
               --data-binary @"$file" \
-              "https://validator.w3.org/nu/?out=json")
+              "https://validator.w3.org/nu/?out=json" \
+              -o validation-result.json)
 
             if [ "$http_code" -ne 200 ]; then
-              echo "❌ HTTP Error $http_code for $file"
+              echo "❌ HTTP $http_code for $file (validator unavailable)"
+              echo ""
               failed=1
               continue
             fi
 
-            if grep -q '"type":"error"' validation-result.json; then
-              echo "❌ Errors in $file"
+            # Считаем только сообщения с "type":"error".
+            # info и warning игнорируются автоматически, т.к. grep ищет строго "type":"error".
+            error_count=$(grep -o '"type":"error"' validation-result.json | wc -l | tr -d ' ')
+
+            if [ "$error_count" -gt 0 ]; then
+              echo "❌ Errors in $file ($error_count)"
+              echo ""
+              # Печатаем блоки с ошибками: 2 строки до и 2 после для контекста
+              grep -B2 -A2 '"type":"error"' validation-result.json || true
+              echo ""
               failed=1
             else
               echo "✅ $file Passed"
+              # Опционально: показать, сколько info/warning было проигнорировано
+              info_count=$(grep -o '"type":"info"' validation-result.json | wc -l | tr -d ' ')
+              warn_count=$(grep -o '"type":"warning"' validation-result.json | wc -l | tr -d ' ')
+              if [ "$info_count" -gt 0 ] || [ "$warn_count" -gt 0 ]; then
+                echo "   (ignored: $info_count info, $warn_count warning)"
+              fi
             fi
+
+            echo ""
           done
 
           if [ $failed -eq 1 ]; then
             exit 1
           fi
-
+          
   validate-css:
     name: 🎨 CSS Validation (W3C)
     runs-on: ubuntu-latest
