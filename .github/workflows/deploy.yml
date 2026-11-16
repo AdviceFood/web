@@ -64,22 +64,25 @@ jobs:
           for file in *.html; do
             echo "🔍 Checking $file"
 
-            curl -s \
+            # Добавляем User-Agent и флаг -f, чтобы curl падал при HTTP-ошибках
+            http_code=$(curl -s -w "%{http_code}" -o validation-result.json \
+              -A "Mozilla/5.0 (CI HTML Validator)" \
               -H "Content-Type: text/html; charset=utf-8" \
               --data-binary @"$file" \
-              "https://validator.w3.org/nu/?out=json" \
-              -o validation-result.json
+              "https://validator.w3.org/nu/?out=json")
+
+            if [ "$http_code" -ne 200 ]; then
+              echo "❌ HTTP Error $http_code for $file"
+              failed=1
+              continue
+            fi
 
             if grep -q '"type":"error"' validation-result.json; then
               echo "❌ Errors in $file"
-              echo ""
-              cat validation-result.json | grep -A2 '"type":"error"' || true
               failed=1
             else
               echo "✅ $file Passed"
             fi
-
-            echo ""
           done
 
           if [ $failed -eq 1 ]; then
