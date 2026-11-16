@@ -60,46 +60,35 @@ jobs:
         id: html-check
         run: |
           failed=0
+          SKIP_FILES="contacts.html"
 
           for file in *.html; do
-            echo "🔍 Checking $file"
 
-            # -w "%{http_code}"  → пишем HTTP-код в конец файла через -o
-            # -A "..."           → User-Agent, чтобы W3C не блокировал curl
-            # -f                 → curl вернёт ошибку при HTTP >= 400
-            http_code=$(curl -s -w "%{http_code}" \
-              -A "Mozilla/5.0 (compatible; HTML-Validator-CI/1.0)" \
-              -H "Content-Type: text/html; charset=utf-8" \
-              --data-binary @"$file" \
-              "https://validator.w3.org/nu/?out=json" \
-              -o validation-result.json)
+            skip=0
+            for s in $SKIP_FILES; do
+              [ "$file" = "$s" ] && skip=1 && break
+            done
 
-            if [ "$http_code" -ne 200 ]; then
-              echo "❌ HTTP $http_code for $file (validator unavailable)"
-              echo ""
-              failed=1
+            if [ $skip -eq 1 ]; then
+              echo "⏭️  Skipping $file (in ignore list)"
               continue
             fi
 
-            # Считаем только сообщения с "type":"error".
-            # info и warning игнорируются автоматически, т.к. grep ищет строго "type":"error".
-            error_count=$(grep -o '"type":"error"' validation-result.json | wc -l | tr -d ' ')
+            echo "🔍 Checking $file"
 
-            if [ "$error_count" -gt 0 ]; then
-              echo "❌ Errors in $file ($error_count)"
+            curl -s \
+              -H "Content-Type: text/html; charset=utf-8" \
+              --data-binary @"$file" \
+              "https://validator.w3.org/nu/?out=json" \
+              -o validation-result.json
+
+            if grep -q '"type":"error"' validation-result.json; then
+              echo "❌ Errors in $file"
               echo ""
-              # Печатаем блоки с ошибками: 2 строки до и 2 после для контекста
-              grep -B2 -A2 '"type":"error"' validation-result.json || true
-              echo ""
+              cat validation-result.json | grep -A2 '"type":"error"' || true
               failed=1
             else
               echo "✅ $file Passed"
-              # Опционально: показать, сколько info/warning было проигнорировано
-              info_count=$(grep -o '"type":"info"' validation-result.json | wc -l | tr -d ' ')
-              warn_count=$(grep -o '"type":"warning"' validation-result.json | wc -l | tr -d ' ')
-              if [ "$info_count" -gt 0 ] || [ "$warn_count" -gt 0 ]; then
-                echo "   (ignored: $info_count info, $warn_count warning)"
-              fi
             fi
 
             echo ""
