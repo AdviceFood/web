@@ -32,38 +32,37 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     });
   } else {
-    const el = document.querySelectorAll(".preview--bg");
+    const cards = document.querySelectorAll(".preview--bg");
 
-    let rafId = null;
+    const MAX_TILT = 12;
 
-    const updateParallax = () => {
-      const rect = el[0].getBoundingClientRect();
-      const vh = window.innerHeight;
+    cards.forEach((card) => {
+      card.addEventListener("mousemove", (e) => {
+        const rect = card.getBoundingClientRect();
 
-      const progress = (vh - rect.top) / (vh + rect.height);
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
 
-      const y = (progress - 0.5) * 20;
+        const rotateX = (-y * MAX_TILT).toFixed(2);
+        const rotateY = (x * MAX_TILT).toFixed(2);
 
-      el.forEach(
-        (e) =>
-          (e.style.transform = `
-        rotateX(12deg)
-        rotateY(-6deg)
-        translate3d(0, ${y}px, 0px)
-      `),
-      );
+        const translateZ = -Math.abs(x * y) * 40;
 
-      rafId = null;
-    };
+        card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(${translateZ}px)`;
+        card.style.boxShadow = `${-x * 20}px ${-y * 20}px 40px rgba(0,0,0,0.4)`;
 
-    const onScroll = () => {
-      if (rafId !== null) return;
-      rafId = requestAnimationFrame(updateParallax);
-    };
+        card.style.transition =
+          "transform 0.1s ease-out, box-shadow 0.1s ease-out";
+      });
 
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll, { passive: true });
-    updateParallax();
+      card.addEventListener("mouseleave", () => {
+        card.style.transform =
+          "perspective(800px) rotateX(0deg) rotateY(0deg) translateZ(0)";
+        card.style.boxShadow = "0 10px 30px rgba(0,0,0,0.3)";
+        card.style.transition =
+          "transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s ease";
+      });
+    });
   }
 
   const switcher = document.getElementById("switcher");
