@@ -957,7 +957,7 @@
 
         .contact--link--wrapper {
           gap: 10px;
-          width: 100%;
+          width: calc(100% - 120px);
         }
 
         li.contact--item .contact--link--wrapper a {
@@ -1343,6 +1343,7 @@
 
         button.link--copy:hover {
           background: #f2f2f2;
+          border-radius: 15px;
         }
 
         button.link--copy:after {
@@ -1393,18 +1394,6 @@
         }
       }
 
-      @media screen and (min-width: 1250px) {
-        ul.contacts--list {
-          gap: 30px;
-          flex-direction: row;
-          flex-wrap: wrap;
-        }
-
-        li.contact--item {
-          flex: 0 0 calc(50% - 15px);
-        }
-      }
-
       @media screen and (min-width: 1440px) {
         header {
           height: 130px;
@@ -1443,6 +1432,18 @@
           gap: 15px;
           margin-left: 10px;
           margin-right: 10px;
+        }
+      }
+
+      @media screen and (min-width: 1550px) {
+        ul.contacts--list {
+          gap: 30px;
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+
+        li.contact--item {
+          flex: 0 0 calc(50% - 15px);
         }
       }
 
