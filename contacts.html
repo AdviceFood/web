@@ -646,13 +646,28 @@
         stroke: black;
       }
 
+      .footer--theme svg,
+      .footer--theme svg path {
+        transition: 0.3s;
+        -webkit-transition: 0.3s;
+      }
+
       .footer--theme .footer--theme--content {
         height: auto;
         overflow: hidden;
+        display: grid;
+        grid-template-rows: 1fr;
+        transition: grid-template-rows 0.3s ease;
       }
 
       .footer--theme.closed .footer--theme--content {
-        height: 0;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.3s ease;
+      }
+
+      ul.theme--links {
+        min-height: 0;
+        overflow: hidden;
       }
 
       .footer--themes {
@@ -682,13 +697,15 @@
         flex-direction: column;
         gap: 12px;
         margin-top: 23px;
+        max-width: 934px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
       .input--block {
         display: flex;
         align-items: center;
         width: 100%;
-        max-width: 330px;
         background: #ffffff;
         height: 52px;
         border-radius: 26px;
@@ -834,6 +851,31 @@
         -webkit-transition: 0.02s;
       }
 
+      button.link--copy {
+        display: none;
+      }
+
+      .contact--link--wrapper {
+        display: flex;
+        align-items: center;
+        width: 100%;
+      }
+
+      button.submit--form {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        max-width: unset;
+      }
+
+      li.contact--item .contact--link--wrapper a:active {
+        transition: 0.03s;
+        -webkit-transition: 0.03s;
+        background: #d9d9d9;
+        border-color: #d9d9d9;
+        transform: scale(0.98);
+      }
+
       @media screen and (min-width: 430px) {
         a.header--logo svg {
           width: 40px;
@@ -872,6 +914,158 @@
           height: 4px;
           transform: translateY(-14px) translateX(-50%);
           top: 50%;
+        }
+      }
+
+      @media screen and (min-width: 700px) {
+        .section--title {
+          font-size: 2.5rem;
+          margin-bottom: 0;
+        }
+
+        .section--subtitle {
+          font-size: 1.125rem;
+        }
+
+        .section--desc {
+          font-size: 1.125rem;
+        }
+
+        button.link--copy {
+          display: block;
+          border: 2px solid #0000001a;
+          background: #ffffff;
+          border-radius: 20px;
+          width: 52px;
+          height: 52px;
+          min-width: 52px;
+        }
+
+        button.link--copy svg:nth-child(2) {
+          display: none;
+        }
+
+        button.link--copy.active svg:nth-child(2),
+        button.link--copy:active svg:nth-child(2) {
+          display: unset;
+        }
+
+        button.link--copy.active svg:nth-child(1),
+        button.link--copy:active svg:nth-child(1) {
+          display: none;
+        }
+
+        .contact--link--wrapper {
+          gap: 10px;
+          width: calc(100% - 120px);
+        }
+
+        li.contact--item .contact--link--wrapper a {
+          min-width: 230px;
+          margin-left: 0;
+          margin-right: 0;
+          height: 52px;
+          border-radius: 26px;
+        }
+
+        a.contact--link {
+          height: 52px;
+          border-radius: 26px;
+        }
+
+        li.contact--item {
+          position: relative;
+          text-align: left;
+          align-items: start;
+          min-height: 230px;
+          padding-left: 185px;
+          padding-top: 50px;
+          padding-bottom: 50px;
+          z-index: 4;
+        }
+
+        li.contact--item:nth-child(2) {
+          z-index: 3;
+        }
+
+        li.contact--item:nth-child(3) {
+          z-index: 2;
+        }
+
+        li.contact--item:nth-child(4) {
+          z-index: 1;
+        }
+
+        li.contact--item .contact--icon--cont svg {
+          position: absolute;
+          left: -30px;
+          width: 207px;
+          height: 207px;
+        }
+
+        .contact--icon--cont {
+          position: absolute;
+          left: 0;
+          width: 207px;
+          height: 207px;
+          overflow: hidden;
+        }
+
+        li.contact--item strong {
+          font-size: 1.5rem;
+          margin-top: 0;
+        }
+
+        li.contact--item p {
+          margin-top: 2px;
+          font-size: 1.125rem;
+          margin-bottom: auto;
+        }
+
+        main {
+          padding-top: 192px;
+        }
+
+        .input--block {
+          height: 60px;
+          border-radius: 30px;
+          padding-left: 20px;
+          gap: 15px;
+        }
+
+        .input--block svg {
+          min-width: 24px;
+        }
+
+        .input--block input {
+          font-size: 1.125rem;
+        }
+
+        textarea {
+          padding: 18px;
+          font-size: 1.125rem;
+        }
+
+        .input--checkbox {
+          display: flex;
+        }
+
+        button.submit--form {
+          height: 52px;
+          border-radius: 26px;
+          font-weight: 500;
+          font-style: normal;
+          font-size: 1.25rem;
+        }
+
+        .input--checkbox:after {
+          top: 50%;
+        }
+
+        ul.faq--list {
+          max-width: 690px;
+          margin-left: auto;
+          margin-right: auto;
         }
       }
 
@@ -1043,6 +1237,161 @@
             0.05s color,
             0.05s transform;
         }
+
+        button.link--copy {
+          cursor: pointer;
+        }
+
+        .header--inner {
+          background: transparent !important;
+        }
+
+        header .header--inner {
+          background: transparent;
+        }
+
+        header {
+          background: linear-gradient(
+            180deg,
+            #f4f6f9 0%,
+            #f4f6f9d7 50%,
+            #f4f6f900 100%
+          );
+        }
+
+        .section--contacts .section--title,
+        .section--contacts .section--subtitle {
+          text-align: left;
+        }
+
+        form.contacts--form {
+          gap: 20px;
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+
+        .input--block {
+          flex: 0 0 calc(50% - 10px);
+        }
+
+        .textarea--block {
+          flex: 0 0 100%;
+        }
+
+        button.submit--form {
+          margin-top: 0;
+          cursor: pointer;
+        }
+
+        button.submit--form:hover {
+          background: #16a34a;
+        }
+
+        label.checkbox--block {
+          cursor: pointer;
+        }
+
+        .section--faq {
+          padding-top: 77px;
+          padding-bottom: 77px;
+        }
+
+        ul.faq--list {
+          margin-top: 66px;
+        }
+
+        strong.faq--question {
+          font-size: 1.75rem;
+        }
+
+        p.faq--answer {
+          font-size: 1.125rem;
+        }
+
+        li.faq--item {
+          gap: 20px;
+        }
+
+        .faq--info {
+          cursor: pointer;
+        }
+
+        li.contact--item .contact--link--wrapper a {
+          transition: 0.3s;
+          -webkit-transition: 0.3s;
+        }
+
+        li.contact--item .contact--link--wrapper a:hover {
+          background: #f2f2f2;
+        }
+
+        li.contact--item .contact--link--wrapper a:active {
+          transition: 0.03s;
+          -webkit-transition: 0.03s;
+          background: #d9d9d9;
+          border-color: #d9d9d9;
+          transform: scale(0.98);
+        }
+
+        button.link--copy {
+          padding-block: 0;
+          padding-inline: 0;
+          transition: 0.3s;
+          -webkit-transition: 0.3s;
+          position: relative;
+        }
+
+        button.link--copy:hover {
+          background: #f2f2f2;
+          border-radius: 15px;
+        }
+
+        button.link--copy:after {
+          position: absolute;
+          content: "Скопировать";
+          padding: 7px 15px;
+          background: #f2f2f2;
+          color: #000000b2;
+          font-weight: 400;
+          font-size: 0.875rem;
+          border-radius: 27px;
+          left: calc(100%);
+          top: 50%;
+          transform: translateY(-50%);
+          opacity: 0;
+          right: auto;
+          transition: 0.3s;
+          -webkit-transition: 0.3s;
+        }
+
+        button.link--copy:hover:after {
+          opacity: 1;
+          left: calc(100% + 10px);
+        }
+
+        button.link--copy:active {
+          transition: 0.03s;
+          -webkit-transition: 0.03s;
+          background: #d9d9d9;
+          border-color: #d9d9d9;
+          transform: scale(0.98);
+        }
+
+        button.link--copy:active:after {
+          transition: 0.03s;
+          -webkit-transition: 0.03s;
+          content: "Скопировано!";
+          background: #22c55e;
+          color: white;
+          opacity: 1;
+        }
+
+        button.link--copy.active:hover:after {
+          content: "Скопировано!";
+          background: #22c55e;
+          color: white;
+          opacity: 1;
+        }
       }
 
       @media screen and (min-width: 1440px) {
@@ -1086,9 +1435,82 @@
         }
       }
 
+      @media screen and (min-width: 1550px) {
+        ul.contacts--list {
+          gap: 30px;
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+
+        li.contact--item {
+          flex: 0 0 calc(50% - 15px);
+        }
+      }
+
       @media screen and (min-width: 1600px) {
         .container {
           max-width: 73.5vw;
+        }
+      }
+
+      @media screen and (min-width: 580px) {
+        a.footer--logo svg {
+          width: 39px;
+          height: 36px;
+        }
+
+        a.footer--logo strong {
+          font-size: 1.75rem;
+        }
+
+        .footer--meta p {
+          font-size: 1rem;
+        }
+
+        .footer--meta p br {
+          display: none;
+        }
+      }
+
+      @media screen and (min-width: 650px) {
+        .footer--themes {
+          display: flex;
+          flex-direction: row;
+          gap: 30px;
+          flex-wrap: wrap;
+        }
+      }
+
+      @media screen and (min-width: 1024px) {
+        .footer--theme--header svg {
+          display: none;
+        }
+
+        .footer--theme.closed .footer--theme--content {
+          grid-template-rows: 1fr;
+        }
+
+        .footer--line {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 30px;
+        }
+
+        .footer--themes {
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+
+        .footer--line:nth-child(2) {
+          margin-top: 60px;
+        }
+      }
+
+      @media screen and (min-width: 1500px) {
+        .footer--themes {
+          gap: 100px;
         }
       }
     </style>
@@ -1544,116 +1966,312 @@
 
             <ul class="contacts--list">
               <li class="contact--item">
-                <svg
-                  width="84"
-                  height="84"
-                  viewBox="0 0 84 84"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clip-path="url(#clip0_937_1096)">
-                    <path
-                      d="M77 26.3721V59.4996C77.0001 62.1778 75.9769 64.7549 74.1395 66.7035C72.3021 68.6521 69.7896 69.8249 67.116 69.9821L66.5 69.9996H17.5C14.8218 69.9997 12.2447 68.9764 10.2961 67.1391C8.34748 65.3017 7.17462 62.7892 7.0175 60.1156L7 59.4996V26.3721L40.0575 48.4116L40.4635 48.6426C40.942 48.8763 41.4675 48.9979 42 48.9979C42.5325 48.9979 43.058 48.8763 43.5365 48.6426L43.9425 48.4116L77 26.3721Z"
-                      fill="#22C55E"
-                    />
-                    <path
-                      d="M66.5001 14C70.2801 14 73.5946 15.995 75.4426 18.9945L42.0001 41.2895L8.55762 18.9945C9.43517 17.5692 10.6409 16.3744 12.0741 15.5098C13.5073 14.6453 15.1265 14.136 16.7966 14.0245L17.5001 14H66.5001Z"
-                      fill="#22C55E"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_937_1096">
-                      <rect width="84" height="84" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
+                <div class="contact--icon--cont">
+                  <svg
+                    width="84"
+                    height="84"
+                    viewBox="0 0 84 84"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_937_1096)">
+                      <path
+                        d="M77 26.3721V59.4996C77.0001 62.1778 75.9769 64.7549 74.1395 66.7035C72.3021 68.6521 69.7896 69.8249 67.116 69.9821L66.5 69.9996H17.5C14.8218 69.9997 12.2447 68.9764 10.2961 67.1391C8.34748 65.3017 7.17462 62.7892 7.0175 60.1156L7 59.4996V26.3721L40.0575 48.4116L40.4635 48.6426C40.942 48.8763 41.4675 48.9979 42 48.9979C42.5325 48.9979 43.058 48.8763 43.5365 48.6426L43.9425 48.4116L77 26.3721Z"
+                        fill="#22C55E"
+                      />
+                      <path
+                        d="M66.5001 14C70.2801 14 73.5946 15.995 75.4426 18.9945L42.0001 41.2895L8.55762 18.9945C9.43517 17.5692 10.6409 16.3744 12.0741 15.5098C13.5073 14.6453 15.1265 14.136 16.7966 14.0245L17.5001 14H66.5001Z"
+                        fill="#22C55E"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_937_1096">
+                        <rect width="84" height="84" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </div>
                 <strong>General inquiries</strong>
                 <p>Questions about AdviceFood, our service, or its features.</p>
-                <a href="#" class="contact--link">email@gmail.com</a>
+                <div class="contact--link--wrapper">
+                  <a href="#" class="contact--link">email@gmail.com</a>
+                  <button class="link--copy">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_925_1015)">
+                        <path
+                          d="M7 9.667C7 8.95967 7.28099 8.28131 7.78115 7.78115C8.28131 7.28099 8.95967 7 9.667 7H18.333C18.6832 7 19.03 7.06898 19.3536 7.20301C19.6772 7.33704 19.9712 7.53349 20.2189 7.78115C20.4665 8.0288 20.663 8.32281 20.797 8.64638C20.931 8.96996 21 9.31676 21 9.667V18.333C21 18.6832 20.931 19.03 20.797 19.3536C20.663 19.6772 20.4665 19.9712 20.2189 20.2189C19.9712 20.4665 19.6772 20.663 19.3536 20.797C19.03 20.931 18.6832 21 18.333 21H9.667C9.31676 21 8.96996 20.931 8.64638 20.797C8.32281 20.663 8.0288 20.4665 7.78115 20.2189C7.53349 19.9712 7.33704 19.6772 7.20301 19.3536C7.06898 19.03 7 18.6832 7 18.333V9.667Z"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke="black"
+                        />
+                        <path
+                          d="M4.012 16.737C3.70534 16.5622 3.45027 16.3095 3.27258 16.0045C3.09488 15.6995 3.00085 15.353 3 15V5C3 3.9 3.9 3 5 3H15C15.75 3 16.158 3.385 16.5 4"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke="black"
+                        />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_925_1015">
+                          <rect width="24" height="24" fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="21"
+                      height="15"
+                      fill="none"
+                    >
+                      <path
+                        stroke="#000"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2.47"
+                        d="m1.235 7.41 6.175 6.175 12.35-12.35"
+                      />
+                    </svg>
+                  </button>
+                </div>
               </li>
               <li class="contact--item">
-                <svg
-                  width="84"
-                  height="84"
-                  viewBox="0 0 84 84"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clip-path="url(#clip0_937_1099)">
-                    <path
-                      d="M77 26.3721V59.4996C77.0001 62.1778 75.9769 64.7549 74.1395 66.7035C72.3021 68.6521 69.7896 69.8249 67.116 69.9821L66.5 69.9996H17.5C14.8218 69.9997 12.2447 68.9764 10.2961 67.1391C8.34748 65.3017 7.17462 62.7892 7.0175 60.1156L7 59.4996V26.3721L40.0575 48.4116L40.4635 48.6426C40.942 48.8763 41.4675 48.9979 42 48.9979C42.5325 48.9979 43.058 48.8763 43.5365 48.6426L43.9425 48.4116L77 26.3721Z"
-                      fill="#22C55E"
-                    />
-                    <path
-                      d="M66.5001 14C70.2801 14 73.5946 15.995 75.4426 18.9945L42.0001 41.2895L8.55762 18.9945C9.43517 17.5692 10.6409 16.3744 12.0741 15.5098C13.5073 14.6453 15.1265 14.136 16.7966 14.0245L17.5001 14H66.5001Z"
-                      fill="#22C55E"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_937_1099">
-                      <rect width="84" height="84" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
+                <div class="contact--icon--cont">
+                  <svg
+                    width="84"
+                    height="84"
+                    viewBox="0 0 84 84"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_937_1099)">
+                      <path
+                        d="M77 26.3721V59.4996C77.0001 62.1778 75.9769 64.7549 74.1395 66.7035C72.3021 68.6521 69.7896 69.8249 67.116 69.9821L66.5 69.9996H17.5C14.8218 69.9997 12.2447 68.9764 10.2961 67.1391C8.34748 65.3017 7.17462 62.7892 7.0175 60.1156L7 59.4996V26.3721L40.0575 48.4116L40.4635 48.6426C40.942 48.8763 41.4675 48.9979 42 48.9979C42.5325 48.9979 43.058 48.8763 43.5365 48.6426L43.9425 48.4116L77 26.3721Z"
+                        fill="#22C55E"
+                      />
+                      <path
+                        d="M66.5001 14C70.2801 14 73.5946 15.995 75.4426 18.9945L42.0001 41.2895L8.55762 18.9945C9.43517 17.5692 10.6409 16.3744 12.0741 15.5098C13.5073 14.6453 15.1265 14.136 16.7966 14.0245L17.5001 14H66.5001Z"
+                        fill="#22C55E"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_937_1099">
+                        <rect width="84" height="84" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </div>
                 <strong>General inquiries</strong>
                 <p>Questions about AdviceFood, our service, or its features.</p>
-                <a href="#" class="contact--link">email@gmail.com</a>
+                <div class="contact--link--wrapper">
+                  <a href="#" class="contact--link">email@gmail.com</a>
+                  <button class="link--copy">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_925_1016)">
+                        <path
+                          d="M7 9.667C7 8.95967 7.28099 8.28131 7.78115 7.78115C8.28131 7.28099 8.95967 7 9.667 7H18.333C18.6832 7 19.03 7.06898 19.3536 7.20301C19.6772 7.33704 19.9712 7.53349 20.2189 7.78115C20.4665 8.0288 20.663 8.32281 20.797 8.64638C20.931 8.96996 21 9.31676 21 9.667V18.333C21 18.6832 20.931 19.03 20.797 19.3536C20.663 19.6772 20.4665 19.9712 20.2189 20.2189C19.9712 20.4665 19.6772 20.663 19.3536 20.797C19.03 20.931 18.6832 21 18.333 21H9.667C9.31676 21 8.96996 20.931 8.64638 20.797C8.32281 20.663 8.0288 20.4665 7.78115 20.2189C7.53349 19.9712 7.33704 19.6772 7.20301 19.3536C7.06898 19.03 7 18.6832 7 18.333V9.667Z"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke="black"
+                        />
+                        <path
+                          d="M4.012 16.737C3.70534 16.5622 3.45027 16.3095 3.27258 16.0045C3.09488 15.6995 3.00085 15.353 3 15V5C3 3.9 3.9 3 5 3H15C15.75 3 16.158 3.385 16.5 4"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke="black"
+                        />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_925_1016">
+                          <rect width="24" height="24" fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="21"
+                      height="15"
+                      fill="none"
+                    >
+                      <path
+                        stroke="#000"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2.47"
+                        d="m1.235 7.41 6.175 6.175 12.35-12.35"
+                      />
+                    </svg>
+                  </button>
+                </div>
               </li>
               <li class="contact--item">
-                <svg
-                  width="84"
-                  height="84"
-                  viewBox="0 0 84 84"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clip-path="url(#clip0_937_1100)">
-                    <path
-                      d="M77 26.3721V59.4996C77.0001 62.1778 75.9769 64.7549 74.1395 66.7035C72.3021 68.6521 69.7896 69.8249 67.116 69.9821L66.5 69.9996H17.5C14.8218 69.9997 12.2447 68.9764 10.2961 67.1391C8.34748 65.3017 7.17462 62.7892 7.0175 60.1156L7 59.4996V26.3721L40.0575 48.4116L40.4635 48.6426C40.942 48.8763 41.4675 48.9979 42 48.9979C42.5325 48.9979 43.058 48.8763 43.5365 48.6426L43.9425 48.4116L77 26.3721Z"
-                      fill="#22C55E"
-                    />
-                    <path
-                      d="M66.5001 14C70.2801 14 73.5946 15.995 75.4426 18.9945L42.0001 41.2895L8.55762 18.9945C9.43517 17.5692 10.6409 16.3744 12.0741 15.5098C13.5073 14.6453 15.1265 14.136 16.7966 14.0245L17.5001 14H66.5001Z"
-                      fill="#22C55E"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_937_1100">
-                      <rect width="84" height="84" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
+                <div class="contact--icon--cont">
+                  <svg
+                    width="84"
+                    height="84"
+                    viewBox="0 0 84 84"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_937_1100)">
+                      <path
+                        d="M77 26.3721V59.4996C77.0001 62.1778 75.9769 64.7549 74.1395 66.7035C72.3021 68.6521 69.7896 69.8249 67.116 69.9821L66.5 69.9996H17.5C14.8218 69.9997 12.2447 68.9764 10.2961 67.1391C8.34748 65.3017 7.17462 62.7892 7.0175 60.1156L7 59.4996V26.3721L40.0575 48.4116L40.4635 48.6426C40.942 48.8763 41.4675 48.9979 42 48.9979C42.5325 48.9979 43.058 48.8763 43.5365 48.6426L43.9425 48.4116L77 26.3721Z"
+                        fill="#22C55E"
+                      />
+                      <path
+                        d="M66.5001 14C70.2801 14 73.5946 15.995 75.4426 18.9945L42.0001 41.2895L8.55762 18.9945C9.43517 17.5692 10.6409 16.3744 12.0741 15.5098C13.5073 14.6453 15.1265 14.136 16.7966 14.0245L17.5001 14H66.5001Z"
+                        fill="#22C55E"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_937_1100">
+                        <rect width="84" height="84" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </div>
                 <strong>General inquiries</strong>
                 <p>Questions about AdviceFood, our service, or its features.</p>
-                <a href="#" class="contact--link">email@gmail.com</a>
+                <div class="contact--link--wrapper">
+                  <a href="#" class="contact--link">email@gmail.com</a>
+                  <button class="link--copy">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_925_1017)">
+                        <path
+                          d="M7 9.667C7 8.95967 7.28099 8.28131 7.78115 7.78115C8.28131 7.28099 8.95967 7 9.667 7H18.333C18.6832 7 19.03 7.06898 19.3536 7.20301C19.6772 7.33704 19.9712 7.53349 20.2189 7.78115C20.4665 8.0288 20.663 8.32281 20.797 8.64638C20.931 8.96996 21 9.31676 21 9.667V18.333C21 18.6832 20.931 19.03 20.797 19.3536C20.663 19.6772 20.4665 19.9712 20.2189 20.2189C19.9712 20.4665 19.6772 20.663 19.3536 20.797C19.03 20.931 18.6832 21 18.333 21H9.667C9.31676 21 8.96996 20.931 8.64638 20.797C8.32281 20.663 8.0288 20.4665 7.78115 20.2189C7.53349 19.9712 7.33704 19.6772 7.20301 19.3536C7.06898 19.03 7 18.6832 7 18.333V9.667Z"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke="black"
+                        />
+                        <path
+                          d="M4.012 16.737C3.70534 16.5622 3.45027 16.3095 3.27258 16.0045C3.09488 15.6995 3.00085 15.353 3 15V5C3 3.9 3.9 3 5 3H15C15.75 3 16.158 3.385 16.5 4"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke="black"
+                        />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_925_1017">
+                          <rect width="24" height="24" fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="21"
+                      height="15"
+                      fill="none"
+                    >
+                      <path
+                        stroke="#000"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2.47"
+                        d="m1.235 7.41 6.175 6.175 12.35-12.35"
+                      />
+                    </svg>
+                  </button>
+                </div>
               </li>
               <li class="contact--item">
-                <svg
-                  width="84"
-                  height="84"
-                  viewBox="0 0 84 84"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clip-path="url(#clip0_937_1101)">
-                    <path
-                      d="M77 26.3721V59.4996C77.0001 62.1778 75.9769 64.7549 74.1395 66.7035C72.3021 68.6521 69.7896 69.8249 67.116 69.9821L66.5 69.9996H17.5C14.8218 69.9997 12.2447 68.9764 10.2961 67.1391C8.34748 65.3017 7.17462 62.7892 7.0175 60.1156L7 59.4996V26.3721L40.0575 48.4116L40.4635 48.6426C40.942 48.8763 41.4675 48.9979 42 48.9979C42.5325 48.9979 43.058 48.8763 43.5365 48.6426L43.9425 48.4116L77 26.3721Z"
-                      fill="#22C55E"
-                    />
-                    <path
-                      d="M66.5001 14C70.2801 14 73.5946 15.995 75.4426 18.9945L42.0001 41.2895L8.55762 18.9945C9.43517 17.5692 10.6409 16.3744 12.0741 15.5098C13.5073 14.6453 15.1265 14.136 16.7966 14.0245L17.5001 14H66.5001Z"
-                      fill="#22C55E"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_937_1101">
-                      <rect width="84" height="84" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
+                <div class="contact--icon--cont">
+                  <svg
+                    width="84"
+                    height="84"
+                    viewBox="0 0 84 84"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_937_1101)">
+                      <path
+                        d="M77 26.3721V59.4996C77.0001 62.1778 75.9769 64.7549 74.1395 66.7035C72.3021 68.6521 69.7896 69.8249 67.116 69.9821L66.5 69.9996H17.5C14.8218 69.9997 12.2447 68.9764 10.2961 67.1391C8.34748 65.3017 7.17462 62.7892 7.0175 60.1156L7 59.4996V26.3721L40.0575 48.4116L40.4635 48.6426C40.942 48.8763 41.4675 48.9979 42 48.9979C42.5325 48.9979 43.058 48.8763 43.5365 48.6426L43.9425 48.4116L77 26.3721Z"
+                        fill="#22C55E"
+                      />
+                      <path
+                        d="M66.5001 14C70.2801 14 73.5946 15.995 75.4426 18.9945L42.0001 41.2895L8.55762 18.9945C9.43517 17.5692 10.6409 16.3744 12.0741 15.5098C13.5073 14.6453 15.1265 14.136 16.7966 14.0245L17.5001 14H66.5001Z"
+                        fill="#22C55E"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_937_1101">
+                        <rect width="84" height="84" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </div>
                 <strong>General inquiries</strong>
                 <p>Questions about AdviceFood, our service, or its features.</p>
-                <a href="#" class="contact--link">email@gmail.com</a>
+                <div class="contact--link--wrapper">
+                  <a href="#" class="contact--link">email@gmail.com</a>
+                  <button class="link--copy">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_925_1018)">
+                        <path
+                          d="M7 9.667C7 8.95967 7.28099 8.28131 7.78115 7.78115C8.28131 7.28099 8.95967 7 9.667 7H18.333C18.6832 7 19.03 7.06898 19.3536 7.20301C19.6772 7.33704 19.9712 7.53349 20.2189 7.78115C20.4665 8.0288 20.663 8.32281 20.797 8.64638C20.931 8.96996 21 9.31676 21 9.667V18.333C21 18.6832 20.931 19.03 20.797 19.3536C20.663 19.6772 20.4665 19.9712 20.2189 20.2189C19.9712 20.4665 19.6772 20.663 19.3536 20.797C19.03 20.931 18.6832 21 18.333 21H9.667C9.31676 21 8.96996 20.931 8.64638 20.797C8.32281 20.663 8.0288 20.4665 7.78115 20.2189C7.53349 19.9712 7.33704 19.6772 7.20301 19.3536C7.06898 19.03 7 18.6832 7 18.333V9.667Z"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke="black"
+                        />
+                        <path
+                          d="M4.012 16.737C3.70534 16.5622 3.45027 16.3095 3.27258 16.0045C3.09488 15.6995 3.00085 15.353 3 15V5C3 3.9 3.9 3 5 3H15C15.75 3 16.158 3.385 16.5 4"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke="black"
+                        />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_925_1018">
+                          <rect width="24" height="24" fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="21"
+                      height="15"
+                      fill="none"
+                    >
+                      <path
+                        stroke="#000"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2.47"
+                        d="m1.235 7.41 6.175 6.175 12.35-12.35"
+                      />
+                    </svg>
+                  </button>
+                </div>
               </li>
             </ul>
           </div>
