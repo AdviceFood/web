@@ -1035,6 +1035,14 @@
         flex-direction: column;
       }
 
+      li.article--item:nth-child(n + 4) {
+        display: none;
+      }
+
+      p.article--subtitle {
+        display: none;
+      }
+
       @media screen and (min-width: 360px) {
         .preview--title {
           font-size: 1.5rem;
@@ -1081,6 +1089,25 @@
           height: 4px;
           transform: translateY(-14px) translateX(-50%);
           top: 50%;
+        }
+      }
+
+      @media screen and (min-width: 500px) {
+        li.article--item {
+          flex: 0 0 calc(50% - 7.5px);
+        }
+
+        ul.articles--list {
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+
+        li.article--item:nth-child(n + 4) {
+          display: block;
+        }
+
+        li.article--item:nth-child(n + 5) {
+          display: none;
         }
       }
 
@@ -1216,6 +1243,28 @@
           padding-top: 52px;
           padding-bottom: 58px;
           gap: 25px;
+        }
+
+        ul.faq--list {
+          max-width: 690px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .section--stats .section--subtitle {
+          max-width: 670px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        ul.stats--list {
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        li.stats--item {
+          margin: 0;
         }
       }
 
@@ -1651,6 +1700,152 @@
         .swiper-slide {
           overflow: visible;
         }
+
+        .demo--video img {
+          height: 493px;
+          width: 800px;
+        }
+
+        .demo--video {
+          height: 493px;
+          width: 800px;
+        }
+
+        .demo--video video {
+          padding: 20px 76px;
+          padding-bottom: 55px;
+        }
+
+        .demo--video video {
+          height: 493px;
+          width: 800px;
+          object-fit: cover;
+        }
+
+        .demo--video picture {
+          display: block;
+          margin: 0;
+          padding: 0;
+          border: 0;
+          font-size: 0;
+          line-height: 0;
+          height: auto;
+        }
+
+        .demo--video {
+          margin-top: 41px;
+          margin-bottom: 53px;
+        }
+
+        p.demo--comment {
+          font-size: 1.125rem;
+        }
+
+        ul.faq--list {
+          margin-top: 66px;
+        }
+
+        strong.faq--question {
+          font-size: 1.75rem;
+        }
+
+        p.faq--answer {
+          font-size: 1.125rem;
+        }
+
+        li.faq--item {
+          gap: 15px;
+        }
+
+        .section--faq {
+          padding-top: 77px;
+          padding-bottom: 77px;
+        }
+
+        .section--blog .section--title,
+        .section--blog .section--subtitle {
+          text-align: left;
+          margin-bottom: 0;
+          display: block;
+        }
+
+        .section--blog .section--inner {
+          position: relative;
+        }
+
+        a.blog--expand {
+          position: absolute;
+          right: 0;
+          top: 8px;
+          margin-top: 0;
+          height: 52px;
+          border-radius: 26px;
+          width: 330px;
+        }
+
+        p.blog--comment {
+          margin-top: 30px;
+        }
+
+        ul.articles--list {
+          display: grid;
+          grid-template-columns: 2fr 1fr 1fr;
+          grid-auto-rows: auto;
+          gap: 30px;
+        }
+
+        li.article--item:first-child {
+          grid-column: 1 / 2;
+          grid-row: 1 / 3;
+          height: 100%;
+          aspect-ratio: unset;
+        }
+
+        li.article--item:nth-child(n + 5) {
+          display: block;
+        }
+
+        p.article--subtitle {
+          display: block;
+          position: relative;
+          z-index: 3;
+          font-size: 1.125rem;
+          color: white;
+          font-family: "AA";
+          font-weight: 400;
+          margin-top: 2px;
+        }
+
+        li.article--item:first-child h3.article--title {
+          font-size: 1.5rem;
+        }
+
+        li.article--item:first-child .article--tag {
+          font-size: 1rem;
+          margin-bottom: 6px;
+        }
+
+        p.blog--comment {
+          text-align: left;
+        }
+
+        ul.stats--list {
+          gap: 50px;
+          margin-top: 42px;
+          margin-bottom: 42px;
+        }
+
+        li.stats--item p {
+          width: 100%;
+        }
+
+        li.stats--item strong {
+          font-size: 1.5rem;
+        }
+
+        li.stats--item span {
+          font-size: 2.5rem;
+        }
       }
 
       @media screen and (min-width: 1440px) {
@@ -1728,6 +1923,14 @@
           margin-bottom: 60px;
           width: calc(100% - 180px);
         }
+
+        li.article--item article {
+          padding: 15px;
+        }
+
+        li.article--item:first-child .blog--article {
+          padding: 34px 28px;
+        }
       }
 
       @media screen and (min-width: 1600px) {
@@ -1737,6 +1940,34 @@
 
         .swiper {
           max-width: 73.5vw;
+        }
+      }
+
+      @media screen and (min-width: 1700px) {
+        .demo--video img {
+          height: 769px;
+          width: 1250px;
+        }
+
+        .demo--video {
+          height: 769px;
+          width: 1250px;
+        }
+
+        .demo--video video {
+          padding: 20px 76px;
+          padding-bottom: 55px;
+        }
+
+        .demo--video video {
+          height: 769px;
+          width: 1250px;
+          object-fit: cover;
+        }
+
+        .demo--video video {
+          padding: 30px 122px;
+          padding-bottom: 85px;
         }
       }
     </style>
@@ -2782,13 +3013,19 @@
                 <source src="videos/demo.mp4" type="video/mp4" />
               </video>
 
-              <img
-                src="img/iphone.svg"
-                alt=""
-                loading="lazy"
-                width="273"
-                height="575"
-              />
+              <picture>
+                <source
+                  media="(min-width: 1024px)"
+                  srcset="img/laptop_frame.svg"
+                />
+                <img
+                  src="img/iphone.svg"
+                  alt=""
+                  loading="lazy"
+                  width="273"
+                  height="575"
+                />
+              </picture>
             </div>
 
             <p class="demo--comment">
@@ -2943,6 +3180,34 @@
             </p>
 
             <ul class="articles--list">
+              <li class="article--item">
+                <article class="blog--article">
+                  <picture>
+                    <img src="img/blog.png" loading="lazy" alt="" />
+                  </picture>
+
+                  <span class="article--tag">Update</span>
+                  <h3 class="article--title">
+                    Can AI Estimate Calories from a Photo?
+                  </h3>
+                  <p class="article--subtitle">
+                    A practical introduction to the components of a balanced
+                    meal
+                  </p>
+                </article>
+              </li>
+              <li class="article--item">
+                <article class="blog--article">
+                  <picture>
+                    <img src="img/blog.png" loading="lazy" alt="" />
+                  </picture>
+
+                  <span class="article--tag">Update</span>
+                  <h3 class="article--title">
+                    Can AI Estimate Calories from a Photo?
+                  </h3>
+                </article>
+              </li>
               <li class="article--item">
                 <article class="blog--article">
                   <picture>
