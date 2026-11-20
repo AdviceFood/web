@@ -9,20 +9,63 @@ document.addEventListener("DOMContentLoaded", () => {
     analyzeComment.classList.add("show");
   });
 
-  const swiper = new Swiper(".swiper", {
-    direction: "horizontal",
-    slidesPerView: 1.1,
-    spaceBetween: 10,
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: true,
-      pauseOnMouseEnter: true,
-    },
-    centeredSlides: true,
-  });
+  if (window.innerWidth < 1024) {
+    new Swiper(".swiper", {
+      direction: "horizontal",
+      slidesPerView: 1.1,
+      spaceBetween: 10,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: true,
+        pauseOnMouseEnter: true,
+      },
+      centeredSlides: true,
+      breakpoints: {
+        500: {
+          slidesPerView: 1.5,
+          centeredSlides: true,
+        },
+        800: {
+          slidesPerView: 2,
+          centeredSlides: false,
+        },
+      },
+    });
+  } else {
+    const cards = document.querySelectorAll(".preview--slide");
+    const MAX_TILT = 12;
 
-  if (swiper == 10) {
-    swiper.stop();
+    cards.forEach((card) => {
+      const target = card.children[2];
+
+      target.style.transform = `rotateX(0deg) rotateY(0deg) translateZ(0px)`;
+      target.style.boxShadow = `0px 0px 40px rgba(0,0,0,0.1)`;
+
+      card.addEventListener("mousemove", (e) => {
+        const rect = card.getBoundingClientRect();
+
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+        const rotateX = (-y * MAX_TILT).toFixed(2);
+        const rotateY = (x * MAX_TILT).toFixed(2);
+        const translateZ = -Math.abs(x * y) * 40;
+
+        target.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(${translateZ}px)`;
+        target.style.boxShadow = `${-x * 20}px ${
+          -y * 20
+        }px 40px rgba(0,0,0,0.1)`;
+        target.style.transition =
+          "transform 0.1s ease-out, box-shadow 0.1s ease-out";
+      });
+
+      card.addEventListener("mouseleave", () => {
+        target.style.transform = "rotateX(0deg) rotateY(0deg) translateZ(0)";
+        target.style.boxShadow = "0 10px 30px rgba(0,0,0,0.1)";
+        target.style.transition =
+          "transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s ease";
+      });
+    });
   }
 
   const switcher = document.getElementById("switcher");
