@@ -32,37 +32,39 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     });
   } else {
-    const cards = document.querySelectorAll(".preview--bg");
+    const cards = document.querySelectorAll(".preview--slide");
+const MAX_TILT = 12;
 
-    const MAX_TILT = 12;
+cards.forEach((card) => {
+  const target = card.children[2];
 
-    cards.forEach((card) => {
-      card.addEventListener("mousemove", (e) => {
-        const rect = card.getBoundingClientRect();
+  target.style.transform = `rotateX(0deg) rotateY(0deg) translateZ(0px)`;
+  target.style.boxShadow = `0px 0px 40px rgba(0,0,0,0.1)`;
 
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
+  card.addEventListener("mousemove", (e) => {
+    const rect = card.getBoundingClientRect();
 
-        const rotateX = (-y * MAX_TILT).toFixed(2);
-        const rotateY = (x * MAX_TILT).toFixed(2);
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
 
-        const translateZ = -Math.abs(x * y) * 40;
+    const rotateX = (-y * MAX_TILT).toFixed(2);
+    const rotateY = (x * MAX_TILT).toFixed(2);
+    const translateZ = -Math.abs(x * y) * 40;
 
-        card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(${translateZ}px)`;
-        card.style.boxShadow = `${-x * 20}px ${-y * 20}px 40px rgba(0,0,0,0.4)`;
+    target.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(${translateZ}px)`;
+    target.style.boxShadow = `${-x * 20}px ${-y * 20}px 40px rgba(0,0,0,0.1)`;
+    target.style.transition =
+      "transform 0.1s ease-out, box-shadow 0.1s ease-out";
+  });
 
-        card.style.transition =
-          "transform 0.1s ease-out, box-shadow 0.1s ease-out";
-      });
-
-      card.addEventListener("mouseleave", () => {
-        card.style.transform =
-          "perspective(800px) rotateX(0deg) rotateY(0deg) translateZ(0)";
-        card.style.boxShadow = "0 10px 30px rgba(0,0,0,0.3)";
-        card.style.transition =
-          "transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s ease";
-      });
-    });
+  card.addEventListener("mouseleave", () => {
+    target.style.transform =
+      "rotateX(0deg) rotateY(0deg) translateZ(0)";
+    target.style.boxShadow = "0 10px 30px rgba(0,0,0,0.1)";
+    target.style.transition =
+      "transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s ease";
+  });
+});
   }
 
   const switcher = document.getElementById("switcher");
