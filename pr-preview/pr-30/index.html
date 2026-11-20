@@ -1846,6 +1846,32 @@
         li.stats--item span {
           font-size: 2.5rem;
         }
+
+        li.article--item article picture img {
+          transition: 0.3s ease-in-out;
+          -webkit-transition: 0.3s ease-in-out;
+        }
+
+        li.article--item:hover {
+          cursor: pointer;
+        }
+
+        li.article--item:hover article picture img {
+          transform: scale(1.04);
+          filter: brightness(0.9);
+        }
+
+        a.blog--expand:hover {
+          background: #f2f2f2;
+        }
+
+        a.preview--cta:hover {
+          background: #16a34a;
+        }
+
+        .faq--info {
+          cursor: pointer;
+        }
       }
 
       @media screen and (min-width: 1440px) {
