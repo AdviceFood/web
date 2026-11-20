@@ -868,6 +868,14 @@
         max-width: unset;
       }
 
+      li.contact--item .contact--link--wrapper a:active {
+        transition: 0.03s;
+        -webkit-transition: 0.03s;
+        background: #d9d9d9;
+        border-color: #d9d9d9;
+        transform: scale(0.98);
+      }
+
       @media screen and (min-width: 430px) {
         a.header--logo svg {
           width: 40px;
@@ -933,6 +941,20 @@
           min-width: 52px;
         }
 
+        button.link--copy svg:nth-child(2) {
+          display: none;
+        }
+
+        button.link--copy.active svg:nth-child(2),
+        button.link--copy:active svg:nth-child(2) {
+          display: unset;
+        }
+
+        button.link--copy.active svg:nth-child(1),
+        button.link--copy:active svg:nth-child(1) {
+          display: none;
+        }
+
         .contact--link--wrapper {
           gap: 10px;
           width: 100%;
@@ -943,7 +965,7 @@
           margin-left: 0;
           margin-right: 0;
           height: 52px;
-          border-image-repeat: 26px;
+          border-radius: 26px;
         }
 
         a.contact--link {
@@ -953,20 +975,40 @@
 
         li.contact--item {
           position: relative;
-          overflow: hidden;
           text-align: left;
           align-items: start;
           min-height: 230px;
           padding-left: 185px;
           padding-top: 50px;
           padding-bottom: 50px;
+          z-index: 4;
         }
 
-        li.contact--item > svg {
+        li.contact--item:nth-child(2) {
+          z-index: 3;
+        }
+
+        li.contact--item:nth-child(3) {
+          z-index: 2;
+        }
+
+        li.contact--item:nth-child(4) {
+          z-index: 1;
+        }
+
+        li.contact--item .contact--icon--cont svg {
           position: absolute;
           left: -30px;
           width: 207px;
           height: 207px;
+        }
+
+        .contact--icon--cont {
+          position: absolute;
+          left: 0;
+          width: 207px;
+          height: 207px;
+          overflow: hidden;
         }
 
         li.contact--item strong {
@@ -1272,6 +1314,82 @@
 
         .faq--info {
           cursor: pointer;
+        }
+
+        li.contact--item .contact--link--wrapper a {
+          transition: 0.3s;
+          -webkit-transition: 0.3s;
+        }
+
+        li.contact--item .contact--link--wrapper a:hover {
+          background: #f2f2f2;
+        }
+
+        li.contact--item .contact--link--wrapper a:active {
+          transition: 0.03s;
+          -webkit-transition: 0.03s;
+          background: #d9d9d9;
+          border-color: #d9d9d9;
+          transform: scale(0.98);
+        }
+
+        button.link--copy {
+          padding-block: 0;
+          padding-inline: 0;
+          transition: 0.3s;
+          -webkit-transition: 0.3s;
+          position: relative;
+        }
+
+        button.link--copy:hover {
+          background: #f2f2f2;
+        }
+
+        button.link--copy:after {
+          position: absolute;
+          content: "Скопировать";
+          padding: 7px 15px;
+          background: #f2f2f2;
+          color: #000000b2;
+          font-weight: 400;
+          font-size: 0.875rem;
+          border-radius: 27px;
+          left: calc(100%);
+          top: 50%;
+          transform: translateY(-50%);
+          opacity: 0;
+          right: auto;
+          transition: 0.3s;
+          -webkit-transition: 0.3s;
+        }
+
+        button.link--copy:hover:after {
+          opacity: 1;
+          left: calc(100% + 10px);
+        }
+
+        button.link--copy:active {
+          transition: 0.03s;
+          -webkit-transition: 0.03s;
+          background: #d9d9d9;
+          border-color: #d9d9d9;
+          transform: scale(0.98);
+        }
+
+        button.link--copy:active:after {
+          transition: 0.03s;
+          -webkit-transition: 0.03s;
+          content: "Скопировано!";
+          background: #22c55e;
+          color: white;
+          opacity: 1;
+        }
+
+        button.link--copy.active:hover:after {
+          content: "Скопировано!";
+          background: #22c55e;
+          color: white;
+          opacity: 1;
         }
       }
 
@@ -1847,29 +1965,31 @@
 
             <ul class="contacts--list">
               <li class="contact--item">
-                <svg
-                  width="84"
-                  height="84"
-                  viewBox="0 0 84 84"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clip-path="url(#clip0_937_1096)">
-                    <path
-                      d="M77 26.3721V59.4996C77.0001 62.1778 75.9769 64.7549 74.1395 66.7035C72.3021 68.6521 69.7896 69.8249 67.116 69.9821L66.5 69.9996H17.5C14.8218 69.9997 12.2447 68.9764 10.2961 67.1391C8.34748 65.3017 7.17462 62.7892 7.0175 60.1156L7 59.4996V26.3721L40.0575 48.4116L40.4635 48.6426C40.942 48.8763 41.4675 48.9979 42 48.9979C42.5325 48.9979 43.058 48.8763 43.5365 48.6426L43.9425 48.4116L77 26.3721Z"
-                      fill="#22C55E"
-                    />
-                    <path
-                      d="M66.5001 14C70.2801 14 73.5946 15.995 75.4426 18.9945L42.0001 41.2895L8.55762 18.9945C9.43517 17.5692 10.6409 16.3744 12.0741 15.5098C13.5073 14.6453 15.1265 14.136 16.7966 14.0245L17.5001 14H66.5001Z"
-                      fill="#22C55E"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_937_1096">
-                      <rect width="84" height="84" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
+                <div class="contact--icon--cont">
+                  <svg
+                    width="84"
+                    height="84"
+                    viewBox="0 0 84 84"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_937_1096)">
+                      <path
+                        d="M77 26.3721V59.4996C77.0001 62.1778 75.9769 64.7549 74.1395 66.7035C72.3021 68.6521 69.7896 69.8249 67.116 69.9821L66.5 69.9996H17.5C14.8218 69.9997 12.2447 68.9764 10.2961 67.1391C8.34748 65.3017 7.17462 62.7892 7.0175 60.1156L7 59.4996V26.3721L40.0575 48.4116L40.4635 48.6426C40.942 48.8763 41.4675 48.9979 42 48.9979C42.5325 48.9979 43.058 48.8763 43.5365 48.6426L43.9425 48.4116L77 26.3721Z"
+                        fill="#22C55E"
+                      />
+                      <path
+                        d="M66.5001 14C70.2801 14 73.5946 15.995 75.4426 18.9945L42.0001 41.2895L8.55762 18.9945C9.43517 17.5692 10.6409 16.3744 12.0741 15.5098C13.5073 14.6453 15.1265 14.136 16.7966 14.0245L17.5001 14H66.5001Z"
+                        fill="#22C55E"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_937_1096">
+                        <rect width="84" height="84" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </div>
                 <strong>General inquiries</strong>
                 <p>Questions about AdviceFood, our service, or its features.</p>
                 <div class="contact--link--wrapper">
@@ -1904,33 +2024,49 @@
                         </clipPath>
                       </defs>
                     </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="21"
+                      height="15"
+                      fill="none"
+                    >
+                      <path
+                        stroke="#000"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2.47"
+                        d="m1.235 7.41 6.175 6.175 12.35-12.35"
+                      />
+                    </svg>
                   </button>
                 </div>
               </li>
               <li class="contact--item">
-                <svg
-                  width="84"
-                  height="84"
-                  viewBox="0 0 84 84"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clip-path="url(#clip0_937_1099)">
-                    <path
-                      d="M77 26.3721V59.4996C77.0001 62.1778 75.9769 64.7549 74.1395 66.7035C72.3021 68.6521 69.7896 69.8249 67.116 69.9821L66.5 69.9996H17.5C14.8218 69.9997 12.2447 68.9764 10.2961 67.1391C8.34748 65.3017 7.17462 62.7892 7.0175 60.1156L7 59.4996V26.3721L40.0575 48.4116L40.4635 48.6426C40.942 48.8763 41.4675 48.9979 42 48.9979C42.5325 48.9979 43.058 48.8763 43.5365 48.6426L43.9425 48.4116L77 26.3721Z"
-                      fill="#22C55E"
-                    />
-                    <path
-                      d="M66.5001 14C70.2801 14 73.5946 15.995 75.4426 18.9945L42.0001 41.2895L8.55762 18.9945C9.43517 17.5692 10.6409 16.3744 12.0741 15.5098C13.5073 14.6453 15.1265 14.136 16.7966 14.0245L17.5001 14H66.5001Z"
-                      fill="#22C55E"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_937_1099">
-                      <rect width="84" height="84" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
+                <div class="contact--icon--cont">
+                  <svg
+                    width="84"
+                    height="84"
+                    viewBox="0 0 84 84"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_937_1099)">
+                      <path
+                        d="M77 26.3721V59.4996C77.0001 62.1778 75.9769 64.7549 74.1395 66.7035C72.3021 68.6521 69.7896 69.8249 67.116 69.9821L66.5 69.9996H17.5C14.8218 69.9997 12.2447 68.9764 10.2961 67.1391C8.34748 65.3017 7.17462 62.7892 7.0175 60.1156L7 59.4996V26.3721L40.0575 48.4116L40.4635 48.6426C40.942 48.8763 41.4675 48.9979 42 48.9979C42.5325 48.9979 43.058 48.8763 43.5365 48.6426L43.9425 48.4116L77 26.3721Z"
+                        fill="#22C55E"
+                      />
+                      <path
+                        d="M66.5001 14C70.2801 14 73.5946 15.995 75.4426 18.9945L42.0001 41.2895L8.55762 18.9945C9.43517 17.5692 10.6409 16.3744 12.0741 15.5098C13.5073 14.6453 15.1265 14.136 16.7966 14.0245L17.5001 14H66.5001Z"
+                        fill="#22C55E"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_937_1099">
+                        <rect width="84" height="84" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </div>
                 <strong>General inquiries</strong>
                 <p>Questions about AdviceFood, our service, or its features.</p>
                 <div class="contact--link--wrapper">
@@ -1965,33 +2101,49 @@
                         </clipPath>
                       </defs>
                     </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="21"
+                      height="15"
+                      fill="none"
+                    >
+                      <path
+                        stroke="#000"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2.47"
+                        d="m1.235 7.41 6.175 6.175 12.35-12.35"
+                      />
+                    </svg>
                   </button>
                 </div>
               </li>
               <li class="contact--item">
-                <svg
-                  width="84"
-                  height="84"
-                  viewBox="0 0 84 84"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clip-path="url(#clip0_937_1100)">
-                    <path
-                      d="M77 26.3721V59.4996C77.0001 62.1778 75.9769 64.7549 74.1395 66.7035C72.3021 68.6521 69.7896 69.8249 67.116 69.9821L66.5 69.9996H17.5C14.8218 69.9997 12.2447 68.9764 10.2961 67.1391C8.34748 65.3017 7.17462 62.7892 7.0175 60.1156L7 59.4996V26.3721L40.0575 48.4116L40.4635 48.6426C40.942 48.8763 41.4675 48.9979 42 48.9979C42.5325 48.9979 43.058 48.8763 43.5365 48.6426L43.9425 48.4116L77 26.3721Z"
-                      fill="#22C55E"
-                    />
-                    <path
-                      d="M66.5001 14C70.2801 14 73.5946 15.995 75.4426 18.9945L42.0001 41.2895L8.55762 18.9945C9.43517 17.5692 10.6409 16.3744 12.0741 15.5098C13.5073 14.6453 15.1265 14.136 16.7966 14.0245L17.5001 14H66.5001Z"
-                      fill="#22C55E"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_937_1100">
-                      <rect width="84" height="84" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
+                <div class="contact--icon--cont">
+                  <svg
+                    width="84"
+                    height="84"
+                    viewBox="0 0 84 84"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_937_1100)">
+                      <path
+                        d="M77 26.3721V59.4996C77.0001 62.1778 75.9769 64.7549 74.1395 66.7035C72.3021 68.6521 69.7896 69.8249 67.116 69.9821L66.5 69.9996H17.5C14.8218 69.9997 12.2447 68.9764 10.2961 67.1391C8.34748 65.3017 7.17462 62.7892 7.0175 60.1156L7 59.4996V26.3721L40.0575 48.4116L40.4635 48.6426C40.942 48.8763 41.4675 48.9979 42 48.9979C42.5325 48.9979 43.058 48.8763 43.5365 48.6426L43.9425 48.4116L77 26.3721Z"
+                        fill="#22C55E"
+                      />
+                      <path
+                        d="M66.5001 14C70.2801 14 73.5946 15.995 75.4426 18.9945L42.0001 41.2895L8.55762 18.9945C9.43517 17.5692 10.6409 16.3744 12.0741 15.5098C13.5073 14.6453 15.1265 14.136 16.7966 14.0245L17.5001 14H66.5001Z"
+                        fill="#22C55E"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_937_1100">
+                        <rect width="84" height="84" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </div>
                 <strong>General inquiries</strong>
                 <p>Questions about AdviceFood, our service, or its features.</p>
                 <div class="contact--link--wrapper">
@@ -2026,33 +2178,49 @@
                         </clipPath>
                       </defs>
                     </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="21"
+                      height="15"
+                      fill="none"
+                    >
+                      <path
+                        stroke="#000"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2.47"
+                        d="m1.235 7.41 6.175 6.175 12.35-12.35"
+                      />
+                    </svg>
                   </button>
                 </div>
               </li>
               <li class="contact--item">
-                <svg
-                  width="84"
-                  height="84"
-                  viewBox="0 0 84 84"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clip-path="url(#clip0_937_1101)">
-                    <path
-                      d="M77 26.3721V59.4996C77.0001 62.1778 75.9769 64.7549 74.1395 66.7035C72.3021 68.6521 69.7896 69.8249 67.116 69.9821L66.5 69.9996H17.5C14.8218 69.9997 12.2447 68.9764 10.2961 67.1391C8.34748 65.3017 7.17462 62.7892 7.0175 60.1156L7 59.4996V26.3721L40.0575 48.4116L40.4635 48.6426C40.942 48.8763 41.4675 48.9979 42 48.9979C42.5325 48.9979 43.058 48.8763 43.5365 48.6426L43.9425 48.4116L77 26.3721Z"
-                      fill="#22C55E"
-                    />
-                    <path
-                      d="M66.5001 14C70.2801 14 73.5946 15.995 75.4426 18.9945L42.0001 41.2895L8.55762 18.9945C9.43517 17.5692 10.6409 16.3744 12.0741 15.5098C13.5073 14.6453 15.1265 14.136 16.7966 14.0245L17.5001 14H66.5001Z"
-                      fill="#22C55E"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_937_1101">
-                      <rect width="84" height="84" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
+                <div class="contact--icon--cont">
+                  <svg
+                    width="84"
+                    height="84"
+                    viewBox="0 0 84 84"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_937_1101)">
+                      <path
+                        d="M77 26.3721V59.4996C77.0001 62.1778 75.9769 64.7549 74.1395 66.7035C72.3021 68.6521 69.7896 69.8249 67.116 69.9821L66.5 69.9996H17.5C14.8218 69.9997 12.2447 68.9764 10.2961 67.1391C8.34748 65.3017 7.17462 62.7892 7.0175 60.1156L7 59.4996V26.3721L40.0575 48.4116L40.4635 48.6426C40.942 48.8763 41.4675 48.9979 42 48.9979C42.5325 48.9979 43.058 48.8763 43.5365 48.6426L43.9425 48.4116L77 26.3721Z"
+                        fill="#22C55E"
+                      />
+                      <path
+                        d="M66.5001 14C70.2801 14 73.5946 15.995 75.4426 18.9945L42.0001 41.2895L8.55762 18.9945C9.43517 17.5692 10.6409 16.3744 12.0741 15.5098C13.5073 14.6453 15.1265 14.136 16.7966 14.0245L17.5001 14H66.5001Z"
+                        fill="#22C55E"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_937_1101">
+                        <rect width="84" height="84" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </div>
                 <strong>General inquiries</strong>
                 <p>Questions about AdviceFood, our service, or its features.</p>
                 <div class="contact--link--wrapper">
@@ -2086,6 +2254,20 @@
                           <rect width="24" height="24" fill="white" />
                         </clipPath>
                       </defs>
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="21"
+                      height="15"
+                      fill="none"
+                    >
+                      <path
+                        stroke="#000"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2.47"
+                        d="m1.235 7.41 6.175 6.175 12.35-12.35"
+                      />
                     </svg>
                   </button>
                 </div>
