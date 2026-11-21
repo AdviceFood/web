@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   } else {
     const cards = document.querySelectorAll(".preview--slide");
-    const MAX_TILT = 12;
+    const MAX_TILT = 16;
 
     cards.forEach((card) => {
       const target = card.children[2];
