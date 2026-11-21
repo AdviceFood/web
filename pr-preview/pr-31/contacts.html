@@ -1339,6 +1339,8 @@
           transition: 0.3s;
           -webkit-transition: 0.3s;
           position: relative;
+          transform: translateZ(0) scale(1);
+          will-change: transform;
         }
 
         button.link--copy:hover {
@@ -1374,7 +1376,7 @@
           -webkit-transition: 0.03s;
           background: #d9d9d9;
           border-color: #d9d9d9;
-          transform: scale(0.98);
+          transform: translateZ(0) scale(0.98);
         }
 
         button.link--copy:active:after {
