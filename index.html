@@ -1030,6 +1030,23 @@
         margin-bottom: 0;
       }
 
+      .ht--info {
+        display: flex;
+        flex-direction: column;
+      }
+
+      li.article--item:nth-child(n + 4) {
+        display: none;
+      }
+
+      p.article--subtitle {
+        display: none;
+      }
+
+      html {
+        scrollbar-gutter: stable;
+      }
+
       @media screen and (min-width: 360px) {
         .preview--title {
           font-size: 1.5rem;
@@ -1076,6 +1093,193 @@
           height: 4px;
           transform: translateY(-14px) translateX(-50%);
           top: 50%;
+        }
+      }
+
+      @media screen and (min-width: 500px) {
+        li.article--item {
+          flex: 0 0 calc(50% - 7.5px);
+        }
+
+        ul.articles--list {
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+
+        li.article--item:nth-child(n + 4) {
+          display: block;
+        }
+
+        li.article--item:nth-child(n + 5) {
+          display: none;
+        }
+      }
+
+      @media screen and (min-width: 700px) {
+        .section--title {
+          font-size: 2.5rem;
+        }
+
+        .section--analyze {
+          margin-bottom: 90px;
+        }
+
+        .section--subtitle {
+          font-size: 1.125rem;
+        }
+
+        main {
+          padding-top: 160px;
+        }
+
+        fieldset.analyze--type {
+          height: 52px;
+          border-radius: 26px;
+          box-shadow: 0 4px 20px 0 #0000001a;
+        }
+
+        fieldset.analyze--type label {
+          font-size: 1.25rem;
+        }
+
+        fieldset.analyze--type:before {
+          height: 52px;
+          border-radius: 26px;
+        }
+
+        svg.cloud--icon {
+          width: 85px;
+          height: 85px;
+        }
+
+        .analyze--instruction {
+          margin-top: 5px;
+        }
+
+        .analyze--instruction b.desktop {
+          display: inline-block;
+          position: static;
+          width: auto;
+          height: auto;
+          font-style: normal;
+          font-weight: 500;
+        }
+
+        .analyze--instruction b.mobile {
+          display: none;
+        }
+
+        .analyze--instruction {
+          font-size: 1.5rem;
+          font-style: normal;
+        }
+
+        .analyze--notice {
+          display: none;
+        }
+
+        form .analyze--notice {
+          display: block;
+          margin-bottom: 0;
+          font-size: 0.875rem;
+          color: #ffffffb2;
+          margin-top: 18px;
+        }
+
+        .analyze--primary--content {
+          box-shadow: 0 2px 6px 2px #0000001a;
+        }
+
+        .analyze--comment textarea {
+          opacity: 1;
+          min-height: 93px;
+          box-shadow: 0 4px 20px 0 #0000001a;
+        }
+
+        .analyze--open--comment {
+          opacity: 0;
+          pointer-events: none;
+          transition: none;
+          -webkit-transition: none;
+        }
+
+        .analyze--comment textarea {
+          padding: 18px;
+          font-size: 1.125rem;
+        }
+
+        .analyze--start {
+          height: 52px;
+          border-radius: 26px;
+          font-size: 1.25rem;
+          margin-bottom: 0;
+        }
+
+        li.ht--step span {
+          font-size: 4.625rem;
+        }
+
+        li.ht--step strong {
+          font-size: 2rem;
+          margin-top: 0;
+        }
+
+        li.ht--step b {
+          font-size: 1.25rem;
+        }
+
+        ol.ht--steps {
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        li.ht--step {
+          display: flex;
+          flex-direction: row;
+          text-align: left;
+          gap: 13px;
+          align-items: center;
+          width: 430px;
+        }
+
+        ol.ht--steps {
+          padding-top: 52px;
+          padding-bottom: 58px;
+          gap: 25px;
+        }
+
+        ul.faq--list {
+          max-width: 690px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .section--stats .section--subtitle {
+          max-width: 670px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        ul.stats--list {
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        li.stats--item {
+          margin: 0;
+        }
+      }
+
+      @media screen and (min-width: 800px) {
+        .swiper-slide.swiper-slide-next {
+          opacity: 1;
+          transform: scale(1);
+        }
+
+        .swiper-slide.swiper-slide-next .preview--slide {
+          border: 1px solid rgba(0, 0, 0, 20%);
         }
       }
 
@@ -1133,8 +1337,9 @@
         }
 
         a.header--desktop--link.dev {
-          opacity: 50%;
+          color: #00000080;
           pointer-events: none;
+          background: #f9fafb;
         }
 
         a.new--analysis--btn {
@@ -1198,7 +1403,7 @@
         }
 
         a.header--desktop--link:hover {
-          background: #00000008;
+          background: #ededef;
         }
 
         a.header--desktop--link:active {
@@ -1218,6 +1423,7 @@
         a.header--desktop--link.active {
           background: #22c55e;
           color: white;
+          font-weight: 500;
         }
 
         a.new--analysis--btn {
@@ -1247,11 +1453,442 @@
             0.05s color,
             0.05s transform;
         }
+
+        header .header--inner {
+          background: transparent;
+        }
+
+        header {
+          background: linear-gradient(
+            180deg,
+            #f4f6f9 0%,
+            #f4f6f9d7 50%,
+            #f4f6f900 100%
+          );
+        }
+
+        fieldset.analyze--type {
+          order: 3;
+          margin-bottom: 0;
+        }
+
+        .analyze--comment {
+          order: 2;
+          flex-grow: 0;
+          flex-shrink: 0;
+          flex-basis: 100%;
+          margin-bottom: 0;
+          margin-top: 0;
+        }
+
+        .analyze--primary--content {
+          order: 1;
+          width: 100%;
+          flex-grow: 0;
+          flex-shrink: 0;
+          flex-basis: 100%;
+          margin-bottom: 6px;
+          padding-top: 24px;
+          padding-bottom: 14px;
+        }
+
+        fieldset.analyze--type,
+        .analyze--start {
+          flex-grow: 0;
+          flex-shrink: 0;
+          flex-basis: calc(50% - 11px);
+        }
+
+        form.analyzeForm {
+          flex-direction: row;
+          gap: 22px;
+        }
+
+        .analyze--primary--content {
+          position: relative;
+        }
+
+        .analyze--primary--content > svg,
+        .analyze--primary--content > p,
+        .analyze--primary--content > span {
+          position: relative;
+          z-index: 5;
+        }
+
+        .analyze--appeariance:after {
+          position: absolute;
+          background: #000;
+          opacity: 30%;
+          left: 1px;
+          top: 1px;
+          width: calc(100% - 2px);
+          height: calc(100% - 2px);
+          content: "";
+          border-radius: 15px;
+        }
+
+        svg.cloud--icon path {
+          stroke-width: 5px;
+        }
+
+        form.analyzeForm {
+          max-width: 930px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .analyze--instruction label {
+          cursor: pointer;
+        }
+
+        fieldset.analyze--type label {
+          cursor: pointer;
+        }
+
+        .analyze--start {
+          cursor: pointer;
+        }
+
+        .analyze--start:hover {
+          background: #16a34a;
+        }
+
+        fieldset.analyze--type:before {
+          transition: 0.3s;
+          -webkit-transition: 0.3s;
+        }
+
+        .analyze--type:hover:before {
+          background: #16a34a;
+        }
+
+        .analyze--comment textarea {
+          outline: none;
+        }
+
+        .swiper,
+        .swiper-wrapper,
+        .swiper-slide {
+          all: initial;
+        }
+
+        .swiper {
+          max-width: 83.3vw;
+          width: 100%;
+          margin-left: auto;
+          margin-right: auto;
+          display: block;
+        }
+
+        .preview--bg img:nth-child(1) {
+          display: none;
+        }
+
+        .preview--bg img:nth-child(2) {
+          display: block;
+          aspect-ratio: 1.77;
+          object-fit: cover;
+        }
+
+        p.preview--description {
+          font-size: 1.125rem;
+          margin-top: 20px;
+        }
+
+        a.preview--cta {
+          max-width: 330px;
+          height: 52px;
+          border-radius: 26px;
+        }
+
+        .preview--subtitle {
+          font-family: "AA";
+          font-size: 1.125rem;
+        }
+
+        .preview--bg {
+          margin-top: 20px;
+          margin-left: 50px;
+          margin-right: 50px;
+          margin-bottom: 30px;
+          max-width: 100%;
+          width: calc(100% - 100px);
+
+          transition:
+            transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+            box-shadow 0.5s ease;
+
+          transform-style: preserve-3d;
+          will-change: transform;
+          border-radius: 30px;
+
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+          cursor: pointer;
+        }
+
+        .preview--bg img {
+          border-radius: 30px;
+          border: 1px solid #00000063;
+
+          display: block;
+          transform: translateZ(30px);
+          transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+          height: auto;
+        }
+
+        .swiper-wrapper {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 10px;
+        }
+
+        .swiper-slide {
+          flex: 0 0 calc(50% - 5px);
+        }
+
+        .swiper-slide:not(.swiper-slide-active) {
+          transform: none;
+          opacity: 1;
+        }
+
+        .preview--slide {
+          perspective: 1200px;
+          perspective-origin: 50% 50%;
+          position: relative;
+
+          /* transform-style: preserve-3d; */
+          will-change: transform;
+          cursor: pointer;
+          overflow: visible;
+        }
+
+        a.preview--cta {
+          margin-bottom: 120px;
+        }
+
+        .preview--cta--subtitle {
+          font-size: 1.125rem;
+        }
+
+        .section--switcher h2.section--title br {
+          display: none;
+        }
+
+        .section--switcher h2.section--title {
+          font-size: 3rem;
+          margin-bottom: 10px;
+        }
+
+        .meal--list {
+          flex-direction: row;
+          gap: 20px;
+          width: 100%;
+          justify-content: end;
+        }
+
+        section {
+          margin-bottom: 160px !important;
+        }
+
+        section.section--analyze {
+          margin-bottom: 70px !important;
+        }
+
+        .advantages--cont,
+        .meal--list,
+        .preview--cta--block {
+          margin-bottom: 0;
+        }
+
+        .swiper-slide {
+          overflow: visible;
+        }
+
+        .demo--video img {
+          height: 493px;
+          width: 800px;
+        }
+
+        .demo--video {
+          height: 493px;
+          width: 800px;
+        }
+
+        .demo--video video {
+          padding: 20px 76px;
+          padding-bottom: 55px;
+        }
+
+        .demo--video video {
+          height: 493px;
+          width: 800px;
+          object-fit: cover;
+        }
+
+        .demo--video picture {
+          display: block;
+          margin: 0;
+          padding: 0;
+          border: 0;
+          font-size: 0;
+          line-height: 0;
+          height: auto;
+        }
+
+        .demo--video {
+          margin-top: 41px;
+          margin-bottom: 53px;
+        }
+
+        p.demo--comment {
+          font-size: 1.125rem;
+        }
+
+        ul.faq--list {
+          margin-top: 66px;
+        }
+
+        strong.faq--question {
+          font-size: 1.75rem;
+        }
+
+        p.faq--answer {
+          font-size: 1.125rem;
+        }
+
+        li.faq--item {
+          gap: 15px;
+        }
+
+        .section--faq {
+          padding-top: 77px;
+          padding-bottom: 77px;
+        }
+
+        .section--blog .section--title,
+        .section--blog .section--subtitle {
+          text-align: left;
+          margin-bottom: 0;
+          display: block;
+        }
+
+        .section--blog .section--inner {
+          position: relative;
+        }
+
+        a.blog--expand {
+          position: absolute;
+          right: 0;
+          top: 8px;
+          margin-top: 0;
+          height: 52px;
+          border-radius: 26px;
+          width: 330px;
+        }
+
+        p.blog--comment {
+          margin-top: 30px;
+        }
+
+        ul.articles--list {
+          display: grid;
+          grid-template-columns: 2fr 1fr 1fr;
+          grid-auto-rows: auto;
+          gap: 30px;
+        }
+
+        li.article--item:first-child {
+          grid-column: 1 / 2;
+          grid-row: 1 / 3;
+          height: 100%;
+          aspect-ratio: unset;
+        }
+
+        li.article--item:nth-child(n + 5) {
+          display: block;
+        }
+
+        p.article--subtitle {
+          display: block;
+          position: relative;
+          z-index: 3;
+          font-size: 1.125rem;
+          color: white;
+          font-family: "AA";
+          font-weight: 400;
+          margin-top: 2px;
+        }
+
+        li.article--item:first-child h3.article--title {
+          font-size: 1.5rem;
+        }
+
+        li.article--item:first-child .article--tag {
+          font-size: 1rem;
+          margin-bottom: 6px;
+        }
+
+        p.blog--comment {
+          text-align: left;
+        }
+
+        ul.stats--list {
+          gap: 50px;
+          margin-top: 42px;
+          margin-bottom: 42px;
+        }
+
+        li.stats--item p {
+          width: 100%;
+        }
+
+        li.stats--item strong {
+          font-size: 1.5rem;
+        }
+
+        li.stats--item span {
+          font-size: 2.5rem;
+        }
+
+        li.article--item article picture img {
+          transition: 0.3s ease-in-out;
+          -webkit-transition: 0.3s ease-in-out;
+        }
+
+        li.article--item:hover {
+          cursor: pointer;
+        }
+
+        li.article--item:hover article picture img {
+          transform: scale(1.04);
+          filter: brightness(0.9);
+        }
+
+        a.blog--expand:hover {
+          background: #f2f2f2;
+        }
+
+        a.preview--cta:hover {
+          background: #16a34a;
+        }
+
+        .faq--info {
+          cursor: pointer;
+        }
       }
 
       @media screen and (min-width: 1440px) {
         header {
           height: 130px;
+        }
+
+        .section--switcher h2.section--title {
+          font-size: 4rem;
+        }
+
+        li.meal--item {
+          font-size: 3.25rem;
         }
 
         a.header--logo svg {
@@ -1288,11 +1925,79 @@
           margin-left: 10px;
           margin-right: 10px;
         }
+
+        .preview--title {
+          font-size: 2rem;
+        }
+
+        .preview--subtitle {
+          margin-top: 0;
+          font-size: 1.125rem;
+        }
+
+        .preview--slide {
+          padding-top: 36px;
+        }
+
+        .swiper-wrapper {
+          gap: 30px;
+        }
+
+        .swiper-slide {
+          flex: 0 0 calc(50% - 15px);
+        }
+
+        .preview--bg {
+          margin-left: 80px;
+          margin-right: 80px;
+          margin-bottom: 60px;
+          width: calc(100% - 180px);
+        }
+
+        li.article--item article {
+          padding: 15px;
+        }
+
+        li.article--item:first-child .blog--article {
+          padding: 34px 28px;
+        }
       }
 
       @media screen and (min-width: 1600px) {
         .container {
           max-width: 73.5vw;
+        }
+
+        .swiper {
+          max-width: 73.5vw;
+        }
+      }
+
+      @media screen and (min-width: 1700px) {
+        .demo--video img {
+          height: 769px;
+          width: 1250px;
+        }
+
+        .demo--video {
+          height: 769px;
+          width: 1250px;
+        }
+
+        .demo--video video {
+          padding: 20px 76px;
+          padding-bottom: 55px;
+        }
+
+        .demo--video video {
+          height: 769px;
+          width: 1250px;
+          object-fit: cover;
+        }
+
+        .demo--video video {
+          padding: 30px 122px;
+          padding-bottom: 85px;
         }
       }
     </style>
@@ -1739,6 +2444,7 @@
                     xmlns="http://www.w3.org/2000/svg"
                     width="68"
                     height="68"
+                    viewBox="0 0 68 68"
                     fill="none"
                   >
                     <path
@@ -1778,8 +2484,8 @@
                   </span>
 
                   <p class="analyze--notice">
-                    AI can make mistakes and inaccuracies. Please check
-                    important facts before making decisions.
+                    AI can&nbsp;make mistakes and&nbsp;inaccuracies. Please
+                    check important facts before&nbsp;making&nbsp;decisions.
                   </p>
 
                   <div class="analyze--appeariance">
@@ -1910,18 +2616,24 @@
             <ol class="ht--steps">
               <li class="ht--step">
                 <span>1</span>
-                <strong>Upload a photo</strong>
-                <b>Choose a photo of your meal</b>
+                <div class="ht--info">
+                  <strong>Upload a photo</strong>
+                  <b>Choose a photo of your meal</b>
+                </div>
               </li>
               <li class="ht--step">
                 <span>2</span>
-                <strong>Get your analysis</strong>
-                <b>Let AI estimate its nutritional value</b>
+                <div class="ht--info">
+                  <strong>Get your analysis</strong>
+                  <b>Let AI estimate its nutritional value</b>
+                </div>
               </li>
               <li class="ht--step">
                 <span>3</span>
-                <strong>Explore the results</strong>
-                <b>Eat smarter every day</b>
+                <div class="ht--info">
+                  <strong>Explore the results</strong>
+                  <b>Eat smarter every day</b>
+                </div>
               </li>
             </ol>
           </div>
@@ -1960,10 +2672,7 @@
 
                 <div class="preview--bg">
                   <img src="img/advicefood-preview-ingredients.png" alt="" />
-                  <img
-                    src="img/advicefood-preview-ingredients-1920.png"
-                    alt=""
-                  />
+                  <img src="img/3d_test.jpg" alt="" />
                 </div>
               </div>
             </div>
@@ -1976,10 +2685,7 @@
 
                 <div class="preview--bg">
                   <img src="img/advicefood-preview-ingredients.png" alt="" />
-                  <img
-                    src="img/advicefood-preview-ingredients-1920.png"
-                    alt=""
-                  />
+                  <img src="img/3d_test.jpg" alt="" />
                 </div>
               </div>
             </div>
@@ -1992,10 +2698,7 @@
 
                 <div class="preview--bg">
                   <img src="img/advicefood-preview-ingredients.png" alt="" />
-                  <img
-                    src="img/advicefood-preview-ingredients-1920.png"
-                    alt=""
-                  />
+                  <img src="img/3d_test.jpg" alt="" />
                 </div>
               </div>
             </div>
@@ -2008,10 +2711,7 @@
 
                 <div class="preview--bg">
                   <img src="img/advicefood-preview-ingredients.png" alt="" />
-                  <img
-                    src="img/advicefood-preview-ingredients-1920.png"
-                    alt=""
-                  />
+                  <img src="img/3d_test.jpg" alt="" />
                 </div>
               </div>
             </div>
@@ -2063,268 +2763,269 @@
               A clearer way to&nbsp;understand your&nbsp;food
             </p>
 
-            <div class="advantages--banner">
-              <strong>Meal. Clearer.</strong>
-              <p>
-                Useful information about&nbsp;familiar
-                dishes&nbsp;—&nbsp;without&nbsp;the&nbsp;need to&nbsp;understand
-                complex&nbsp;tables.
-              </p>
-              <svg
-                width="100%"
-                height="auto"
-                viewBox="0 0 300 111"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M-9 83.2659C97.0282 35.4164 239.552 0.93865 456.5 1.76453"
-                  stroke-width="3.5"
-                  stroke="white"
-                />
-                <path
-                  d="M-9 96.2805C97.0282 48.431 239.552 13.9533 456.5 14.7792"
-                  stroke-width="3"
-                  stroke="white"
-                />
-                <path
-                  d="M-9 109.295C97.0282 61.4457 239.552 26.9679 456.5 27.7938"
-                  stroke-width="2.5"
-                  stroke="white"
-                />
-              </svg>
+            <div class="advantages--cont">
+              <div class="advantages--banner">
+                <strong>Meal. Clearer.</strong>
+                <p>
+                  Useful information about&nbsp;familiar
+                  dishes&nbsp;—&nbsp;without&nbsp;the&nbsp;need
+                  to&nbsp;understand complex&nbsp;tables.
+                </p>
+                <svg
+                  width="100%"
+                  viewBox="0 0 300 111"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M-9 83.2659C97.0282 35.4164 239.552 0.93865 456.5 1.76453"
+                    stroke-width="3.5"
+                    stroke="white"
+                  />
+                  <path
+                    d="M-9 96.2805C97.0282 48.431 239.552 13.9533 456.5 14.7792"
+                    stroke-width="3"
+                    stroke="white"
+                  />
+                  <path
+                    d="M-9 109.295C97.0282 61.4457 239.552 26.9679 456.5 27.7938"
+                    stroke-width="2.5"
+                    stroke="white"
+                  />
+                </svg>
+              </div>
+
+              <ul class="advantages--list">
+                <li class="advantage--item">
+                  <svg
+                    width="42"
+                    height="42"
+                    viewBox="0 0 42 42"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_815_1132)">
+                      <path
+                        d="M8.75 21H33.25"
+                        stroke-width="3.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke="#22C55E"
+                      />
+                      <path
+                        d="M5.25 12.25V8.75C5.25 7.82174 5.61875 6.9315 6.27513 6.27513C6.9315 5.61875 7.82174 5.25 8.75 5.25H12.25"
+                        stroke-width="3.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke="#22C55E"
+                      />
+                      <path
+                        d="M5.25 29.75V33.25C5.25 34.1783 5.61875 35.0685 6.27513 35.7249C6.9315 36.3813 7.82174 36.75 8.75 36.75H12.25"
+                        stroke-width="3.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke="#22C55E"
+                      />
+                      <path
+                        d="M29.75 5.25H33.25C34.1783 5.25 35.0685 5.61875 35.7249 6.27513C36.3813 6.9315 36.75 7.82174 36.75 8.75V12.25"
+                        stroke-width="3.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke="#22C55E"
+                      />
+                      <path
+                        d="M29.75 36.75H33.25C34.1783 36.75 35.0685 36.3813 35.7249 35.7249C36.3813 35.0685 36.75 34.1783 36.75 33.25V29.75"
+                        stroke-width="3.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke="#22C55E"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_815_1132">
+                        <rect width="42" height="42" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+
+                  <div class="advantage--info">
+                    <strong>Photo-based analysis</strong>
+                    <p>Start by uploading a photo of your meal.</p>
+                  </div>
+                </li>
+                <li class="advantage--item">
+                  <svg
+                    width="42"
+                    height="42"
+                    viewBox="0 0 42 42"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_815_1131)">
+                      <path
+                        d="M8.75 21H33.25"
+                        stroke-width="3.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke="#22C55E"
+                      />
+                      <path
+                        d="M5.25 12.25V8.75C5.25 7.82174 5.61875 6.9315 6.27513 6.27513C6.9315 5.61875 7.82174 5.25 8.75 5.25H12.25"
+                        stroke-width="3.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke="#22C55E"
+                      />
+                      <path
+                        d="M5.25 29.75V33.25C5.25 34.1783 5.61875 35.0685 6.27513 35.7249C6.9315 36.3813 7.82174 36.75 8.75 36.75H12.25"
+                        stroke-width="3.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke="#22C55E"
+                      />
+                      <path
+                        d="M29.75 5.25H33.25C34.1783 5.25 35.0685 5.61875 35.7249 6.27513C36.3813 6.9315 36.75 7.82174 36.75 8.75V12.25"
+                        stroke-width="3.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke="#22C55E"
+                      />
+                      <path
+                        d="M29.75 36.75H33.25C34.1783 36.75 35.0685 36.3813 35.7249 35.7249C36.3813 35.0685 36.75 34.1783 36.75 33.25V29.75"
+                        stroke-width="3.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke="#22C55E"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_815_1131">
+                        <rect width="42" height="42" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+
+                  <div class="advantage--info">
+                    <strong>Photo-based analysis</strong>
+                    <p>Start by uploading a photo of your meal.</p>
+                  </div>
+                </li>
+                <li class="advantage--item">
+                  <svg
+                    width="42"
+                    height="42"
+                    viewBox="0 0 42 42"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_815_1133)">
+                      <path
+                        d="M8.75 21H33.25"
+                        stroke-width="3.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke="#22C55E"
+                      />
+                      <path
+                        d="M5.25 12.25V8.75C5.25 7.82174 5.61875 6.9315 6.27513 6.27513C6.9315 5.61875 7.82174 5.25 8.75 5.25H12.25"
+                        stroke-width="3.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke="#22C55E"
+                      />
+                      <path
+                        d="M5.25 29.75V33.25C5.25 34.1783 5.61875 35.0685 6.27513 35.7249C6.9315 36.3813 7.82174 36.75 8.75 36.75H12.25"
+                        stroke-width="3.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke="#22C55E"
+                      />
+                      <path
+                        d="M29.75 5.25H33.25C34.1783 5.25 35.0685 5.61875 35.7249 6.27513C36.3813 6.9315 36.75 7.82174 36.75 8.75V12.25"
+                        stroke-width="3.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke="#22C55E"
+                      />
+                      <path
+                        d="M29.75 36.75H33.25C34.1783 36.75 35.0685 36.3813 35.7249 35.7249C36.3813 35.0685 36.75 34.1783 36.75 33.25V29.75"
+                        stroke-width="3.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke="#22C55E"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_815_1133">
+                        <rect width="42" height="42" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+
+                  <div class="advantage--info">
+                    <strong>Photo-based analysis</strong>
+                    <p>Start by uploading a photo of your meal.</p>
+                  </div>
+                </li>
+                <li class="advantage--item">
+                  <svg
+                    width="42"
+                    height="42"
+                    viewBox="0 0 42 42"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_815_1134)">
+                      <path
+                        d="M8.75 21H33.25"
+                        stroke-width="3.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke="#22C55E"
+                      />
+                      <path
+                        d="M5.25 12.25V8.75C5.25 7.82174 5.61875 6.9315 6.27513 6.27513C6.9315 5.61875 7.82174 5.25 8.75 5.25H12.25"
+                        stroke-width="3.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke="#22C55E"
+                      />
+                      <path
+                        d="M5.25 29.75V33.25C5.25 34.1783 5.61875 35.0685 6.27513 35.7249C6.9315 36.3813 7.82174 36.75 8.75 36.75H12.25"
+                        stroke-width="3.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke="#22C55E"
+                      />
+                      <path
+                        d="M29.75 5.25H33.25C34.1783 5.25 35.0685 5.61875 35.7249 6.27513C36.3813 6.9315 36.75 7.82174 36.75 8.75V12.25"
+                        stroke-width="3.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke="#22C55E"
+                      />
+                      <path
+                        d="M29.75 36.75H33.25C34.1783 36.75 35.0685 36.3813 35.7249 35.7249C36.3813 35.0685 36.75 34.1783 36.75 33.25V29.75"
+                        stroke-width="3.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke="#22C55E"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_815_1134">
+                        <rect width="42" height="42" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+
+                  <div class="advantage--info">
+                    <strong>Photo-based analysis</strong>
+                    <p>Start by uploading a photo of your meal.</p>
+                  </div>
+                </li>
+              </ul>
             </div>
-
-            <ul class="advantages--list">
-              <li class="advantage--item">
-                <svg
-                  width="42"
-                  height="42"
-                  viewBox="0 0 42 42"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clip-path="url(#clip0_815_1132)">
-                    <path
-                      d="M8.75 21H33.25"
-                      stroke-width="3.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke="#22C55E"
-                    />
-                    <path
-                      d="M5.25 12.25V8.75C5.25 7.82174 5.61875 6.9315 6.27513 6.27513C6.9315 5.61875 7.82174 5.25 8.75 5.25H12.25"
-                      stroke-width="3.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke="#22C55E"
-                    />
-                    <path
-                      d="M5.25 29.75V33.25C5.25 34.1783 5.61875 35.0685 6.27513 35.7249C6.9315 36.3813 7.82174 36.75 8.75 36.75H12.25"
-                      stroke-width="3.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke="#22C55E"
-                    />
-                    <path
-                      d="M29.75 5.25H33.25C34.1783 5.25 35.0685 5.61875 35.7249 6.27513C36.3813 6.9315 36.75 7.82174 36.75 8.75V12.25"
-                      stroke-width="3.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke="#22C55E"
-                    />
-                    <path
-                      d="M29.75 36.75H33.25C34.1783 36.75 35.0685 36.3813 35.7249 35.7249C36.3813 35.0685 36.75 34.1783 36.75 33.25V29.75"
-                      stroke-width="3.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke="#22C55E"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_815_1132">
-                      <rect width="42" height="42" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-
-                <div class="advantage--info">
-                  <strong>Photo-based analysis</strong>
-                  <p>Start by uploading a photo of your meal.</p>
-                </div>
-              </li>
-              <li class="advantage--item">
-                <svg
-                  width="42"
-                  height="42"
-                  viewBox="0 0 42 42"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clip-path="url(#clip0_815_1131)">
-                    <path
-                      d="M8.75 21H33.25"
-                      stroke-width="3.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke="#22C55E"
-                    />
-                    <path
-                      d="M5.25 12.25V8.75C5.25 7.82174 5.61875 6.9315 6.27513 6.27513C6.9315 5.61875 7.82174 5.25 8.75 5.25H12.25"
-                      stroke-width="3.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke="#22C55E"
-                    />
-                    <path
-                      d="M5.25 29.75V33.25C5.25 34.1783 5.61875 35.0685 6.27513 35.7249C6.9315 36.3813 7.82174 36.75 8.75 36.75H12.25"
-                      stroke-width="3.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke="#22C55E"
-                    />
-                    <path
-                      d="M29.75 5.25H33.25C34.1783 5.25 35.0685 5.61875 35.7249 6.27513C36.3813 6.9315 36.75 7.82174 36.75 8.75V12.25"
-                      stroke-width="3.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke="#22C55E"
-                    />
-                    <path
-                      d="M29.75 36.75H33.25C34.1783 36.75 35.0685 36.3813 35.7249 35.7249C36.3813 35.0685 36.75 34.1783 36.75 33.25V29.75"
-                      stroke-width="3.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke="#22C55E"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_815_1131">
-                      <rect width="42" height="42" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-
-                <div class="advantage--info">
-                  <strong>Photo-based analysis</strong>
-                  <p>Start by uploading a photo of your meal.</p>
-                </div>
-              </li>
-              <li class="advantage--item">
-                <svg
-                  width="42"
-                  height="42"
-                  viewBox="0 0 42 42"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clip-path="url(#clip0_815_1133)">
-                    <path
-                      d="M8.75 21H33.25"
-                      stroke-width="3.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke="#22C55E"
-                    />
-                    <path
-                      d="M5.25 12.25V8.75C5.25 7.82174 5.61875 6.9315 6.27513 6.27513C6.9315 5.61875 7.82174 5.25 8.75 5.25H12.25"
-                      stroke-width="3.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke="#22C55E"
-                    />
-                    <path
-                      d="M5.25 29.75V33.25C5.25 34.1783 5.61875 35.0685 6.27513 35.7249C6.9315 36.3813 7.82174 36.75 8.75 36.75H12.25"
-                      stroke-width="3.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke="#22C55E"
-                    />
-                    <path
-                      d="M29.75 5.25H33.25C34.1783 5.25 35.0685 5.61875 35.7249 6.27513C36.3813 6.9315 36.75 7.82174 36.75 8.75V12.25"
-                      stroke-width="3.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke="#22C55E"
-                    />
-                    <path
-                      d="M29.75 36.75H33.25C34.1783 36.75 35.0685 36.3813 35.7249 35.7249C36.3813 35.0685 36.75 34.1783 36.75 33.25V29.75"
-                      stroke-width="3.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke="#22C55E"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_815_1133">
-                      <rect width="42" height="42" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-
-                <div class="advantage--info">
-                  <strong>Photo-based analysis</strong>
-                  <p>Start by uploading a photo of your meal.</p>
-                </div>
-              </li>
-              <li class="advantage--item">
-                <svg
-                  width="42"
-                  height="42"
-                  viewBox="0 0 42 42"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clip-path="url(#clip0_815_1134)">
-                    <path
-                      d="M8.75 21H33.25"
-                      stroke-width="3.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke="#22C55E"
-                    />
-                    <path
-                      d="M5.25 12.25V8.75C5.25 7.82174 5.61875 6.9315 6.27513 6.27513C6.9315 5.61875 7.82174 5.25 8.75 5.25H12.25"
-                      stroke-width="3.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke="#22C55E"
-                    />
-                    <path
-                      d="M5.25 29.75V33.25C5.25 34.1783 5.61875 35.0685 6.27513 35.7249C6.9315 36.3813 7.82174 36.75 8.75 36.75H12.25"
-                      stroke-width="3.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke="#22C55E"
-                    />
-                    <path
-                      d="M29.75 5.25H33.25C34.1783 5.25 35.0685 5.61875 35.7249 6.27513C36.3813 6.9315 36.75 7.82174 36.75 8.75V12.25"
-                      stroke-width="3.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke="#22C55E"
-                    />
-                    <path
-                      d="M29.75 36.75H33.25C34.1783 36.75 35.0685 36.3813 35.7249 35.7249C36.3813 35.0685 36.75 34.1783 36.75 33.25V29.75"
-                      stroke-width="3.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke="#22C55E"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_815_1134">
-                      <rect width="42" height="42" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-
-                <div class="advantage--info">
-                  <strong>Photo-based analysis</strong>
-                  <p>Start by uploading a photo of your meal.</p>
-                </div>
-              </li>
-            </ul>
           </div>
         </div>
       </section>
@@ -2342,13 +3043,19 @@
                 <source src="videos/demo.mp4" type="video/mp4" />
               </video>
 
-              <img
-                src="img/iphone.svg"
-                alt=""
-                loading="lazy"
-                width="273"
-                height="575"
-              />
+              <picture>
+                <source
+                  media="(min-width: 1024px)"
+                  srcset="img/laptop_frame.svg"
+                />
+                <img
+                  src="img/iphone.svg"
+                  alt=""
+                  loading="lazy"
+                  width="273"
+                  height="575"
+                />
+              </picture>
             </div>
 
             <p class="demo--comment">
@@ -2503,6 +3210,34 @@
             </p>
 
             <ul class="articles--list">
+              <li class="article--item">
+                <article class="blog--article">
+                  <picture>
+                    <img src="img/blog.png" loading="lazy" alt="" />
+                  </picture>
+
+                  <span class="article--tag">Update</span>
+                  <h3 class="article--title">
+                    Can AI Estimate Calories from a Photo?
+                  </h3>
+                  <p class="article--subtitle">
+                    A practical introduction to the components of a balanced
+                    meal
+                  </p>
+                </article>
+              </li>
+              <li class="article--item">
+                <article class="blog--article">
+                  <picture>
+                    <img src="img/blog.png" loading="lazy" alt="" />
+                  </picture>
+
+                  <span class="article--tag">Update</span>
+                  <h3 class="article--title">
+                    Can AI Estimate Calories from a Photo?
+                  </h3>
+                </article>
+              </li>
               <li class="article--item">
                 <article class="blog--article">
                   <picture>
