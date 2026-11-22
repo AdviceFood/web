@@ -69,53 +69,59 @@
         user-select: none;
       }
 
-
       .dots {
-    font-weight: 500;
-    font-size: 2rem;
-    line-height: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 15px;
-    user-select: none;
-    cursor: pointer;
-    min-width: 40px;
-    height: 40px;
-    transition: color 0.2s;
-}
-.dots:hover {
-    color: #22c55e;
-}
+        font-weight: 500;
+        font-size: 2rem;
+        line-height: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15px;
+        user-select: none;
+        cursor: pointer;
+        min-width: 40px;
+        height: 40px;
+        transition: color 0.2s;
+      }
+      .dots:hover {
+        color: #22c55e;
+      }
 
-.jump-input {
-    width: 56px;
-    height: 36px;
-    padding: 0 6px;
-    border: 1px solid #22c55e;
-    border-radius: 6px;
-    font-size: 16px;
-    font-family: inherit;
-    text-align: center;
-    outline: none;
-    /* убираем стрелки у number */
-    -moz-appearance: textfield;
-}
-.jump-input::-webkit-outer-spin-button,
-.jump-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
+      .jump-input {
+        width: 56px;
+        height: 36px;
+        padding: 0 6px;
+        border: 1px solid #22c55e;
+        border-radius: 6px;
+        font-size: 16px;
+        font-family: inherit;
+        text-align: center;
+        outline: none;
+        /* убираем стрелки у number */
+        -moz-appearance: textfield;
+      }
+      .jump-input::-webkit-outer-spin-button,
+      .jump-input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
 
-.jump-input.invalid {
-    border-color: #e11d48;
-    animation: shake 0.2s;
-}
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-3px); }
-    75% { transform: translateX(3px); }
-}
+      .jump-input.invalid {
+        border-color: #e11d48;
+        animation: shake 0.2s;
+      }
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-3px);
+        }
+        75% {
+          transform: translateX(3px);
+        }
+      }
     </style>
   </head>
   <body>
@@ -248,69 +254,69 @@
       }
 
       function setControls() {
-          pag.addEventListener('click', (e) => {
-              const dots = e.target.closest('.dots');
-              if (dots) {
-                  e.preventDefault();
-                  showJumpInput(dots);
-                  return;
-              }
+        pag.addEventListener("click", (e) => {
+          const dots = e.target.closest(".dots");
+          if (dots) {
+            e.preventDefault();
+            showJumpInput(dots);
+            return;
+          }
 
-              const btn = e.target.closest('.btn');
-              if (!btn) return;
+          const btn = e.target.closest(".btn");
+          if (!btn) return;
 
-              const page = parseInt(btn.innerHTML, 10);
-              if (!page) return;
+          const page = parseInt(btn.innerHTML, 10);
+          if (!page) return;
 
-              setActivePage(pages, page);
-          });
+          setActivePage(pages, page);
+        });
       }
 
       function showJumpInput(dotsEl) {
-    if (dotsEl.dataset.active === 'true') return;
+        if (dotsEl.dataset.active === "true") return;
 
-    const total = Number(pages);
-    const current = activePage;
+        const total = Number(pages);
+        const current = activePage;
 
-    dotsEl.dataset.active = 'true';
-    dotsEl.innerHTML = `<input 
-        type="number" 
-        class="jump-input" 
-        min="1" 
-        max="${total}" 
-        value="${current}" 
+        dotsEl.dataset.active = "true";
+        dotsEl.innerHTML = `<input
+        type="number"
+        class="jump-input"
+        min="1"
+        max="${total}"
+        value="${current}"
         placeholder="№"
         autocomplete="off"
     >`;
 
-    const input = dotsEl.querySelector('.jump-input');
-    input.focus();
-    input.select();
+        const input = dotsEl.querySelector(".jump-input");
+        input.focus();
+        input.select();
 
-    input.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
+        input.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
             e.preventDefault();
             const page = parseInt(input.value, 10);
             if (page >= 1 && page <= total) {
-                setActivePage(pages, page);
+              setActivePage(pages, page);
             } else {
-                input.classList.add('invalid');
-                setTimeout(() => input.classList.remove('invalid'), 500);
+              input.classList.add("invalid");
+              setTimeout(() => input.classList.remove("invalid"), 500);
             }
-        }
-        if (e.key === 'Escape') {
+          }
+          if (e.key === "Escape") {
             setActivePage(pages, activePage);
-        }
-    });
+          }
+        });
 
-    input.addEventListener('blur', () => {
-        setActivePage(pages, activePage);
-    });
+        input.addEventListener("blur", () => {
+          setActivePage(pages, activePage);
+        });
 
-    input.addEventListener('beforeinput', (e) => {
-        if (e.data && !/^\d+$/.test(e.data)) e.preventDefault();
-    });
-}
+        input.addEventListener("beforeinput", (e) => {
+          if (e.data && !/^\d+$/.test(e.data)) e.preventDefault();
+        });
+      }
 
       oldest = true;
       let searchName = "";
