@@ -583,7 +583,7 @@ ul.grid--container {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  margin-top: 35px;
+  margin-top: 25px;
 }
 
 .pagination {
