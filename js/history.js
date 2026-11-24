@@ -245,7 +245,7 @@ let data = [];
 
 async function getData(page = 0, name = "", oldest = true) {
   try {
-    const response = await fetch("../test.json");
+    const response = await fetch("test.json");
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     data = await response.json();
 
