@@ -642,6 +642,16 @@ a.history--link.skeleton {
   animation: shimmer 1.6s infinite linear;
 }
 
+li.selector--value {
+    font-size: 1rem;
+}
+
+input[type="search"]:focus,
+input[type="search"] {
+  background-color: transparent;
+  outline: none;
+}
+
 @keyframes shimmer {
   0% {
     transform: translateX(-60%);
