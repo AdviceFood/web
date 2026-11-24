@@ -643,7 +643,7 @@ a.history--link.skeleton {
 }
 
 li.selector--value {
-    font-size: 1rem;
+  font-size: 1rem;
 }
 
 input[type="search"]:focus,
