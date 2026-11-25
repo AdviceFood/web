@@ -1591,64 +1591,111 @@
                   </p>
                 </div>
                 <div class="input--field">
-                  <input type="text" placeholder="Text..." />
+                  <input
+                    type="text"
+                    name="nickname"
+                    value="Alex Morgan"
+                    placeholder="Text..."
+                  />
                 </div>
               </div>
 
               <div class="input--block">
                 <div class="input--meta">
-                  <strong class="input--title">Name</strong>
+                  <strong class="input--title">Email</strong>
                   <p class="input--subtitle">
-                    Update the name displayed on your account.
+                    Change the email address associated with your account.
                   </p>
                 </div>
                 <div class="input--field">
-                  <input type="email" placeholder="Text..." />
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="28"
-                    height="28"
-                    fill="none"
-                  >
-                    <g
-                      stroke="#000"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      clip-path="url(#o4)"
+                  <input
+                    type="email"
+                    readonly
+                    name="email"
+                    value="test@gmail.com"
+                    placeholder="Text..."
+                  />
+                  <button class="email--edit" type="button" id="editEmail">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="28"
+                      height="28"
+                      fill="none"
                     >
-                      <path
-                        d="M8.168 8.166H7.001A2.333 2.333 0 0 0 4.668 10.5V21a2.333 2.333 0 0 0 2.333 2.333h10.5A2.334 2.334 0 0 0 19.835 21v-1.167"
-                      />
-                      <path
-                        d="M23.783 7.683a2.45 2.45 0 0 0-3.466-3.465L10.5 14v3.5H14zM18.668 5.834l3.5 3.5"
-                      />
-                    </g>
-                    <defs>
-                      <clipPath id="o4">
-                        <path fill="#fff" d="M0 0h28v28H0z" />
-                      </clipPath>
-                    </defs>
-                  </svg>
+                      <g
+                        stroke="#000"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        clip-path="url(#o4)"
+                      >
+                        <path
+                          d="M8.168 8.166H7.001A2.333 2.333 0 0 0 4.668 10.5V21a2.333 2.333 0 0 0 2.333 2.333h10.5A2.334 2.334 0 0 0 19.835 21v-1.167"
+                        />
+                        <path
+                          d="M23.783 7.683a2.45 2.45 0 0 0-3.466-3.465L10.5 14v3.5H14zM18.668 5.834l3.5 3.5"
+                        />
+                      </g>
+                      <defs>
+                        <clipPath id="o4">
+                          <path fill="#fff" d="M0 0h28v28H0z" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </button>
+                </div>
+                <div class="email--extra" id="extraBlock">
+                  <div class="input--field" id="emailPassword">
+                    <input type="password" placeholder="Password" />
+                  </div>
+                  <div class="email--code">
+                    <strong class="code--hint"
+                      >Enter the code sent to your new email</strong
+                    >
+                    <p class="code--hint">newmail@mail.ru</p>
+                    <div class="code--fields">
+                      <div class="input--code">
+                        <input type="number" name="code_1" id="code_1" />
+                      </div>
+                      <div class="input--code">
+                        <input type="number" name="code_2" id="code_2" />
+                      </div>
+                      <div class="input--code">
+                        <input type="number" name="code_3" id="code_3" />
+                      </div>
+                      <div class="input--code">
+                        <input type="number" name="code_4" id="code_4" />
+                      </div>
+                      <div class="input--code">
+                        <input type="number" name="code_5" id="code_5" />
+                      </div>
+                      <div class="input--code">
+                        <input type="number" name="code_6" id="code_6" />
+                      </div>
+                    </div>
+                  </div>
+                  <button class="form--btn" type="button" id="sendCode">
+                    Send code
+                  </button>
                 </div>
               </div>
 
               <form action="changePassword" class="password--form">
                 <div class="input--block">
                   <div class="input--meta">
-                    <strong class="input--title">Name</strong>
+                    <strong class="input--title">Password</strong>
                     <p class="input--subtitle">
-                      Update the name displayed on your account.
+                      Update your password to keep your account secure.
                     </p>
                   </div>
                   <div class="input--field">
-                    <input type="password" placeholder="Text..." />
+                    <input type="password" placeholder="Old password" />
                   </div>
                   <div class="input--field">
-                    <input type="password" placeholder="Text..." />
+                    <input type="password" placeholder="New password" />
                   </div>
                   <div class="input--field">
-                    <input type="password" placeholder="Text..." />
+                    <input type="password" placeholder="Confirm new password" />
                   </div>
                 </div>
 
@@ -1657,9 +1704,9 @@
 
               <div class="input--block">
                 <div class="input--meta">
-                  <strong class="input--title">Name</strong>
+                  <strong class="input--title">Delete account</strong>
                   <p class="input--subtitle">
-                    Update the name displayed on your account.
+                    Permanently delete your account and associated data.
                   </p>
                 </div>
                 <button type="button" class="form--btn delete">
@@ -1700,15 +1747,15 @@
                   </p>
                 </div>
                 <label class="checkbox--wrapper">
-                  <input type="checkbox" name="updates" />
+                  <input checked type="checkbox" name="updates" />
                 </label>
               </div>
 
               <div class="input--checkbox">
                 <div class="input--meta">
-                  <strong class="input--title"> Product Updates </strong>
+                  <strong class="input--title">New blog articles</strong>
                   <p class="input--subtitle">
-                    Stay informed about new features and updates
+                    Stay informed about new features
                   </p>
                 </div>
                 <label class="checkbox--wrapper">
@@ -1736,11 +1783,11 @@
                 </li>
                 <li class="theme--item">
                   <div class="theme--preview"></div>
-                  <b class="theme--title">Light</b>
+                  <b class="theme--title">Dark</b>
                 </li>
                 <li class="theme--item">
                   <div class="theme--preview"></div>
-                  <b class="theme--title">Light</b>
+                  <b class="theme--title">System</b>
                 </li>
               </ul>
             </div>
