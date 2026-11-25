@@ -330,3 +330,231 @@ li.theme--item:nth-child(n + 2) .theme--preview {
 .form--btn.delete:active {
   background: #ae2a28;
 }
+
+button.email--edit {
+  display: block;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: 0;
+  outline: none;
+  padding-block: 0;
+  padding-inline: 0;
+}
+
+.input--field#emailPassword {
+  margin-bottom: 20px;
+}
+
+.email--extra {
+  margin-top: 0;
+  height: 0;
+  overflow-y: hidden;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+}
+
+.email--extra.open {
+  margin-top: 15px;
+  height: 116px;
+}
+
+.input--code {
+  flex: 1;
+  max-width: 67px;
+  aspect-ratio: 1;
+  border-radius: 13px;
+  background: white;
+  position: relative;
+  display: block;
+  z-index: 2;
+  box-shadow: 0 0 0 1px #0000001a;
+  transition:
+    0.3s box-shadow,
+    0.3s transform;
+  -webkit-transition:
+    0.3s box-shadow,
+    0.3s background,
+    0.3s transform;
+  overflow: hidden;
+}
+
+.input--code input {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+  outline: none;
+  border-radius: 13px;
+  text-align: center;
+  font-size: 1.375rem;
+  font-family: "AA";
+  color: black;
+  font-weight: 500;
+  background: transparent;
+}
+
+.input--code input::-webkit-inner-spin-button {
+  display: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.code--fields {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.input--code:has(input:focus) {
+  box-shadow: 0 0 0 2px #000000b2;
+}
+
+.input--code:active {
+  box-shadow: 0 0 0 1px #0000001a;
+  background: #e6e6e6;
+  transform: scale(0.98);
+  -webkit-transform: scale(0.98);
+  transition:
+    0.05s box-shadow,
+    0.05s transform;
+  -webkit-transition:
+    0.05s box-shadow,
+    0.05s background,
+    0.05s transform;
+}
+
+.input--code.success {
+  box-shadow: 0 0 0 2px #22c55e;
+  animation: pulse ease-in-out 1 0.15s;
+}
+
+.input--code.success.done {
+  box-shadow: 0 0 0 2px #22c55e;
+  background: #22c55e1a;
+}
+
+.input--code.error {
+  box-shadow: 0 0 0 2px #e53935;
+}
+
+.input--code.error.shake {
+  box-shadow: 0 0 0 2px #e53935;
+  animation: shake ease-in-out 1 0.15s;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(5px);
+    -webkit-transform: translateX(5px);
+  }
+  20% {
+    transform: translateX(-4px);
+    -webkit-transform: translateX(-4px);
+  }
+  40% {
+    transform: translateX(3px);
+    -webkit-transform: translateX(3px);
+  }
+  60% {
+    transform: translateX(-2px);
+    -webkit-transform: translateX(-2px);
+  }
+  80% {
+    transform: translateX(1px);
+    -webkit-transform: translateX(1px);
+  }
+  100% {
+    transform: translateX(0px);
+    -webkit-transform: translateX(0px);
+  }
+}
+
+.code--fields.checking .input--code {
+  will-change: transform;
+  pointer-events: none;
+}
+
+.input--code.piano-up {
+  animation: pianoUp 0.28s ease-out;
+}
+
+@keyframes pianoUp {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  40% {
+    transform: translateY(-10px) scale(1.06);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .input--code.piano-up {
+    animation: none;
+  }
+}
+
+.email--extra.open.code {
+  height: auto;
+}
+
+.email--code {
+  height: 0;
+  overflow-y: hidden;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+}
+
+.email--extra.open.code .email--code {
+  height: 136px;
+}
+
+.email--code strong {
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin-bottom: 2px;
+  display: block;
+  text-align: center;
+}
+
+.email--code p {
+  color: #000000b2;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+li.theme--item {
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+}
+
+li.theme--item:active {
+  transition: 0.03s;
+  -webkit-transition: 0.03s;
+  transform: scale(0.98);
+  -webkit-transform: scale(0.98);
+}
