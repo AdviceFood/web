@@ -556,6 +556,6 @@ li.theme--item {
 li.theme--item:active {
   transition: 0.03s;
   -webkit-transition: 0.03s;
-  transform: scale(0.98);
-  -webkit-transform: scale(0.98);
+  transform: scale(0.95);
+  -webkit-transform: scale(0.95);
 }
