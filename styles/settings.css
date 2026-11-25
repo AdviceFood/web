@@ -367,7 +367,7 @@ button.email--edit {
 
 .input--code {
   flex: 1;
-  max-width: 67px;
+  max-width: 60px;
   aspect-ratio: 1;
   border-radius: 13px;
   background: white;
@@ -410,6 +410,7 @@ button.email--edit {
 
 .code--fields {
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 0.75rem;
   margin-left: 2px;
@@ -565,4 +566,168 @@ li.theme--item:active {
 
 p {
   text-wrap: pretty;
+}
+
+.section--notifications .section--inner,
+ul.themes--list {
+  max-width: none;
+}
+
+ul.themes--list {
+  max-width: 360px;
+}
+
+.input--field,
+button.form--btn {
+  max-width: none;
+}
+
+.theme--preview img {
+  display: none;
+}
+
+@media screen and (min-width: 480px) {
+  p.section--subtitle {
+    font-size: 1.125rem;
+  }
+
+  .input--subtitle {
+    font-size: 1rem;
+  }
+
+  .input--field input {
+    font-size: 1.125rem;
+  }
+
+  .input--field {
+    height: 52px;
+    border-radius: 26px;
+  }
+
+  .input--meta {
+    margin-bottom: 15px;
+  }
+
+  form.password--form .input--field {
+    margin-bottom: 15px;
+  }
+
+  .section--notifications .section--inner,
+  .section--logout .section--inner {
+    max-width: 480px;
+  }
+
+  h2.section--title {
+    max-width: 480px;
+  }
+
+  button.form--btn {
+    height: 52px;
+    border-radius: 26px;
+  }
+
+  .email--extra.open {
+    height: 124px;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  .input--field,
+  button.form--btn {
+    max-width: 360px;
+  }
+
+  .section--notifications .section--inner,
+  ul.themes--list {
+    max-width: 480px;
+  }
+
+  .theme--preview {
+    width: 150px;
+    height: 84px;
+    border-radius: 20px;
+    position: relative;
+  }
+
+  .theme--preview img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+  }
+
+  ul.themes--list {
+    gap: 0;
+    justify-content: space-between;
+    margin-bottom: 100px;
+  }
+
+  .section--logout .section--inner {
+    padding-top: 26px;
+    border-top: 1px solid #0000001a;
+  }
+
+  .section--notifications .section--inner,
+  .section--logout .section--inner {
+    max-width: 480px;
+  }
+
+  .code--fields {
+    justify-content: left;
+    max-width: 360px;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .email--code strong {
+    text-align: left;
+  }
+
+  .email--code p {
+    text-align: left;
+  }
+
+  .input--code {
+    max-width: 48px;
+  }
+
+  button,
+  label,
+  label input {
+    cursor: pointer;
+  }
+
+  .form--btn:hover {
+    background: #16a34a;
+  }
+
+  .form--btn:active {
+    background: #15803d;
+  }
+
+  .form--btn.delete:hover,
+  .section--logout .form--btn:hover {
+    background: #cb2825;
+  }
+
+  .form--btn.delete:active,
+  .section--logout .form--btn:active {
+    background: #ae2a28;
+  }
+
+  li.theme--item {
+    cursor: pointer;
+  }
+
+  a.back--block span {
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+  }
+
+  a.back--block span:hover {
+    color: #000000;
+  }
 }
