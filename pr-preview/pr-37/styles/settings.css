@@ -120,6 +120,9 @@ h2.section--title {
   display: flex;
   align-items: center;
   padding-right: 23px;
+  box-shadow: 0 0 0 1px transparent;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
 }
 
 .input--field input {
@@ -138,6 +141,10 @@ h2.section--title {
 
 .input--field input:focus {
   background-color: transparent;
+}
+
+.input--field:has(input:focus) {
+  box-shadow: 0 0 0 2px #00000077;
 }
 
 .input--block {
@@ -210,7 +217,7 @@ button.form--btn:active {
 }
 
 .input--checkbox .input--meta {
-  max-width: 176px;
+  max-width: 196px;
 }
 
 label.checkbox--wrapper {
@@ -355,14 +362,16 @@ button.email--edit {
 .email--extra {
   margin-top: 0;
   height: 0;
-  overflow-y: hidden;
   transition: 0.3s;
   -webkit-transition: 0.3s;
+  display: block;
+  clip-path: inset(0 -100px 0 -100px);
+  padding-top: 2px;
 }
 
 .email--extra.open {
   margin-top: 15px;
-  height: 116px;
+  height: 118px;
 }
 
 .input--code {
@@ -535,7 +544,7 @@ button.email--edit {
 }
 
 .email--extra.open.code .email--code {
-  height: 136px;
+  height: 130px;
 }
 
 .email--code strong {
@@ -549,7 +558,7 @@ button.email--edit {
 .email--code p {
   color: #000000b2;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 li.theme--item {
@@ -584,6 +593,13 @@ button.form--btn {
 
 .theme--preview img {
   display: none;
+}
+
+.input--field:active {
+  transition: 0.03s;
+  -webkit-transition: 0.03s;
+  transform: scale(0.98);
+  background: #e6e6e6;
 }
 
 @media screen and (min-width: 480px) {
@@ -627,7 +643,7 @@ button.form--btn {
   }
 
   .email--extra.open {
-    height: 124px;
+    height: 126px;
   }
 }
 
@@ -729,5 +745,9 @@ button.form--btn {
 
   a.back--block span:hover {
     color: #000000;
+  }
+
+  .input--field:hover {
+    box-shadow: 0 0 0 2px #00000033;
   }
 }
