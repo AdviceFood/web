@@ -144,8 +144,8 @@ h2.section--title {
 }
 
 .input--field:has(input:focus) {
-        box-shadow: 0 0 0 2px #00000077;
-      }
+  box-shadow: 0 0 0 2px #00000077;
+}
 
 .input--block {
   margin-bottom: 35px;
@@ -596,8 +596,8 @@ button.form--btn {
 }
 
 .input--field:active {
-  transition: .03s;
-  -webkit-transition: .03s;
+  transition: 0.03s;
+  -webkit-transition: 0.03s;
   transform: scale(0.98);
   background: #e6e6e6;
 }
