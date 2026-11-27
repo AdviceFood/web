@@ -1005,51 +1005,6 @@
         }
       }
 
-      @media screen and (min-width: 1700px) {
-        .main--right {
-          display: flex;
-          flex-direction: column;
-          max-width: 300px;
-          gap: 40px;
-        }
-
-        .main--right .analyze__photo--comment {
-          display: block;
-          order: 1;
-        }
-
-        .main--right .related--articles {
-          order: 2;
-        }
-
-        main .container {
-          display: flex;
-          flex-direction: row;
-          gap: 30px;
-        }
-
-        .main--inner .analyze__photo--comment {
-          display: none;
-        }
-
-        .analyze__photo--comment {
-          margin-top: 49px;
-        }
-
-        section.section--meta {
-          padding-bottom: 37px;
-          border-bottom: 2px solid #0000001a;
-        }
-
-        .ing--block:nth-child(2) {
-          flex: 1 1 calc((100% - 420px) / 3);
-        }
-
-        ul.nav--list li {
-          max-width: 285px;
-        }
-      }
-
       @media screen and (min-width: 1800px) {
         .analyze__photo--wrapper {
           margin-left: 60px;
@@ -1853,9 +1808,11 @@
                 </li>
               </ul>
 
-              <div class="pagination" id="pag"></div>
+              <div class="pag--wrapper">
+                <div class="pagination" id="pag"></div>
 
-              <p class="pag--comment" id="reportPag">Showing 16 of 64</p>
+                <p class="pag--comment" id="reportPag">Showing 16 of 64</p>
+              </div>
             </div>
           </div>
         </section>
