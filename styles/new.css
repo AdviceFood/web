@@ -997,8 +997,9 @@ a.view--all:active {
     display: block;
   }
 
-  .label--meta p {
+  .label--meta span {
     font-size: 1rem;
+    font-weight: 400;
   }
 
   .analyze--type--label {
@@ -1025,11 +1026,11 @@ a.view--all:active {
     font-weight: 500;
   }
 
-  .label--spoiler p {
+  .label--spoiler span {
     font-size: 1rem;
   }
 
-  .label--spoiler p a {
+  .label--spoiler span a {
     color: #22c55e;
     text-decoration: underline;
     font-family: "AA";
