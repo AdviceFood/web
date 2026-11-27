@@ -539,3 +539,375 @@ a.view--all:active {
   background: #d9d9d9;
   border-color: #d9d9d9;
 }
+
+*.desktopOnly {
+  display: none;
+}
+
+@media screen and (min-width: 650px) {
+  .profile--meta picture {
+    width: 125px;
+    height: 125px;
+  }
+
+  .profile--meta picture img {
+    width: 125px;
+    height: 125px;
+  }
+
+  .profile--meta {
+    gap: 25px;
+  }
+
+  .profile--meta--text h1 {
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+  }
+
+  strong.streak--value {
+    font-size: 1.25rem;
+  }
+
+  span.streak--name {
+    font-size: 1.125rem;
+    margin-top: 3px;
+  }
+
+  ul.profile--streaks {
+    gap: 30px;
+  }
+
+  li.profile--streak {
+    flex: 0 0 calc(50% - 15px);
+  }
+
+  .activity--diag {
+    display: flex;
+    align-items: end;
+    padding-bottom: 20px;
+    gap: 60px;
+  }
+
+  .diag--graph {
+    margin-top: 0;
+    margin-bottom: 17px;
+  }
+
+  .calendar--wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .calendar--icons {
+    display: none;
+  }
+
+  .calendar--stats {
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 0;
+    min-width: 100px;
+    align-items: start;
+  }
+
+  .calendar--field {
+    width: 100%;
+  }
+
+  strong.stats--value {
+    font-size: 1.25rem;
+  }
+
+  p.stats--text {
+    font-size: 1rem;
+  }
+
+  .activity--calendar {
+    padding: 28px;
+  }
+
+  .calendar--title {
+    font-size: 1.25rem;
+  }
+
+  .calendar--subtitle {
+    font-size: 1rem;
+  }
+
+  .diag--title {
+    font-size: 1.25rem;
+  }
+
+  .diag--info strong span {
+    font-size: 2rem;
+  }
+
+  .diag--info strong {
+    font-size: 1.5rem;
+  }
+
+  .diag--compare {
+    font-size: 1rem;
+  }
+
+  .diag--col b {
+    font-size: 1rem;
+  }
+
+  .diag--col span {
+    font-size: 1rem;
+  }
+
+  .history--title {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  .profile--preinfo.desktopOnly {
+    display: block;
+  }
+
+  .profile--preinfo strong {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  .profile--preinfo p {
+    font-weight: 400;
+    color: #000000b2;
+    margin-bottom: 60px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .diag--col span {
+    transform: translateX(-50%) translateY(15px);
+    opacity: 0;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+  }
+
+  .diag--col {
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+  }
+
+  .diag--col:hover span {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0px);
+  }
+
+  .diag--cols:has(.diag--col:hover) .diag--col {
+    opacity: 0.5;
+  }
+
+  .diag--cols:has(.diag--col:hover) .diag--col:hover {
+    opacity: 1;
+  }
+
+  .diag--background {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0px;
+  }
+
+  .diag--graph {
+    position: relative;
+    border-bottom: 2px solid #e6e6e6;
+    border-left: 2px solid #e6e6e6;
+    height: 140px;
+    margin-top: 60px;
+    padding-top: 0;
+  }
+
+  .diag--row {
+    height: 25%;
+    width: 100%;
+    border-top: 2px solid #0000000d;
+    position: relative;
+  }
+
+  .diag--cols {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .diag--row span {
+    font-size: 1rem;
+    color: #000000b2;
+    font-weight: 700;
+    position: absolute;
+    right: calc(100% + 7px);
+    top: -5px;
+    line-height: 0;
+  }
+
+  .diag--row:last-child:after {
+    position: absolute;
+    content: "0";
+    font-weight: 700;
+    font-size: 1rem;
+    color: #000000b2;
+    top: calc(100% - 4px);
+    line-height: 0;
+    right: calc(100% + 5px);
+  }
+
+  .cell-data .cell--expand {
+    border: 1px solid #0000001a;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: white;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    top: 100%;
+    margin-top: 5px;
+  }
+
+  p.cell--date {
+    color: #00000099;
+    font-size: 0.875rem;
+  }
+
+  p.cell--date time {
+    font-size: 1rem;
+    color: black;
+  }
+
+  .cell-data:hover .cell--expand {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .cell-data:hover {
+    z-index: 2;
+  }
+
+  .activity--diag {
+    align-items: start;
+    gap: 70px;
+  }
+
+  .diag--compare span.compare {
+    background: #22c55e;
+    padding: 0px 25px;
+    align-items: center;
+    display: flex;
+    height: 40px;
+    border-radius: 20px;
+    color: white;
+    font-weight: 500;
+    font-size: 1rem;
+    text-align: center;
+    white-space: nowrap;
+    justify-content: center;
+  }
+
+  .diag--info {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .diag--compare .mob {
+    display: none;
+  }
+
+  .diag--compare .desktopOnly {
+    display: block;
+    margin-bottom: auto;
+    color: #000000b2;
+  }
+
+  .activity--diag {
+    height: 270px;
+  }
+
+  .diag--compare {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .calendar--field {
+    max-width: 310px;
+  }
+
+  .diag--graph {
+    max-width: 450px;
+  }
+
+  .diag--info strong {
+    margin-top: 35px;
+  }
+}
+
+@media screen and (min-width: 1180px) {
+  .profile--header {
+    display: flex;
+    align-items: start;
+    gap: 150px;
+  }
+
+  .profile--meta picture {
+    min-width: 125px;
+  }
+
+  .profile--meta--text {
+    min-width: 150px;
+  }
+
+  ul.profile--streaks {
+    margin-top: 0;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .section--stats .section--inner {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .activity--calendar {
+    margin-top: 0;
+    height: 310px;
+    width: 450px;
+  }
+
+  .activity--diag {
+    height: 310px;
+    flex: 0 0 calc(100% - 480px);
+    padding: 28px;
+  }
+
+  .diag--graph {
+    margin-top: 90px;
+  }
+
+  .profile--header {
+    justify-content: space-between;
+  }
+}
+
+@media screen and (min-width: 1700px) {
+  ul.profile--streaks {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+
+  li.profile--streak {
+    flex: 0 0 calc(25% - 24px);
+  }
+}
+
+@media screen and (min-width: 1840px) {
+  li.profile--streak {
+    flex: 0 0 calc(187px);
+  }
+}
