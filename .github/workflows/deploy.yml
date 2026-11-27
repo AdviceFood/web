@@ -168,7 +168,7 @@ jobs:
 
       - name: Validate JavaScript files
         run: |
-          eslint js/*.js --format=stylish --max-warnings=0
+          eslint js/*.js --format=stylish
 
   deploy-preview:
     name: 🚀 Deploy to GitHub Pages

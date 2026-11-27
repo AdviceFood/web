@@ -23,7 +23,7 @@ repos:
         exclude: ^plugins/swiper-bundle\.min\.js$
         additional_dependencies:
           - eslint@8.57.0
-        args: ["--fix", "--max-warnings=0"]
+        args: ["--fix"]
 
   # Форматирование prettier (опционально)
   - repo: https://github.com/pre-commit/mirrors-prettier

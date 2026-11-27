@@ -57,6 +57,11 @@ document.addEventListener("click", (e) => {
   if (!e.target.closest(".custom--selector")) {
     selector.parentNode.classList.remove("open");
   }
+  if (!e.target.closest(".history--expander")) {
+    document
+      .querySelectorAll(".expander--list")
+      .forEach((f) => f.classList.remove("open"));
+  }
 });
 
 let oldest = true;
@@ -91,42 +96,90 @@ function setActivePage(pages, page = 1) {
   page = Number(page);
   let newContent = "";
 
+  if (window.innerWidth >= 1024 && page != 1) {
+    newContent +=
+      '<div class="btn" data-page=' +
+      (page - 1) +
+      ' id="page' +
+      (page - 1) +
+      '"><svg xmlns="http://www.w3.org/2000/svg" width="9" height="14" fill="none"><path fill="#000" d="m6.292.28-6 6a1 1 0 0 0 0 1.415l6 6a1 1 0 1 0 1.414-1.414L2.413 6.988l5.293-5.293A1 1 0 0 0 6.292.28"/></svg></div>';
+  }
+
   if (pages > 5) {
     if (page < 4) {
       for (let i = 0; i < page + 1; i++) {
         newContent +=
-          '<div class="btn" id="page' + (i + 1) + '">' + (i + 1) + "</div>";
+          '<div class="btn" data-page=' +
+          (i + 1) +
+          ' id="page' +
+          (i + 1) +
+          '">' +
+          (i + 1) +
+          "</div>";
       }
 
       newContent += '<div class="dots" data-role="jump">...</div>';
 
       for (let i = pages - 2; i < pages; i++) {
         newContent +=
-          '<div class="btn" id="page' + (i + 1) + '">' + (i + 1) + "</div>";
+          '<div class="btn" data-page=' +
+          (i + 1) +
+          ' id="page' +
+          (i + 1) +
+          '">' +
+          (i + 1) +
+          "</div>";
       }
     } else if (page + 2 >= pages) {
-      newContent += '<div class="btn" id="page1">1</div>';
+      newContent += '<div class="btn" data-page="1" id="page1">1</div>';
 
       newContent += '<div class="dots" data-role="jump">...</div>';
 
       for (let i = page - 2; i < pages; i++) {
         newContent +=
-          '<div class="btn" id="page' + (i + 1) + '">' + (i + 1) + "</div>";
+          '<div class="btn" data-page=' +
+          (i + 1) +
+          ' id="page' +
+          (i + 1) +
+          '">' +
+          (i + 1) +
+          "</div>";
       }
     } else {
-      newContent += '<div class="btn" id="page1">1</div>';
+      newContent += '<div class="btn" data-page="1" id="page1">1</div>';
 
       newContent += '<div class="dots" data-role="jump">...</div>';
 
       for (let i = page - 2; i < page + 1; i++) {
         newContent +=
-          '<div class="btn" id="page' + (i + 1) + '">' + (i + 1) + "</div>";
+          '<div class="btn" data-page=' +
+          (i + 1) +
+          ' id="page' +
+          (i + 1) +
+          '">' +
+          (i + 1) +
+          "</div>";
       }
 
       newContent += '<div class="dots" data-role="jump">...</div>';
 
       newContent +=
-        '<div class="btn" id="page' + pages + '">' + pages + "</div>";
+        '<div class="btn" data-page=' +
+        pages +
+        ' id="page' +
+        pages +
+        '">' +
+        pages +
+        "</div>";
+    }
+
+    if (window.innerWidth >= 1024 && page != pages) {
+      newContent +=
+        '<div class="btn" data-page=' +
+        (page + 1) +
+        ' id="page' +
+        (page + 1) +
+        '"><svg style="transform: rotate(180deg)" xmlns="http://www.w3.org/2000/svg" width="9" height="14" fill="none"><path fill="#000" d="m6.292.28-6 6a1 1 0 0 0 0 1.415l6 6a1 1 0 1 0 1.414-1.414L2.413 6.988l5.293-5.293A1 1 0 0 0 6.292.28"/></svg></div>';
     }
 
     pag.innerHTML = newContent;
@@ -138,9 +191,17 @@ function setActivePage(pages, page = 1) {
     pag.querySelector("#page" + page).classList.add("active");
   } else {
     for (let i = 1; i <= pages; i++) {
-      newContent += `<div class="btn" id="page${i}">${i}</div>`;
+      newContent += `<div class="btn" data-page="${i}" id="page${i}">${i}</div>`;
     }
 
+    if (window.innerWidth >= 1024 && page != pages) {
+      newContent +=
+        '<div class="btn" data-page=' +
+        (page + 1) +
+        ' id="page' +
+        (page + 1) +
+        '"><svg style="transform: rotate(180deg)" xmlns="http://www.w3.org/2000/svg" width="9" height="14" fill="none"><path fill="#000" d="m6.292.28-6 6a1 1 0 0 0 0 1.415l6 6a1 1 0 1 0 1.414-1.414L2.413 6.988l5.293-5.293A1 1 0 0 0 6.292.28"/></svg></div>';
+    }
     pag.innerHTML = newContent;
     for (let i = 0; i < pag.children.length; i++) {
       pag.children[i].classList.remove("active");
@@ -173,7 +234,7 @@ function setControls() {
     const btn = e.target.closest(".btn");
     if (!btn) return;
 
-    const page = parseInt(btn.innerHTML, 10);
+    const page = parseInt(btn.dataset.page, 10);
     if (!page) return;
 
     setActivePage(pages, page);
@@ -222,7 +283,11 @@ function showJumpInput(dotsEl) {
   });
 
   input.addEventListener("beforeinput", (e) => {
-    if (e.data && !/^\d+$/.test(e.data)) e.preventDefault();
+    if (e.data && !/^\d+$/.test(e.data)) {
+      e.preventDefault();
+      return;
+    }
+    if (+input.value.length > 2) input.value = input.value[0] + input.value[1];
   });
 }
 
@@ -289,8 +354,56 @@ async function getData(page = 0, name = "", oldest = true) {
                         <span class="history--date"> 11 Oct 2026 · 19:36 </span>
                       </div>
 
+                      <div class="history--expander desktopOnly">
+                        <button type="button" onclick="expandInfo(this);">
+                          <span></span>
+                        </button>
+
+                        <ul class="expander--list">
+                          <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><g stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" clip-path="url(#o11)"><path d="M7 7H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-1"/><path d="M20.385 6.585a2.1 2.1 0 0 0-2.97-2.97L9 12v3h3zM16 5l3 3"/></g><defs><clipPath id="o11"><path fill="#fff" d="M0 0h24v24H0z"/></clipPath></defs></svg>
+                            Edit name
+                            </li>
+                            <li>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><g clip-path="url(#o12)"><path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m-6 4h6m-2 4h2M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16l-3-2-2 2-2-2-2 2-2-2z"/></g><defs><clipPath id="o12"><path fill="#fff" d="M0 0h24v24H0z"/></clipPath></defs></svg>
+                            Create a recipe
+                            </li>
+                            <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><g stroke="#e53935" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" clip-path="url(#o13)"><path d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/></g><defs><clipPath id="o13"><path fill="#fff" d="M0 0h24v24H0z"/></clipPath></defs></svg>
+                            Delete analysis
+                            </li>
+                        </ul>
+                      </div>
+
                       <div class="history--utility">
                         <span class="utility--num">${items[i].utility}</span>
+
+                        <div class="utility--meta desktopOnly">
+                          The utility index
+                          <span>Average</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="history--kcal desktopOnly">
+                      <div class="kcal--block">
+                        <b>436 kcal</b>
+                        per serving
+                      </div>
+
+                      <div class="kcal--block">
+                        <b>50g</b>
+                        protein
+                      </div>
+
+                      <div class="kcal--block">
+                        <b>50g</b>
+                        fats
+                      </div>
+
+                      <div class="kcal--block">
+                        <b>50g</b>
+                        carbs
                       </div>
                     </div>
                   </a>
@@ -328,3 +441,17 @@ setTimeout(() => {
     setControls();
   });
 }, 3000);
+
+function expandInfo(btn) {
+  document.querySelectorAll(".expander--list").forEach((f) => {
+    if (f != btn.nextElementSibling) f.classList.remove("open");
+  });
+  btn.nextElementSibling.classList.toggle("open");
+}
+
+document.addEventListener("click", function (e) {
+  const link = e.target.closest("a.history--link");
+  if (!link) return;
+
+  e.preventDefault();
+});
