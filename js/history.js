@@ -131,7 +131,7 @@ function setActivePage(pages, page = 1) {
           "</div>";
       }
     } else if (page + 2 >= pages) {
-      newContent += '<div class="btn" id="page1">1</div>';
+      newContent += '<div class="btn" data-page="1" id="page1">1</div>';
 
       newContent += '<div class="dots" data-role="jump">...</div>';
 
@@ -146,7 +146,7 @@ function setActivePage(pages, page = 1) {
           "</div>";
       }
     } else {
-      newContent += '<div class="btn" id="page1">1</div>';
+      newContent += '<div class="btn" data-page="1" id="page1">1</div>';
 
       newContent += '<div class="dots" data-role="jump">...</div>';
 
@@ -191,7 +191,7 @@ function setActivePage(pages, page = 1) {
     pag.querySelector("#page" + page).classList.add("active");
   } else {
     for (let i = 1; i <= pages; i++) {
-      newContent += `<div class="btn" id="page${i}">${i}</div>`;
+      newContent += `<div class="btn" data-page="${i}" id="page${i}">${i}</div>`;
     }
 
     if (window.innerWidth >= 1024 && page != pages) {
@@ -283,7 +283,11 @@ function showJumpInput(dotsEl) {
   });
 
   input.addEventListener("beforeinput", (e) => {
-    if (e.data && !/^\d+$/.test(e.data)) e.preventDefault();
+    if (e.data && !/^\d+$/.test(e.data)) {
+      e.preventDefault();
+      return;
+    }
+    if (+input.value.length > 2) input.value = input.value[0] + input.value[1];
   });
 }
 
@@ -439,8 +443,15 @@ setTimeout(() => {
 }, 3000);
 
 function expandInfo(btn) {
-  document
-    .querySelectorAll(".expander--list")
-    .forEach((f) => f.classList.remove("open"));
-  btn.nextElementSibling.classList.add("open");
+  document.querySelectorAll(".expander--list").forEach((f) => {
+    if (f != btn.nextElementSibling) f.classList.remove("open");
+  });
+  btn.nextElementSibling.classList.toggle("open");
 }
+
+document.addEventListener("click", function (e) {
+  const link = e.target.closest("a.history--link");
+  if (!link) return;
+
+  e.preventDefault();
+});
