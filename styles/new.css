@@ -895,7 +895,7 @@ a.view--all:active {
     margin-bottom: 10px;
   }
 
-  .analyze--comment--title h3 {
+  .analyze--comment--title h2 {
     font-size: 1.125rem;
     font-weight: 500;
   }
@@ -927,7 +927,7 @@ a.view--all:active {
     margin-bottom: 15px;
   }
 
-  .type--title h3 {
+  .type--title h2 {
     font-size: 1.125rem;
     font-weight: 500;
   }
@@ -962,7 +962,7 @@ a.view--all:active {
     gap: 30px;
   }
 
-  .analyze--type--label > span {
+  .analyze--type--label > span.tt {
     display: none;
   }
 
