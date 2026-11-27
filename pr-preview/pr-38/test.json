@@ -1,0 +1,526 @@
+{
+  "total": 670,
+  "limit": 16,
+  "items": [
+    {
+      "id": 1,
+      "timestamp": 1730484000,
+      "title": "Pancakes with cottage cheese",
+      "utility": 72
+    },
+    {
+      "id": 2,
+      "timestamp": 1730484060,
+      "title": "Oatmeal with berries",
+      "utility": 85
+    },
+    {
+      "id": 3,
+      "timestamp": 1730484120,
+      "title": "Scrambled eggs with bacon",
+      "utility": 68
+    },
+    { "id": 4, "timestamp": 1730484180, "title": "Greek salad", "utility": 91 },
+    {
+      "id": 5,
+      "timestamp": 1730484240,
+      "title": "Chicken soup",
+      "utility": 77
+    },
+    {
+      "id": 6,
+      "timestamp": 1730484300,
+      "title": "Beef steak with vegetables",
+      "utility": 64
+    },
+    {
+      "id": 7,
+      "timestamp": 1730484360,
+      "title": "Pasta carbonara",
+      "utility": 59
+    },
+    {
+      "id": 8,
+      "timestamp": 1730484420,
+      "title": "Salmon with rice",
+      "utility": 88
+    },
+    {
+      "id": 9,
+      "timestamp": 1730484480,
+      "title": "Vegetable stir-fry",
+      "utility": 83
+    },
+    {
+      "id": 10,
+      "timestamp": 1730484540,
+      "title": "Cheeseburger",
+      "utility": 45
+    },
+    {
+      "id": 11,
+      "timestamp": 1730484600,
+      "title": "Caesar salad",
+      "utility": 79
+    },
+    {
+      "id": 12,
+      "timestamp": 1730484660,
+      "title": "Mushroom risotto",
+      "utility": 74
+    },
+    {
+      "id": 13,
+      "timestamp": 1730484720,
+      "title": "Tomato soup",
+      "utility": 81
+    },
+    {
+      "id": 14,
+      "timestamp": 1730484780,
+      "title": "Grilled chicken breast",
+      "utility": 92
+    },
+    {
+      "id": 15,
+      "timestamp": 1730484840,
+      "title": "Pizza Margherita",
+      "utility": 52
+    },
+    { "id": 16, "timestamp": 1730484900, "title": "Sushi set", "utility": 87 },
+    {
+      "id": 17,
+      "timestamp": 1730484960,
+      "title": "Pancakes with honey",
+      "utility": 70
+    },
+    { "id": 18, "timestamp": 1730485020, "title": "Borscht", "utility": 84 },
+    {
+      "id": 19,
+      "timestamp": 1730485080,
+      "title": "Fish and chips",
+      "utility": 48
+    },
+    {
+      "id": 20,
+      "timestamp": 1730485140,
+      "title": "Quinoa bowl",
+      "utility": 90
+    },
+    {
+      "id": 21,
+      "timestamp": 1730485200,
+      "title": "French toast",
+      "utility": 66
+    },
+    {
+      "id": 22,
+      "timestamp": 1730485260,
+      "title": "Beef stroganoff",
+      "utility": 73
+    },
+    {
+      "id": 23,
+      "timestamp": 1730485320,
+      "title": "Lentil soup",
+      "utility": 86
+    },
+    {
+      "id": 24,
+      "timestamp": 1730485380,
+      "title": "Chicken curry",
+      "utility": 78
+    },
+    {
+      "id": 25,
+      "timestamp": 1730485440,
+      "title": "Tacos with beef",
+      "utility": 55
+    },
+    {
+      "id": 26,
+      "timestamp": 1730485500,
+      "title": "Omelette with cheese",
+      "utility": 69
+    },
+    {
+      "id": 27,
+      "timestamp": 1730485560,
+      "title": "Shrimp pasta",
+      "utility": 76
+    },
+    {
+      "id": 28,
+      "timestamp": 1730485620,
+      "title": "Buckwheat with mushrooms",
+      "utility": 82
+    },
+    { "id": 29, "timestamp": 1730485680, "title": "Hot dog", "utility": 38 },
+    {
+      "id": 30,
+      "timestamp": 1730485740,
+      "title": "Avocado toast",
+      "utility": 89
+    },
+    {
+      "id": 31,
+      "timestamp": 1730485800,
+      "title": "Pumpkin soup",
+      "utility": 80
+    },
+    { "id": 32, "timestamp": 1730485860, "title": "Pork chops", "utility": 61 },
+    {
+      "id": 33,
+      "timestamp": 1730485920,
+      "title": "Falafel wrap",
+      "utility": 75
+    },
+    {
+      "id": 34,
+      "timestamp": 1730485980,
+      "title": "Rice pudding",
+      "utility": 63
+    },
+    {
+      "id": 35,
+      "timestamp": 1730486040,
+      "title": "Grilled salmon",
+      "utility": 93
+    },
+    {
+      "id": 36,
+      "timestamp": 1730486100,
+      "title": "Chicken nuggets",
+      "utility": 41
+    },
+    {
+      "id": 37,
+      "timestamp": 1730486160,
+      "title": "Minestrone soup",
+      "utility": 84
+    },
+    {
+      "id": 38,
+      "timestamp": 1730486220,
+      "title": "Beef burrito",
+      "utility": 57
+    },
+    {
+      "id": 39,
+      "timestamp": 1730486280,
+      "title": "Cottage cheese with fruits",
+      "utility": 88
+    },
+    { "id": 40, "timestamp": 1730486340, "title": "Fried rice", "utility": 71 },
+    {
+      "id": 41,
+      "timestamp": 1730486400,
+      "title": "Ratatouille",
+      "utility": 82
+    },
+    {
+      "id": 42,
+      "timestamp": 1730486460,
+      "title": "Chicken wings",
+      "utility": 50
+    },
+    { "id": 43, "timestamp": 1730486520, "title": "Tuna salad", "utility": 87 },
+    {
+      "id": 44,
+      "timestamp": 1730486580,
+      "title": "Potato pancakes",
+      "utility": 67
+    },
+    {
+      "id": 45,
+      "timestamp": 1730486640,
+      "title": "Vegetable lasagna",
+      "utility": 79
+    },
+    {
+      "id": 46,
+      "timestamp": 1730486700,
+      "title": "Sausages with beans",
+      "utility": 44
+    },
+    {
+      "id": 47,
+      "timestamp": 1730486760,
+      "title": "Smoothie bowl",
+      "utility": 91
+    },
+    {
+      "id": 48,
+      "timestamp": 1730486820,
+      "title": "Beef goulash",
+      "utility": 74
+    },
+    {
+      "id": 49,
+      "timestamp": 1730486880,
+      "title": "Cheese pizza",
+      "utility": 53
+    },
+    { "id": 50, "timestamp": 1730486940, "title": "Baked cod", "utility": 85 },
+    {
+      "id": 51,
+      "timestamp": 1730487000,
+      "title": "Pancakes with jam",
+      "utility": 65
+    },
+    {
+      "id": 52,
+      "timestamp": 1730487060,
+      "title": "Chicken caesar wrap",
+      "utility": 72
+    },
+    { "id": 53, "timestamp": 1730487120, "title": "Pea soup", "utility": 80 },
+    {
+      "id": 54,
+      "timestamp": 1730487180,
+      "title": "Spaghetti bolognese",
+      "utility": 62
+    },
+    {
+      "id": 55,
+      "timestamp": 1730487240,
+      "title": "Grilled vegetables",
+      "utility": 94
+    },
+    {
+      "id": 56,
+      "timestamp": 1730487300,
+      "title": "Fried chicken",
+      "utility": 46
+    },
+    {
+      "id": 57,
+      "timestamp": 1730487360,
+      "title": "Couscous salad",
+      "utility": 83
+    },
+    { "id": 58, "timestamp": 1730487420, "title": "Beef tacos", "utility": 56 },
+    {
+      "id": 59,
+      "timestamp": 1730487480,
+      "title": "Yogurt with granola",
+      "utility": 89
+    },
+    {
+      "id": 60,
+      "timestamp": 1730487540,
+      "title": "Mushroom soup",
+      "utility": 81
+    },
+    {
+      "id": 61,
+      "timestamp": 1730487600,
+      "title": "Pork dumplings",
+      "utility": 49
+    },
+    {
+      "id": 62,
+      "timestamp": 1730487660,
+      "title": "Shrimp salad",
+      "utility": 86
+    },
+    {
+      "id": 63,
+      "timestamp": 1730487720,
+      "title": "Cheese omelette",
+      "utility": 68
+    },
+    { "id": 64, "timestamp": 1730487780, "title": "Beef stew", "utility": 77 },
+    {
+      "id": 65,
+      "timestamp": 1730487840,
+      "title": "Veggie burger",
+      "utility": 76
+    },
+    {
+      "id": 66,
+      "timestamp": 1730487900,
+      "title": "French fries",
+      "utility": 35
+    },
+    {
+      "id": 67,
+      "timestamp": 1730487960,
+      "title": "Chicken salad",
+      "utility": 88
+    },
+    { "id": 68, "timestamp": 1730488020, "title": "Fish soup", "utility": 78 },
+    {
+      "id": 69,
+      "timestamp": 1730488080,
+      "title": "Pasta with pesto",
+      "utility": 73
+    },
+    {
+      "id": 70,
+      "timestamp": 1730488140,
+      "title": "Pancakes with sour cream",
+      "utility": 66
+    },
+    { "id": 71, "timestamp": 1730488200, "title": "Beef kebab", "utility": 58 },
+    {
+      "id": 72,
+      "timestamp": 1730488260,
+      "title": "Vegetable curry",
+      "utility": 84
+    },
+    {
+      "id": 73,
+      "timestamp": 1730488320,
+      "title": "Hot sandwich",
+      "utility": 47
+    },
+    {
+      "id": 74,
+      "timestamp": 1730488380,
+      "title": "Oatmeal with banana",
+      "utility": 87
+    },
+    {
+      "id": 75,
+      "timestamp": 1730488440,
+      "title": "Cabbage rolls",
+      "utility": 75
+    },
+    {
+      "id": 76,
+      "timestamp": 1730488500,
+      "title": "Chicken soup with noodles",
+      "utility": 82
+    },
+    {
+      "id": 77,
+      "timestamp": 1730488560,
+      "title": "Cheese platter",
+      "utility": 60
+    },
+    {
+      "id": 78,
+      "timestamp": 1730488620,
+      "title": "Grilled shrimp",
+      "utility": 90
+    },
+    {
+      "id": 79,
+      "timestamp": 1730488680,
+      "title": "Potato soup",
+      "utility": 71
+    },
+    {
+      "id": 80,
+      "timestamp": 1730488740,
+      "title": "Beef burger",
+      "utility": 51
+    },
+    {
+      "id": 81,
+      "timestamp": 1730488800,
+      "title": "Rice with vegetables",
+      "utility": 85
+    },
+    {
+      "id": 82,
+      "timestamp": 1730488860,
+      "title": "Pancakes with caviar",
+      "utility": 69
+    },
+    {
+      "id": 83,
+      "timestamp": 1730488920,
+      "title": "Chicken pie",
+      "utility": 64
+    },
+    {
+      "id": 84,
+      "timestamp": 1730488980,
+      "title": "Tomato salad",
+      "utility": 92
+    },
+    { "id": 85, "timestamp": 1730489040, "title": "Fried fish", "utility": 74 },
+    {
+      "id": 86,
+      "timestamp": 1730489100,
+      "title": "Meatball soup",
+      "utility": 79
+    },
+    {
+      "id": 87,
+      "timestamp": 1730489160,
+      "title": "Vegetable casserole",
+      "utility": 83
+    },
+    {
+      "id": 88,
+      "timestamp": 1730489220,
+      "title": "Chicken shawarma",
+      "utility": 54
+    },
+    {
+      "id": 89,
+      "timestamp": 1730489280,
+      "title": "Salmon salad",
+      "utility": 89
+    },
+    {
+      "id": 90,
+      "timestamp": 1730489340,
+      "title": "Pancakes with chocolate",
+      "utility": 63
+    },
+    { "id": 91, "timestamp": 1730489400, "title": "Beef soup", "utility": 76 },
+    {
+      "id": 92,
+      "timestamp": 1730489460,
+      "title": "Cheese sandwich",
+      "utility": 48
+    },
+    {
+      "id": 93,
+      "timestamp": 1730489520,
+      "title": "Baked chicken",
+      "utility": 86
+    },
+    {
+      "id": 94,
+      "timestamp": 1730489580,
+      "title": "Vegetable soup",
+      "utility": 81
+    },
+    {
+      "id": 95,
+      "timestamp": 1730489640,
+      "title": "Pasta with mushrooms",
+      "utility": 72
+    },
+    { "id": 96, "timestamp": 1730489700, "title": "Pork ribs", "utility": 56 },
+    {
+      "id": 97,
+      "timestamp": 1730489760,
+      "title": "Fruit salad",
+      "utility": 93
+    },
+    {
+      "id": 98,
+      "timestamp": 1730489820,
+      "title": "Chicken and rice",
+      "utility": 78
+    },
+    {
+      "id": 99,
+      "timestamp": 1730489880,
+      "title": "Omelette with vegetables",
+      "utility": 70
+    },
+    {
+      "id": 100,
+      "timestamp": 1730489940,
+      "title": "Pancakes with cottage cheese",
+      "utility": 72
+    }
+  ]
+}
