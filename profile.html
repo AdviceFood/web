@@ -1022,12 +1022,6 @@
           order: 2;
         }
 
-        main .container {
-          display: flex;
-          flex-direction: row;
-          gap: 30px;
-        }
-
         .main--inner .analyze__photo--comment {
           display: none;
         }
@@ -1551,6 +1545,14 @@
         <section class="section--profile">
           <div class="container">
             <div class="section--inner">
+              <div class="profile--preinfo desktopOnly">
+                <strong>Your Profile</strong>
+                <p>
+                  Track your food journey, view your stats and get the most out
+                  of AdviceFood.
+                </p>
+              </div>
+
               <div class="profile--header">
                 <div class="profile--meta">
                   <picture>
@@ -1667,7 +1669,8 @@
                   </strong>
 
                   <div class="diag--compare">
-                    <span>This week</span> ·
+                    <span class="mob">This week ·</span>
+                    <span class="desktopOnly">Your activity this week</span>
                     <span class="compare">+3 vs. previous week</span>
                   </div>
                 </div>
@@ -1678,13 +1681,13 @@
                       <span>20</span>
                     </div>
                     <div class="diag--row">
-                      <span>20</span>
+                      <span>15</span>
                     </div>
                     <div class="diag--row">
-                      <span>20</span>
+                      <span>10</span>
                     </div>
                     <div class="diag--row">
-                      <span>20</span>
+                      <span>5</span>
                     </div>
                   </div>
 
@@ -2517,7 +2520,7 @@
               <p class="history--subtitle">Your latest food analyses</p>
 
               <ul class="history--list">
-                <li class="history--item">
+                <li class="history--item" data-time="${items[i].timestamp}">
                   <a href="#" class="history--link">
                     <div class="history--img">
                       <picture>
@@ -2532,17 +2535,132 @@
                     </div>
                     <div class="history--info">
                       <div class="history--meta">
-                        <strong>Shawarma with chicken</strong>
+                        <strong>${items[i].title}</strong>
                         <span class="history--date"> 11 Oct 2026 · 19:36 </span>
                       </div>
 
+                      <div class="history--expander desktopOnly">
+                        <button type="button" onclick="expandInfo(this);">
+                          <span></span>
+                        </button>
+
+                        <ul class="expander--list">
+                          <li>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              fill="none"
+                            >
+                              <g
+                                stroke="#000"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                clip-path="url(#o11)"
+                              >
+                                <path
+                                  d="M7 7H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-1"
+                                />
+                                <path
+                                  d="M20.385 6.585a2.1 2.1 0 0 0-2.97-2.97L9 12v3h3zM16 5l3 3"
+                                />
+                              </g>
+                              <defs>
+                                <clipPath id="o11">
+                                  <path fill="#fff" d="M0 0h24v24H0z" />
+                                </clipPath>
+                              </defs>
+                            </svg>
+                            Edit name
+                          </li>
+                          <li>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              fill="none"
+                            >
+                              <g clip-path="url(#o12)">
+                                <path
+                                  stroke="#000"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  d="M9 7h6m-6 4h6m-2 4h2M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16l-3-2-2 2-2-2-2 2-2-2z"
+                                />
+                              </g>
+                              <defs>
+                                <clipPath id="o12">
+                                  <path fill="#fff" d="M0 0h24v24H0z" />
+                                </clipPath>
+                              </defs>
+                            </svg>
+                            Create a recipe
+                          </li>
+                          <li>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              fill="none"
+                            >
+                              <g
+                                stroke="#e53935"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                clip-path="url(#o13)"
+                              >
+                                <path
+                                  d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"
+                                />
+                              </g>
+                              <defs>
+                                <clipPath id="o13">
+                                  <path fill="#fff" d="M0 0h24v24H0z" />
+                                </clipPath>
+                              </defs>
+                            </svg>
+                            Delete analysis
+                          </li>
+                        </ul>
+                      </div>
+
                       <div class="history--utility">
-                        <span class="utility--num">32</span>
+                        <span class="utility--num">72</span>
+
+                        <div class="utility--meta desktopOnly">
+                          The utility index
+                          <span>Average</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="history--kcal desktopOnly">
+                      <div class="kcal--block">
+                        <b>436 kcal</b>
+                        per serving
+                      </div>
+
+                      <div class="kcal--block">
+                        <b>50g</b>
+                        protein
+                      </div>
+
+                      <div class="kcal--block">
+                        <b>50g</b>
+                        fats
+                      </div>
+
+                      <div class="kcal--block">
+                        <b>50g</b>
+                        carbs
                       </div>
                     </div>
                   </a>
                 </li>
-                <li class="history--item">
+                <li class="history--item" data-time="${items[i].timestamp}">
                   <a href="#" class="history--link">
                     <div class="history--img">
                       <picture>
@@ -2557,17 +2675,132 @@
                     </div>
                     <div class="history--info">
                       <div class="history--meta">
-                        <strong>Shawarma with chicken</strong>
+                        <strong>${items[i].title}</strong>
                         <span class="history--date"> 11 Oct 2026 · 19:36 </span>
                       </div>
 
+                      <div class="history--expander desktopOnly">
+                        <button type="button" onclick="expandInfo(this);">
+                          <span></span>
+                        </button>
+
+                        <ul class="expander--list">
+                          <li>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              fill="none"
+                            >
+                              <g
+                                stroke="#000"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                clip-path="url(#o111)"
+                              >
+                                <path
+                                  d="M7 7H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-1"
+                                />
+                                <path
+                                  d="M20.385 6.585a2.1 2.1 0 0 0-2.97-2.97L9 12v3h3zM16 5l3 3"
+                                />
+                              </g>
+                              <defs>
+                                <clipPath id="o111">
+                                  <path fill="#fff" d="M0 0h24v24H0z" />
+                                </clipPath>
+                              </defs>
+                            </svg>
+                            Edit name
+                          </li>
+                          <li>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              fill="none"
+                            >
+                              <g clip-path="url(#121)">
+                                <path
+                                  stroke="#000"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  d="M9 7h6m-6 4h6m-2 4h2M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16l-3-2-2 2-2-2-2 2-2-2z"
+                                />
+                              </g>
+                              <defs>
+                                <clipPath id="o121">
+                                  <path fill="#fff" d="M0 0h24v24H0z" />
+                                </clipPath>
+                              </defs>
+                            </svg>
+                            Create a recipe
+                          </li>
+                          <li>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              fill="none"
+                            >
+                              <g
+                                stroke="#e53935"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                clip-path="url(#o131)"
+                              >
+                                <path
+                                  d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"
+                                />
+                              </g>
+                              <defs>
+                                <clipPath id="o131">
+                                  <path fill="#fff" d="M0 0h24v24H0z" />
+                                </clipPath>
+                              </defs>
+                            </svg>
+                            Delete analysis
+                          </li>
+                        </ul>
+                      </div>
+
                       <div class="history--utility">
-                        <span class="utility--num">32</span>
+                        <span class="utility--num">72</span>
+
+                        <div class="utility--meta desktopOnly">
+                          The utility index
+                          <span>Average</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="history--kcal desktopOnly">
+                      <div class="kcal--block">
+                        <b>436 kcal</b>
+                        per serving
+                      </div>
+
+                      <div class="kcal--block">
+                        <b>50g</b>
+                        protein
+                      </div>
+
+                      <div class="kcal--block">
+                        <b>50g</b>
+                        fats
+                      </div>
+
+                      <div class="kcal--block">
+                        <b>50g</b>
+                        carbs
                       </div>
                     </div>
                   </a>
                 </li>
-                <li class="history--item">
+                <li class="history--item" data-time="${items[i].timestamp}">
                   <a href="#" class="history--link">
                     <div class="history--img">
                       <picture>
@@ -2582,12 +2815,267 @@
                     </div>
                     <div class="history--info">
                       <div class="history--meta">
-                        <strong>Shawarma with chicken</strong>
+                        <strong>${items[i].title}</strong>
                         <span class="history--date"> 11 Oct 2026 · 19:36 </span>
                       </div>
 
+                      <div class="history--expander desktopOnly">
+                        <button type="button" onclick="expandInfo(this);">
+                          <span></span>
+                        </button>
+
+                        <ul class="expander--list">
+                          <li>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              fill="none"
+                            >
+                              <g
+                                stroke="#000"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                clip-path="url(#o112)"
+                              >
+                                <path
+                                  d="M7 7H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-1"
+                                />
+                                <path
+                                  d="M20.385 6.585a2.1 2.1 0 0 0-2.97-2.97L9 12v3h3zM16 5l3 3"
+                                />
+                              </g>
+                              <defs>
+                                <clipPath id="o112">
+                                  <path fill="#fff" d="M0 0h24v24H0z" />
+                                </clipPath>
+                              </defs>
+                            </svg>
+                            Edit name
+                          </li>
+                          <li>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              fill="none"
+                            >
+                              <g clip-path="url(#o122)">
+                                <path
+                                  stroke="#000"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  d="M9 7h6m-6 4h6m-2 4h2M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16l-3-2-2 2-2-2-2 2-2-2z"
+                                />
+                              </g>
+                              <defs>
+                                <clipPath id="o122">
+                                  <path fill="#fff" d="M0 0h24v24H0z" />
+                                </clipPath>
+                              </defs>
+                            </svg>
+                            Create a recipe
+                          </li>
+                          <li>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              fill="none"
+                            >
+                              <g
+                                stroke="#e53935"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                clip-path="url(#o132)"
+                              >
+                                <path
+                                  d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"
+                                />
+                              </g>
+                              <defs>
+                                <clipPath id="o132">
+                                  <path fill="#fff" d="M0 0h24v24H0z" />
+                                </clipPath>
+                              </defs>
+                            </svg>
+                            Delete analysis
+                          </li>
+                        </ul>
+                      </div>
+
                       <div class="history--utility">
-                        <span class="utility--num">32</span>
+                        <span class="utility--num">72</span>
+
+                        <div class="utility--meta desktopOnly">
+                          The utility index
+                          <span>Average</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="history--kcal desktopOnly">
+                      <div class="kcal--block">
+                        <b>436 kcal</b>
+                        per serving
+                      </div>
+
+                      <div class="kcal--block">
+                        <b>50g</b>
+                        protein
+                      </div>
+
+                      <div class="kcal--block">
+                        <b>50g</b>
+                        fats
+                      </div>
+
+                      <div class="kcal--block">
+                        <b>50g</b>
+                        carbs
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="history--item" data-time="${items[i].timestamp}">
+                  <a href="#" class="history--link">
+                    <div class="history--img">
+                      <picture>
+                        <img src="img/blog.png" alt="" />
+                      </picture>
+                      <div class="history--img--line">
+                        <span>435 kcal</span>
+                        <span>58g</span>
+                        <span>58g</span>
+                        <span>58g</span>
+                      </div>
+                    </div>
+                    <div class="history--info">
+                      <div class="history--meta">
+                        <strong>${items[i].title}</strong>
+                        <span class="history--date"> 11 Oct 2026 · 19:36 </span>
+                      </div>
+
+                      <div class="history--expander desktopOnly">
+                        <button type="button" onclick="expandInfo(this);">
+                          <span></span>
+                        </button>
+
+                        <ul class="expander--list">
+                          <li>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              fill="none"
+                            >
+                              <g
+                                stroke="#000"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                clip-path="url(#o113)"
+                              >
+                                <path
+                                  d="M7 7H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-1"
+                                />
+                                <path
+                                  d="M20.385 6.585a2.1 2.1 0 0 0-2.97-2.97L9 12v3h3zM16 5l3 3"
+                                />
+                              </g>
+                              <defs>
+                                <clipPath id="o113">
+                                  <path fill="#fff" d="M0 0h24v24H0z" />
+                                </clipPath>
+                              </defs>
+                            </svg>
+                            Edit name
+                          </li>
+                          <li>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              fill="none"
+                            >
+                              <g clip-path="url(#o123)">
+                                <path
+                                  stroke="#000"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  d="M9 7h6m-6 4h6m-2 4h2M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16l-3-2-2 2-2-2-2 2-2-2z"
+                                />
+                              </g>
+                              <defs>
+                                <clipPath id="o123">
+                                  <path fill="#fff" d="M0 0h24v24H0z" />
+                                </clipPath>
+                              </defs>
+                            </svg>
+                            Create a recipe
+                          </li>
+                          <li>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              fill="none"
+                            >
+                              <g
+                                stroke="#e53935"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                clip-path="url(#o133)"
+                              >
+                                <path
+                                  d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"
+                                />
+                              </g>
+                              <defs>
+                                <clipPath id="o133">
+                                  <path fill="#fff" d="M0 0h24v24H0z" />
+                                </clipPath>
+                              </defs>
+                            </svg>
+                            Delete analysis
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div class="history--utility">
+                        <span class="utility--num">72</span>
+
+                        <div class="utility--meta desktopOnly">
+                          The utility index
+                          <span>Average</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="history--kcal desktopOnly">
+                      <div class="kcal--block">
+                        <b>436 kcal</b>
+                        per serving
+                      </div>
+
+                      <div class="kcal--block">
+                        <b>50g</b>
+                        protein
+                      </div>
+
+                      <div class="kcal--block">
+                        <b>50g</b>
+                        fats
+                      </div>
+
+                      <div class="kcal--block">
+                        <b>50g</b>
+                        carbs
                       </div>
                     </div>
                   </a>
@@ -2625,6 +3113,6 @@
       </div>
     </main>
 
-    <script src="js/script.js"></script>
+    <script src="js/profile.js"></script>
   </body>
 </html>
